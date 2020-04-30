@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="username" class="ion-padding-top ion-text-center">
+    <img src="https://www.gravatar.com/avatar?d=mm&s=140" alt="avatar">
+    <h2>{{profileData.firstName}}</h2>
+
+    <ion-list inset>
+      <ion-item (click)="changeName()">
+        <ion-label position="fixed" color="primary">Name:</ion-label>
+        {{profileData.firstName}} {{profileData.lastName}}
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item>
+        <ion-label position="fixed" color="primary">Email:</ion-label>
+        {{profileData.email}}
+      </ion-item>
+      <ion-item (click)="changeClub()">
+        <ion-label position="fixed" color="primary">Club:</ion-label>
+        {{profileData.clubName}}
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item (click)="changeCard()">
+        <ion-label position="fixed" color="primary">Card number:</ion-label>
+        {{profileData.card}}
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item (click)="changeHandicap()">
+        <ion-label position="fixed" color="primary">Handicap:</ion-label>
+        {{profileData.handicap}}
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item (click)="changeGender()">
+        <ion-label position="fixed" color="primary">Gender:</ion-label>
+        {{profileData.gender}}
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <ion-list inset>
+      <ion-item (click)="cangePassword()">Change Password</ion-item>
+      <ion-item (click)="support()">Support</ion-item>
+      <ion-item (click)="logout()">Logout</ion-item>
+    </ion-list>
+  </div>
+</ion-content>
