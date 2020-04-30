@@ -4,6 +4,13 @@ import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 import { RestClientService } from '../../providers/rest-client.service';
 
+import { CoursesResponse,
+         EventsResponse,
+         ScoresResponse,
+         CourseHolesResponse,
+         ScoreHoleScoresResponse } from '../../interfaces/rest-datamodel';
+
+
 
 @Component({
   selector: 'page-score-list',
@@ -34,19 +41,18 @@ export class ScoreListPage {
     // get score master tables for user
     this.restClient.getScoresForUser(userId)
     .subscribe(
-      responsesc => {
+      (responsesc: ScoresResponse[]) => {
         this.scores = responsesc;
         // get the event data
         this.scores.forEach(score => {
-          this.restClient.getEvents(score.eventId)
+          this.restClient.getEvent(score.eventId)
           .subscribe(
-            responseev => {
-              console.log(responseev);
+            (responseev: EventsResponse) => {
               score.event = responseev;
               // get hole data
               this.restClient.getCourseHoles(score.event.courseId)
               .subscribe(
-                responsehl => {
+                (responsehl: CourseHolesResponse[])=> {
                   // sort response on hole number
                   responsehl.sort(function (a, b) {
                     return a.number - b.number;
@@ -66,7 +72,7 @@ export class ScoreListPage {
           // get hole scores
           this.restClient.getScoreHoleScores(score.id)
           .subscribe(
-            responseshl => {
+            (responseshl: ScoreHoleScoresResponse[]) => {
               score.holescores = responseshl;
               //////////////////////////
               // populating for tests...

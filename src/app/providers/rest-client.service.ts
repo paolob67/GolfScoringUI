@@ -72,12 +72,12 @@ export class RestClientService {
     return this._http.get<CourseAddressResponse>(environment.apiEndPoint + '/courses/' + courseid + '/address');
   }
 
-  getEvents(eventId?: string) {
-    if (eventId) {
+  getEvent(eventId: string) {
       return this._http.get<EventsResponse>(environment.apiEndPoint + '/events/' + eventId);
-    } else {
+  }
+
+  getEvents() {
       return this._http.get<EventsResponse[]>(environment.apiEndPoint + '/events');
-    }
   }
 
   getScoresForUser(userId: string) {
