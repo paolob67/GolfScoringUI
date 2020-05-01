@@ -79,6 +79,7 @@ export class ScoreListPage {
               if(score.round == 1) {
                 score.holescores.push(
                   {
+                    id: "theidfor1",
                     holeNumber: 1,
                     self: 4,
                     validated: 4

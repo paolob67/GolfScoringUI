@@ -5,11 +5,13 @@ import { ActionSheetController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
-  selector: 'page-speaker-detail',
-  templateUrl: 'speaker-detail.html',
-  styleUrls: ['./speaker-detail.scss'],
+  selector: 'page-score-detail',
+  templateUrl: 'score-detail.html',
+  styleUrls: ['./score-detail.scss'],
 })
-export class SpeakerDetailPage {
+export class ScoreDetailPage {
+  scoreId: any;
+  holeNum: number;
   speaker: any;
 
   constructor(
@@ -21,6 +23,10 @@ export class SpeakerDetailPage {
   ) {}
 
   ionViewWillEnter() {
+    this.scoreId = this.route.snapshot.paramMap.get('scoreId');
+    this.holeNum = this.route.snapshot.paramMap.get('holeNum');
+
+    /*
     this.dataProvider.load().subscribe((data: any) => {
       const speakerId = this.route.snapshot.paramMap.get('speakerId');
       if (data && data.speakers) {
@@ -32,6 +38,7 @@ export class SpeakerDetailPage {
         }
       }
     });
+    */
   }
 
   openExternalUrl(url: string) {

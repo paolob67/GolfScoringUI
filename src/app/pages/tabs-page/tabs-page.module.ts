@@ -9,7 +9,7 @@ import { AboutModule } from '../about/about.module';
 import { MapModule } from '../map/map.module';
 import { ScheduleModule } from '../schedule/schedule.module';
 import { SessionDetailModule } from '../session-detail/session-detail.module';
-import { SpeakerDetailModule } from '../speaker-detail/speaker-detail.module';
+import { ScoreDetailModule } from '../score-detail/score-detail.module';
 import { ScoreListModule } from '../score-list/score-list.module';
 
 @NgModule({
@@ -20,7 +20,7 @@ import { ScoreListModule } from '../score-list/score-list.module';
     MapModule,
     ScheduleModule,
     SessionDetailModule,
-    SpeakerDetailModule,
+    ScoreDetailModule,
     ScoreListModule,
     TabsPageRoutingModule
   ],
