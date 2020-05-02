@@ -4,6 +4,7 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/app/tabs/scores"></ion-back-button>
       </ion-buttons>
+      <!--
       <ion-buttons *ngIf="speaker" slot="end">
         <ion-button (click)="openContact(speaker)">
           <ion-icon slot="icon-only" ios="call-outline" md="call-sharp"></ion-icon>
@@ -12,18 +13,23 @@
           <ion-icon slot="icon-only" ios="share-outline" md="share-sharp"></ion-icon>
         </ion-button>
       </ion-buttons>
+      -->
     </ion-toolbar>
   </ion-header>
 
   <div class="score-background">
-    <img [src]="speaker?.profilePic" [alt]="speaker?.name">
-    <h2>{{speaker?.name}}</h2>
   </div>
 
+  <h3 class="ion-padding-top ion-padding-start">Hole: {{holeNum}}</h3>
+
   <div class="ion-padding speaker-detail">
-    <p>{{scoreId}}</p>
-    <p>{{holeNum}}</p>
-    <p>{{speaker?.about}} Say hello on social media!</p>
+    <ion-list inset>
+      <ion-item (click)="changeScore()">
+        <ion-label position="fixed" color="primary">Score:</ion-label>
+        {{holeScore?.self}}
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
 
     <hr>
 

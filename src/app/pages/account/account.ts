@@ -119,7 +119,7 @@ export class AccountPage implements AfterViewInit {
         {
           text: 'Ok',
           handler: (data: any) => {
-            this.profileData.handicap = data.handicap;
+            this.profileData.handicap = parseInt(data.handicap);
             this.updateProfile();
           }
         }

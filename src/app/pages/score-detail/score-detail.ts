@@ -1,8 +1,17 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ConferenceData } from '../../providers/conference-data';
+import { AlertController } from '@ionic/angular';
+
 import { ActionSheetController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { RestClientService } from '../../providers/rest-client.service';
+
+import { CoursesResponse,
+         EventsResponse,
+         ScoresResponse,
+         CourseHolesResponse,
+         ScoreHoleScoresResponse } from '../../interfaces/rest-datamodel';
 
 @Component({
   selector: 'page-score-detail',
@@ -10,22 +19,38 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   styleUrls: ['./score-detail.scss'],
 })
 export class ScoreDetailPage {
-  scoreId: any;
+  scoreId: string;
   holeNum: number;
+  holeScore: ScoreHoleScoresResponse;
   speaker: any;
 
   constructor(
     private dataProvider: ConferenceData,
     private route: ActivatedRoute,
+    public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
     public confData: ConferenceData,
     public inAppBrowser: InAppBrowser,
+    public restClient: RestClientService,
   ) {}
 
   ionViewWillEnter() {
     this.scoreId = this.route.snapshot.paramMap.get('scoreId');
-    this.holeNum = this.route.snapshot.paramMap.get('holeNum');
+    this.holeNum = parseInt(this.route.snapshot.paramMap.get('holeNum'));
+    // ok first let's look for the holescore record and in case populate UI
+    // first let's get the hole score records
+    // get hole scores
 
+    this.restClient.getScoreHoleScores(this.scoreId)
+    .subscribe(
+      (responseshl: ScoreHoleScoresResponse[]) => {
+        this.holeScore = this.getHoleScore(responseshl, this.holeNum);
+      },
+      err => {
+        console.error('Error getting hole scores', err.error.error);
+      },
+      () => {}
+    );
     /*
     this.dataProvider.load().subscribe((data: any) => {
       const speakerId = this.route.snapshot.paramMap.get('speakerId');
@@ -39,6 +64,80 @@ export class ScoreDetailPage {
       }
     });
     */
+  }
+
+  getHoleScore(foundhs: ScoreHoleScoresResponse[], holeNum: number): ScoreHoleScoresResponse {
+    // did we get any?
+    if (foundhs !== [] ) {
+      // let's see if it is already there
+      const theHoleScore = foundhs.find(
+        (hs: any) => hs.holeNumber === holeNum
+      );
+      if (theHoleScore) {
+        return theHoleScore;
+      }
+    }
+    // looks like we did not let's make up an empty one
+    const theHoleScore = {
+      holeNumber: holeNum,
+      self: 0,
+      marker: 0,
+      markerId: '',
+      validated: 0,
+      scoreId: this.scoreId,
+    };
+
+    return theHoleScore;
+  }
+
+  async changeScore() {
+    const alert = await this.alertCtrl.create({
+      header: 'Change Score',
+      buttons: [
+        'Cancel',
+        {
+          text: 'Ok',
+          handler: (data: any) => {
+            this.holeScore.self = parseInt(data.score);
+            this.updateScore();
+          }
+        }
+      ],
+      inputs: [
+        {
+          type: 'number',
+          name: 'score',
+          value: this.holeScore.self,
+          placeholder: '0'
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  updateScore() {
+    if(this.holeScore.id) {
+      this.restClient.patchSelfScore(this.holeScore)
+      .subscribe(
+        (response: number) => {
+        },
+        err => {
+          console.error('Error setting self score', err.error.error);
+        },
+        () => {}
+      );
+    } else {
+      this.restClient.postSelfScore(this.holeScore)
+      .subscribe(
+        (response: ScoreHoleScoresResponse) => {
+          this.holeScore = response;
+        },
+        err => {
+          console.error('Error setting self score', err.error.error);
+        },
+        () => {}
+      );
+    }
   }
 
   openExternalUrl(url: string) {

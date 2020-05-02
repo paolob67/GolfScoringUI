@@ -102,4 +102,18 @@ export class RestClientService {
   getScoreHoleScores(scoreId: string) {
     return this._http.get<ScoreHoleScoresResponse[]>(environment.apiEndPoint + '/scores/'+scoreId+'/hole-scores');
   }
+
+  postSelfScore(holeScore: ScoreHoleScoresResponse) {
+    // this should be protected... must include jwt token in call
+    return this._http.post<ScoreHoleScoresResponse>(environment.apiEndPoint + '/scores/'+holeScore.scoreId+'/hole-scores', holeScore);
+  }
+
+  patchSelfScore(holeScore: ScoreHoleScoresResponse) {
+    const body = {
+      id: holeScore.id,
+      self: holeScore.self,
+      scoreId: holeScore.scoreId,
+    };
+    return this._http.patch<ScoreHoleScoresResponse>(environment.apiEndPoint + '/scores/'+holeScore.scoreId+'/hole-scores', holeScore);
+  }
 }
