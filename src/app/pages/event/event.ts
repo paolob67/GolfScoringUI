@@ -92,7 +92,6 @@ export class EventPage implements OnInit {
                   startTime: score.startTime,
                   startHole: score.startHole,
                   scoreId: score.id,
-                  hide: false,
                 }
               );
               */
@@ -110,7 +109,6 @@ export class EventPage implements OnInit {
                      startTime: score.startTime,
                      startHole: score.startHole,
                      scoreId: score.id,
-                     hide: false,
                    };
                   this.players.push(gotPlayer);
                   this.groupPlayers(gotPlayer);
@@ -157,6 +155,7 @@ export class EventPage implements OnInit {
         {
           time: player.startTime,
           hole: player.startHole,
+          hide: false,
           players: [
             player
           ]

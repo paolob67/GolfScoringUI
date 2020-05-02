@@ -37,7 +37,7 @@
   </ion-header>
 
   <ion-list #scheduleList [hidden]="shownPlayers === 0">
-    <ion-item-group *ngFor="let group of groups">
+    <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
       <ion-item-divider sticky>
         <ion-label>
           Start time {{group.time}} &mdash; hole {{group.hole}}
