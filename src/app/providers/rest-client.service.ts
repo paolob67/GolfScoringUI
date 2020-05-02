@@ -64,14 +64,18 @@ export class RestClientService {
     return this._http.put<UsersResponse>(environment.apiEndPoint + '/users/' + userdata.id, body, options);
   }
 
-  getUser(userId: string, token: string) {
+  //getPublicUser(userId: string, token: string) {
+  getPublicUser(userId: string) {
+    /*
     const options = {
       headers: {
         Authorization: 'Bearer ' + token
       }
     };
-    console.log(options);
-    return this._http.get<UsersResponse>(environment.apiEndPoint + '/users/' + userId, options);
+    */
+    //return this._http.get<UsersResponse>(environment.apiEndPoint + '/users/' + userId, options);
+    return this._http.get<UsersResponse>(environment.apiEndPoint + '/users/public/' + userId);
+
   }
 
   getCourses() {

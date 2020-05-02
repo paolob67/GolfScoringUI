@@ -60,20 +60,18 @@ export class EventPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('eventlist init');
     this.eventId = this.route.snapshot.paramMap.get('eventId');
     this.roundNum = parseInt(this.route.snapshot.paramMap.get('roundNum'));
 
-    console.log('eventid, roundnum', this.eventId, this.roundNum);
-
     this.ios = this.config.get('mode') === 'ios';
 
+    // must handle public profile here...
     this.user.getJwtToken().then((token) => {
-      console.log('thetoken', token);
       this.initData(token);
     });
   }
 
+  // call server to get public profile
   initData(jwtToken: string) {
     this.players = [];
     this.restClient.getEvent(this.eventId)
@@ -85,6 +83,7 @@ export class EventPage implements OnInit {
         .subscribe(
           (responsesc: ScoresResponse[]) => {
             responsesc.forEach(score => {
+              /*
               this.players.push(
                 {
                   id: score.userId,
@@ -96,30 +95,37 @@ export class EventPage implements OnInit {
                   hide: false,
                 }
               );
-              /*
-              this.restClient.getUser(score.userId, jwtToken)
+              */
+              // should call unprotected api here...
+
+              //this.restClient.getPublicUser(score.userId, jwtToken)
+              this.restClient.getPublicUser(score.userId)
               .subscribe(
                 (responsesc: UsersResponse) => {
-                  this.players.push(
-                    {
-                      id: responsesc.id,
-                      firstName: responsesc.firstName,
-                      lastName: responsesc.lastName,
-                      startTime: score.startTime,
-                      startHole: score.startHole,
-                      scoreId: score.id,
-                      hide: false,
-                    }
-                  );
+                  const gotPlayer =
+                   {
+                     id: responsesc.id,
+                     firstName: responsesc.firstName,
+                     lastName: responsesc.lastName,
+                     startTime: score.startTime,
+                     startHole: score.startHole,
+                     scoreId: score.id,
+                     hide: false,
+                   };
+                  this.players.push(gotPlayer);
+                  this.groupPlayers(gotPlayer);
                 },
                 err => {
                   console.error('Error getting user for score', score.userId, score.id);
                 },
                 () => {}
               );
-              */
+
             });
-          },
+
+            // let's group players for diplay
+            // this.groupPlayers();
+        },
           err => {
             console.error('Error getting scores for event');
           },
@@ -131,9 +137,63 @@ export class EventPage implements OnInit {
       },
       () => {}
     );
-    this.shownPlayers = this.players;
   }
 
+  groupPlayers(player: any) {
+    this.shownPlayers = this.players;
+
+    let didfindgroup = false;
+    let thegroup: any;
+    if( this.groups ) {
+      this.groups.forEach(group => {
+        if (group.time == player.startTime || group.hole == player.startHole) {
+          group.players.push(player);
+          didfindgroup = true;
+        };
+      });
+    };
+    if (!didfindgroup) {
+      this.groups.push(
+        {
+          time: player.startTime,
+          hole: player.startHole,
+          players: [
+            player
+          ]
+        }
+      );
+    };
+  }
+
+/*
+  groupPlayers() {
+    this.shownPlayers = this.players;
+
+    this.players.forEach(player => {
+      let didfindgroup = false;
+      let thegroup: any;
+      if( this.groups ) {
+        this.groups.forEach(group => {
+          if (group.time == player.startTime || group.hole == player.startHole) {
+            group.players.push(player);
+            didfindgroup = true;
+          };
+        });
+      };
+      if (!didfindgroup) {
+        this.groups.push(
+          {
+            time: player.startTime,
+            hole: player.startHole,
+            players: [
+              player
+            ]
+          }
+        );
+      };
+    });
+  }
+*/
   /*
   updateEvent() {
     // Close any open sliding items when the event updates
