@@ -64,6 +64,16 @@ export class RestClientService {
     return this._http.put<UsersResponse>(environment.apiEndPoint + '/users/' + userdata.id, body, options);
   }
 
+  getUser(userId: string, token: string) {
+    const options = {
+      headers: {
+        Authorization: 'Bearer ' + token
+      }
+    };
+    console.log(options);
+    return this._http.get<UsersResponse>(environment.apiEndPoint + '/users/' + userId, options);
+  }
+
   getCourses() {
     return this._http.get<CoursesResponse[]>(environment.apiEndPoint + '/courses');
   }
@@ -115,5 +125,21 @@ export class RestClientService {
       scoreId: holeScore.scoreId,
     };
     return this._http.patch<ScoreHoleScoresResponse>(environment.apiEndPoint + '/scores/'+holeScore.scoreId+'/hole-scores', holeScore);
+  }
+
+  getEventRoundScores(eventId: string, round: number) {
+    const filter = {
+      "where": {
+        "eventId": eventId,
+        "round": round
+      }
+    };
+    const filterStr = JSON.stringify(filter);
+    const options = {
+      params: {
+        filter: filterStr
+      }
+    };
+    return this._http.get<ScoresResponse[]>(environment.apiEndPoint + '/scores', options);
   }
 }

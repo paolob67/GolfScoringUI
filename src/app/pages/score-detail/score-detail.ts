@@ -119,7 +119,7 @@ export class ScoreDetailPage {
     if(this.holeScore.id) {
       this.restClient.patchSelfScore(this.holeScore)
       .subscribe(
-        (response: number) => {
+        (response: any) => {
         },
         err => {
           console.error('Error setting self score', err.error.error);
