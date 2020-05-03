@@ -43,17 +43,35 @@
           Start time {{group.time}} &mdash; hole {{group.hole}}
         </ion-label>
       </ion-item-divider>
+      <span *ngFor="let player of group.players">
+        <ion-item *ngIf="player.id === markedPlayerId" (click)="console.log('marking');">
+          <ion-label>
+            <h3>{{player.firstName}} {{player.lastName}} ({{player.id}})</h3>
+            <p>{{player.startTime}} &mdash; hole {{player.startHole}}</p>
+          </ion-label>
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+        </ion-item>
+        <ion-item *ngIf="player.id !== markedPlayerId" (click)="setMarkedPlayer(player.id)" >
+          <ion-label>
+            <h3>{{player.firstName}} {{player.lastName}} ({{player.id}})</h3>
+            <p>{{player.startTime}} &mdash; hole {{player.startHole}}</p>
+          </ion-label>
+          <ion-icon name="ellipse-outline"></ion-icon>
+        </ion-item>
+      </span>
+      <!--
       <ion-item *ngFor="let player of group.players">
         <ion-label>
           <h3>{{player.firstName}} {{player.lastName}} ({{player.id}})</h3>
-            <p>
-              {{player.startTime}} &mdash; hole {{player.startHole}}
-            </p>
+          <p>{{player.startTime}} &mdash; hole {{player.startHole}}</p>
         </ion-label>
+        <ion-icon (click)="console.log('marking');" [hidden]="player.id !== markedPlayerId" name="checkmark-circle-outline"></ion-icon>
+        <ion-icon (click)="setMarkedPlayer(player.id)" [hidden]="player.id === markedPlayerId" name="ellipse-outline"></ion-icon>
       </ion-item>
+      -->
     </ion-item-group>
   </ion-list>
-
+  {{markedPlayerId}}
   <ion-list-header [hidden]="shownPlayers.length > 0">
     No PLayers Found
   </ion-list-header>

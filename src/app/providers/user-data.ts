@@ -75,6 +75,16 @@ export class UserData {
     });
   }
 
+  setMarkedPlayer(userId: string): Promise<string> {
+    return this.storage.set('marked', userId);
+  }
+
+  getMarkedPlayer(): Promise<string> {
+    return this.storage.get('marked').then((value) => {
+      return value;
+    });
+  }
+
   isLoggedIn(): Promise<boolean> {
     return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
       return value === true;

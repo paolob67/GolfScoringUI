@@ -1,0 +1,28 @@
+<ion-content class="speaker-detail">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/app/tabs/scores"></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button routerLink="/app/tabs/scores/event/{{eventId}}/{{roundNum}}">change maked</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="mark-background">
+  </div>
+
+  <h3 class="ion-padding-top ion-padding-start">{{event?.name}} &mdash; Round {{roundNum}}</h3>
+
+  <div class="ion-padding mark-detail" [hidden]="markedPlayerId !== ''">
+    <p>Marking Player: {{markedPlayerId}}<p>
+    <ion-list inset>
+      <ion-item (click)="changeScore()">
+        <ion-label position="fixed" color="primary">Score:</ion-label>
+        {{holeScore?.self}}
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

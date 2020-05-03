@@ -36,10 +36,12 @@ export class EventPage implements OnInit {
     //hide: boolean;
   }[];
 
-  dayIndex = 0;
+  markedPlayerId: string;
+
+  //dayIndex = 0;
   queryText = '';
-  segment = 'all';
-  excludeTracks: any = [];
+  //segment = 'all';
+  //excludeTracks: any = [];
   shownPlayers: any = [];
   groups: any = [];
   confDate: string;
@@ -65,14 +67,21 @@ export class EventPage implements OnInit {
 
     this.ios = this.config.get('mode') === 'ios';
 
-    // must handle public profile here...
+    this.initData();
+    this.user.getMarkedPlayer().then((id) => {
+      this.markedPlayerId = id;
+    });
+    /*
     this.user.getJwtToken().then((token) => {
       this.initData(token);
     });
+    */
+
   }
 
   // call server to get public profile
-  initData(jwtToken: string) {
+  //initData(jwtToken: string) {
+  initData() {
     this.players = [];
     this.restClient.getEvent(this.eventId)
     .subscribe(
@@ -164,6 +173,17 @@ export class EventPage implements OnInit {
     };
   }
 
+
+  setMarkedPlayer(id) {
+
+    this.user.setMarkedPlayer(id)
+    .then(() => {
+      this.markedPlayerId = id;
+    });
+
+
+
+  }
 /*
   groupPlayers() {
     this.shownPlayers = this.players;
@@ -210,6 +230,7 @@ export class EventPage implements OnInit {
 
 
   async presentFilter() {
+    /*
     const modal = await this.modalCtrl.create({
       component: EventFilterPage,
       swipeToClose: true,
@@ -223,6 +244,7 @@ export class EventPage implements OnInit {
       this.excludeTracks = data;
       //this.updateEvent();
     }
+    */
   }
 
   async addFavorite(slidingItem: HTMLIonItemSlidingElement, sessionData: any) {

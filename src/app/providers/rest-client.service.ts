@@ -109,6 +109,24 @@ export class RestClientService {
     return this._http.get<ScoresResponse[]>(environment.apiEndPoint + '/scores', options);
   }
 
+  getScoreForMarking(userId: string, eventId: string, roundNum: number) {
+    const filter = {
+      "where": {
+        "userId": userId,
+        "eventId": eventId,
+        "round": roundNum
+      }
+    };
+    const filterStr = JSON.stringify(filter);
+    const options = {
+      params: {
+        filter: filterStr
+      }
+    };
+    return this._http.get<ScoresResponse[]>(environment.apiEndPoint + '/scores', options);
+  }
+
+
   getCourseHoles(courseId: string) {
     return this._http.get<CourseHolesResponse[]>(environment.apiEndPoint + '/courses/' + courseId + '/holes');
   }
