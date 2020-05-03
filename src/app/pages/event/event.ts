@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AlertController, IonList, IonRouterOutlet, LoadingController, ModalController, ToastController, Config } from '@ionic/angular';
+import { AlertController, IonList, IonFab, IonRouterOutlet, LoadingController, ModalController, ToastController, Config } from '@ionic/angular';
 import { RestClientService } from '../../providers/rest-client.service';
 
 import { EventFilterPage } from '../event-filter/event-filter';
@@ -33,7 +33,7 @@ export class EventPage implements OnInit {
     startTime: Date;
     startHole: number;
     scoreId: string;
-    hide: boolean;
+    //hide: boolean;
   }[];
 
   dayIndex = 0;
@@ -193,9 +193,10 @@ export class EventPage implements OnInit {
     });
   }
 */
-  /*
+
   updateEvent() {
     // Close any open sliding items when the event updates
+/*
     if (this.eventList) {
       this.eventList.closeSlidingItems();
     }
@@ -204,8 +205,9 @@ export class EventPage implements OnInit {
       this.shownPlayers = data.shownPlayers;
       this.groups = data.groups;
     });
+    */
   }
-  */
+
 
   async presentFilter() {
     const modal = await this.modalCtrl.create({
@@ -280,7 +282,8 @@ export class EventPage implements OnInit {
     await alert.present();
   }
 
-  async openSocial(network: string, fab: HTMLIonFabElement) {
+  //async openSocial(network: string, fab: HTMLIonFabElement) {
+  async openSocial(network: string, fab: IonFab) {
     const loading = await this.loadingCtrl.create({
       message: `Posting to ${network}`,
       duration: (Math.random() * 1000) + 500

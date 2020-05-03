@@ -9,7 +9,9 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "docker:build": "docker build -t golf-scoring-ui .",
+    "docker:run": "docker run --name golf_scoring_ui -p 80:80 -d golf-scoring-ui"
   },
   "private": true,
   "dependencies": {
