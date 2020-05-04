@@ -133,7 +133,7 @@ export class MarkDetailPage {
           type: 'number',
           name: 'score',
           value: holeScore.marker,
-          placeholder: parseInt(holeScore.self),
+          placeholder: holeScore.self.toString(),
         }
       ]
     });
