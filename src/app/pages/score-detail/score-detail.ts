@@ -85,6 +85,7 @@ export class ScoreDetailPage {
       markerId: '',
       validated: 0,
       scoreId: this.scoreId,
+      par: 0,
     };
 
     return theHoleScore;

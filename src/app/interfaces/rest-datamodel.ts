@@ -96,14 +96,14 @@ export interface CourseHolesResponse {
 }
 
 export interface ScoreHoleScoresResponse {
-    id: string;
+    id?: string;
     holeNumber: number;
     self: number;
-    marker: number;
-    markerId: string;
-    validated: number;
+    marker?: number;
+    markerId?: string;
+    validated?: number;
     scoreId: string;
-    par: number;
+    par?: number;
 }
 
 // Slope Data
