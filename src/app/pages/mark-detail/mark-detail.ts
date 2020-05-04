@@ -7,7 +7,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { UserData } from '../../providers/user-data';
 import { RestClientService } from '../../providers/rest-client.service';
 
-import { CoursesResponse,
+import { UsersResponse,
+         CoursesResponse,
          EventsResponse,
          ScoresResponse,
          CourseHolesResponse,
@@ -19,11 +20,15 @@ import { CoursesResponse,
   styleUrls: ['./mark-detail.scss'],
 })
 export class MarkDetailPage {
+  userId: string;
   eventId: string;
+  event: EventsResponse;
   roundNum: number;
   score: ScoresResponse;
-  holeScores: ScoreHoleScoresResponse[];
+  holeScores: ScoreHoleScoresResponse[] = [];
   markedPlayerId: string;
+  markedPlayer: UsersResponse;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -38,32 +43,109 @@ export class MarkDetailPage {
     this.eventId = this.route.snapshot.paramMap.get('eventId');
     this.roundNum = parseInt(this.route.snapshot.paramMap.get('roundNum'));
 
-    this.user.getMarkedPlayer().then((id) => {
-        this.markedPlayerId = id;
-        this.restClient.getScoreForMarking(id, this.eventId, this.roundNum)
-        .subscribe(
-          (responsesc: ScoresResponse[]) => {
-            this.score = responsesc[0];
-            this.restClient.getScoreHoleScores(responsesc[0].id)
-            .subscribe(
-              (responseshs: ScoreHoleScoresResponse[]) => {
-                responseshs.sort(function (a, b) {
-                  return a.holeNumber - b.holeNumber;
-                });
-                this.holeScores = responseshs;
-              },
-              err => {
-                console.error('Error getting hole scores', err.error.error);
-              },
-              () => {}
-            );
-          },
-          err => {
-            console.error('Error getting marked score', err.error.error);
-          },
-          () => {}
-        );
+
+    this.user.getId().then((id) => {
+      this.userId = id;
+      console.log(this.userId);
     });
+
+
+    this.restClient.getEvent(this.eventId)
+    .subscribe(
+      (responseev: EventsResponse) => {
+        this.event = responseev;
+      },
+      err => {
+        console.error('Error getting event');
+      },
+      () => {}
+    );
+
+    this.user.getMarkedPlayer().then((id) => {
+      this.markedPlayerId = id;
+      // get the player publi profile
+      this.restClient.getPublicUser(id)
+      .subscribe(
+        (responsesc: UsersResponse) => {
+          this.markedPlayer = responsesc;
+        },
+        err => {
+          console.error('Error getting user info for', id);
+        },
+        () => {}
+      );
+
+      // get the score for player
+      this.restClient.getScoreForMarking(id, this.eventId, this.roundNum)
+      .subscribe(
+        (responsesc: ScoresResponse[]) => {
+          console.log('responsesc',responsesc);
+          this.score = responsesc[0];
+          this.restClient.getScoreHoleScores(responsesc[0].id)
+          .subscribe(
+            (responseshs: ScoreHoleScoresResponse[]) => {
+              responseshs.sort(function (a, b) {
+                return a.holeNumber - b.holeNumber;
+              });
+              this.holeScores = responseshs;
+            },
+            err => {
+              console.error('Error getting hole scores', err.error.error);
+            },
+            () => {}
+          );
+        },
+        err => {
+          console.error('Error getting marked score', err.error.error);
+        },
+        () => {}
+      );
+    });
+
+
+  }
+
+  // set marked but don't set validated
+  async setMarkedScore(holeScore: ScoreHoleScoresResponse, name: string) {
+    let message =
+      'Marking score for ' + name + ' on hole: ' +  holeScore.holeNumber + '.';
+
+    if(holeScore.self > 0) {
+      message = message  + ' Player declared: ' + holeScore.self;
+    };
+
+    const alert = await this.alertCtrl.create({
+      header: 'Mark Score',
+      message: message,
+      buttons: [
+        'Cancel',
+        {
+          text: 'Ok',
+          handler: (data: any) => {
+            holeScore.marker = parseInt(data.score);
+            holeScore.validated = holeScore.marker;
+            this.updateScore(holeScore);
+          }
+        }
+      ],
+      inputs: [
+        {
+          type: 'number',
+          name: 'score',
+          value: holeScore.marker,
+          placeholder: holeScore.self.toString(),
+        }
+      ]
+    });
+    await alert.present();
+
+  }
+
+
+  updateScore(holeScore: any) {
+    console.log('new score', holeScore);
+
+
   }
 /*
   getHoleScore(foundhs: ScoreHoleScoresResponse[], holeNum: number): ScoreHoleScoresResponse {
@@ -113,8 +195,8 @@ export class MarkDetailPage {
     });
     await alert.present();
   }
-
-  updateScore() {
+/*
+  updateScore(this.holeScore) {
     if(this.holeScore.id) {
       this.restClient.patchSelfScore(this.holeScore)
       .subscribe(

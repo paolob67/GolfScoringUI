@@ -49,7 +49,9 @@ export class UserData {
 
   logout(): Promise<any> {
     return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
-      return this.storage.remove('id');
+      return this.storage.remove('id').then(() => {
+        return this.storage.remove('jwttoken');
+      });    
     }).then(() => {
       window.dispatchEvent(new CustomEvent('user:logout'));
     });

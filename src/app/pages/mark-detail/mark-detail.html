@@ -5,7 +5,9 @@
         <ion-back-button defaultHref="/app/tabs/scores"></ion-back-button>
       </ion-buttons>
       <ion-buttons slot="end">
-        <ion-button routerLink="/app/tabs/scores/event/{{eventId}}/{{roundNum}}">change maked</ion-button>
+        <ion-button routerLink="/app/tabs/scores/event/{{eventId}}/{{roundNum}}">
+            <ion-icon slot="icon-only" name="people-outline"></ion-icon>
+        </ion-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -15,14 +17,53 @@
 
   <h3 class="ion-padding-top ion-padding-start">{{event?.name}} &mdash; Round {{roundNum}}</h3>
 
-  <div class="ion-padding mark-detail" [hidden]="markedPlayerId !== ''">
-    <p>Marking Player: {{markedPlayerId}}<p>
-    <ion-list inset>
-      <ion-item (click)="changeScore()">
-        <ion-label position="fixed" color="primary">Score:</ion-label>
-        {{holeScore?.self}}
-        <ion-icon name="create-outline" slot="end"></ion-icon>
+  <div *ngIf="markedPlayerId == userId">
+    <ion-label>
+      <ion-item color="warning" routerLink="/app/tabs/scores/event/{{eventId}}/{{roundNum}}">
+        You cannot mark yourself! Click on this message to select
+        the player that you have been assigned for marking.
       </ion-item>
-    </ion-list>
+    </ion-label>
+  </div>
+
+  <div *ngIf="markedPlayerId == undefined">
+    <ion-label>
+      <ion-item color="warning" routerLink="/app/tabs/scores/event/{{eventId}}/{{roundNum}}">
+        No marked player! Click on this message to select
+        the player that you have been assigned for marking.
+      </ion-item>
+    </ion-label>
+  </div>
+
+
+  <div class="ion-padding mark-detail" *ngIf="markedPlayerId && markedPlayerId !== userId">
+    <ion-card class="event-card">
+      <ion-card-header>
+        <ion-item detail="false" lines="none" class="score-item">
+          <ion-avatar slot="start">
+            <ion-icon name="people-outline"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{markedPlayer?.firstName}} {{markedPlayer?.lastName}}</h2>
+            <h3>Start time: {{score?.startTime}} Start hole:{{score?.startHole}}</h3>
+          </ion-label>
+        </ion-item>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item detail="false">
+            <ion-col>Hole</ion-col>
+            <ion-col>Mark</ion-col>
+            <ion-col></ion-col>
+          </ion-item>
+          <ion-item *ngFor="let holeScore of holeScores" detail="false" (click)="setMarkedScore(holeScore)">
+            <ion-col>{{holeScore?.holeNumber}}</ion-col>
+            <ion-col>{{holeScore?.marker}}</ion-col>
+            <ion-col ><ion-icon name="create-outline"></ion-icon></ion-col>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
