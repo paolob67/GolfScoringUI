@@ -42,17 +42,19 @@
                     <ion-col>Par</ion-col>
                     <ion-col>Handicap</ion-col>
                     <ion-col>Score</ion-col>
+                    <ion-col>Marker</ion-col>
                     <ion-col></ion-col>
                 <!-- ion-label>
                   <h3></h3>
                 </ion-label -->
               </ion-item>
-              <ion-item *ngFor="let hole of score.holes" detail="false" routerLink="/app/tabs/scores/score-details/{{score.id}}/{{hole?.number}}">
+              <ion-item *ngFor="let hole of score.holes" detail="false" routerLink="/app/tabs/scores/score-details/{{score.id}}/{{hole?.number}}/{{hole?.par}}/{{hole?.holeHandicap}}">
                     <ion-col>{{hole?.number}}</ion-col>
                     <ion-col>{{hole?.length}}</ion-col>
                     <ion-col>{{hole?.par}}</ion-col>
                     <ion-col>{{hole?.holeHandicap}}</ion-col>
                     <ion-col>{{this.findScoreForHole(score.holescores, hole?.number)}}</ion-col>
+                    <ion-col>{{this.findSelfScoreForHole(score.holescores, hole?.number)}}</ion-col>
                     <ion-col><ion-icon name="create-outline"></ion-icon></ion-col>
                 <!-- ion-label>
                   <h3></h3>

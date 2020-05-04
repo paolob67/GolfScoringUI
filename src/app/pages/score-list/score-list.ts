@@ -109,6 +109,21 @@ export class ScoreListPage {
         (hs: any) => hs.holeNumber === holenum
       );
       if (thehole) {
+        return thehole.marker;
+      } else {
+        return 0;
+      }
+    };
+    return 0;
+  }
+
+  // Find the marker for the hole passed in the hole score table
+  findSelfScoreForHole(holescores: any[], holenum: number) {
+    if (holescores.length > 0) {
+      const thehole = holescores.find(
+        (hs: any) => hs.holeNumber === holenum
+      );
+      if (thehole) {
         return thehole.self;
       } else {
         return 0;

@@ -21,6 +21,8 @@ import { CoursesResponse,
 export class ScoreDetailPage {
   scoreId: string;
   holeNum: number;
+  holePar: number;
+  holeHandicap: number;
   holeScore: ScoreHoleScoresResponse;
   speaker: any;
 
@@ -37,6 +39,8 @@ export class ScoreDetailPage {
   ionViewWillEnter() {
     this.scoreId = this.route.snapshot.paramMap.get('scoreId');
     this.holeNum = parseInt(this.route.snapshot.paramMap.get('holeNum'));
+    this.holePar = parseInt(this.route.snapshot.paramMap.get('holePar'));
+    this.holeHandicap = parseInt(this.route.snapshot.paramMap.get('holeHandicap'));
     // ok first let's look for the holescore record and in case populate UI
     // first let's get the hole score records
     // get hole scores

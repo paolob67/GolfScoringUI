@@ -42,7 +42,7 @@ const routes: Routes = [
             loadChildren: () => import('../mark-detail/mark-detail.module').then(m => m.MarkDetailModule)
           },
           {
-            path: 'score-details/:scoreId/:holeNum',
+            path: 'score-details/:scoreId/:holeNum/:holePar/:holeHandicap',
             loadChildren: () => import('../score-detail/score-detail.module').then(m => m.ScoreDetailModule)
           }
         ]

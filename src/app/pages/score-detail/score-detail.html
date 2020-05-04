@@ -22,10 +22,19 @@
 
   <h3 class="ion-padding-top ion-padding-start">Hole: {{holeNum}}</h3>
 
+  <h3 class="ion-padding-top ion-padding-start">Par: {{holePar}}</h3>
+
+  <h3 class="ion-padding-top ion-padding-start">Handicap: {{holeHandicap}}</h3>
+
   <div class="ion-padding speaker-detail">
     <ion-list inset>
       <ion-item (click)="changeScore()">
-        <ion-label position="fixed" color="primary">Score:</ion-label>
+        <ion-label position="fixed" color="primary">Player score:</ion-label>
+        {{holeScore?.marker}}
+        <ion-icon name="create-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item (click)="changeScore()">
+        <ion-label position="fixed" color="primary">Marker score:</ion-label>
         {{holeScore?.self}}
         <ion-icon name="create-outline" slot="end"></ion-icon>
       </ion-item>
