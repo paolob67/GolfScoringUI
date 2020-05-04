@@ -189,7 +189,10 @@ export class AccountPage implements AfterViewInit {
         },
         err => {
           console.error('Me error', err.error.error);
-          // TODO inform ui by removing hide on ivalid cred... or setting another string
+          if (err.error.error.statusCode === 401) {
+            this.userData.logout();
+            this.router.navigateByUrl('/login');
+          };
         },
         () => console.log('Me success')
       );
@@ -205,6 +208,10 @@ export class AccountPage implements AfterViewInit {
         },
         err => {
           console.error('UpdateUser error', err.error.error);
+          if (err.error.error.statusCode === 401) {
+            this.userData.logout();
+            this.router.navigateByUrl('/login');
+          };
         },
         () => console.log('UpdateUser success')
       );
