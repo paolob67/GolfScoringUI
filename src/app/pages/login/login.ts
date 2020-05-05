@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -24,7 +25,8 @@ export class LoginPage {
   constructor(
     public userData: UserData,
     public restClient: RestClientService,
-    public router: Router
+    public router: Router,
+    public location: Location
   ) { }
 
   onLogin(form: NgForm) {
@@ -41,7 +43,8 @@ export class LoginPage {
           .subscribe(
             response => {
               this.userData.login(response.id, this.jwtToken);
-              this.router.navigateByUrl('/app/tabs/schedule');
+              //this.router.navigateByUrl('/app/tabs/schedule');
+              this.location.back();
             },
             err => {
               console.error('Me error', err.error.error);
