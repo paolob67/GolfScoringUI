@@ -10,6 +10,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Storage } from '@ionic/storage';
 
 import { UserData } from './providers/user-data';
+import { RestClientService } from './providers/rest-client.service';
 
 @Component({
   selector: 'app-root',
@@ -51,6 +52,7 @@ export class AppComponent implements OnInit {
     private statusBar: StatusBar,
     private storage: Storage,
     private userData: UserData,
+    private restClient: RestClientService,
     // PB67 private swUpdate: SwUpdate,
     private toastCtrl: ToastController,
   ) {
@@ -58,6 +60,31 @@ export class AppComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.restClient.checkServerConnection()
+    .subscribe(
+      async response => {
+        console.log('Got server connection');
+      },
+      async err => {
+        const toast = await this.toastCtrl.create(
+          {
+            message: 'Could not reach server, check your connection!',
+            position: 'bottom',
+            buttons: [
+              {
+                role: 'cancel',
+                text: 'Retry'
+              }
+            ]
+          });
+          await toast.present();
+          toast
+            .onDidDismiss()
+            .then(() => this.logout())
+            .then(() => window.location.reload());
+      },
+      () => {}
+    );
     this.checkLoginStatus();
     this.listenForLoginEvents();
     /* PB67
