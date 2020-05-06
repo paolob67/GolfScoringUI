@@ -94,12 +94,31 @@ export class RestClientService {
       return this._http.get<EventsResponse[]>(environment.apiEndPoint + '/events');
   }
 
-  getScoresForUser(userId: string) {
-    const filter = {
-      "where": {
-        "userId": userId
-      }
-    };
+  getScoresForUser(userId: string, dayScore?: Date) {
+    let filter = {};
+    let nullDate = new Date(null);
+    if (dayScore === undefined || dayScore.getTime() === nullDate.getTime()) {
+      filter = {
+        "where": {
+          "userId": userId
+        }
+      };
+    } else {
+      let dd = dayScore.getDate();
+      let mm = dayScore.getMonth();
+      let yyyy = dayScore.getFullYear();
+      let dayStart: Date = new Date(yyyy, mm, dd, 2, 0, 0);  
+      let dayEnd: Date = new Date(yyyy, mm, dd+1, 2, 0, 0);  
+
+      filter = {
+        "where": {and: [
+          { "userId": userId },
+          { "startTime": {"gt": dayStart} },
+          { "startTime": {"lt": dayEnd} }
+        ]},
+        "order": 'startTime DESC'
+      };
+    }
     const filterStr = JSON.stringify(filter);
     const options = {
       params: {
