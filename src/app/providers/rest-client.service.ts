@@ -19,6 +19,10 @@ export class RestClientService {
     if (!environment.production) console.log("Rest api endpoint is", environment.apiEndPoint);
   }
 
+  checkServerConnection() {
+    return this._http.get(environment.apiEndPoint + '/ping');
+  }
+
   login(username: string, password: string) {
     const body = {
       email: username,
