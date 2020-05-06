@@ -19,6 +19,7 @@ import { CoursesResponse,
 })
 export class ScoreListPage {
   scores: any[] = [];
+  segment = 'Today';
 
   constructor(
     public confData: ConferenceData,
@@ -130,5 +131,41 @@ export class ScoreListPage {
       }
     };
     return 0;
+  }
+
+  segmentChanged(ev: any) {
+    console.log('Segment changed', ev);
+  }
+
+  showScore(segment: string, startTime: Date): boolean {
+    console.log('Score eval', segment, startTime);
+    //get today's date
+    const today = new Date();
+    const startDate = new Date(startTime);
+
+    const todayYear = today.getFullYear();
+    const startYear = startDate.getFullYear();
+
+    const todayMonth = today.getMonth();
+    const startMonth = startDate.getMonth();
+
+    const todayDay = today.getDate();
+    const startDay = startDate.getDate();
+
+
+    console.log('today', todayYear, todayMonth, todayDay);
+    console.log('startdate', startYear, startMonth, startDay);
+    // if segment is "upcoming" return false on past startTime
+    if( segment === 'Today') {
+      // test for future
+      //if ( (startDay >= todayDay) || (startMonth >  todayMonth) || (startYear > todayYear) ) {
+      if ( (startDay === todayDay) && (startMonth ===  todayMonth) && (startYear === todayYear) ) {
+        return true;
+      } else {
+        return false;
+      }
+    };
+
+    return true;
   }
 }
