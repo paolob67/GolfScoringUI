@@ -1,9 +1,8 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 import { RestClientService } from '../../providers/rest-client.service';
-import { Config } from '@ionic/angular';
 
 import { CoursesResponse,
          EventsResponse,
@@ -18,38 +17,21 @@ import { CoursesResponse,
   templateUrl: 'score-list.html',
   styleUrls: ['./score-list.scss'],
 })
-export class ScoreListPage implements OnInit {
+export class ScoreListPage {
   scores: any[] = [];
-//  @ViewChild('todayScore', { static: true }) todayScore: any;
-
-
-  ios: boolean;
-  queryText = '';
-  segment = 'today';
-  showSearchbar: boolean;
 
   constructor(
     public confData: ConferenceData,
     public router: Router,
     public userData: UserData,
-    public restClient: RestClientService,
-    public config: Config
+    public restClient: RestClientService
   ) { }
 
-  ngOnInit() {
-    this.updateScore();
-    this.ios = this.config.get('mode') === 'ios';
+  ionViewDidEnter() {
+    this.userData.getId().then((id) => this.loadScores(id));
   }
 
-  //ionViewDidEnter() {
-  //  this.userData.getId().then((id) => this.loadScores(id, this.segment));
-  //}
-
-  updateScore() {
-    this.userData.getId().then((id) => this.loadScores(id, this.segment));
-  }
-
-  loadScores(userId, whatScores) {
+  loadScores(userId) {
     // if not logged in go to login page
     if (!userId) {
       console.log('must log in');
@@ -57,15 +39,7 @@ export class ScoreListPage implements OnInit {
     };
 
     // get score master tables for user
-    let today : Date;
-    if (whatScores == 'all') {
-      today = new Date(null);
-    } else {
-      today = new Date();
-    }
-    console.log("Today: "+today);
-
-    this.restClient.getScoresForUser(userId, today)
+    this.restClient.getScoresForUser(userId)
     .subscribe(
       (responsesc: ScoresResponse[]) => {
         this.scores = responsesc;
