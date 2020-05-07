@@ -12,7 +12,7 @@
       </ion-segment-button>
     </ion-segment>
     <ion-title *ngIf="!ios">Scores</ion-title>
-    <ion-buttons slot="end" *ngIf="segment === 'Today'">
+    <ion-buttons slot="end" *ngIf="segment === 'Today' && foundTodayScore">
       <ion-button routerLink="/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}">
         <span *ngIf="ios">Marked</span>
         <span *ngIf="!ios">
@@ -64,7 +64,7 @@
         </ion-item>
       </ion-label>
     </span>
-    <span *ngIf="todayScore !== {}">
+    <span *ngIf="foundTodayScore">
       <ion-card class="score-card">
         <ion-card-header>
           <ion-item detail="false" lines="none" class="score-item"
