@@ -13,7 +13,7 @@
     </ion-segment>
     <ion-title *ngIf="!ios">Scores</ion-title>
     <ion-buttons slot="end" *ngIf="segment === 'Today'">
-      <ion-button routerLink="/app/tabs/scores/event/{{eventId}}/{{roundNum}}">
+      <ion-button routerLink="/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}">
         <span *ngIf="ios">Marked</span>
         <span *ngIf="!ios">
           <ion-icon slot="icon-only" name="people-outline"></ion-icon>
@@ -40,80 +40,108 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-grid fixed>
-    <ion-row>
-      <span *ngFor="let score of scores">
-        <ion-col size="12" size-md="6"  *ngIf="showScore(segment, score.startTime)">
-          <ion-card class="score-card">
-            <ion-card-header *ngIf="segment === 'Today'">
-              <ion-item detail="false" lines="none" class="score-item" routerLink="/app/tabs/scores/mark-detail/{{score.event?.id}}/{{score.round}}">
-                <ion-avatar slot="start">
-                  <ion-icon name="golf-outline"></ion-icon>
-                </ion-avatar>
-                <ion-label>
-                  <h2>{{score.event?.name}}</h2>
-                  <h3>Round {{score.round}}</h3>
-                  <p>{{score.event?.type}}</p>
-                  <p>{{score.startTime}}</p>
-                </ion-label>
-                <ion-icon slot="end" name="people-outline"></ion-icon>
-              </ion-item>
-            </ion-card-header>
-            <ion-card-header *ngIf="segment === 'All'">
-              <ion-item detail="false" lines="none" class="score-item">
-                <ion-avatar slot="start">
-                  <ion-icon name="golf-outline"></ion-icon>
-                </ion-avatar>
-                <ion-label>
-                  <h2>{{score.event?.name}}</h2>
-                  <h3>Round {{score.round}}</h3>
-                  <p>{{score.event?.type}}</p>
-                  <p>{{score.startTime}}</p>
-                </ion-label>
-              </ion-item>
-            </ion-card-header>
-            <ion-card-content>
-              <ion-list lines="none" *ngIf="segment === 'Today'">
-                <ion-item detail="false">
-                  <ion-col>Hole</ion-col>
-                  <ion-col>Length</ion-col>
-                  <ion-col>Par</ion-col>
-                  <ion-col>Handicap</ion-col>
-                  <ion-col>Self</ion-col>
-                  <ion-col>Marked</ion-col>
-                  <ion-col></ion-col>
+  <div *ngIf="segment === 'Today'">
+    <span *ngIf="!foundTodayScore">
+      <ion-label>
+        <ion-item color="tertiary">
+          No events found for today!
+        </ion-item>
+      </ion-label>
+    </span>
+    <span *ngIf="foundTodayScore && !foundMarkedPlayer">
+      <ion-label>
+        <ion-item color="warning" routerLink="/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}">
+          You did not select the player you are marking! Tap on this message to select
+          the player that you have been assigned for marking.
+        </ion-item>
+      </ion-label>
+    </span>
+    <span *ngIf="todayScore !== {}">
+      <ion-card class="score-card">
+        <ion-card-header>
+          <ion-item detail="false" lines="none" class="score-item" routerLink="/app/tabs/scores/mark-detail/{{todayScore?.eventId}}/{{todayScore?.round}}">
+            <ion-avatar slot="start">
+              <ion-icon name="golf-outline"></ion-icon>
+            </ion-avatar>
+            <ion-label>
+              <h2>{{todayScore?.event?.name}}</h2>
+              <h3>Round {{todayScore?.round}}</h3>
+              <p>{{todayScore?.event?.type}}</p>
+              <p>{{todayScore?.startTime}}</p>
+            </ion-label>
+            <ion-icon slot="end" name="people-outline"></ion-icon>
+          </ion-item>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list lines="none">
+            <ion-item detail="false">
+              <ion-col>Hole</ion-col>
+              <ion-col>Length</ion-col>
+              <ion-col>Par</ion-col>
+              <ion-col>Handicap</ion-col>
+              <ion-col>Self</ion-col>
+              <ion-col>Marked</ion-col>
+              <ion-col></ion-col>
+            </ion-item>
+            <ion-item *ngFor="let hole of todayScore?.holes" detail="false"
+              routerLink="/app/tabs/scores/score-details/{{todayScore.id}}/{{hole?.number}}/{{hole?.par}}/{{hole?.holeHandicap}}">
+              <ion-col>{{hole?.number}}</ion-col>
+              <ion-col>{{hole?.length}}</ion-col>
+              <ion-col>{{hole?.par}}</ion-col>
+              <ion-col>{{hole?.holeHandicap}}</ion-col>
+              <ion-col>{{this.findSelfScoreForHole(todayScore.holescores, hole?.number)}}</ion-col>
+              <ion-col>{{this.findMarkedScoreForHole(todayScore.holescores, hole?.number)}}</ion-col>
+              <ion-col><ion-icon name="create-outline"></ion-icon></ion-col>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </span>
+  </div>
+
+  <div *ngIf="segment === 'All'">
+    <ion-grid fixed>
+      <ion-row>
+        <span *ngFor="let score of scores">
+          <ion-col size="12" size-md="6">
+            <ion-card class="score-card">
+              <ion-card-header>
+                <ion-item detail="false" lines="none" class="score-item">
+                  <ion-avatar slot="start">
+                    <ion-icon name="golf-outline"></ion-icon>
+                  </ion-avatar>
+                  <ion-label>
+                    <h2>{{score?.event?.name}}</h2>
+                    <h3>Round {{score?.round}}</h3>
+                    <p>{{score?.event?.type}}</p>
+                    <p>{{score?.startTime}}</p>
+                  </ion-label>
+                  <ion-icon slot="end" name="people-outline"></ion-icon>
                 </ion-item>
-                <ion-item *ngFor="let hole of score.holes" detail="false"
-                  routerLink="/app/tabs/scores/score-details/{{score.id}}/{{hole?.number}}/{{hole?.par}}/{{hole?.holeHandicap}}">
-                  <ion-col>{{hole?.number}}</ion-col>
-                  <ion-col>{{hole?.length}}</ion-col>
-                  <ion-col>{{hole?.par}}</ion-col>
-                  <ion-col>{{hole?.holeHandicap}}</ion-col>
-                  <ion-col>{{this.findSelfScoreForHole(score.holescores, hole?.number)}}</ion-col>
-                  <ion-col>{{this.findMarkedScoreForHole(score.holescores, hole?.number)}}</ion-col>
-                  <ion-col><ion-icon name="create-outline"></ion-icon></ion-col>
-                </ion-item>
-              </ion-list>
-              <ion-list lines="none" *ngIf="segment === 'All'">
-                <ion-item detail="false">
-                  <ion-col>Hole</ion-col>
-                  <ion-col>Length</ion-col>
-                  <ion-col>Par</ion-col>
-                  <ion-col>Handicap</ion-col>
-                  <ion-col>Score</ion-col>
-                </ion-item>
-                <ion-item *ngFor="let hole of score.holes" detail="false">
-                  <ion-col>{{hole?.number}}</ion-col>
-                  <ion-col>{{hole?.length}}</ion-col>
-                  <ion-col>{{hole?.par}}</ion-col>
-                  <ion-col>{{hole?.holeHandicap}}</ion-col>
-                  <ion-col>{{this.findMarkedScoreForHole(score.holescores, hole?.number)}}</ion-col>
-                </ion-item>
-              </ion-list>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </span>
-    </ion-row>
-  </ion-grid>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-list lines="none">
+                  <ion-item detail="false">
+                    <ion-col>Hole</ion-col>
+                    <ion-col>Length</ion-col>
+                    <ion-col>Par</ion-col>
+                    <ion-col>Handicap</ion-col>
+                    <ion-col>Score</ion-col>
+                  </ion-item>
+                  <ion-item *ngFor="let hole of score.holes" detail="false">
+                    <ion-col>{{hole?.number}}</ion-col>
+                    <ion-col>{{hole?.length}}</ion-col>
+                    <ion-col>{{hole?.par}}</ion-col>
+                    <ion-col>{{hole?.holeHandicap}}</ion-col>
+                    <ion-col>{{this.findMarkedScoreForHole(score.holescores, hole?.number)}}</ion-col>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+            </ion-card>
+          </ion-col>
+        </span>
+      </ion-row>
+    </ion-grid>
+  </div>
+
 </ion-content>

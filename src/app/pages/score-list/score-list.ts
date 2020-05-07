@@ -20,6 +20,10 @@ import { CoursesResponse,
 export class ScoreListPage {
   scores: any[] = [];
   segment = 'Today';
+  todayScore: ScoresResponse = {};
+  markedPlayer: UsersResponse = {};
+  foundTodayScore = false;
+  foundMarkedPlayer = false;
 
   constructor(
     public confData: ConferenceData,
@@ -59,6 +63,11 @@ export class ScoreListPage {
                     return a.number - b.number;
                   });
                   score.holes = responsehl;
+                  // if we found a score for today save it in a variable
+                  if (this.showScore('Today', score.startTime)) {
+                    this.todayScore = score;
+                    this.foundTodayScore = true;
+                  };
                 },
                 err => {
                   console.log('Error getting course holes', err.error.error);
@@ -77,6 +86,7 @@ export class ScoreListPage {
               score.holescores = responseshl;
               //////////////////////////
               // populating for tests...
+              /*
               if(score.round == 1) {
                 score.holescores.push(
                   {
@@ -87,6 +97,7 @@ export class ScoreListPage {
                   }
                 );
               };
+              */
               // end scaffold
               /////////////////////////
             },
@@ -134,6 +145,8 @@ export class ScoreListPage {
   }
 
   showScore(segment: string, startTime: Date): boolean {
+    return true;
+
     const today = new Date();
     const startDate = new Date(startTime);
     const todayYear = today.getFullYear();
@@ -154,4 +167,7 @@ export class ScoreListPage {
     };
     return true;
   }
+
+
+
 }

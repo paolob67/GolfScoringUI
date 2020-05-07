@@ -27,7 +27,7 @@ export class MarkDetailPage {
   score: ScoresResponse;
   holeScores: ScoreHoleScoresResponse[] = [];
   markedPlayerId: string;
-  markedPlayer: UsersResponse;
+  markedPlayer: UsersResponse = {};
 
 
   constructor(
