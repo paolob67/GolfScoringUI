@@ -56,10 +56,19 @@
         </ion-item>
       </ion-label>
     </span>
+    <span *ngIf="foundTodayScore && foundMarkedPlayer && (userId === markedPlayerId)">
+      <ion-label>
+        <ion-item color="warning" routerLink="/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}">
+          You cannot mark yourself! Click on this message to select
+          the player that you have been assigned for marking.
+        </ion-item>
+      </ion-label>
+    </span>
     <span *ngIf="todayScore !== {}">
       <ion-card class="score-card">
         <ion-card-header>
-          <ion-item detail="false" lines="none" class="score-item" routerLink="/app/tabs/scores/mark-detail/{{todayScore?.eventId}}/{{todayScore?.round}}">
+          <ion-item detail="false" lines="none" class="score-item"
+            routerLink="/app/tabs/scores/mark-detail/{{todayScore?.eventId}}/{{todayScore?.round}}">
             <ion-avatar slot="start">
               <ion-icon name="golf-outline"></ion-icon>
             </ion-avatar>
@@ -68,6 +77,7 @@
               <h3>Round {{todayScore?.round}}</h3>
               <p>{{todayScore?.event?.type}}</p>
               <p>{{todayScore?.startTime}}</p>
+              <p>You are marking: <strong>{{markedPlayer.firstName}} {{markedPlayer.lastName}}</strong></p>
             </ion-label>
             <ion-icon slot="end" name="people-outline"></ion-icon>
           </ion-item>
@@ -80,7 +90,7 @@
               <ion-col>Par</ion-col>
               <ion-col>Handicap</ion-col>
               <ion-col>Self</ion-col>
-              <ion-col>Marked</ion-col>
+              <ion-col>{{markedPlayer.firstName}}</ion-col>
               <ion-col></ion-col>
             </ion-item>
             <ion-item *ngFor="let hole of todayScore?.holes" detail="false"

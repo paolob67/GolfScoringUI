@@ -22,6 +22,8 @@ export class ScoreListPage {
   segment = 'Today';
   todayScore: ScoresResponse = {};
   markedPlayer: UsersResponse = {};
+  markedPlayerId = '';
+  userId = '';
   foundTodayScore = false;
   foundMarkedPlayer = false;
 
@@ -33,7 +35,26 @@ export class ScoreListPage {
   ) { }
 
   ionViewDidEnter() {
-    this.userData.getId().then((id) => this.loadScores(id));
+    this.userData.getId().then((id) => {
+      this.userId = id;
+      this.loadScores(id);
+    });
+
+    this.userData.getMarkedPlayer().then((id) => {
+      this.foundMarkedPlayer = true
+      this.markedPlayerId = id;
+      this.restClient.getPublicUser(id)
+      .subscribe(
+        (responsesc: UsersResponse) => {
+          this.markedPlayer = responsesc;
+        },
+        err => {
+          console.error('Error getting user info for', id);
+        },
+        () => {}
+      );
+    });
+
   }
 
   loadScores(userId) {
