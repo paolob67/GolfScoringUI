@@ -175,9 +175,6 @@ export class ScoreListPage {
   }
 
   showScore(segment: string, startTime: Date): boolean {
-    return true;
-
-
     const today = new Date();
     const startDate = new Date(startTime);
     const todayYear = today.getFullYear();
