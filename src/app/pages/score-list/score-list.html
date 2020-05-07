@@ -56,7 +56,7 @@
         </ion-item>
       </ion-label>
     </span>
-    <span *ngIf="foundTodayScore && foundMarkedPlayer && (userId === markedPlayerId)">
+    <span *ngIf="foundTodayScore && foundMarkedPlayer && selfMark">
       <ion-label>
         <ion-item color="warning" routerLink="/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}">
           You cannot mark yourself! Click on this message to select
@@ -126,7 +126,6 @@
                     <p>{{score?.event?.type}}</p>
                     <p>{{score?.startTime}}</p>
                   </ion-label>
-                  <ion-icon slot="end" name="people-outline"></ion-icon>
                 </ion-item>
               </ion-card-header>
               <ion-card-content>

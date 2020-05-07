@@ -26,6 +26,7 @@ export class ScoreListPage {
   userId = '';
   foundTodayScore = false;
   foundMarkedPlayer = false;
+  selfMark = false;
 
   constructor(
     public confData: ConferenceData,
@@ -35,25 +36,32 @@ export class ScoreListPage {
   ) { }
 
   ionViewDidEnter() {
-    this.userData.getId().then((id) => {
-      this.userId = id;
-      this.loadScores(id);
+    this.userData.getId().then((userid) => {
+      if (userid) {
+        this.userId = userid;
+        this.loadScores(userid);
+        this.userData.getMarkedPlayer().then((markedid) => {
+          if (markedid) {
+            this.foundMarkedPlayer = true;
+            console.log('markedid',markedid);
+            this.markedPlayerId = markedid;
+            this.selfMark = (markedid == this.userId);
+            this.restClient.getPublicUser(markedid)
+            .subscribe(
+              (responsesc: UsersResponse) => {
+                this.markedPlayer = responsesc;
+              },
+              err => {
+                console.error('Error getting user info for', markedid);
+              },
+              () => {}
+            );
+          };
+        });
+      };
     });
 
-    this.userData.getMarkedPlayer().then((id) => {
-      this.foundMarkedPlayer = true
-      this.markedPlayerId = id;
-      this.restClient.getPublicUser(id)
-      .subscribe(
-        (responsesc: UsersResponse) => {
-          this.markedPlayer = responsesc;
-        },
-        err => {
-          console.error('Error getting user info for', id);
-        },
-        () => {}
-      );
-    });
+
 
   }
 
@@ -166,8 +174,6 @@ export class ScoreListPage {
   }
 
   showScore(segment: string, startTime: Date): boolean {
-    return true;
-
     const today = new Date();
     const startDate = new Date(startTime);
     const todayYear = today.getFullYear();

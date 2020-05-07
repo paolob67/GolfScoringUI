@@ -1,3 +1,4 @@
+<!--
 <ion-header translucent="true">
   <ion-toolbar>
     <ion-buttons *ngIf="!showSearchbar" slot="start">
@@ -22,8 +23,21 @@
   <ion-toolbar *ngIf="!ios">
   </ion-toolbar>
 </ion-header>
+-->
+<ion-content class="event-detail">
+  <ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-back-button defaultHref="/app/tabs/scores"></ion-back-button>
+      </ion-buttons>
+      <ion-title  *ngIf="!ios ">{{event?.name}} &mdash; Round {{roundNum}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
-<ion-content fullscreen="true">
+  <div class="event-background">
+  </div>
+
+<ion-content class="event-detail">
   <ion-header collapse="condense">
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/scores"></ion-back-button>
@@ -65,7 +79,7 @@
           <h3>{{player.firstName}} {{player.lastName}} ({{player.id}})</h3>
           <p>{{player.startTime}} &mdash; hole {{player.startHole}}</p>
         </ion-label>
-        <ion-icon (click)="console.log('marking');" [hidden]="player.id !== markedPlayerId" name="checkmark-circle-outline"></ion-icon>
+        <ion-icon (click)="console.log('marking');" [hidden]="player.id !== markedPlayerId" name="checkevent-circle-outline"></ion-icon>
         <ion-icon (click)="setMarkedPlayer(player.id)" [hidden]="player.id === markedPlayerId" name="ellipse-outline"></ion-icon>
       </ion-item>
       -->
