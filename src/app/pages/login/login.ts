@@ -43,7 +43,7 @@ export class LoginPage {
           .subscribe(
             response => {
               this.userData.login(response.id, this.jwtToken);
-              //this.router.navigateByUrl('/app/tabs/schedule');
+              //this.router.navigateByUrl('/app/tabs/leaderboard');
               this.location.back();
             },
             err => {

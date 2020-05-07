@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Leaderboards',
-      url: '/app/tabs/schedule',
+      url: '/app/tabs/leaderboard',
       icon: 'clipboard'
     },
     {
@@ -144,7 +144,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/schedule');
+      return this.router.navigateByUrl('/app/tabs/leaderboard');
     });
   }
 

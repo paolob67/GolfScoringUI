@@ -169,4 +169,41 @@ export class RestClientService {
     };
     return this._http.get<ScoresResponse[]>(environment.apiEndPoint + '/scores', options);
   }
+
+  getLastEvent() {
+    const filter = {
+      "order": 'date DESC',
+      "limit": 1
+    };
+    const filterStr = JSON.stringify(filter);
+    const options = {
+      params: {
+        filter: filterStr
+      }
+    };
+    return this._http.get<EventsResponse[]>(environment.apiEndPoint + '/events', options);
+  }
+
+  getCourseDetails(courseId: string) {
+ 
+    const filter = {
+      "where": { "id": courseId },
+      "include": [
+        {
+          "relation": 'holes',
+          "scope": {
+            "order": 'number ASC',
+          },
+        },
+      ],
+    };
+    const filterStr = JSON.stringify(filter);
+    const options = {
+      params: {
+        filter: filterStr
+      }
+    };
+    return this._http.get<CourseHolesResponse[]>(environment.apiEndPoint + '/courses/' + courseId, options);
+  }
+
 }
