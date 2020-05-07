@@ -1,15 +1,15 @@
-<ion-content class="speaker-detail">
+<ion-content class="score-detail">
   <ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/app/tabs/scores"></ion-back-button>
       </ion-buttons>
       <!--
-      <ion-buttons *ngIf="speaker" slot="end">
-        <ion-button (click)="openContact(speaker)">
+      <ion-buttons *ngIf="score" slot="end">
+        <ion-button (click)="openContact(score)">
           <ion-icon slot="icon-only" ios="call-outline" md="call-sharp"></ion-icon>
         </ion-button>
-        <ion-button (click)="openSpeakerShare(speaker)">
+        <ion-button (click)="openSpeakerShare(score)">
           <ion-icon slot="icon-only" ios="share-outline" md="share-sharp"></ion-icon>
         </ion-button>
       </ion-buttons>
@@ -20,29 +20,29 @@
   <div class="score-background">
   </div>
 
-  <h3 class="ion-padding-top ion-padding-start">Hole: {{holeNum}}</h3>
+  <h3 class="ion-padding-top ion-padding-start">
+    Hole: {{holeNum}} {{holeValues}}
+  </h3>
 
-  <h3 class="ion-padding-top ion-padding-start">Par: {{holePar}}</h3>
+  <!--div class="ion-padding score-detail" -->
 
-  <h3 class="ion-padding-top ion-padding-start">Handicap: {{holeHandicap}}</h3>
-
-  <div class="ion-padding speaker-detail">
+  <div class="ion-padding score-detail">
     <ion-list inset>
       <ion-item (click)="changeScore()">
-        <ion-label position="fixed" color="primary">Player score:</ion-label>
-        {{holeScore?.marker}}
+        <ion-label postion="fixed" color="primary">Self score:</ion-label>
+        {{holeScore?.self}}
         <ion-icon name="create-outline" slot="end"></ion-icon>
       </ion-item>
-      <ion-item (click)="changeScore()">
-        <ion-label position="fixed" color="primary">Marker score:</ion-label>
-        {{holeScore?.self}}
+      <ion-item postion="fixed" (click)="changeScoreMarked()">
+        <ion-label color="primary">Marked score:</ion-label>
+        {{holeScoreMarked?.marker}}
         <ion-icon name="create-outline" slot="end"></ion-icon>
       </ion-item>
     </ion-list>
 
     <hr>
 
-    <ion-chip color="twitter" button (click)="openExternalUrl('https://twitter.com/' + speaker.twitter)">
+    <ion-chip color="twitter" button (click)="openExternalUrl('https://twitter.com/' + score.twitter)">
       <ion-icon name="logo-twitter"></ion-icon>
       <ion-label>Twitter</ion-label>
     </ion-chip>

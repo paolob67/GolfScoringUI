@@ -4,7 +4,8 @@ import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 import { RestClientService } from '../../providers/rest-client.service';
 
-import { CoursesResponse,
+import { UsersResponse,
+         CoursesResponse,
          EventsResponse,
          ScoresResponse,
          CourseHolesResponse,
@@ -20,8 +21,9 @@ import { CoursesResponse,
 export class ScoreListPage {
   scores: any[] = [];
   segment = 'Today';
-  todayScore: ScoresResponse = {};
-  markedPlayer: UsersResponse = {};
+  todayScore: any = {};
+  markedScore: any = {};
+  markedPlayer: any = {};
   markedPlayerId = '';
   userId = '';
   foundTodayScore = false;
@@ -43,7 +45,6 @@ export class ScoreListPage {
         this.userData.getMarkedPlayer().then((markedid) => {
           if (markedid) {
             this.foundMarkedPlayer = true;
-            console.log('markedid',markedid);
             this.markedPlayerId = markedid;
             this.selfMark = (markedid == this.userId);
             this.restClient.getPublicUser(markedid)
@@ -174,6 +175,9 @@ export class ScoreListPage {
   }
 
   showScore(segment: string, startTime: Date): boolean {
+    return true;
+
+
     const today = new Date();
     const startDate = new Date(startTime);
     const todayYear = today.getFullYear();

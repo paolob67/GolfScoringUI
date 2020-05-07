@@ -94,7 +94,7 @@
               <ion-col></ion-col>
             </ion-item>
             <ion-item *ngFor="let hole of todayScore?.holes" detail="false"
-              routerLink="/app/tabs/scores/score-details/{{todayScore.id}}/{{hole?.number}}/{{hole?.par}}/{{hole?.holeHandicap}}">
+              routerLink="/app/tabs/scores/score-details/{{todayScore.id}}/{{todayScore?.eventId}}/{{todayScore.round}}/{{hole?.number}}/Par: {{hole?.par}} - Hcp: {{hole?.holeHandicap}}">
               <ion-col>{{hole?.number}}</ion-col>
               <ion-col>{{hole?.length}}</ion-col>
               <ion-col>{{hole?.par}}</ion-col>
