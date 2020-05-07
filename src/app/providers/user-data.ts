@@ -51,7 +51,7 @@ export class UserData {
     return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
       return this.storage.remove('id').then(() => {
         return this.storage.remove('jwttoken');
-      });    
+      });
     }).then(() => {
       window.dispatchEvent(new CustomEvent('user:logout'));
     });
@@ -77,7 +77,7 @@ export class UserData {
     });
   }
 
-  setMarkedPlayer(userId: string): Promise<string> {
+  setMarkedPlayer(userId: string): Promise<any> {
     return this.storage.set('marked', userId);
   }
 
@@ -85,6 +85,10 @@ export class UserData {
     return this.storage.get('marked').then((value) => {
       return value;
     });
+  }
+
+  removeMarkedPlayer(): Promise<any> {
+    return this.storage.remove('marked');
   }
 
   isLoggedIn(): Promise<boolean> {

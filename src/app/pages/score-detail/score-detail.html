@@ -20,25 +20,24 @@
   <div class="score-background">
   </div>
 
-  <h3 class="ion-padding-top ion-padding-start">
-    Hole: {{holeNum}} {{holeValues}}
-  </h3>
-
-  <!--div class="ion-padding score-detail" -->
-
-  <div class="ion-padding score-detail">
-    <ion-list inset>
-      <ion-item (click)="changeScore()">
-        <ion-label postion="fixed" color="primary">Self score:</ion-label>
-        {{holeScore?.self}}
-        <ion-icon name="create-outline" slot="end"></ion-icon>
-      </ion-item>
-      <ion-item postion="fixed" (click)="changeScoreMarked()">
-        <ion-label color="primary">Marked score:</ion-label>
-        {{holeScoreMarked?.marker}}
-        <ion-icon name="create-outline" slot="end"></ion-icon>
-      </ion-item>
-    </ion-list>
+   <div class="ion-padding score-detail">
+      <ion-list inset>
+        <ion-item>
+          <h3 class="ion-padding-top ion-padding-start">
+            Hole: {{holeNum}} {{holeValues}}
+          </h3>
+        </ion-item>
+        <ion-item (click)="changeScore()">
+          <ion-label postion="fixed" color="primary">Self score:</ion-label>
+          {{holeScore?.self}}
+          <ion-icon name="create-outline" slot="end"></ion-icon>
+        </ion-item>
+        <ion-item postion="fixed" (click)="changeScoreMarked()">
+          <ion-label color="primary">Marked score:</ion-label>
+          {{holeScoreMarked?.marker}}
+          <ion-icon name="create-outline" slot="end"></ion-icon>
+        </ion-item>
+      </ion-list>
 
     <hr>
 

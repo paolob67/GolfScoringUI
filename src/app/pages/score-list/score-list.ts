@@ -54,6 +54,13 @@ export class ScoreListPage {
               },
               err => {
                 console.error('Error getting user info for', markedid);
+                // if we got here it means that markerID is not valid
+                // let's erase it from the data store and clean up
+                this.userData.removeMarkedPlayer().then(() => {
+                  this.foundMarkedPlayer = false;
+                  this.markedPlayer = null;
+                  this.markedPlayerId = '';
+                });
               },
               () => {}
             );
@@ -175,6 +182,7 @@ export class ScoreListPage {
   }
 
   showScore(segment: string, startTime: Date): boolean {
+    return true;
     const today = new Date();
     const startDate = new Date(startTime);
     const todayYear = today.getFullYear();
