@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 import { AlertController } from '@ionic/angular';
 
@@ -31,11 +30,9 @@ export class ScoreDetailPage {
   //speaker: any;
 
   constructor(
-    private dataProvider: ConferenceData,
     private route: ActivatedRoute,
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
-    public confData: ConferenceData,
     public userData: UserData,
 //    public inAppBrowser: InAppBrowser,
     public restClient: RestClientService,

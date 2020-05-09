@@ -5,9 +5,6 @@ import {
     Router
 } from '@angular/router';
 import {
-    ConferenceData
-} from '../../providers/conference-data';
-import {
     UserData
 } from '../../providers/user-data';
 import {

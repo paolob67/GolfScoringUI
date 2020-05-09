@@ -2,7 +2,6 @@ import { Component, ElementRef, Inject, ViewChild, AfterViewInit } from '@angula
 
 import { RestClientService } from '../../providers/rest-client.service';
 
-import { ConferenceData } from '../../providers/conference-data';
 import { Platform } from '@ionic/angular';
 import { DOCUMENT} from '@angular/common';
 
@@ -18,7 +17,6 @@ export class MapPage implements AfterViewInit {
 
   constructor(
     @Inject(DOCUMENT) private doc: Document,
-    //public confData: ConferenceData,
     public platform: Platform,
     public restClient: RestClientService,
   ) { }

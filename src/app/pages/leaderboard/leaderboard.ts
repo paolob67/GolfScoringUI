@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ConferenceData } from '../../providers/conference-data';
 import { UserData } from '../../providers/user-data';
 import { RestClientService } from '../../providers/rest-client.service';
 
@@ -24,7 +23,6 @@ export class LeaderboardPage {
   segment = 'Today';
 
   constructor(
-    public confData: ConferenceData,
     public router: Router,
     public userData: UserData,
     public restClient: RestClientService

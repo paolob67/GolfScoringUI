@@ -14,21 +14,6 @@ export class UserData {
     public storage: Storage
   ) { }
 
-  hasFavorite(sessionName: string): boolean {
-    return (this.favorites.indexOf(sessionName) > -1);
-  }
-
-  addFavorite(sessionName: string): void {
-    this.favorites.push(sessionName);
-  }
-
-  removeFavorite(sessionName: string): void {
-    const index = this.favorites.indexOf(sessionName);
-    if (index > -1) {
-      this.favorites.splice(index, 1);
-    }
-  }
-
   login(id: string, token: string): Promise<any> {
     return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
       this.setId(id).then(() => {

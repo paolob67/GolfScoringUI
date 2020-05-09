@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { EventPage } from './event';
-import { EventFilterPage } from '../event-filter/event-filter';
 import { EventPageRoutingModule } from './event-routing.module';
 
 @NgModule({
@@ -16,10 +15,6 @@ import { EventPageRoutingModule } from './event-routing.module';
   ],
   declarations: [
     EventPage,
-    EventFilterPage
-  ],
-  entryComponents: [
-    EventFilterPage
   ]
 })
 export class EventModule { }
