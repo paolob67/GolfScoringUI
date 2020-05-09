@@ -10,11 +10,20 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: 'leaderboard-mob',
+        children: [
+          {
+            path: '',
+            loadChildren: () => import('../leaderboard-mob/leaderboard-mob.module').then(m => m.LeaderboardMobModule)
+          }
+        ]
+      },
+      {
         path: 'leaderboard',
         children: [
           {
             path: '',
-            component: LeaderboardPage,
+            loadChildren: () => import('../leaderboard/leaderboard.module').then(m => m.LeaderboardModule)
           },
           {
             path: 'session/:sessionId',
