@@ -24,10 +24,6 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../leaderboard/leaderboard.module').then(m => m.LeaderboardModule)
-          },
-          {
-            path: 'session/:sessionId',
-            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
           }
         ]
       },
@@ -37,10 +33,6 @@ const routes: Routes = [
           {
             path: '',
             loadChildren: () => import('../score-list/score-list.module').then(m => m.ScoreListModule)
-          },
-          {
-            path: 'session/:sessionId',
-            loadChildren: () => import('../session-detail/session-detail.module').then(m => m.SessionDetailModule)
           },
           {
             path: 'event/:eventId/:roundNum',
