@@ -1,9 +1,19 @@
-import { Component, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  Component,
+  ViewChild
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
 
-import { MenuController, IonSlides } from '@ionic/angular';
+import {
+  MenuController,
+  IonSlides
+} from '@ionic/angular';
 
-import { Storage } from '@ionic/storage';
+import {
+  Storage
+} from '@ionic/storage';
 
 @Component({
   selector: 'page-tutorial',
@@ -13,7 +23,9 @@ import { Storage } from '@ionic/storage';
 export class TutorialPage {
   showSkip = true;
 
-  @ViewChild('slides', { static: true }) slides: IonSlides;
+  @ViewChild('slides', {
+    static: true
+  }) slides: IonSlides;
 
   constructor(
     public menu: MenuController,
@@ -23,7 +35,9 @@ export class TutorialPage {
 
   startApp() {
     this.router
-      .navigateByUrl('/app/tabs/leaderboard', { replaceUrl: true })
+      .navigateByUrl('/app/tabs/leaderboard', {
+        replaceUrl: true
+      })
       .then(() => this.storage.set('ion_did_tutorial', true));
   }
 
@@ -36,7 +50,9 @@ export class TutorialPage {
   ionViewWillEnter() {
     this.storage.get('ion_did_tutorial').then(res => {
       if (res === true) {
-        this.router.navigateByUrl('/app/tabs/leaderboard-mob', { replaceUrl: true });
+        this.router.navigateByUrl('/app/tabs/leaderboard-mob', {
+          replaceUrl: true
+        });
       }
     });
 

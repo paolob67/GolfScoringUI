@@ -1,12 +1,31 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { environment } from '../../environments/environment';
-import { LoginRequest, SignupRequest } from '../interfaces/rest-datamodel';
-import { LoginResponse, UsersResponse,
-         CoursesResponse, CourseAddressResponse,
-         EventsResponse, ScoresResponse,
-         CourseHolesResponse, ScoreHoleScoresResponse } from '../interfaces/rest-datamodel';
+import {
+  Injectable
+} from '@angular/core';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams
+} from '@angular/common/http';
+import {
+  Observable
+} from 'rxjs';
+import {
+  environment
+} from '../../environments/environment';
+import {
+  LoginRequest,
+  SignupRequest
+} from '../interfaces/rest-datamodel';
+import {
+  LoginResponse,
+  UsersResponse,
+  CoursesResponse,
+  CourseAddressResponse,
+  EventsResponse,
+  ScoresResponse,
+  CourseHolesResponse,
+  ScoreHoleScoresResponse
+} from '../interfaces/rest-datamodel';
 
 @Injectable({
   providedIn: 'root'
@@ -28,7 +47,7 @@ export class RestClientService {
       email: username,
       password: password,
     };
-    return this._http.post<LoginResponse>(environment.apiEndPoint + '/users/login', <LoginRequest>body);
+    return this._http.post < LoginResponse > (environment.apiEndPoint + '/users/login', < LoginRequest > body);
   }
 
   me(token: string) {
@@ -37,7 +56,7 @@ export class RestClientService {
         Authorization: 'Bearer ' + token
       }
     };
-    return this._http.get<UsersResponse>(environment.apiEndPoint + '/users/me', options);
+    return this._http.get < UsersResponse > (environment.apiEndPoint + '/users/me', options);
   }
 
   signup(firstname: string, lastname: string, username: string, password: string) {
@@ -47,7 +66,7 @@ export class RestClientService {
       email: username,
       password: password
     };
-    return this._http.post<UsersResponse>(environment.apiEndPoint + '/users', <SignupRequest>body);
+    return this._http.post < UsersResponse > (environment.apiEndPoint + '/users', < SignupRequest > body);
   }
 
   updateUser(token: string, userdata: UsersResponse) {
@@ -65,7 +84,7 @@ export class RestClientService {
       handicap: userdata.handicap,
       gender: userdata.gender
     };
-    return this._http.put<UsersResponse>(environment.apiEndPoint + '/users/' + userdata.id, body, options);
+    return this._http.put < UsersResponse > (environment.apiEndPoint + '/users/' + userdata.id, body, options);
   }
 
   //getPublicUser(userId: string, token: string) {
@@ -78,24 +97,24 @@ export class RestClientService {
     };
     */
     //return this._http.get<UsersResponse>(environment.apiEndPoint + '/users/' + userId, options);
-    return this._http.get<UsersResponse>(environment.apiEndPoint + '/users/public/' + userId);
+    return this._http.get < UsersResponse > (environment.apiEndPoint + '/users/public/' + userId);
 
   }
 
   getCourses() {
-    return this._http.get<CoursesResponse[]>(environment.apiEndPoint + '/courses');
+    return this._http.get < CoursesResponse[] > (environment.apiEndPoint + '/courses');
   }
 
   getCourseAddress(courseid: string) {
-    return this._http.get<CourseAddressResponse>(environment.apiEndPoint + '/courses/' + courseid + '/address');
+    return this._http.get < CourseAddressResponse > (environment.apiEndPoint + '/courses/' + courseid + '/address');
   }
 
   getEvent(eventId: string) {
-      return this._http.get<EventsResponse>(environment.apiEndPoint + '/events/' + eventId);
+    return this._http.get < EventsResponse > (environment.apiEndPoint + '/events/' + eventId);
   }
 
   getEvents() {
-      return this._http.get<EventsResponse[]>(environment.apiEndPoint + '/events');
+    return this._http.get < EventsResponse[] > (environment.apiEndPoint + '/events');
   }
 
   getScoresForUser(userId: string) {
@@ -110,7 +129,7 @@ export class RestClientService {
         filter: filterStr
       }
     };
-    return this._http.get<ScoresResponse[]>(environment.apiEndPoint + '/scores', options);
+    return this._http.get < ScoresResponse[] > (environment.apiEndPoint + '/scores', options);
   }
 
   getScoreForMarking(userId: string, eventId: string, roundNum: number) {
@@ -127,21 +146,21 @@ export class RestClientService {
         filter: filterStr
       }
     };
-    return this._http.get<ScoresResponse[]>(environment.apiEndPoint + '/scores', options);
+    return this._http.get < ScoresResponse[] > (environment.apiEndPoint + '/scores', options);
   }
 
 
   getCourseHoles(courseId: string) {
-    return this._http.get<CourseHolesResponse[]>(environment.apiEndPoint + '/courses/' + courseId + '/holes');
+    return this._http.get < CourseHolesResponse[] > (environment.apiEndPoint + '/courses/' + courseId + '/holes');
   }
 
   getScoreHoleScores(scoreId: string) {
-    return this._http.get<ScoreHoleScoresResponse[]>(environment.apiEndPoint + '/scores/'+scoreId+'/hole-scores');
+    return this._http.get < ScoreHoleScoresResponse[] > (environment.apiEndPoint + '/scores/' + scoreId + '/hole-scores');
   }
 
   postHoleScore(holeScore: ScoreHoleScoresResponse) {
     // this should be protected... must include jwt token in call
-    return this._http.post<ScoreHoleScoresResponse>(environment.apiEndPoint + '/scores/'+holeScore.scoreId+'/hole-scores', holeScore);
+    return this._http.post < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', holeScore);
   }
 
   patchHoleScore(holeScore: ScoreHoleScoresResponse) {
@@ -151,7 +170,7 @@ export class RestClientService {
       marker: holeScore.marker,
       scoreId: holeScore.scoreId,
     };
-    return this._http.patch<ScoreHoleScoresResponse>(environment.apiEndPoint + '/scores/'+holeScore.scoreId+'/hole-scores', holeScore);
+    return this._http.patch < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', holeScore);
   }
 
   getEventRoundScores(eventId: string, round: number) {
@@ -167,7 +186,7 @@ export class RestClientService {
         filter: filterStr
       }
     };
-    return this._http.get<ScoresResponse[]>(environment.apiEndPoint + '/scores', options);
+    return this._http.get < ScoresResponse[] > (environment.apiEndPoint + '/scores', options);
   }
 
   getLastEvent() {
@@ -181,13 +200,15 @@ export class RestClientService {
         filter: filterStr
       }
     };
-    return this._http.get<EventsResponse[]>(environment.apiEndPoint + '/events', options);
+    return this._http.get < EventsResponse[] > (environment.apiEndPoint + '/events', options);
   }
 
   getCourseDetails(courseId: string) {
- 
+
     const filter = {
-      "where": { "id": courseId },
+      "where": {
+        "id": courseId
+      },
       "include": [
         {
           "relation": 'holes',
@@ -203,7 +224,7 @@ export class RestClientService {
         filter: filterStr
       }
     };
-    return this._http.get<CourseHolesResponse[]>(environment.apiEndPoint + '/courses/' + courseId, options);
+    return this._http.get < CourseHolesResponse[] > (environment.apiEndPoint + '/courses/' + courseId, options);
   }
 
 }

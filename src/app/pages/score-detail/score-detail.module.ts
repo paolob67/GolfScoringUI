@@ -1,9 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {
+  NgModule
+} from '@angular/core';
+import {
+  CommonModule
+} from '@angular/common';
 
-import { ScoreDetailPage } from './score-detail';
-import { ScoreDetailPageRoutingModule } from './score-detail-routing.module';
-import { IonicModule } from '@ionic/angular';
+import {
+  ScoreDetailPage
+} from './score-detail';
+import {
+  ScoreDetailPageRoutingModule
+} from './score-detail-routing.module';
+import {
+  IonicModule
+} from '@ionic/angular';
 
 @NgModule({
   imports: [
@@ -15,4 +25,4 @@ import { IonicModule } from '@ionic/angular';
     ScoreDetailPage,
   ]
 })
-export class ScoreDetailModule { }
+export class ScoreDetailModule {}

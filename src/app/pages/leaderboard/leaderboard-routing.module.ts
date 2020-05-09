@@ -1,7 +1,14 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {
+  NgModule
+} from '@angular/core';
+import {
+  RouterModule,
+  Routes
+} from '@angular/router';
 
-import { LeaderboardPage } from './leaderboard';
+import {
+  LeaderboardPage
+} from './leaderboard';
 const routes: Routes = [
   {
     path: '',

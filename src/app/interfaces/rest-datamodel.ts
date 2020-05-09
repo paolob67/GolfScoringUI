@@ -33,8 +33,7 @@ export interface CoursesResponse {
   id: string;
   name: string;
   holesCount: number;
-  out: number;
-  in: number;
+  out: number; in: number;
   stroke: number;
 }
 
@@ -43,7 +42,7 @@ export interface CourseAddressResponse {
   id: string;
   line1: string;
   line2: string;
-  line3: string,
+  line3: string;
   city: string;
   province: string;
   country: string;
@@ -61,7 +60,7 @@ export interface EventsResponse {
   type: string;
   date: Date;
   numberOfRounds: number;
-  courseId: string
+  courseId: string;
 }
 
 // Scores
@@ -96,14 +95,14 @@ export interface CourseHolesResponse {
 }
 
 export interface ScoreHoleScoresResponse {
-    id?: string;
-    holeNumber: number;
-    self: number;
-    marker?: number;
-    markerId?: string;
-    validated?: number;
-    scoreId: string;
-    par?: number;
+  id?: string;
+  holeNumber: number;
+  self: number;
+  marker?: number;
+  markerId?: string;
+  validated?: number;
+  scoreId: string;
+  par?: number;
 }
 
 // Slope Data

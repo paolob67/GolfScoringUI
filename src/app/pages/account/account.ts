@@ -1,12 +1,25 @@
-import { AfterViewInit, Component } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  AfterViewInit,
+  Component
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
 
-import { AlertController } from '@ionic/angular';
+import {
+  AlertController
+} from '@ionic/angular';
 
-import { UserData } from '../../providers/user-data';
-import { RestClientService } from '../../providers/rest-client.service';
+import {
+  UserData
+} from '../../providers/user-data';
+import {
+  RestClientService
+} from '../../providers/rest-client.service';
 
-import { UsersResponse } from '../../interfaces/rest-datamodel';
+import {
+  UsersResponse
+} from '../../interfaces/rest-datamodel';
 
 
 @Component({
@@ -23,7 +36,7 @@ export class AccountPage implements AfterViewInit {
     public router: Router,
     public userData: UserData,
     public restClient: RestClientService
-  ) { }
+  ) {}
 
   ngAfterViewInit() {
     this.getProfile();
@@ -181,40 +194,40 @@ export class AccountPage implements AfterViewInit {
   getProfile() {
     this.userData.getJwtToken().then((token) => {
       this.restClient.me(token)
-      .subscribe(
-        response => {
-          console.log('Me returned ', response);
-          this.profileData = response;
-          this.username = response.firstName;
-        },
-        err => {
-          console.error('Me error', err.error.error);
-          if (err.error.error.statusCode === 401) {
-            this.userData.logout();
-            this.router.navigateByUrl('/login');
-          };
-        },
-        () => console.log('Me success')
-      );
+        .subscribe(
+          response => {
+            console.log('Me returned ', response);
+            this.profileData = response;
+            this.username = response.firstName;
+          },
+          err => {
+            console.error('Me error', err.error.error);
+            if (err.error.error.statusCode === 401) {
+              this.userData.logout();
+              this.router.navigateByUrl('/login');
+            };
+          },
+          () => console.log('Me success')
+        );
     });
   }
 
   updateProfile() {
     this.userData.getJwtToken().then((token) => {
       this.restClient.updateUser(token, this.profileData)
-      .subscribe(
-        response => {
-          console.log('UpdateUser returned ', response);
-        },
-        err => {
-          console.error('UpdateUser error', err.error.error);
-          if (err.error.error.statusCode === 401) {
-            this.userData.logout();
-            this.router.navigateByUrl('/login');
-          };
-        },
-        () => console.log('UpdateUser success')
-      );
+        .subscribe(
+          response => {
+            console.log('UpdateUser returned ', response);
+          },
+          err => {
+            console.error('UpdateUser error', err.error.error);
+            if (err.error.error.statusCode === 401) {
+              this.userData.logout();
+              this.router.navigateByUrl('/login');
+            };
+          },
+          () => console.log('UpdateUser success')
+        );
     });
   }
 

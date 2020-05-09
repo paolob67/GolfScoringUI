@@ -1,5 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Storage } from '@ionic/storage';
+import {
+  Injectable
+} from '@angular/core';
+import {
+  Storage
+} from '@ionic/storage';
 
 
 @Injectable({
@@ -12,9 +16,9 @@ export class UserData {
 
   constructor(
     public storage: Storage
-  ) { }
+  ) {}
 
-  login(id: string, token: string): Promise<any> {
+  login(id: string, token: string): Promise < any > {
     return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
       this.setId(id).then(() => {
         this.setJwtToken(token);
@@ -23,7 +27,7 @@ export class UserData {
     });
   }
 
-  signup(id: string, token: string): Promise<any> {
+  signup(id: string, token: string): Promise < any > {
     return this.storage.set(this.HAS_LOGGED_IN, true).then(() => {
       this.setId(id).then(() => {
         this.setJwtToken(token);
@@ -32,7 +36,7 @@ export class UserData {
     });
   }
 
-  logout(): Promise<any> {
+  logout(): Promise < any > {
     return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
       return this.storage.remove('id').then(() => {
         return this.storage.remove('jwttoken');
@@ -42,47 +46,47 @@ export class UserData {
     });
   }
 
-  setId(id: string): Promise<any> {
+  setId(id: string): Promise < any > {
     return this.storage.set('id', id);
   }
 
-  getId(): Promise<string> {
+  getId(): Promise < string > {
     return this.storage.get('id').then((value) => {
       return value;
     });
   }
 
-  setJwtToken(token: string): Promise<any> {
+  setJwtToken(token: string): Promise < any > {
     return this.storage.set('jwttoken', token);
   }
 
-  getJwtToken(): Promise<string> {
+  getJwtToken(): Promise < string > {
     return this.storage.get('jwttoken').then((value) => {
       return value;
     });
   }
 
-  setMarkedPlayer(userId: string): Promise<any> {
+  setMarkedPlayer(userId: string): Promise < any > {
     return this.storage.set('marked', userId);
   }
 
-  getMarkedPlayer(): Promise<string> {
+  getMarkedPlayer(): Promise < string > {
     return this.storage.get('marked').then((value) => {
       return value;
     });
   }
 
-  removeMarkedPlayer(): Promise<any> {
+  removeMarkedPlayer(): Promise < any > {
     return this.storage.remove('marked');
   }
 
-  isLoggedIn(): Promise<boolean> {
+  isLoggedIn(): Promise < boolean > {
     return this.storage.get(this.HAS_LOGGED_IN).then((value) => {
       return value === true;
     });
   }
 
-  checkHasSeenTutorial(): Promise<string> {
+  checkHasSeenTutorial(): Promise < string > {
     return this.storage.get(this.HAS_SEEN_TUTORIAL).then((value) => {
       return value;
     });

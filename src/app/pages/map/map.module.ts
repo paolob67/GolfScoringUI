@@ -1,9 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import {
+  NgModule
+} from '@angular/core';
+import {
+  CommonModule
+} from '@angular/common';
+import {
+  IonicModule
+} from '@ionic/angular';
 
-import { MapPage } from './map';
-import { MapPageRoutingModule } from './map-routing.module';
+import {
+  MapPage
+} from './map';
+import {
+  MapPageRoutingModule
+} from './map-routing.module';
 
 @NgModule({
   imports: [
@@ -15,4 +25,4 @@ import { MapPageRoutingModule } from './map-routing.module';
     MapPage,
   ]
 })
-export class MapModule { }
+export class MapModule {}

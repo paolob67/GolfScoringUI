@@ -1,11 +1,25 @@
-import { Component, ElementRef, Inject, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Inject,
+  ViewChild,
+  AfterViewInit
+} from '@angular/core';
 
-import { RestClientService } from '../../providers/rest-client.service';
+import {
+  RestClientService
+} from '../../providers/rest-client.service';
 
-import { Platform } from '@ionic/angular';
-import { DOCUMENT} from '@angular/common';
+import {
+  Platform
+} from '@ionic/angular';
+import {
+  DOCUMENT
+} from '@angular/common';
 
-import { darkStyle } from './map-dark-style';
+import {
+  darkStyle
+} from './map-dark-style';
 
 @Component({
   selector: 'page-map',
@@ -13,13 +27,15 @@ import { darkStyle } from './map-dark-style';
   styleUrls: ['./map.scss']
 })
 export class MapPage implements AfterViewInit {
-  @ViewChild('mapCanvas', { static: true }) mapElement: ElementRef;
+  @ViewChild('mapCanvas', {
+    static: true
+  }) mapElement: ElementRef;
 
   constructor(
     @Inject(DOCUMENT) private doc: Document,
     public platform: Platform,
     public restClient: RestClientService,
-  ) { }
+  ) {}
 
   async ngAfterViewInit() {
     const appEl = this.doc.querySelector('ion-app');
@@ -43,13 +59,12 @@ export class MapPage implements AfterViewInit {
     //let mapData = [];
 
     this.restClient.getCourses()
-    .subscribe(
-      (courses) => {
+      .subscribe(
+        (courses) => {
 
-        const mapEle = this.mapElement.nativeElement;
+          const mapEle = this.mapElement.nativeElement;
 
-        map = new googleMaps.Map(mapEle,
-          {
+          map = new googleMaps.Map(mapEle, {
             center: {
               center: true,
               name: markerFIG.name,
@@ -58,136 +73,129 @@ export class MapPage implements AfterViewInit {
             },
             zoom: 8,
             styles: style
-          }
-        );
+          });
 
-        const infoWindow = new googleMaps.InfoWindow(
-          {
+          const infoWindow = new googleMaps.InfoWindow({
             content: `<h5>${markerFIG.name}</h5>`
-          }
-        );
+          });
 
-        const marker = new googleMaps.Marker(
-          {
-            position:
-            {
+          const marker = new googleMaps.Marker({
+            position: {
               name: markerFIG.name,
               lat: markerFIG.lat,
               lng: markerFIG.lng
             },
             map,
             title: markerFIG.name
-          }
-        );
+          });
 
-        marker.addListener('click', () => {
-          infoWindow.open(map, marker);
-        });
+          marker.addListener('click', () => {
+            infoWindow.open(map, marker);
+          });
 
-        courses.forEach((course) => {
-          this.restClient.getCourseAddress(course.id)
-          .subscribe(
-            response => {
+          courses.forEach((course) => {
+            this.restClient.getCourseAddress(course.id)
+              .subscribe(
+                response => {
 
-              const infoWindow = new googleMaps.InfoWindow(
-                {
-                  content: `<h5>${course.name}</h5>`
+                  const infoWindow = new googleMaps.InfoWindow({
+                    content: `<h5>${course.name}</h5>`
+                  });
+
+                  const marker = new googleMaps.Marker({
+                    position: {
+                      name: course.name,
+                      lat: response.latitude,
+                      lng: response.longitude
+                    },
+                    map,
+                    title: course.name
+                  });
+
+                  marker.addListener('click', () => {
+                    infoWindow.open(map, marker);
+                  });
+                },
+                err => {
+
+                },
+                () => {
+                  console.log('completed Address')
                 }
               );
+          });
 
-              const marker = new googleMaps.Marker(
-                {
-                  position:
-                  {
-                    name: course.name,
-                    lat: response.latitude,
-                    lng: response.longitude
-                  },
-                  map,
-                  title: course.name
-                }
-              );
+          googleMaps.event.addListenerOnce(map, 'idle', () => {
+            mapEle.classList.add('show-map');
+          });
 
-              marker.addListener('click', () => {
-                infoWindow.open(map, marker);
-              });
-            },
-            err => {
+        },
+        err => {
 
-            },
-            () => {
-              console.log('completed Address')
-            }
-          );
+        },
+        () => {
+
+          console.log('completed Courses');
+
         });
 
-        googleMaps.event.addListenerOnce(map, 'idle', () => {
-          mapEle.classList.add('show-map');
+
+
+
+
+    /*
+
+
+        this.confData.getMap().subscribe((mapData: any) => {
+          const mapEle = this.mapElement.nativeElement;
+
+          console.log('mapData', mapData);
+
+          map = new googleMaps.Map(mapEle, {
+            center: mapData.find((d: any) => d.center),
+            zoom: 16,
+            styles: style
+          });
+
+          console.log('map', map);
+
+          mapData.forEach((markerData: any) => {
+
+            console.log('markerData', markerData);
+
+            const infoWindow = new googleMaps.InfoWindow({
+              content: `<h5>${markerData.name}</h5>`
+            });
+
+            const marker = new googleMaps.Marker({
+              position: markerData,
+              map,
+              title: markerData.name
+            });
+
+            marker.addListener('click', () => {
+              infoWindow.open(map, marker);
+            });
+          });
+
+          googleMaps.event.addListenerOnce(map, 'idle', () => {
+            mapEle.classList.add('show-map');
+          });
         });
-
-      },
-      err => {
-
-      },
-      () => {
-
-        console.log('completed Courses');
-
-    });
-
-
-
-
-
-/*
-
-
-    this.confData.getMap().subscribe((mapData: any) => {
-      const mapEle = this.mapElement.nativeElement;
-
-      console.log('mapData', mapData);
-
-      map = new googleMaps.Map(mapEle, {
-        center: mapData.find((d: any) => d.center),
-        zoom: 16,
-        styles: style
-      });
-
-      console.log('map', map);
-
-      mapData.forEach((markerData: any) => {
-
-        console.log('markerData', markerData);
-
-        const infoWindow = new googleMaps.InfoWindow({
-          content: `<h5>${markerData.name}</h5>`
-        });
-
-        const marker = new googleMaps.Marker({
-          position: markerData,
-          map,
-          title: markerData.name
-        });
-
-        marker.addListener('click', () => {
-          infoWindow.open(map, marker);
-        });
-      });
-
-      googleMaps.event.addListenerOnce(map, 'idle', () => {
-        mapEle.classList.add('show-map');
-      });
-    });
-*/
+    */
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'class') {
           const el = mutation.target as HTMLElement;
           isDark = el.classList.contains('dark-theme');
           if (map && isDark) {
-            map.setOptions({styles: darkStyle});
+            map.setOptions({
+              styles: darkStyle
+            });
           } else if (map) {
-            map.setOptions({styles: []});
+            map.setOptions({
+              styles: []
+            });
           }
         }
       });
@@ -198,7 +206,7 @@ export class MapPage implements AfterViewInit {
   }
 }
 
-function getGoogleMaps(apiKey: string): Promise<any> {
+function getGoogleMaps(apiKey: string): Promise < any > {
   const win = window as any;
   const googleModule = win.google;
   if (googleModule && googleModule.maps) {
