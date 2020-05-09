@@ -5,31 +5,25 @@ import { PopoverController } from '@ionic/angular';
 @Component({
   template: `
     <ion-list>
-      <ion-item button (click)="close('https://ionicframework.com/getting-started')">
-        <ion-label>Learn Ionic</ion-label>
+      <ion-item button (click)="close('https://www.pb67fx.com/golf_scoring')">
+        <ion-label>Visit our Web Site</ion-label>
       </ion-item>
-      <ion-item button (click)="close('https://ionicframework.com/docs/')">
+      <ion-item button (click)="close('https://www.pb67fx.com/golf_scoring/manual')">
         <ion-label>Documentation</ion-label>
       </ion-item>
-      <ion-item button (click)="close('https://showcase.ionicframework.com')">
-        <ion-label>Showcase</ion-label>
+      <ion-item button (click)="close('https://www.pb67fx.com/contact_us')">
+        <ion-label>Get in touch</ion-label>
       </ion-item>
-      <ion-item button (click)="close('https://github.com/ionic-team/ionic')">
-        <ion-label>GitHub Repo</ion-label>
+      <ion-item button (click)="close('https://www.pb67fx.com/suggest')">
+        <ion-label>Feature request</ion-label>
       </ion-item>
-      <ion-item button (click)="support()">
-        <ion-label>Support</ion-label>
+      <ion-item button (click)="close('https://www.pb67fx.com/privacy')">
+        <ion-label>Privacy</ion-label>
       </ion-item>
-    </ion-list>
-  `
+    </ion-list>`
 })
 export class PopoverPage {
   constructor(public popoverCtrl: PopoverController) {}
-
-  support() {
-    // this.app.getRootNavs()[0].push('/support');
-    this.popoverCtrl.dismiss();
-  }
 
   close(url: string) {
     window.open(url, '_blank');
