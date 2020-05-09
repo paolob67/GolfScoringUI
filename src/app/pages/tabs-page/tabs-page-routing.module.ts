@@ -10,7 +10,7 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'leaderboard-mob',
+        path: 'leaderboard-mob/:eventId/:roundNum',
         children: [
           {
             path: '',
