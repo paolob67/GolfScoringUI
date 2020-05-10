@@ -27,9 +27,9 @@ import {
 import {
   LeaderboardModule
 } from '../leaderboard/leaderboard.module';
-import {
-  ScoreDetailModule
-} from '../score-detail/score-detail.module';
+//import {
+//  ScoreDetailModule
+//} from '../score-detail/score-detail.module';
 import {
   ScoreListModule
 } from '../score-list/score-list.module';
@@ -42,7 +42,7 @@ import {
     MapModule,
     LeaderboardMobModule,
     LeaderboardModule,
-    ScoreDetailModule,
+    // ScoreDetailModule,
     ScoreListModule,
     TabsPageRoutingModule
   ],

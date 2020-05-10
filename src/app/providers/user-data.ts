@@ -13,6 +13,10 @@ export class UserData {
   favorites: string[] = [];
   HAS_LOGGED_IN = 'hasLoggedIn';
   HAS_SEEN_TUTORIAL = 'hasSeenTutorial';
+  ID = 'id';
+  JWT_TOKEN = 'jwttoken';
+  MARKED = 'marked';
+  
 
   constructor(
     public storage: Storage
@@ -38,8 +42,10 @@ export class UserData {
 
   logout(): Promise < any > {
     return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
-      return this.storage.remove('id').then(() => {
-        return this.storage.remove('jwttoken');
+      return this.storage.remove(this.ID).then(() => {
+        return this.storage.remove(this.JWT_TOKEN).then(() => {
+          return this.storage.remove(this.MARKED);  
+        });
       });
     }).then(() => {
       window.dispatchEvent(new CustomEvent('user:logout'));
@@ -47,37 +53,37 @@ export class UserData {
   }
 
   setId(id: string): Promise < any > {
-    return this.storage.set('id', id);
+    return this.storage.set(this.ID, id);
   }
 
   getId(): Promise < string > {
-    return this.storage.get('id').then((value) => {
+    return this.storage.get(this.ID).then((value) => {
       return value;
     });
   }
 
   setJwtToken(token: string): Promise < any > {
-    return this.storage.set('jwttoken', token);
+    return this.storage.set(this.JWT_TOKEN, token);
   }
 
   getJwtToken(): Promise < string > {
-    return this.storage.get('jwttoken').then((value) => {
+    return this.storage.get(this.JWT_TOKEN).then((value) => {
       return value;
     });
   }
 
   setMarkedPlayer(userId: string): Promise < any > {
-    return this.storage.set('marked', userId);
+    return this.storage.set(this.MARKED, userId);
   }
 
   getMarkedPlayer(): Promise < string > {
-    return this.storage.get('marked').then((value) => {
+    return this.storage.get(this.MARKED).then((value) => {
       return value;
     });
   }
 
   removeMarkedPlayer(): Promise < any > {
-    return this.storage.remove('marked');
+    return this.storage.remove(this.MARKED);
   }
 
   isLoggedIn(): Promise < boolean > {

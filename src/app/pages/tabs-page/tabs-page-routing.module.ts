@@ -46,11 +46,13 @@ const routes: Routes = [
           {
             path: 'event/:eventId/:roundNum',
             loadChildren: () => import('../event/event.module').then(m => m.EventModule)
-          },
-          {
-            path: 'score-details/:scoreId/:eventId/:roundNum/:holeNum/:holeValues',
-            loadChildren: () => import('../score-detail/score-detail.module').then(m => m.ScoreDetailModule)
           }
+          /* ,
+          {
+           // path: 'score-details/:scoreId/:eventId/:roundNum/:holeNum/:holeValues',
+            path: 'score-details/:holeScoreId/:holeScoreMarkedId/:eventId/:roundNum/:holeNum/:holeValues',
+            loadChildren: () => import('../score-detail/score-detail.module').then(m => m.ScoreDetailModule)
+          } */
         ]
       },
       {

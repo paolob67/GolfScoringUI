@@ -204,7 +204,6 @@ export class RestClientService {
   }
 
   getCourseDetails(courseId: string) {
-
     const filter = {
       "where": {
         "id": courseId
