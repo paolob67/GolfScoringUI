@@ -16,7 +16,7 @@ export class UserData {
   ID = 'id';
   JWT_TOKEN = 'jwttoken';
   MARKED = 'marked';
-  
+
 
   constructor(
     public storage: Storage
@@ -41,15 +41,16 @@ export class UserData {
   }
 
   logout(): Promise < any > {
+    
+  
     return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
       return this.storage.remove(this.ID).then(() => {
-        return this.storage.remove(this.JWT_TOKEN).then(() => {
-          return this.storage.remove(this.MARKED);  
-        });
+        return this.storage.remove(this.JWT_TOKEN);
       });
     }).then(() => {
       window.dispatchEvent(new CustomEvent('user:logout'));
     });
+  
   }
 
   setId(id: string): Promise < any > {

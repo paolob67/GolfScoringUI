@@ -59,7 +59,8 @@ export class LoginPage {
                 response => {
                   this.userData.login(response.id, this.jwtToken);
                   //this.router.navigateByUrl('/app/tabs/leaderboard');
-                  this.router.navigateByUrl('/app/tabs/scores');
+                  //this.router.navigateByUrl('/app/tabs/scores');
+                  this.router.navigateByUrl('/account');
                   //this.location.back();
                 },
                 err => {
