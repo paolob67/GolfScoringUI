@@ -3,11 +3,8 @@ import { Router } from '@angular/router';
 import { UserData } from '../../providers/user-data';
 import { RestClientService } from '../../providers/rest-client.service';
 
-import { CoursesResponse,
-         EventsResponse,
-         ScoresResponse,
-         CourseHolesResponse,
-         ScoreHoleScoresResponse } from '../../interfaces/rest-datamodel';
+import { EventsResponse,
+          RoundScoresResponse} from '../../interfaces/rest-datamodel';
 
 
 
@@ -18,8 +15,7 @@ import { CoursesResponse,
 })
 export class LeaderboardPage {
   event: EventsResponse;
-  holes: any[] = [];
-  scores: any[] = [];
+  scores: RoundScoresResponse;
   segment = 'Today';
 
   constructor(
@@ -40,40 +36,22 @@ export class LeaderboardPage {
     .subscribe(
       (responseev: EventsResponse[]) => {
         this.event = responseev[0];
-        // get hole data
-        this.restClient.getCourseDetails(this.event.courseId)
+        // get Detailed Scores
+        this.restClient.getRoundScoresDetails(this.event.id, 1)
         .subscribe(
-          (responsehl: any[])=> {
-            this.holes = responsehl;
+          (responsehl: RoundScoresResponse)=> {
+            this.scores = responsehl;
           },
           err => {
-            console.log('Error getting course holes', err.error.error);
+            console.log('Error getting Round of Leaderboard', err.error.error);
           },
         );
-
       },
       err => {
-        console.log('Error getting events', err.error.error);
+        console.log('Error getting last event', err.error.error);
       },
       () => {}
     );
   }
-/*
-  // Find the score for the hole passed in the hole score table
-  findParForHole(holes: any[], holenum: number) {
-    if (holes.holes.length > 0) {
-      const thehole = holes.holes.find(
-        (hs: any) => hs.number === holenum
-      );
-      if (thehole) {
-        return thehole.par;
-      } else {
-        return 0;
-      }
-    };
-    return 0;
-  }
-*/
-
 
 }

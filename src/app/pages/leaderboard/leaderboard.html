@@ -30,8 +30,7 @@
     </ion-segment>
   </ion-header>
 
-
-   <ion-card class="event-card">
+  <ion-card class="leaderboard-card">
     <ion-card-header>
       <ion-item detail="false" lines="none" class="leaderboard">
         <ion-avatar slot="start">
@@ -40,7 +39,7 @@
         </ion-avatar>
         <ion-label>
           <h2>{{event?.name}}</h2>
-          <h3>Round score.round</h3>
+          <h3>Round 1</h3>
           <p>{{event?.type}}</p>
           <p>{{event?.date}}</p>
         </ion-label>
@@ -49,74 +48,83 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-list lines="none">
-        <ion-item detail="false">
-              <ion-col>Pos</ion-col>
-              <ion-col>Name</ion-col>
-              <ion-col>H</ion-col>
-              <ion-col>1</ion-col>
-              <ion-col>2</ion-col>
-              <ion-col>3</ion-col>
-              <ion-col>4</ion-col>
-              <ion-col>5</ion-col>
-              <ion-col>6</ion-col>
-              <ion-col>7</ion-col>
-              <ion-col>8</ion-col>
-              <ion-col>9</ion-col>
-              <ion-col>Out</ion-col>
-              <ion-col>10</ion-col>
-              <ion-col>11</ion-col>
-              <ion-col>12</ion-col>
-              <ion-col>13</ion-col>
-              <ion-col>14</ion-col>
-              <ion-col>15</ion-col>
-              <ion-col>16</ion-col>
-              <ion-col>17</ion-col>
-              <ion-col>18</ion-col>
-              <ion-col>In</ion-col>
-              <ion-col>Stroke</ion-col>
-              <ion-col>Thru</ion-col>
-              <ion-col>Total</ion-col>
-              <ion-col>Net</ion-col>
-              <ion-col>Stableford</ion-col>
-          <!-- ion-label>
-            <h3></h3>
-          </ion-label -->
-        </ion-item>
-        <ion-item detail="false">
-              <ion-col></ion-col>
-              <ion-col></ion-col>
-              <ion-col></ion-col>
-              <ion-col><!-- {{this.findParForHole(this.holes, 1)}} --></ion-col>
-              <ion-col><!-- {{this.holes.holes[0].par}} --></ion-col>
-              <ion-col>3</ion-col>
-              <ion-col>4</ion-col>
-              <ion-col>5</ion-col>
-              <ion-col>6</ion-col>
-              <ion-col>7</ion-col>
-              <ion-col>8</ion-col>
-              <ion-col>9</ion-col>
-              <ion-col>{{this.holes.out}}</ion-col>
-              <ion-col>10</ion-col>
-              <ion-col>11</ion-col>
-              <ion-col>12</ion-col>
-              <ion-col>13</ion-col>
-              <ion-col>14</ion-col>
-              <ion-col>15</ion-col>
-              <ion-col>16</ion-col>
-              <ion-col>17</ion-col>
-              <ion-col>18</ion-col>
-              <ion-col>{{this.holes.in}}</ion-col>
-              <ion-col>{{this.holes.stroke}}</ion-col>
-              <ion-col></ion-col>
-              <ion-col></ion-col>
-              <ion-col></ion-col>
-              <ion-col></ion-col>
-          <!-- ion-label>
-            <h3></h3>
-          </ion-label -->
-        </ion-item>
-      </ion-list>
+        <ion-grid>
+            <ion-row>
+                <ion-col size="1">P</ion-col>
+                <ion-col size="10">Name</ion-col>
+                <ion-col size="1">H</ion-col>
+                <ion-col size="1">1</ion-col>
+                <ion-col size="1">2</ion-col>
+                <ion-col size="1">3</ion-col>
+                <ion-col size="1">4</ion-col>
+                <ion-col size="1">5</ion-col>
+                <ion-col size="1">6</ion-col>
+                <ion-col size="1">7</ion-col>
+                <ion-col size="1">8</ion-col>
+                <ion-col size="1">9</ion-col>
+                <ion-col size="3">Out</ion-col>
+                <ion-col size="1">10</ion-col>
+                <ion-col size="1">11</ion-col>
+                <ion-col size="1">12</ion-col>
+                <ion-col size="1">13</ion-col>
+                <ion-col size="1">14</ion-col>
+                <ion-col size="1">15</ion-col>
+                <ion-col size="1">16</ion-col>
+                <ion-col size="1">17</ion-col>
+                <ion-col size="1">18</ion-col>
+                <ion-col size="3">In</ion-col>
+                <ion-col size="3">Stroke</ion-col>
+                <ion-col size="2">Thru</ion-col>
+                <ion-col size="2">Total</ion-col>
+                <ion-col size="2">Net</ion-col>
+                <ion-col size="3">Stableford</ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="1"></ion-col>
+                <ion-col size="10"></ion-col>
+                <ion-col size="1"></ion-col>
+                <ion-col *ngFor="let hole of scores?.course?.holes  | slice:0:9" size="1">{{ hole?.par }}</ion-col>
+                <ion-col size="3">{{ scores?.course?.out }}</ion-col>
+                <ion-col *ngFor="let hole of scores?.course?.holes  | slice:9:19" size="1">{{ hole?.par }}</ion-col>
+
+                <ion-col size="3">{{ scores?.course?.in }}</ion-col>
+                <ion-col size="3">{{ scores?.course?.stroke }}</ion-col>
+                <ion-col size="2"></ion-col>
+                <ion-col size="2"></ion-col>
+                <ion-col size="2"></ion-col>
+                <ion-col size="3"></ion-col>
+            </ion-row>
+            <ion-row *ngFor="let score of scores?.detailedScores">
+                <ion-col size="1">{{ score?.position }}</ion-col>
+                <ion-col size="10">{{ score?.player }}</ion-col>
+                <ion-col size="1">{{ score?.playingHandicap }}</ion-col>
+                <ion-col size="1" class="{{score?.result1}}">{{ score?.hole1 }}</ion-col>
+                <ion-col size="1" class="{{score?.result2}}">{{ score?.hole2 }}</ion-col>
+                <ion-col size="1" class="{{score?.result3}}">{{ score?.hole3 }}</ion-col>
+                <ion-col size="1" class="{{score?.result4}}">{{ score?.hole4 }}</ion-col>
+                <ion-col size="1" class="{{score?.result5}}">{{ score?.hole5 }}</ion-col>
+                <ion-col size="1" class="{{score?.result6}}">{{ score?.hole6 }}</ion-col>
+                <ion-col size="1" class="{{score?.result7}}">{{ score?.hole7 }}</ion-col>
+                <ion-col size="1" class="{{score?.result8}}">{{ score?.hole8 }}</ion-col>
+                <ion-col size="1" class="{{score?.result9}}">{{ score?.hole9 }}</ion-col>
+                <ion-col size="3">{{ score?.outHoles }}</ion-col>
+                <ion-col size="1" class="{{score?.result10}}">{{ score?.hole10 }}</ion-col>
+                <ion-col size="1" class="{{score?.result11}}">{{ score?.hole11 }}</ion-col>
+                <ion-col size="1" class="{{score?.result12}}">{{ score?.hole12 }}</ion-col>
+                <ion-col size="1" class="{{score?.result13}}">{{ score?.hole13 }}</ion-col>
+                <ion-col size="1" class="{{score?.result14}}">{{ score?.hole14 }}</ion-col>
+                <ion-col size="1" class="{{score?.result15}}">{{ score?.hole15 }}</ion-col>
+                <ion-col size="1" class="{{score?.result16}}">{{ score?.hole16 }}</ion-col>
+                <ion-col size="1" class="{{score?.result17}}">{{ score?.hole17 }}</ion-col>
+                <ion-col size="1" class="{{score?.result18}}">{{ score?.hole18 }}</ion-col>
+                <ion-col size="3">{{ score?.inHoles }}</ion-col>
+                <ion-col size="3">{{ score?.stroke }}</ion-col>
+                <ion-col size="2">{{ score?.thru }}</ion-col>
+                <ion-col size="2">{{ score?.total }}</ion-col>
+                <ion-col size="2">{{ score?.net }}</ion-col>
+                <ion-col size="3">{{ score?.stableford }}</ion-col>
+            </ion-row>
+        </ion-grid>
     </ion-card-content>
-</ion-card>
+  </ion-card>
 </ion-content>

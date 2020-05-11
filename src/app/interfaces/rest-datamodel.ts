@@ -143,3 +143,101 @@ export interface LeaderboardResponse {
   thru: number;
   stroke: number;
 }
+
+/*
+// Scores
+export interface RoundLeaderboardResponse {
+  id: string;
+  startTime: Date;
+  playingHandicap: number;
+  startHole: number;
+  round: number;
+  userId: string;
+  eventId: string;
+  outHoles: number;
+  inHoles: number;
+  stroke: number;
+  thru: number;
+  total: number;
+  net: number;
+  stableford: number;
+  leaderboardId: string;
+  selfCard: string;
+  markerCard: string;
+  holeScores: ScoreHoleScoresResponse;
+  user: UsersResponse;
+}
+
+*/
+
+//Detailed Score
+export interface DetailedScoreResponse  {
+  position: string;
+  positionNum: number;
+  player: string;
+  startTime: string;
+  startHole: string;
+  playingHandicap: string;
+  hole1: string;
+  result1: string;
+  hole2: string;
+  result2: string;
+  hole3: string;
+  result3: string;
+  hole4: string;
+  result4: string;
+  hole5: string;
+  result5: string;
+  hole6: string;
+  result6: string;
+  hole7: string;
+  result7: string;
+  hole8: string;
+  result8: string;
+  hole9: string;
+  result9: string;
+  hole10: string;
+  result10: string;
+  hole11: string;
+  result11: string;
+  hole12: string;
+  result12: string;
+  hole13: string;
+  result13: string;
+  hole14: string;
+  result14: string;
+  hole15: string;
+  result15: string;
+  hole16: string;
+  result16: string;
+  hole17: string;
+  result17: string;
+  hole18: string;
+  result18: string;
+  outHoles: string;
+  inHoles: string;
+  stroke: string;
+  thru: string;
+  total: string;
+  net: string;
+  stableford: string;
+}
+
+// /Courses
+export interface CoursesDetailResponse {
+  id: string;
+  name: string;
+  holesCount: number;
+  out: number;
+  in: number;
+  stroke: number;
+  holes: CourseHolesResponse;
+}
+
+// Scores
+export interface RoundScoresResponse {
+  event: EventsResponse;
+  course: CoursesDetailResponse;
+  detailedScores: DetailedScoreResponse[];
+}
+
