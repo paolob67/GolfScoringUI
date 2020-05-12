@@ -10,16 +10,14 @@ import {
 import {
   RestClientService
 } from '../../providers/rest-client.service';
-import { 
-  EventsResponse,
-  RoundScoresResponse} from '../../interfaces/rest-datamodel';
 
 import {
   CoursesResponse,
   EventsResponse,
   ScoresResponse,
   CourseHolesResponse,
-  ScoreHoleScoresResponse
+  ScoreHoleScoresResponse,
+  RoundScoresResponse
 } from '../../interfaces/rest-datamodel';
 
 @Component({
