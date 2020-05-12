@@ -47,7 +47,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Leaderboards',
-      url: '/app/tabs/leaderboard',
+      url: '/app/tabs/leaderboard-list',
       icon: 'clipboard'
     },
     {
@@ -163,7 +163,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/leaderboard');
+      return this.router.navigateByUrl('/app/tabs/leaderboard-list');
     });
   }
 

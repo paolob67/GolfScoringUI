@@ -327,8 +327,130 @@ export class LeaderboardMobPage {
   ]
   };
 
+  filter = {
+    "include": [
+      {
+        "relation": "user"
+    },
+      {
+        "relation": "course"
+    },
+      {
+        "relation": "event"
+    }
+  ]
+  };
 
+  // http://[::1]:3000/leaderboard?filter=%7B%20%0A%20%20%22include%22%3A%20%5B%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22relation%22%3A%20%22user%22%0A%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22relation%22%3A%20%22course%22%0A%20%20%20%20%7D%2C%0A%20%20%20%20%7B%0A%20%20%20%20%20%20%22relation%22%3A%20%22event%22%0A%20%20%20%20%7D%0A%20%20%20%20%20%0A%20%20%5D%0A%7D
 
+  leaderboard_resp = [
+    {
+      "id": "5eb9a962a0d1d108e5ac8f80",
+      "rounds": 2,
+      "playingHandicap": 6,
+      "eventId": "5eb9a962a0d1d108e5ac8f7f",
+      "courseId": "5eb9a95ba0d1d108e5ac8b1c",
+      "userId": "5eb9a962a0d1d108e5ac8f77",
+      "course": {
+        "id": "5eb9a95ba0d1d108e5ac8b1c",
+        "name": "Golf Nazionale",
+        "holesCount": 18,
+        "out": 36,
+        "in": 36,
+        "stroke": 72
+      },
+      "user": {
+        "id": "5eb9a962a0d1d108e5ac8f77",
+        "email": "paolo@golf.com",
+        "firstName": "Paolo",
+        "lastName": "Golf",
+        "handicap": 1,
+        "roles": [
+        "player"
+      ]
+      },
+      "event": {
+        "id": "5eb9a962a0d1d108e5ac8f7f",
+        "name": "Golf Scoring Masters",
+        "type": "World Championship",
+        "date": "2020-09-15T00:00:00.000Z",
+        "numberOfRounds": 2,
+        "courseId": "5eb9a95ba0d1d108e5ac8b1c"
+      }
+  },
+    {
+      "id": "5eb9a962a0d1d108e5ac8fa7",
+      "rounds": 2,
+      "playingHandicap": 0,
+      "eventId": "5eb9a962a0d1d108e5ac8f7f",
+      "courseId": "5eb9a95ba0d1d108e5ac8b1c",
+      "userId": "5eb9a962a0d1d108e5ac8f7b",
+      "course": {
+        "id": "5eb9a95ba0d1d108e5ac8b1c",
+        "name": "Golf Nazionale",
+        "holesCount": 18,
+        "out": 36,
+        "in": 36,
+        "stroke": 72
+      },
+      "user": {
+        "id": "5eb9a962a0d1d108e5ac8f7b",
+        "email": "lorenzo@golf.com",
+        "firstName": "Lorenzo",
+        "lastName": "Golf",
+        "clubName": "Marco Simone",
+        "card": "456123",
+        "handicap": 3,
+        "roles": [
+        "player"
+      ]
+      },
+      "event": {
+        "id": "5eb9a962a0d1d108e5ac8f7f",
+        "name": "Golf Scoring Masters",
+        "type": "World Championship",
+        "date": "2020-09-15T00:00:00.000Z",
+        "numberOfRounds": 2,
+        "courseId": "5eb9a95ba0d1d108e5ac8b1c"
+      }
+  },
+    {
+      "id": "5eb9a962a0d1d108e5ac8fce",
+      "rounds": 2,
+      "playingHandicap": 3,
+      "eventId": "5eb9a962a0d1d108e5ac8f7f",
+      "courseId": "5eb9a95ba0d1d108e5ac8b1c",
+      "userId": "5eb9a962a0d1d108e5ac8f7d",
+      "course": {
+        "id": "5eb9a95ba0d1d108e5ac8b1c",
+        "name": "Golf Nazionale",
+        "holesCount": 18,
+        "out": 36,
+        "in": 36,
+        "stroke": 72
+      },
+      "user": {
+        "id": "5eb9a962a0d1d108e5ac8f7d",
+        "email": "tommaso@golf.com",
+        "firstName": "Tommaso",
+        "lastName": "Golf",
+        "clubName": "Olgiata",
+        "card": "654321",
+        "handicap": 0,
+        "roles": [
+        "player"
+      ]
+      },
+      "event": {
+        "id": "5eb9a962a0d1d108e5ac8f7f",
+        "name": "Golf Scoring Masters",
+        "type": "World Championship",
+        "date": "2020-09-15T00:00:00.000Z",
+        "numberOfRounds": 2,
+        "courseId": "5eb9a95ba0d1d108e5ac8b1c"
+      }
+  }
+];
 
   constructor(
     public router: Router,

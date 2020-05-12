@@ -25,11 +25,8 @@ import {
   LeaderboardMobModule
 } from '../leaderboard-mob/leaderboard-mob.module';
 import {
-  LeaderboardModule
-} from '../leaderboard/leaderboard.module';
-//import {
-//  ScoreDetailModule
-//} from '../score-detail/score-detail.module';
+  LeaderboardListModule
+} from '../leaderboard-list/leaderboard-list.module';
 import {
   ScoreListModule
 } from '../score-list/score-list.module';
@@ -41,8 +38,7 @@ import {
     IonicModule,
     MapModule,
     LeaderboardMobModule,
-    LeaderboardModule,
-    // ScoreDetailModule,
+    LeaderboardListModule,
     ScoreListModule,
     TabsPageRoutingModule
   ],

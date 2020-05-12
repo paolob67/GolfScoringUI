@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Events</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Events</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item detail="true" *ngFor="let event of events" routerLink="/app/tabs/leaderboard-list/leaderboard-mob/{{event.id}}">
+      <ion-icon name="trophy-outline" slot="start"></ion-icon>
+      <ion-label>
+        <h2>{{event.name}}</h2>
+        <h3>{{event.date}}</h3>
+        <h3>{{event.type}} No. of rounds {{event.numberOfRounds}}</h3>
+      </ion-label>  
+    </ion-item>
+  </ion-list>  
+</ion-content>

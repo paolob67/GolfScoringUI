@@ -65,7 +65,7 @@ export class SignupPage {
               console.log('Login returned');
               //this.userData.signup(this.signup.username, response.token);
               this.userData.signup(this.id, response.token);
-              this.router.navigateByUrl('/app/tabs/leaderboard');
+              this.router.navigateByUrl('/app/tabs/leaderboard-list');
             },
             err => {
               console.error('Login error', err.error.error);

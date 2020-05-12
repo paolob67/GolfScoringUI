@@ -8,9 +8,6 @@ import {
 import {
   TabsPage
 } from './tabs-page';
-import {
-  LeaderboardPage
-} from '../leaderboard/leaderboard';
 
 
 const routes: Routes = [
@@ -19,20 +16,15 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'leaderboard-mob/:eventId/:roundNum',
+        path: 'leaderboard-list',
         children: [
           {
             path: '',
+            loadChildren: () => import('../leaderboard-list/leaderboard-list.module').then(m => m.LeaderboardListModule)
+          },
+          {
+            path: 'leaderboard-mob/:eventId',
             loadChildren: () => import('../leaderboard-mob/leaderboard-mob.module').then(m => m.LeaderboardMobModule)
-          }
-        ]
-      },
-      {
-        path: 'leaderboard',
-        children: [
-          {
-            path: '',
-            loadChildren: () => import('../leaderboard/leaderboard.module').then(m => m.LeaderboardModule)
           }
         ]
       },
@@ -47,12 +39,6 @@ const routes: Routes = [
             path: 'event/:eventId/:roundNum',
             loadChildren: () => import('../event/event.module').then(m => m.EventModule)
           }
-          /* ,
-          {
-           // path: 'score-details/:scoreId/:eventId/:roundNum/:holeNum/:holeValues',
-            path: 'score-details/:holeScoreId/:holeScoreMarkedId/:eventId/:roundNum/:holeNum/:holeValues',
-            loadChildren: () => import('../score-detail/score-detail.module').then(m => m.ScoreDetailModule)
-          } */
         ]
       },
       {
@@ -75,7 +61,7 @@ const routes: Routes = [
       },
       {
         path: '',
-        redirectTo: '/app/tabs/leaderboard',
+        redirectTo: '/app/tabs/leaderboard-list',
         pathMatch: 'full'
       }
     ]
