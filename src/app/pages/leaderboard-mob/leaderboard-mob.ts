@@ -451,6 +451,8 @@ export class LeaderboardMobPage {
       }
   }
 ];
+  
+  mobview = true;
 
   constructor(
     public router: Router,
