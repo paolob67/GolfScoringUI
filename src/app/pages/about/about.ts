@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
+import {
+  Component
+} from '@angular/core';
 
-import { PopoverController } from '@ionic/angular';
+import {
+  PopoverController
+} from '@ionic/angular';
 
-import { PopoverPage } from '../about-popover/about-popover';
+import {
+  PopoverPage
+} from '../about-popover/about-popover';
 
 @Component({
   selector: 'page-about',
@@ -17,7 +23,7 @@ export class AboutPage {
     header: 'Select a Location'
   };
 
-  constructor(public popoverCtrl: PopoverController) { }
+  constructor(public popoverCtrl: PopoverController) {}
 
   async presentPopover(event: Event) {
     const popover = await this.popoverCtrl.create({

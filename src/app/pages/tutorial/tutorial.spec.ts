@@ -1,14 +1,27 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Router } from '@angular/router';
-import { TestBed, async } from '@angular/core/testing';
-import { MenuController } from '@ionic/angular';
+import {
+  CUSTOM_ELEMENTS_SCHEMA
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  TestBed,
+  async
+} from '@angular/core/testing';
+import {
+  MenuController
+} from '@ionic/angular';
 
-import { TutorialPage } from './tutorial';
+import {
+  TutorialPage
+} from './tutorial';
 
-import { IonicStorageModule } from '@ionic/storage';
+import {
+  IonicStorageModule
+} from '@ionic/storage';
 describe('TutorialPage', () => {
   let fixture, app;
-  beforeEach(async(() => {
+  beforeEach(async (() => {
     const menuSpy = jasmine.createSpyObj('MenuController', [
       'toggle',
       'enable'
@@ -20,8 +33,14 @@ describe('TutorialPage', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [IonicStorageModule.forRoot()],
       providers: [
-        { provide: MenuController, useValue: menuSpy },
-        { provide: Router, useValue: routerSpy }
+        {
+          provide: MenuController,
+          useValue: menuSpy
+        },
+        {
+          provide: Router,
+          useValue: routerSpy
+        }
       ]
     }).compileComponents();
   }));

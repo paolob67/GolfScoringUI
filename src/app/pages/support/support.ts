@@ -1,7 +1,14 @@
-import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import {
+  Component
+} from '@angular/core';
+import {
+  NgForm
+} from '@angular/forms';
 
-import { AlertController, ToastController } from '@ionic/angular';
+import {
+  AlertController,
+  ToastController
+} from '@ionic/angular';
 
 
 @Component({
@@ -16,7 +23,7 @@ export class SupportPage {
   constructor(
     public alertCtrl: AlertController,
     public toastCtrl: ToastController
-  ) { }
+  ) {}
 
   async ionViewDidEnter() {
     const toast = await this.toastCtrl.create({

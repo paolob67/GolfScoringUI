@@ -1,10 +1,17 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TestBed, async } from '@angular/core/testing';
+import {
+  CUSTOM_ELEMENTS_SCHEMA
+} from '@angular/core';
+import {
+  TestBed,
+  async
+} from '@angular/core/testing';
 
-import { TabsPage } from './tabs-page';
+import {
+  TabsPage
+} from './tabs-page';
 
 describe('TabsPage', () => {
-  beforeEach(async(() => {
+  beforeEach(async (() => {
     TestBed.configureTestingModule({
       declarations: [TabsPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]

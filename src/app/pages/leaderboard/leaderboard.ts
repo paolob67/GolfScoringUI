@@ -1,12 +1,26 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { UserData } from '../../providers/user-data';
-import { RestClientService } from '../../providers/rest-client.service';
+import {
+  Component
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  UserData
+} from '../../providers/user-data';
+import {
+  RestClientService
+} from '../../providers/rest-client.service';
+import { 
+  EventsResponse,
+  RoundScoresResponse} from '../../interfaces/rest-datamodel';
 
-import { EventsResponse,
-          RoundScoresResponse} from '../../interfaces/rest-datamodel';
-
-
+import {
+  CoursesResponse,
+  EventsResponse,
+  ScoresResponse,
+  CourseHolesResponse,
+  ScoreHoleScoresResponse
+} from '../../interfaces/rest-datamodel';
 
 @Component({
   selector: 'page-leaderboard',
@@ -22,7 +36,7 @@ export class LeaderboardPage {
     public router: Router,
     public userData: UserData,
     public restClient: RestClientService
-  ) { }
+  ) {}
 
   ionViewDidEnter() {
     //this.userData.getId().then((id) => this.loadLeaderboard(1));

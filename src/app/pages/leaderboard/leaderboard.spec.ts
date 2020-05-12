@@ -1,17 +1,32 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { Router } from '@angular/router';
-import { TestBed, async } from '@angular/core/testing';
-import { ActionSheetController } from '@ionic/angular';
+import {
+  CUSTOM_ELEMENTS_SCHEMA
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
+import {
+  TestBed,
+  async
+} from '@angular/core/testing';
+import {
+  ActionSheetController
+} from '@ionic/angular';
 
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
-import { LeaderboardPage } from './leaderboard';
-import { ConferenceData } from '../../providers/conference-data';
+import {
+  InAppBrowser
+} from '@ionic-native/in-app-browser/ngx';
+import {
+  LeaderboardPage
+} from './leaderboard';
+import {
+  ConferenceData
+} from '../../providers/conference-data';
 
 const confDataSub = {};
 
 describe('LeaderboardPage', () => {
   let fixture, app;
-  beforeEach(async(() => {
+  beforeEach(async (() => {
     const actionSheetSpy = jasmine.createSpyObj('ActionSheetController', [
       'create'
     ]);
@@ -22,10 +37,22 @@ describe('LeaderboardPage', () => {
       declarations: [LeaderboardPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        { provide: ActionSheetController, useValue: actionSheetSpy },
-        { provide: InAppBrowser, useValue: iabSpy },
-        { provide: Router, useValue: routerSpy },
-        { provide: ConferenceData, useValue: confDataSub }
+        {
+          provide: ActionSheetController,
+          useValue: actionSheetSpy
+        },
+        {
+          provide: InAppBrowser,
+          useValue: iabSpy
+        },
+        {
+          provide: Router,
+          useValue: routerSpy
+        },
+        {
+          provide: ConferenceData,
+          useValue: confDataSub
+        }
       ]
     }).compileComponents();
   }));

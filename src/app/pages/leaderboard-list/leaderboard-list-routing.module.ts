@@ -7,13 +7,12 @@ import {
 } from '@angular/router';
 
 import {
-  SupportPage
-} from './support';
-
+  LeaderboardListPage
+} from './leaderboard-list';
 const routes: Routes = [
   {
     path: '',
-    component: SupportPage
+    component: LeaderboardListPage
   }
 ];
 
@@ -21,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SupportPageRoutingModule {}
+export class LeaderboardListPageRoutingModule {}

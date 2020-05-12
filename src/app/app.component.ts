@@ -1,16 +1,36 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation
+} from '@angular/core';
+import {
+  Router
+} from '@angular/router';
 //PB67 import { SwUpdate } from '@angular/service-worker';
 
-import { MenuController, Platform, ToastController } from '@ionic/angular';
+import {
+  MenuController,
+  Platform,
+  ToastController
+} from '@ionic/angular';
 
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+import {
+  SplashScreen
+} from '@ionic-native/splash-screen/ngx';
+import {
+  StatusBar
+} from '@ionic-native/status-bar/ngx';
 
-import { Storage } from '@ionic/storage';
+import {
+  Storage
+} from '@ionic/storage';
 
-import { UserData } from './providers/user-data';
-import { RestClientService } from './providers/rest-client.service';
+import {
+  UserData
+} from './providers/user-data';
+import {
+  RestClientService
+} from './providers/rest-client.service';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +47,7 @@ export class AppComponent implements OnInit {
     },
     {
       title: 'Leaderboards',
-      url: '/app/tabs/leaderboard',
+      url: '/app/tabs/leaderboard-list',
       icon: 'clipboard'
     },
     {
@@ -61,30 +81,29 @@ export class AppComponent implements OnInit {
 
   async ngOnInit() {
     this.restClient.checkServerConnection()
-    .subscribe(
-      async response => {
-        console.log('Got server connection');
-      },
-      async err => {
-        const toast = await this.toastCtrl.create(
-          {
-            message: 'Could not reach server, check your connection!',
-            position: 'bottom',
-            buttons: [
-              {
-                role: 'cancel',
-                text: 'Retry'
+      .subscribe(
+        async response => {
+            console.log('Got server connection');
+          },
+          async err => {
+              const toast = await this.toastCtrl.create({
+                message: 'Could not reach server, check your connection!',
+                position: 'bottom',
+                buttons: [
+                  {
+                    role: 'cancel',
+                    text: 'Retry'
               }
             ]
-          });
-          await toast.present();
-          toast
-            .onDidDismiss()
-            .then(() => this.logout())
-            .then(() => window.location.reload());
-      },
-      () => {}
-    );
+              });
+              await toast.present();
+              toast
+                .onDidDismiss()
+                .then(() => this.logout())
+                .then(() => window.location.reload());
+            },
+            () => {}
+      );
     this.checkLoginStatus();
     this.listenForLoginEvents();
     /* PB67
@@ -144,7 +163,7 @@ export class AppComponent implements OnInit {
 
   logout() {
     this.userData.logout().then(() => {
-      return this.router.navigateByUrl('/app/tabs/leaderboard');
+      return this.router.navigateByUrl('/app/tabs/leaderboard-list');
     });
   }
 

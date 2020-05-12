@@ -1,6 +1,10 @@
-import { TestBed } from '@angular/core/testing';
+import {
+  TestBed
+} from '@angular/core/testing';
 
-import { RestClientService } from './rest-client.service';
+import {
+  RestClientService
+} from './rest-client.service';
 
 describe('RestClientService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

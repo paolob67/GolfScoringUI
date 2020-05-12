@@ -16,15 +16,15 @@ import {
   InAppBrowser
 } from '@ionic-native/in-app-browser/ngx';
 import {
-  LeaderboardMobPage
-} from './leaderboard';
+  LeaderboardListPage
+} from './leaderboard-list';
 import {
   ConferenceData
 } from '../../providers/conference-data';
 
 const confDataSub = {};
 
-describe('LeaderboardMobPage', () => {
+describe('LeaderboardListPage', () => {
   let fixture, app;
   beforeEach(async (() => {
     const actionSheetSpy = jasmine.createSpyObj('ActionSheetController', [
@@ -34,7 +34,7 @@ describe('LeaderboardMobPage', () => {
     const iabSpy = jasmine.createSpyObj('InAppBrowser', ['create']);
 
     TestBed.configureTestingModule({
-      declarations: [LeaderboardMobPage],
+      declarations: [LeaderboardListPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         {
@@ -57,7 +57,7 @@ describe('LeaderboardMobPage', () => {
     }).compileComponents();
   }));
   beforeEach(() => {
-    fixture = TestBed.createComponent(LeaderboardMobPage);
+    fixture = TestBed.createComponent(LeaderboardListPage);
     app = fixture.debugElement.componentInstance;
   });
   it('should create the leaderboard page', () => {
