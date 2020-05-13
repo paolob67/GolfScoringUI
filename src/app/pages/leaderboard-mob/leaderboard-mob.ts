@@ -457,6 +457,7 @@ export class LeaderboardMobPage {
 
   ldb_tot = [
     {
+      userId: "add_userid",
       player: "Lorenzo Golf",
       startTime: "2020-09-15T09:00:00.000Z",
       startHole: "1",
@@ -474,6 +475,7 @@ export class LeaderboardMobPage {
       position: "T1"
     },
     {
+      userId: "add_userid",
       player: "Paolo Golf",
       startTime: "2020-09-15T09:00:00.000Z",
       startHole: "1",
@@ -491,6 +493,7 @@ export class LeaderboardMobPage {
       position: "T1"
     },
     {
+      userId: "add_userid",
       player: "Tommaso Golf",
       startTime: "2020-09-15T09:00:00.000Z",
       startHole: "1",

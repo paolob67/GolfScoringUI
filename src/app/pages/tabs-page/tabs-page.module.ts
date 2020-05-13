@@ -28,6 +28,9 @@ import {
   LeaderboardListModule
 } from '../leaderboard-list/leaderboard-list.module';
 import {
+  PlayerDetailModule
+} from '../player-detail/player-detail.module';
+import {
   ScoreListModule
 } from '../score-list/score-list.module';
 
@@ -40,6 +43,7 @@ import {
     LeaderboardMobModule,
     LeaderboardListModule,
     ScoreListModule,
+    PlayerDetailModule,
     TabsPageRoutingModule
   ],
   declarations: [

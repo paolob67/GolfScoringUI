@@ -25,6 +25,10 @@ const routes: Routes = [
           {
             path: 'leaderboard-mob/:eventId',
             loadChildren: () => import('../leaderboard-mob/leaderboard-mob.module').then(m => m.LeaderboardMobModule)
+          },
+          {
+            path: 'leaderboard-mob/player-detail/:eventId/:playerId',
+            loadChildren: () => import('../player-detail/player-detail.module').then(m => m.PlayerDetailModule)
           }
         ]
       },
