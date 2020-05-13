@@ -513,19 +513,10 @@ export class LeaderboardMobPage {
   event: EventsResponse;
   scores: RoundScoresResponse[];
   
-  mobview = true;
+  mobview = false;
   numberOfRounds = 1;
 
   segment = 'Totals';
-  
-  colors = [
-      'primary',
-      'secondary',
-      'tertiary',
-      'success',
-      'warning',
-      'danger'
-    ];
 
   constructor(
     public router: Router,
