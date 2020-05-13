@@ -4,17 +4,17 @@
       <ion-back-button defaultHref="/app/tabs/leaderboard-list"></ion-back-button>
     </ion-buttons>
     <ion-title>Leaderboard</ion-title>
-    <ion-buttons slot="end">
+    <ion-buttons  *ngIf="(segment != 'Totals')" slot="end">
       <ion-label>Mobile</ion-label>
       <ion-toggle [(ngModel)]="mobview"></ion-toggle>
     </ion-buttons>
   </ion-toolbar>
   <ion-segment [(ngModel)]="segment">
-    <ion-segment-button value="Today">
-      <ion-label>Today</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="All">
+    <ion-segment-button value="Totals">
       <ion-label>Total</ion-label>
+    </ion-segment-button>
+    <ion-segment-button *ngFor="let round of [1,2,3,4] | slice:0:numberOfRounds" value="Round {{round}}">
+      <ion-label>Round {{round}}</ion-label>
     </ion-segment-button>
   </ion-segment>
 </ion-header>
@@ -26,219 +26,289 @@
         <ion-back-button defaultHref="/app/tabs/leaderboard-list"></ion-back-button>
       </ion-buttons>
       <ion-title size="large">Leaderboard</ion-title>
-      <ion-buttons slot="end">
+      <ion-buttons *ngIf="(segment != 'Totals')" slot="end">
         <ion-label>Mobile</ion-label>
         <ion-toggle [(ngModel)]="mobview"></ion-toggle>
       </ion-buttons>
     </ion-toolbar>
     <ion-segment [(ngModel)]="segment">
-      <ion-segment-button value="Today">
-        <ion-label>Today</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="All">
+      <ion-segment-button value="Totals">
         <ion-label>Total</ion-label>
       </ion-segment-button>
+      <span *ngIf="numberOfRounds > 1">
+        <ion-segment-button *ngFor="let round of [1,2,3,4] | slice:0:numberOfRounds" value="Round {{round}}">
+          <ion-label>Round {{round}}</ion-label>
+        </ion-segment-button>
+      </span>
     </ion-segment>
   </ion-header>
 
-
-  <div *ngIf="(!mobview)">
-    <ion-card class="leaderboard-card">
-      <ion-card-header>
-        <ion-item detail="false" lines="none" class="leaderboard">
-          <ion-avatar slot="start">
-            <ion-icon name="clipboard-outline"></ion-icon>
-          </ion-avatar>
-          <ion-label>
-            <p>Event:</p>
-            <h2>{{leaderboard.event.name}}</h2>
-            <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
-            <p>Course:</p>
-            <h2>{{leaderboard.course.name}}</h2>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <p>Hole</p>
-                  <p>Par</p>
-                </ion-col>
-                <ion-col *ngFor="let hole of leaderboard.course.holespar">
-                  <p>{{hole.holenum}}</p>
-                  <p>{{hole.par}}</p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-label>
-        </ion-item>
-      </ion-card-header>
-           <ion-card-content>
-        <ion-list>
-          <ion-item detail="false" *ngFor="let player of leaderboard.players">
-            <ion-avatar>{{player.pos_display}}</ion-avatar>
-            <ion-label>
-              {{player.name}}
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    hcp: {{player.hcp}}
-                  </ion-col>
-                  <ion-col>
-                    stroke: {{player.stroke}}
-                  </ion-col>
-                  <ion-col>
-                    thru: {{player.thru}}
-                  </ion-col>
-                  <ion-col>
-                    total: {{player.total}}
-                  </ion-col>
-                  <ion-col>
-                    net: {{player.net}}
-                  </ion-col>
-                  <ion-col>
-                    stableford: {{player.stableford}}
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col *ngFor="let hole of player.holes | slice:0:9">
-                    <p>{{hole.holenum}}</p>
-                    <p *ngIf="hole.marked > 0">
-                      <ion-text color={{getColor(hole.marked)}}>
-                        <strong>
-                          {{hole.marked}}
-                        </strong>
-                      </ion-text>
-                    </p>
-                  </ion-col>
-                  <ion-col>
-                    <p>OUT</p>
-                    <p>{{player.out}}</p>
-                  </ion-col>
-                  <ion-col *ngFor="let hole of player.holes | slice:9:18">
-                    <p>{{hole.holenum}}</p>
-                    <p *ngIf="hole.marked > 0">
-                      <strong>
-                        {{hole.marked}}
-                      </strong>
-                    </p>
-                  </ion-col>
-                  <ion-col>
-                    <p>IN</p>
-                    <p *ngIf="player.in > 0">{{player.in}}</p>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-label>
-
-          </ion-item>
-
-        </ion-list>
+  <div *ngIf="(segment == 'Totals')">
+    <ion-card>
+         <ion-card-header>
+            <ion-item detail="false" lines="none" class="leaderboard">
+              <ion-avatar slot="start">
+                <ion-icon name="clipboard-outline"></ion-icon>
+              </ion-avatar>
+              <ion-label>
+                <p>Event:</p>
+                <h2>{{leaderboard.event.name}}</h2>
+                <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
+                <p>Course:</p>
+                <h2>{{leaderboard.course.name}}</h2>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <p>Hole</p>
+                      <p>Par</p>
+                    </ion-col>
+                    <ion-col *ngFor="let hole of leaderboard.course.holespar">
+                      <p>{{hole.holenum}}</p>
+                      <p>{{hole.par}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row *ngFor="let line of ldb_tot">
+            <ion-col>{{line.position}}</ion-col>
+            <ion-col>{{line.player}}</ion-col>
+            <ion-col>{{line.clubName}}</ion-col>
+            <ion-col>{{line.day1Stroke}}</ion-col>
+            <ion-col>{{line.day2Stroke}}</ion-col>
+            <ion-col>{{line.day3Stroke}}</ion-col>
+            <ion-col>{{line.day4Stroke}}</ion-col>
+            <ion-col>{{line.stroke}}</ion-col>
+            <ion-col>{{line.thru}}</ion-col>
+            <ion-col>{{line.total}}</ion-col>
+          </ion-row>
+        </ion-grid>
       </ion-card-content>
     </ion-card>
-      
   </div>
 
-  <div *ngIf="(mobview)"> 
-    <ion-card class="leaderboard-card">
-      <ion-card-header>
-        <ion-item detail="false" lines="none" class="leaderboard">
-          <ion-avatar slot="start">
-            <ion-icon name="clipboard-outline"></ion-icon>
-          </ion-avatar>
-          <ion-label>
-            <p>Event:</p>
-            <h2>{{leaderboard.event.name}}</h2>
-            <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
-            <p>Course:</p>
-            <h2>{{leaderboard.course.name}}</h2>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <p>Hole</p>
-                  <p>Par</p>
-                </ion-col>
-                <ion-col *ngFor="let hole of leaderboard.course.holespar | slice:0:9">
-                  <p>{{hole.holenum}}</p>
-                  <p>{{hole.par}}</p>
-                </ion-col>
-              </ion-row>
-              <ion-row>
-                <ion-col>
-                  <p>Hole</p>
-                  <p>Par</p>
-                </ion-col>
-                <ion-col *ngFor="let hole of leaderboard.course.holespar | slice:9:18">
-                  <p>{{hole.holenum}}</p>
-                  <p>{{hole.par}}</p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-label>
-        </ion-item>
-      </ion-card-header>
+  <div *ngFor="let round of [1,2,3,4] | slice:0:numberOfRounds">
 
-      <ion-card-content>
-        <ion-list>
-          <ion-item detail="false" *ngFor="let player of leaderboard.players">
-            <ion-avatar>{{player.pos_display}}</ion-avatar>
-            <ion-label>
-              {{player.name}}
-              <ion-grid>
-                <ion-row>
-                  <ion-col>
-                    hcp: {{player.hcp}}
-                  </ion-col>
-                  <ion-col>
-                    stroke: {{player.stroke}}
-                  </ion-col>
-                  <ion-col>
-                    thru: {{player.thru}}
-                  </ion-col>
-                  <ion-col>
-                    total: {{player.total}}
-                  </ion-col>
-                  <ion-col>
-                    net: {{player.net}}
-                  </ion-col>
-                  <ion-col>
-                    stableford: {{player.stableford}}
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col *ngFor="let hole of player.holes | slice:0:9">
-                    <p>{{hole.holenum}}</p>
-                    <p *ngIf="hole.marked > 0">
-                      <ion-text color={{getColor(hole.marked)}}>
-                        <strong>
-                          {{hole.marked}}
-                        </strong>
-                      </ion-text>
-                    </p>
-                  </ion-col>
-                  <ion-col>
-                    <p>OUT</p>
-                    <p>{{player.out}}</p>
-                  </ion-col>
-                </ion-row>
-                <ion-row>
-                  <ion-col *ngFor="let hole of player.holes | slice:9:18">
-                    <p>{{hole.holenum}}</p>
-                    <p *ngIf="hole.marked > 0">
-                      <strong>
-                        {{hole.marked}}
-                      </strong>
-                    </p>
-                  </ion-col>
-                  <ion-col>
-                    <p>IN</p>
-                    <p *ngIf="player.in > 0">{{player.in}}</p>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-label>
+    <div *ngIf="(segment === ('Round '+round))">
 
-          </ion-item>
+      round {{round}}
 
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
+      <div *ngIf="(!mobview)">
+        <ion-card class="leaderboard-card">
+          <ion-card-header>
+            <ion-item detail="false" lines="none" class="leaderboard">
+              <ion-avatar slot="start">
+                <ion-icon name="clipboard-outline"></ion-icon>
+              </ion-avatar>
+              <ion-label>
+                <p>Event:</p>
+                <h2>{{leaderboard.event.name}}</h2>
+                <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
+                <p>Course:</p>
+                <h2>{{leaderboard.course.name}}</h2>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <p>Hole</p>
+                      <p>Par</p>
+                    </ion-col>
+                    <ion-col *ngFor="let hole of leaderboard.course.holespar">
+                      <p>{{hole.holenum}}</p>
+                      <p>{{hole.par}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item detail="false" *ngFor="let player of leaderboard.players">
+                <ion-avatar>{{player.pos_display}}</ion-avatar>
+                <ion-label>
+                  {{player.name}}
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <p>hcp</p>
+                        <p><strong>{{player.hcp}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>stroke</p>
+                        <p><strong>{{player.stroke}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>thru</p>
+                        <p><strong>{{player.thru}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>total</p>
+                        <p><strong>{{player.total}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>net</p>
+                        <p><strong>{{player.net}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>stableford</p>
+                        <p><strong>{{player.stableford}}</strong></p>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col *ngFor="let hole of player.holes | slice:0:9">
+                        <p>{{hole.holenum}}</p>
+                        <p *ngIf="hole.marked > 0">
+                          <ion-text color={{getColor(hole.marked)}}>
+                            <strong>
+                              {{hole.marked}}
+                            </strong>
+                          </ion-text>
+                        </p>
+                      </ion-col>
+                      <ion-col>
+                        <p>OUT</p>
+                        <p>{{player.out}}</p>
+                      </ion-col>
+                      <ion-col *ngFor="let hole of player.holes | slice:9:18">
+                        <p>{{hole.holenum}}</p>
+                        <p *ngIf="hole.marked > 0">
+                          <strong>
+                            {{hole.marked}}
+                          </strong>
+                        </p>
+                      </ion-col>
+                      <ion-col>
+                        <p>IN</p>
+                        <p *ngIf="player.in > 0">{{player.in}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+
+              </ion-item>
+
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+
+      </div>
+
+      <div *ngIf="(mobview)">
+        <ion-card class="leaderboard-card">
+          <ion-card-header>
+            <ion-item detail="false" lines="none" class="leaderboard">
+              <ion-avatar slot="start">
+                <ion-icon name="clipboard-outline"></ion-icon>
+              </ion-avatar>
+              <ion-label>
+                <p>Event:</p>
+                <h2>{{leaderboard.event.name}}</h2>
+                <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
+                <p>Course:</p>
+                <h2>{{leaderboard.course.name}}</h2>
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <p>Hole</p>
+                      <p>Par</p>
+                    </ion-col>
+                    <ion-col *ngFor="let hole of leaderboard.course.holespar | slice:0:9">
+                      <p>{{hole.holenum}}</p>
+                      <p>{{hole.par}}</p>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                      <p>Hole</p>
+                      <p>Par</p>
+                    </ion-col>
+                    <ion-col *ngFor="let hole of leaderboard.course.holespar | slice:9:18">
+                      <p>{{hole.holenum}}</p>
+                      <p>{{hole.par}}</p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-label>
+            </ion-item>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-list>
+              <ion-item detail="false" *ngFor="let player of leaderboard.players">
+                <ion-avatar>{{player.pos_display}}</ion-avatar>
+                <ion-label>
+                  {{player.name}}
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <p>hcp</p>
+                        <p><strong>{{player.hcp}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>stroke</p>
+                        <p><strong>{{player.stroke}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>thru</p>
+                        <p><strong>{{player.thru}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>total</p>
+                        <p><strong>{{player.total}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>net</p>
+                        <p><strong>{{player.net}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>stableford</p>
+                        <p><strong>{{player.stableford}}</strong></p>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col *ngFor="let hole of player.holes | slice:0:9">
+                        <p>{{hole.holenum}}</p>
+                        <p *ngIf="hole.marked > 0">
+                          <ion-text color={{getColor(hole.marked)}}>
+                            <strong>
+                              {{hole.marked}}
+                            </strong>
+                          </ion-text>
+                        </p>
+                      </ion-col>
+                      <ion-col>
+                        <p>OUT</p>
+                        <p>{{player.out}}</p>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col *ngFor="let hole of player.holes | slice:9:18">
+                        <p>{{hole.holenum}}</p>
+                        <p *ngIf="hole.marked > 0">
+                          <strong>
+                            {{hole.marked}}
+                          </strong>
+                        </p>
+                      </ion-col>
+                      <ion-col>
+                        <p>IN</p>
+                        <p *ngIf="player.in > 0">{{player.in}}</p>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+
+              </ion-item>
+
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </div>
+
+    </div>
+
   </div>
 </ion-content>

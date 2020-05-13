@@ -15,7 +15,7 @@
   </ion-header>
 
   <ion-list>
-    <ion-item detail="true" *ngFor="let event of events" routerLink="/app/tabs/leaderboard-list/leaderboard-mob/{{event.id}}">
+    <ion-item detail="true" *ngFor="let event of events" routerLink="/app/tabs/leaderboard-list/leaderboard-mob/{{event.id}}/{{event.numberOfRounds}}">
       <ion-icon name="trophy-outline" slot="start"></ion-icon>
       <ion-label>
         <h2>{{event.name}}</h2>

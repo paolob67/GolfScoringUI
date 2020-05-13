@@ -2,7 +2,8 @@ import {
   Component
 } from '@angular/core';
 import {
-  Router
+  Router,
+  ActivatedRoute
 } from '@angular/router';
 import {
   UserData
@@ -451,16 +452,76 @@ export class LeaderboardMobPage {
       }
   }
 ];
-  
+
+  ldb_tot = [
+    {
+      player: "Lorenzo Golf",
+      startTime: "2020-09-15T09:00:00.000Z",
+      startHole: "1",
+      playingHandicap: "0",
+      clubName: "Marco Simone",
+      day1Stroke: "77",
+      day2Stroke: "77",
+      day3Stroke: "",
+      day4Stroke: "",
+      stroke: "154",
+      thru: "F",
+      total: "+10",
+      today: "+5",
+      positionNum: 1,
+      position: "T1"
+    },
+    {
+      player: "Paolo Golf",
+      startTime: "2020-09-15T09:00:00.000Z",
+      startHole: "1",
+      playingHandicap: "6",
+      clubName: "San Saba Golf",
+      day1Stroke: "77",
+      day2Stroke: "77",
+      day3Stroke: "",
+      day4Stroke: "",
+      stroke: "154",
+      thru: "F",
+      total: "+10",
+      today: "+5",
+      positionNum: 2,
+      position: "T1"
+    },
+    {
+      player: "Tommaso Golf",
+      startTime: "2020-09-15T09:00:00.000Z",
+      startHole: "1",
+      playingHandicap: "3",
+      clubName: "Olgiata",
+      day1Stroke: "75",
+      day2Stroke: "75",
+      day3Stroke: "",
+      day4Stroke: "",
+      stroke: "150",
+      thru: "17",
+      total: "+14",
+      today: "+7",
+      positionNum: 3,
+      position: "3"
+    }
+  ];
+
   mobview = true;
+  eventId = '';
+  numberOfRounds = 1;
+  
+  segment = 'Totals';
 
   constructor(
     public router: Router,
+    public route: ActivatedRoute,
     public userData: UserData,
     public restClient: RestClientService
   ) {
     console.log('leaderboard', this.leaderboard);
-
+    this.eventId = this.route.snapshot.paramMap.get('eventId');
+    this.numberOfRounds = parseInt(this.route.snapshot.paramMap.get('numberofrounds'));
   }
 
   ionViewDidEnter() {
