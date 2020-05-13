@@ -173,18 +173,18 @@
                 <ion-col size="1"></ion-col>
                 <ion-col size="10"></ion-col>
                 <ion-col size="1"></ion-col>
-                <ion-col *ngFor="let hole of scores[round]?.course?.holes  | slice:0:9" size="1">{{ hole?.par }}</ion-col>
-                <ion-col size="3">{{ scores[round]?.course?.out }}</ion-col>
-                <ion-col *ngFor="let hole of scores[round]?.course?.holes  | slice:9:19" size="1">{{ hole?.par }}</ion-col>
+                <ion-col *ngFor="let hole of scores[round-1]?.course?.holes  | slice:0:9" size="1">{{ hole?.par }}</ion-col>
+                <ion-col size="3">{{ scores[round-1]?.course?.out }}</ion-col>
+                <ion-col *ngFor="let hole of scores[round-1]?.course?.holes  | slice:9:19" size="1">{{ hole?.par }}</ion-col>
 
-                <ion-col size="3">{{ scores[round]?.course?.in }}</ion-col>
-                <ion-col size="3">{{ scores[round]?.course?.stroke }}</ion-col>
+                <ion-col size="3">{{ scores[round-1]?.course?.in }}</ion-col>
+                <ion-col size="3">{{ scores[round-1]?.course?.stroke }}</ion-col>
                 <ion-col size="2"></ion-col>
                 <ion-col size="2"></ion-col>
                 <ion-col size="2"></ion-col>
                 <ion-col size="3"></ion-col>
               </ion-row>
-              <ion-row *ngFor="let score of scores[round]?.detailedScores">
+              <ion-row *ngFor="let score of scores[round-1]?.detailedScores">
                 <ion-col size="1">{{ score?.position }}</ion-col>
                 <ion-col size="10">{{ score?.player }}</ion-col>
                 <ion-col size="1">{{ score?.playingHandicap }}</ion-col>
