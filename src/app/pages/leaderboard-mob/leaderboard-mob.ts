@@ -511,7 +511,7 @@ export class LeaderboardMobPage {
   
   eventId = '';
   event: EventsResponse;
-  scores: RoundScoresResponse[];
+  scores: RoundScoresResponse[] = [];
   
   mobview = false;
   numberOfRounds = 1;
@@ -555,7 +555,8 @@ export class LeaderboardMobPage {
     this.restClient.getRoundScoresDetails(this.eventId, round)
       .subscribe(
         (responsehl: RoundScoresResponse) => {
-          this.scores[round] = responsehl;
+          this.scores.push(responsehl);
+          console.log('scores', responsehl, this.scores);
         },
         err => {
           console.log('Error getting Round of Leaderboard', err.error.error);
