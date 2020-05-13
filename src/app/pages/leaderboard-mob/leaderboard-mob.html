@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/app/tabs/leaderboard-list"></ion-back-button>
     </ion-buttons>
     <ion-title>Leaderboard</ion-title>
-    <ion-buttons  *ngIf="(segment != 'Totals')" slot="end">
+    <ion-buttons *ngIf="(segment != 'Totals')" slot="end">
       <ion-label>Mobile</ion-label>
       <ion-toggle [(ngModel)]="mobview"></ion-toggle>
     </ion-buttons>
@@ -45,47 +45,50 @@
 
   <div *ngIf="(segment == 'Totals')">
     <ion-card>
-         <ion-card-header>
-            <ion-item detail="false" lines="none" class="leaderboard">
-              <ion-avatar slot="start">
-                <ion-icon name="clipboard-outline"></ion-icon>
-              </ion-avatar>
-              <ion-label>
-                <p>Event:</p>
-                <h2>{{leaderboard.event.name}}</h2>
-                <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
-                <p>Course:</p>
-                <h2>{{leaderboard.course.name}}</h2>
-                <ion-grid>
-                  <ion-row>
-                    <ion-col>
-                      <p>Hole</p>
-                      <p>Par</p>
-                    </ion-col>
-                    <ion-col *ngFor="let hole of leaderboard.course.holespar">
-                      <p>{{hole.holenum}}</p>
-                      <p>{{hole.par}}</p>
-                    </ion-col>
-                  </ion-row>
-                </ion-grid>
-              </ion-label>
-            </ion-item>
-          </ion-card-header>
+      <ion-card-header>
+        <ion-item detail="false" lines="none" class="leaderboard">
+          <ion-avatar slot="start">
+            <ion-icon name="clipboard-outline"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <p>Event:</p>
+            <h2>{{leaderboard.event.name}}</h2>
+            <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
+            <p>Course:</p>
+            <h2>{{leaderboard.course.name}}</h2>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <p>Hole</p>
+                  <p>Par</p>
+                </ion-col>
+                <ion-col *ngFor="let hole of leaderboard.course.holespar">
+                  <p>{{hole.holenum}}</p>
+                  <p>{{hole.par}}</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-label>
+        </ion-item>
+      </ion-card-header>
       <ion-card-content>
-        <ion-grid>
-          <ion-row *ngFor="let line of ldb_tot">
-            <ion-col>{{line.position}}</ion-col>
-            <ion-col>{{line.player}}</ion-col>
-            <ion-col>{{line.clubName}}</ion-col>
-            <ion-col>{{line.day1Stroke}}</ion-col>
-            <ion-col>{{line.day2Stroke}}</ion-col>
-            <ion-col>{{line.day3Stroke}}</ion-col>
-            <ion-col>{{line.day4Stroke}}</ion-col>
-            <ion-col>{{line.stroke}}</ion-col>
-            <ion-col>{{line.thru}}</ion-col>
-            <ion-col>{{line.total}}</ion-col>
-          </ion-row>
-        </ion-grid>
+        <ion-list>
+          <ion-item detail="true" *ngFor="let line of ldb_tot" routerLink="/app/tabs/leaderboard-list/leaderboard-mob/player-detail/{{leaderboard.event.id}}/{{line.playerId}}">
+            <ion-grid>
+              <ion-row>
+                <ion-col>{{line.position}}</ion-col>
+                <ion-col size="3"><p>{{line.player}}</p><p>{{line.clubName}}</p></ion-col>
+                <ion-col><p>Round 1</p><p><strong>{{line.day1Stroke}}</strong></p></ion-col>
+                <ion-col><p>Round 2</p><p><strong>{{line.day2Stroke}}</strong></p></ion-col>
+                <ion-col><p>Round 3</p><p><strong>{{line.day3Stroke}}</strong></p></ion-col>
+                <ion-col><p>Round 4</p><p><strong>{{line.day4Stroke}}</strong></p></ion-col>
+                <ion-col><p>Stroke</p><p><strong>{{line.stroke}}</strong></p></ion-col>
+                <ion-col><p>Thru</p><p><strong>{{line.thru}}</strong></p></ion-col>
+                <ion-col><p>Total</p><p><strong>{{line.total}}</strong></p></ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
       </ion-card-content>
     </ion-card>
   </div>
