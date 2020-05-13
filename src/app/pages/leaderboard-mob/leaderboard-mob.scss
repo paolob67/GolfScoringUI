@@ -43,3 +43,81 @@ ion-col:not(:last-of-type) .leaderboard {
 
   padding: 0;
 }
+
+
+.leaderboard_nomobile ion-col {
+    --ion-grid-columns: 56;
+    font-size: 12px;
+    flex: 0 0 4;
+    padding:0;
+    background: #cfe0f3;
+    background-clip: padding-box;
+    border: 1px solid transparent;
+    color: #454b50;
+}
+
+
+.par {
+    border-radius: 100%;
+    padding: 4px;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    background-color: #78898C;
+    color: white;
+}
+
+.birdie {
+    border-radius: 100%;
+    padding: 4px;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    background-color: #FF3C00;
+    color: #FFF;
+    font-weight: bold;
+}
+
+.double {
+    border-radius: 100%;
+    padding: 4px;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    background-color: #000000;
+    color: white;
+    font-weight: bold;
+}
+
+.eagle {
+    border-radius: 100%;
+    padding: 4px;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    background-color: hsl(58, 100%, 50%);
+    color: #000000;
+    font-weight: bold;
+}
+
+.bogey {
+    border-radius: 100%;
+    padding: 4px;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    display: inline-block;
+    text-align: center;
+    background-color: #0F3077;
+    color: #FFF;
+    font-weight: bold;
+}
+

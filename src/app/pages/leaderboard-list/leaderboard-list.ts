@@ -49,6 +49,7 @@ export class LeaderboardListPage {
               return a.date.getTime() - b.date.getTime();
             }
           );
+          console.log('Events', this.events);
         },
         err => {
           console.error('Error getting events', err.error.error);

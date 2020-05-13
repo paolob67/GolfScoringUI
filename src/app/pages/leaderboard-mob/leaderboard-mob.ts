@@ -17,7 +17,9 @@ import {
   EventsResponse,
   ScoresResponse,
   CourseHolesResponse,
-  ScoreHoleScoresResponse
+  ScoreHoleScoresResponse,
+  CoursesDetailResponse,
+  RoundScoresResponse
 } from '../../interfaces/rest-datamodel';
 
 
@@ -506,12 +508,24 @@ export class LeaderboardMobPage {
       position: "3"
     }
   ];
-
-  mobview = true;
-  eventId = '';
-  numberOfRounds = 1;
   
+  eventId = '';
+  event: EventsResponse;
+  scores: RoundScoresResponse[];
+  
+  mobview = true;
+  numberOfRounds = 1;
+
   segment = 'Totals';
+  
+  colors = [
+      'primary',
+      'secondary',
+      'tertiary',
+      'success',
+      'warning',
+      'danger'
+    ];
 
   constructor(
     public router: Router,
@@ -521,11 +535,42 @@ export class LeaderboardMobPage {
   ) {
     console.log('leaderboard', this.leaderboard);
     this.eventId = this.route.snapshot.paramMap.get('eventId');
-    this.numberOfRounds = parseInt(this.route.snapshot.paramMap.get('numberofrounds'));
+    //this.numberOfRounds = parseInt(this.route.snapshot.paramMap.get('numberofrounds'));
   }
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter LeaderboardMobPage', )
+
+    this.restClient.getEvent(this.eventId)
+      .subscribe(
+        (response: EventsResponse) => {
+          this.event = response;
+          this.eventId = response.id;
+          this.numberOfRounds = response.numberOfRounds;
+          let rnd;
+          for (rnd = 1; rnd <= this.numberOfRounds; rnd++) {
+            this.loadLeaderboard(rnd);
+          };
+        },
+        err => {
+          console.error('Error getting events', err.error.error);
+        },
+        () => {}
+      );
+  }
+
+  loadLeaderboard(round) {
+    // get Detailed Scores
+    this.restClient.getRoundScoresDetails(this.eventId, round)
+      .subscribe(
+        (responsehl: RoundScoresResponse) => {
+          this.scores[round] = responsehl;
+        },
+        err => {
+          console.log('Error getting Round of Leaderboard', err.error.error);
+        },
+      );
+
   }
 
   getColor(score: number) {

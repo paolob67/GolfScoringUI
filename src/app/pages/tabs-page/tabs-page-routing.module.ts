@@ -23,7 +23,7 @@ const routes: Routes = [
             loadChildren: () => import('../leaderboard-list/leaderboard-list.module').then(m => m.LeaderboardListModule)
           },
           {
-            path: 'leaderboard-mob/:eventId/:numberofrounds',
+            path: 'leaderboard-mob/:eventId',
             loadChildren: () => import('../leaderboard-mob/leaderboard-mob.module').then(m => m.LeaderboardMobModule)
           }
         ]
