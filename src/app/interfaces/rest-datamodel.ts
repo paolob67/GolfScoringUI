@@ -214,3 +214,21 @@ export interface RoundScoresResponse {
   detailedScores: DetailedScoreResponse[];
 }
 
+//Detailed Leaderboard
+export interface DetailedLeaderboard {
+  position: string;
+  positionNum: number;
+  player: string;
+  startTime?: string;
+  startHole?: string;
+  playingHandicap: string;
+  clubName: string;
+  day1Stroke?: string;
+  day2Stroke?: string;
+  day3Stroke?: string;
+  day4Stroke?: string;
+  today?: string;
+  total?: string;
+  thru?: string;
+  stroke?: string;
+}
