@@ -329,18 +329,18 @@
               </ion-avatar>
               <ion-label>
                 <p>Event:</p>
-                <h2>{{leaderboard.event.name}}</h2>
-                <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
+                <h2>{{event?.name}} - {{event?.type}}</h2>
+                <h3>Round {{round}} {{event?.date}}</h3>
                 <p>Course:</p>
-                <h2>{{leaderboard.course.name}}</h2>
+                <h2>{{scores[round-1]?.course?.name}}</h2>
                 <ion-grid>
                   <ion-row>
                     <ion-col>
                       <p>Hole</p>
                       <p>Par</p>
                     </ion-col>
-                    <ion-col *ngFor="let hole of leaderboard.course.holespar | slice:0:9">
-                      <p>{{hole.holenum}}</p>
+                    <ion-col *ngFor="let hole of scores[round-1]?.course.holespar | slice:0:9; let holenum = index">
+                      <p>{{holenum+1}}</p>
                       <p>{{hole.par}}</p>
                     </ion-col>
                   </ion-row>
@@ -349,8 +349,8 @@
                       <p>Hole</p>
                       <p>Par</p>
                     </ion-col>
-                    <ion-col *ngFor="let hole of leaderboard.course.holespar | slice:9:18">
-                      <p>{{hole.holenum}}</p>
+                    <ion-col *ngFor="let hole of scores[round-1]?.course.holespar | slice:9:18; let holenum = index">
+                      <p>{{holenum+1}}</p>
                       <p>{{hole.par}}</p>
                     </ion-col>
                   </ion-row>
@@ -361,35 +361,37 @@
 
           <ion-card-content>
             <ion-list>
-              <ion-item detail="false" *ngFor="let player of leaderboard.players">
-                <ion-avatar>{{player.pos_display}}</ion-avatar>
+              <!--ion-item detail="false" *ngFor="let player of leaderboard.players" -->
+              <ion-item detail="false" *ngFor="let score of scores[round-1]?.detailedScores">
+
+                <ion-avatar>{{score.position}}</ion-avatar>
                 <ion-label>
-                  {{player.name}}
+                  {{score.player}}
                   <ion-grid>
                     <ion-row>
                       <ion-col>
                         <p>hcp</p>
-                        <p><strong>{{player.hcp}}</strong></p>
+                        <p><strong>{{score.playingHandicap}}</strong></p>
                       </ion-col>
                       <ion-col>
                         <p>stroke</p>
-                        <p><strong>{{player.stroke}}</strong></p>
+                        <p><strong>{{score.stroke}}</strong></p>
                       </ion-col>
                       <ion-col>
                         <p>thru</p>
-                        <p><strong>{{player.thru}}</strong></p>
+                        <p><strong>{{score.thru}}</strong></p>
                       </ion-col>
                       <ion-col>
                         <p>total</p>
-                        <p><strong>{{player.total}}</strong></p>
+                        <p><strong>{{score.total}}</strong></p>
                       </ion-col>
                       <ion-col>
                         <p>net</p>
-                        <p><strong>{{player.net}}</strong></p>
+                        <p><strong>{{score.net}}</strong></p>
                       </ion-col>
                       <ion-col>
                         <p>stableford</p>
-                        <p><strong>{{player.stableford}}</strong></p>
+                        <p><strong>{{score.stableford}}</strong></p>
                       </ion-col>
                     </ion-row>
                     <ion-row>
@@ -409,24 +411,92 @@
                       </ion-col>
                     </ion-row>
                     <ion-row>
-                      <ion-col *ngFor="let hole of player.holes | slice:9:18">
-                        <p>{{hole.holenum}}</p>
-                        <p *ngIf="hole.marked > 0">
-                          <strong>
-                            {{hole.marked}}
-                          </strong>
-                        </p>
+                      <ion-col class="{{score?.result1}}">
+                        <p>1</p>
+                        <p><strong>{{score?.hole1}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result2}}">
+                        <p>2</p>
+                        <p><strong>{{score?.hole2}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result3}}">
+                        <p>3</p>
+                        <p><strong>{{score?.hole3}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result4}}">
+                        <p>4</p>
+                        <p><strong>{{score?.hole4}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result5}}">
+                        <p>5</p>
+                        <p><strong>{{score?.hole5}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result6}}">
+                        <p>6</p>
+                        <p><strong>{{score?.hole6}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result7}}">
+                        <p>7</p>
+                        <p><strong>{{score?.hole7}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result8}}">
+                        <p>8</p>
+                        <p><strong>{{score?.hole8}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result9}}">
+                        <p>9</p>
+                        <p><strong>{{score?.hole9}}</strong></p>
+                      </ion-col>
+                      <ion-col>
+                        <p>OUT</p>
+                        <p><strong>{{score?.outHoles}}</strong></p>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col class="{{score?.result10}}">
+                        <p>10</p>
+                        <p><strong>{{score?.hole10}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result11}}">
+                        <p>11</p>
+                        <p><strong>{{score?.hole11}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result12}}">
+                        <p>12</p>
+                        <p><strong>{{score?.hole12}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result13}}">
+                        <p>13</p>
+                        <p><strong>{{score?.hole13}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result14}}">
+                        <p>14</p>
+                        <p><strong>{{score?.hole14}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result15}}">
+                        <p>15</p>
+                        <p><strong>{{score?.hole15}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result16}}">
+                        <p>16</p>
+                        <p><strong>{{score?.hole16}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result17}}">
+                        <p>17</p>
+                        <p><strong>{{score?.hole17}}</strong></p>
+                      </ion-col>
+                      <ion-col class="{{score?.result18}}">
+                        <p>18</p>
+                        <p><strong>{{score?.hole18}}</strong></p>
                       </ion-col>
                       <ion-col>
                         <p>IN</p>
-                        <p *ngIf="player.in > 0">{{player.in}}</p>
+                        <p><strong>{{score?.inHoles}}</strong></p>
                       </ion-col>
                     </ion-row>
                   </ion-grid>
                 </ion-label>
-
               </ion-item>
-
             </ion-list>
           </ion-card-content>
         </ion-card>
