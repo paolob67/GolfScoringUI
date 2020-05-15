@@ -455,6 +455,7 @@ export class LeaderboardMobPage {
       }
   }
 ];
+  
   ldb_tot: any[] = [];
 /*
   ldb_tot = [
@@ -517,6 +518,7 @@ export class LeaderboardMobPage {
   eventId = '';
   event: EventsResponse;
   scores: RoundScoresResponse[] = [];
+  showRound = '0'; //passed on the route if 0 go to totals tab
   
   mobview = false;
   numberOfRounds = 1;
@@ -531,7 +533,10 @@ export class LeaderboardMobPage {
   ) {
     console.log('leaderboard', this.leaderboard);
     this.eventId = this.route.snapshot.paramMap.get('eventId');
-    //this.numberOfRounds = parseInt(this.route.snapshot.paramMap.get('numberofrounds'));
+    this.showRound = this.route.snapshot.paramMap.get('showRound');
+    if (this.showRound != '0') {
+      this.segment = 'Round ' + this.showRound; 
+    };
   }
 
   ionViewDidEnter() {
