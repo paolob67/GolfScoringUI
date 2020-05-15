@@ -49,10 +49,12 @@ export class LeaderboardPage {
       (responseev: EventsResponse[]) => {
         this.event = responseev[0];
         // get Detailed Scores
-        this.restClient.getRoundScoresDetails(this.event.id, 1)
+        console.log("Event Id: " + this.event.id)
+        this.restClient.getRoundScoresDetails(this.event.id, round)
         .subscribe(
           (responsehl: RoundScoresResponse)=> {
             this.scores = responsehl;
+            console.log("Scores: " + this.scores)
           },
           err => {
             console.log('Error getting Round of Leaderboard', err.error.error);

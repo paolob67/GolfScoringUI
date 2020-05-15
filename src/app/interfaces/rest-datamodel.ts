@@ -215,10 +215,11 @@ export interface RoundScoresResponse {
 }
 
 //Detailed Leaderboard
-export interface DetailedLeaderboard {
+export interface DetailedLeaderboardResponse {
   position: string;
   positionNum: number;
   player: string;
+  userId: string;
   startTime?: string;
   startHole?: string;
   playingHandicap: string;

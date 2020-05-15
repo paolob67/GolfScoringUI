@@ -25,7 +25,8 @@ import {
   ScoresResponse,
   CourseHolesResponse,
   ScoreHoleScoresResponse,
-  RoundScoresResponse 
+  RoundScoresResponse,
+  DetailedLeaderboardResponse
 } from '../interfaces/rest-datamodel';
 
 @Injectable({
@@ -206,6 +207,10 @@ export class RestClientService {
 
   getRoundScoresDetails(eventId: string, round: number) {
     return this._http.get<RoundScoresResponse>(environment.apiEndPoint + '/events/' + eventId + '/roundscores/' + round);
+  }
+
+  getLeaderboardDetails(eventId: string) {
+    return this._http.get<DetailedLeaderboardResponse[]>(environment.apiEndPoint + '/events/' + eventId + '/detailedleaderboard');
   }
 
 }

@@ -82,32 +82,36 @@
                   <p>{{line.clubName}}</p>
                 </ion-col>
                 <ion-col>
-                  <p>Round 1</p>
-                  <p><strong>{{line.day1Stroke}}</strong></p>
-                </ion-col>
-                <ion-col>
-                  <p>Round 2</p>
-                  <p><strong>{{line.day2Stroke}}</strong></p>
-                </ion-col>
-                <ion-col>
-                  <p>Round 3</p>
-                  <p><strong>{{line.day3Stroke}}</strong></p>
-                </ion-col>
-                <ion-col>
-                  <p>Round 4</p>
-                  <p><strong>{{line.day4Stroke}}</strong></p>
-                </ion-col>
-                <ion-col>
-                  <p>Stroke</p>
-                  <p><strong>{{line.stroke}}</strong></p>
+                  <p>Total</p>
+                  <p><strong>{{line.total}}</strong></p>
                 </ion-col>
                 <ion-col>
                   <p>Thru</p>
                   <p><strong>{{line.thru}}</strong></p>
                 </ion-col>
                 <ion-col>
-                  <p>Total</p>
-                  <p><strong>{{line.total}}</strong></p>
+                  <p>Today</p>
+                  <p><strong>{{line.today}}</strong></p>
+                </ion-col>
+                <ion-col>
+                  <p>Stroke</p>
+                  <p><strong>{{line.stroke}}</strong></p>
+                </ion-col>
+                <ion-col>
+                  <p>R1</p>
+                  <p><strong>{{line.day1Stroke}}</strong></p>
+                </ion-col>
+                <ion-col *ngIf="numberOfRounds > 1">
+                  <p>R2</p>
+                  <p><strong>{{line.day2Stroke}}</strong></p>
+                </ion-col>
+                <ion-col *ngIf="numberOfRounds > 2">
+                  <p>R3</p>
+                  <p><strong>{{line.day3Stroke}}</strong></p>
+                </ion-col>
+                <ion-col *ngIf="numberOfRounds > 3">
+                  <p>R4</p>
+                  <p><strong>{{line.day4Stroke}}</strong></p>
                 </ion-col>
               </ion-row>
             </ion-grid>

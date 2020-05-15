@@ -19,7 +19,8 @@ import {
   CourseHolesResponse,
   ScoreHoleScoresResponse,
   CoursesDetailResponse,
-  RoundScoresResponse
+  RoundScoresResponse,
+  DetailedLeaderboardResponse
 } from '../../interfaces/rest-datamodel';
 
 
@@ -454,7 +455,8 @@ export class LeaderboardMobPage {
       }
   }
 ];
-
+  ldb_tot: any[] = [];
+/*
   ldb_tot = [
     {
       userId: "add_userid",
@@ -511,7 +513,7 @@ export class LeaderboardMobPage {
       position: "3"
     }
   ];
-  
+*/  
   eventId = '';
   event: EventsResponse;
   scores: RoundScoresResponse[] = [];
@@ -534,17 +536,29 @@ export class LeaderboardMobPage {
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter LeaderboardMobPage', )
-
-    this.restClient.getEvent(this.eventId)
+    this.restClient.getLastEvent()
+//    this.restClient.getEvent(this.eventId)
       .subscribe(
-        (response: EventsResponse) => {
-          this.event = response;
-          this.eventId = response.id;
-          this.numberOfRounds = response.numberOfRounds;
-          let rnd;
-          for (rnd = 1; rnd <= this.numberOfRounds; rnd++) {
-            this.loadLeaderboard(rnd);
-          };
+        (response: EventsResponse[]) => {
+          this.event = response[0];
+          this.eventId = response[0].id;
+          console.log("Event Id: " + this.eventId)
+          this.numberOfRounds = response[0].numberOfRounds;
+          this.restClient.getLeaderboardDetails(this.eventId)
+          .subscribe(
+            (responsesco: DetailedLeaderboardResponse[]) => {
+              this.ldb_tot = responsesco;
+              console.log("Scores L: " + JSON.stringify(this.ldb_tot))
+              let rnd;
+              for (rnd = 1; rnd <= this.numberOfRounds; rnd++) {
+                this.loadLeaderboard(rnd);
+              };
+            },
+            err => {
+              console.error('Error getting leaderboard', err.error.error);
+            },
+            () => {}
+          );
         },
         err => {
           console.error('Error getting events', err.error.error);
