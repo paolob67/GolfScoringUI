@@ -58,10 +58,7 @@ export class LoginPage {
               .subscribe(
                 response => {
                   this.userData.login(response.id, this.jwtToken);
-                  //this.router.navigateByUrl('/app/tabs/leaderboard');
-                  //this.router.navigateByUrl('/app/tabs/scores');
-                  this.router.navigateByUrl('/account');
-                  //this.location.back();
+                  this.router.navigateByUrl('/app/tabs/leaderboard-list');
                 },
                 err => {
                   console.error('Me error', err.error.error);
