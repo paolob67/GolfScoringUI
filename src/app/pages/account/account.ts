@@ -193,6 +193,7 @@ export class AccountPage implements AfterViewInit {
 
   getProfile() {
     this.userData.getJwtToken().then((token) => {
+      this.restClient.presentLoader();
       this.restClient.me(token)
         .subscribe(
           response => {
@@ -207,7 +208,11 @@ export class AccountPage implements AfterViewInit {
               this.router.navigateByUrl('/login');
             };
           },
-          () => console.log('Me success')
+          () => {
+            console.log('Me success');
+            this.restClient.dismissLoader();
+          }
+
         );
     });
   }

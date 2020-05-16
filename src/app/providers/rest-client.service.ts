@@ -13,6 +13,9 @@ import {
   environment
 } from '../../environments/environment';
 import {
+  LoadingController
+} from '@ionic/angular';
+import {
   LoginRequest,
   SignupRequest
 } from '../interfaces/rest-datamodel';
@@ -34,10 +37,33 @@ import {
 })
 export class RestClientService {
 
+  isLoading = false;
+
   constructor(
-    private _http: HttpClient
+    private _http: HttpClient,
+    private loadingController: LoadingController
   ) {
     if (!environment.production) console.log("Rest api endpoint is", environment.apiEndPoint);
+  }
+
+
+  // provide methods for showing and hiding loader
+  async presentLoader() {
+    if (this.isLoading) return;
+    this.isLoading = true;
+    return await this.loadingController.create({}).then(a => {
+      a.present().then(() => {
+        if (!this.isLoading) {
+          a.dismiss();
+        }
+      });
+    });
+  }
+
+  async dismissLoader() {
+    if (!this.isLoading) return;
+    this.isLoading = false;
+    return await this.loadingController.dismiss().catch(() => {});
   }
 
   checkServerConnection() {
@@ -206,11 +232,11 @@ export class RestClientService {
   }
 
   getRoundScoresDetails(eventId: string, round: number) {
-    return this._http.get<RoundScoresResponse>(environment.apiEndPoint + '/events/' + eventId + '/roundscores/' + round);
+    return this._http.get < RoundScoresResponse > (environment.apiEndPoint + '/events/' + eventId + '/roundscores/' + round);
   }
 
   getLeaderboardDetails(eventId: string) {
-    return this._http.get<DetailedLeaderboardResponse[]>(environment.apiEndPoint + '/events/' + eventId + '/detailedleaderboard');
+    return this._http.get < DetailedLeaderboardResponse[] > (environment.apiEndPoint + '/events/' + eventId + '/detailedleaderboard');
   }
 
 }

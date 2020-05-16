@@ -108,6 +108,7 @@ export class EventPage implements OnInit {
   //initData(jwtToken: string) {
   initData() {
     this.players = [];
+    this.restClient.presentLoader();
     this.restClient.getEvent(this.eventId)
       .subscribe(
         (responseev: EventsResponse) => {
@@ -149,7 +150,10 @@ export class EventPage implements OnInit {
                       err => {
                         console.error('Error getting user for score', score.userId, score.id);
                       },
-                      () => {}
+                      () => {
+                        // all good dismiss loader
+                        this.restClient.dismissLoader();
+                      }
                     );
 
                 });
@@ -158,12 +162,14 @@ export class EventPage implements OnInit {
                 // this.groupPlayers();
               },
               err => {
+                this.restClient.dismissLoader();
                 console.error('Error getting scores for event');
               },
               () => {}
             );
         },
         err => {
+          this.restClient.dismissLoader();
           console.log('Error getting events', err.error.error);
         },
         () => {}
