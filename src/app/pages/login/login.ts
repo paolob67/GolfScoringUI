@@ -48,7 +48,7 @@ export class LoginPage {
     this.submitted = true;
 
     if (form.valid) {
-
+      this.restClient.presentLoader();
       this.restClient.login(this.login.username, this.login.password)
         .subscribe(
           response => {
@@ -64,10 +64,14 @@ export class LoginPage {
                   console.error('Me error', err.error.error);
                   // TODO inform ui by removing hide on ivalid cred... or setting another string
                 },
-                () => console.log('Me success')
+                () => {
+                  this.restClient.dismissLoader();
+                  console.log('Me success');
+                }
               );
           },
           err => {
+            this.restClient.dismissLoader();
             console.error('Login error', err.error.error);
             this.invalidCredentials = true;
           }, // or error...?

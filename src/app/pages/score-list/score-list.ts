@@ -67,6 +67,7 @@ export class ScoreListPage {
   }
 
   loadScores(userId) {
+    this.restClient.presentLoader();
     // if not logged in go to login page
     if (!userId) {
       console.log('must log in');
@@ -134,16 +135,20 @@ export class ScoreListPage {
                             err => {
                               console.log('Error getting hole scores', err.error.error);
                             },
-                            () => {}
+                            () => {
+                              this.restClient.dismissLoader();
+                            }
                           );
                       },
                       err => {
+                        this.restClient.dismissLoader();
                         console.log('Error getting course holes', err.error.error);
                       },
                       () => {}
                     );
                 },
                 err => {
+                  this.restClient.dismissLoader();
                   console.log('Error getting events', err.error.error);
                 },
                 () => {}
@@ -152,6 +157,7 @@ export class ScoreListPage {
           });
         },
         err => {
+          this.restClient.dismissLoader();
           console.log('Error getting scores for user', err.error.error);
         },
         () => {}
@@ -169,6 +175,7 @@ export class ScoreListPage {
           this.markedPlayerId = markedid;
           this.selfMark = (markedid == this.userId);
           // let's get the name of the marked player
+          this.restClient.presentLoader();
           this.restClient.getPublicUser(markedid)
             .subscribe(
               (responsesc: UsersResponse) => {
@@ -184,9 +191,12 @@ export class ScoreListPage {
                   this.markedPlayerId = '';
                 });
               },
-              () => {}
+              () => {
+                this.restClient.dismissLoader();
+              }
             );
           // let's get a reference to the score of the marked player
+          this.restClient.presentLoader();
           this.restClient.getScoreForMarking(markedid, this.todayScore.eventId, this.todayScore.roundNum)
             .subscribe(
               (responsesc: ScoresResponse[]) => {
@@ -201,10 +211,13 @@ export class ScoreListPage {
                     err => {
                       console.error('Error getting hole scores', err.error.error);
                     },
-                    () => {}
+                    () => {
+                      this.restClient.dismissLoader();
+                    }
                   );
               },
               err => {
+                this.restClient.dismissLoader();
                 console.error('Error getting marked score', err.error.error);
               },
               () => {}

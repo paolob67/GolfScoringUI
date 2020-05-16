@@ -47,7 +47,7 @@ export class SignupPage {
 
 
     if (form.valid) {
-
+      this.restClient.presentLoader();
       this.restClient.signup(
         this.signup.firstname,
         this.signup.lastname,
@@ -71,13 +71,20 @@ export class SignupPage {
               console.error('Login error', err.error.error);
               //this.invalidCredentials = true;
             },
-            () => console.log('Login success')
+            () => {
+              this.restClient.dismissLoader();
+              console.log('Login success');
+            }
           );
         },
         err => {
+          this.restClient.dismissLoader();
           console.error('Login error', err.error.error);
         },
-        () => console.log('Signup success')
+        () => {
+          this.restClient.dismissLoader();
+          console.log('Signup success');
+        }
       );
     }
   }

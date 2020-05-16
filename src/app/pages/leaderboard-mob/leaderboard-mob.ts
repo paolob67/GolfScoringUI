@@ -455,71 +455,71 @@ export class LeaderboardMobPage {
       }
   }
 ];
-  
+
   ldb_tot: any[] = [];
-/*
-  ldb_tot = [
-    {
-      userId: "add_userid",
-      player: "Lorenzo Golf",
-      startTime: "2020-09-15T09:00:00.000Z",
-      startHole: "1",
-      playingHandicap: "0",
-      clubName: "Marco Simone",
-      day1Stroke: "77",
-      day2Stroke: "77",
-      day3Stroke: "",
-      day4Stroke: "",
-      stroke: "154",
-      thru: "F",
-      total: "+10",
-      today: "+5",
-      positionNum: 1,
-      position: "T1"
-    },
-    {
-      userId: "add_userid",
-      player: "Paolo Golf",
-      startTime: "2020-09-15T09:00:00.000Z",
-      startHole: "1",
-      playingHandicap: "6",
-      clubName: "San Saba Golf",
-      day1Stroke: "77",
-      day2Stroke: "77",
-      day3Stroke: "",
-      day4Stroke: "",
-      stroke: "154",
-      thru: "F",
-      total: "+10",
-      today: "+5",
-      positionNum: 2,
-      position: "T1"
-    },
-    {
-      userId: "add_userid",
-      player: "Tommaso Golf",
-      startTime: "2020-09-15T09:00:00.000Z",
-      startHole: "1",
-      playingHandicap: "3",
-      clubName: "Olgiata",
-      day1Stroke: "75",
-      day2Stroke: "75",
-      day3Stroke: "",
-      day4Stroke: "",
-      stroke: "150",
-      thru: "17",
-      total: "+14",
-      today: "+7",
-      positionNum: 3,
-      position: "3"
-    }
-  ];
-*/  
+  /*
+    ldb_tot = [
+      {
+        userId: "add_userid",
+        player: "Lorenzo Golf",
+        startTime: "2020-09-15T09:00:00.000Z",
+        startHole: "1",
+        playingHandicap: "0",
+        clubName: "Marco Simone",
+        day1Stroke: "77",
+        day2Stroke: "77",
+        day3Stroke: "",
+        day4Stroke: "",
+        stroke: "154",
+        thru: "F",
+        total: "+10",
+        today: "+5",
+        positionNum: 1,
+        position: "T1"
+      },
+      {
+        userId: "add_userid",
+        player: "Paolo Golf",
+        startTime: "2020-09-15T09:00:00.000Z",
+        startHole: "1",
+        playingHandicap: "6",
+        clubName: "San Saba Golf",
+        day1Stroke: "77",
+        day2Stroke: "77",
+        day3Stroke: "",
+        day4Stroke: "",
+        stroke: "154",
+        thru: "F",
+        total: "+10",
+        today: "+5",
+        positionNum: 2,
+        position: "T1"
+      },
+      {
+        userId: "add_userid",
+        player: "Tommaso Golf",
+        startTime: "2020-09-15T09:00:00.000Z",
+        startHole: "1",
+        playingHandicap: "3",
+        clubName: "Olgiata",
+        day1Stroke: "75",
+        day2Stroke: "75",
+        day3Stroke: "",
+        day4Stroke: "",
+        stroke: "150",
+        thru: "17",
+        total: "+14",
+        today: "+7",
+        positionNum: 3,
+        position: "3"
+      }
+    ];
+  */
   eventId = '';
   event: EventsResponse;
   scores: RoundScoresResponse[] = [];
   showRound = '0'; //passed on the route if 0 go to totals tab
-  
+
   mobview = false;
   numberOfRounds = 1;
 
@@ -535,41 +535,45 @@ export class LeaderboardMobPage {
     this.eventId = this.route.snapshot.paramMap.get('eventId');
     this.showRound = this.route.snapshot.paramMap.get('showRound');
     if (this.showRound != '0') {
-      this.segment = 'Round ' + this.showRound; 
+      this.segment = 'Round ' + this.showRound;
     };
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidEnter LeaderboardMobPage', )
-//    this.restClient.getLastEvent()
+    this.restClient.presentLoader();
+    //    this.restClient.getLastEvent()
     this.restClient.getEvent(this.eventId)
       .subscribe(
-//        (response: EventsResponse[]) => {
-          (response: EventsResponse) => {
-//          this.event = response[0];
+        //        (response: EventsResponse[]) => {
+        (response: EventsResponse) => {
+          //          this.event = response[0];
           this.event = response;
-//          this.eventId = response[0].id;
+          //          this.eventId = response[0].id;
           this.eventId = response.id;
           console.log("Event Id: " + this.eventId)
-//          this.numberOfRounds = response[0].numberOfRounds;
-            this.numberOfRounds = response.numberOfRounds;
+          //          this.numberOfRounds = response[0].numberOfRounds;
+          this.numberOfRounds = response.numberOfRounds;
           this.restClient.getLeaderboardDetails(this.eventId)
-          .subscribe(
-            (responsesco: DetailedLeaderboardResponse[]) => {
-              this.ldb_tot = responsesco;
-              console.log("Scores L: " + JSON.stringify(this.ldb_tot))
-              let rnd;
-              for (rnd = 1; rnd <= this.numberOfRounds; rnd++) {
-                this.loadLeaderboard(rnd);
-              };
-            },
-            err => {
-              console.error('Error getting leaderboard', err.error.error);
-            },
-            () => {}
-          );
+            .subscribe(
+              (responsesco: DetailedLeaderboardResponse[]) => {
+                this.ldb_tot = responsesco;
+                console.log("Scores L: " + JSON.stringify(this.ldb_tot))
+                let rnd;
+                for (rnd = 1; rnd <= this.numberOfRounds; rnd++) {
+                  this.loadLeaderboard(rnd);
+                };
+              },
+              err => {
+                console.error('Error getting leaderboard', err.error.error);
+              },
+              () => {
+                // all good hide loader
+                this.restClient.dismissLoader();
+              }
+            );
         },
         err => {
+          this.restClient.dismissLoader();
           console.error('Error getting events', err.error.error);
         },
         () => {}
@@ -578,6 +582,7 @@ export class LeaderboardMobPage {
 
   loadLeaderboard(round) {
     // get Detailed Scores
+    this.restClient.presentLoader();
     this.restClient.getRoundScoresDetails(this.eventId, round)
       .subscribe(
         (responsehl: RoundScoresResponse) => {
@@ -587,6 +592,9 @@ export class LeaderboardMobPage {
         err => {
           console.log('Error getting Round of Leaderboard', err.error.error);
         },
+        () => {
+          this.restClient.dismissLoader();
+        }
       );
 
   }
