@@ -267,9 +267,12 @@
               <ion-item detail="false" *ngFor="let score of scores[round-1]?.detailedScores">
                 <ion-avatar>{{score?.position}}</ion-avatar>
                 <ion-label>
-                  {{score?.player}}
+                  
                   <ion-grid>
                     <ion-row>
+                      <ion-col>
+                        <p><strong>{{score?.player}}</strong></p>
+                      </ion-col>
                       <ion-col>
                         <p>hcp</p>
                         <p><strong>{{score.playingHandicap}}</strong></p>
