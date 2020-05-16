@@ -49,9 +49,9 @@ export class RestClientService {
 
   // provide methods for showing and hiding loader
   async presentLoader() {
+    if (this.isLoading) return;
     this.isLoading = true;
-    return await this.loadingController.create({
-    }).then(a => {
+    return await this.loadingController.create({}).then(a => {
       a.present().then(() => {
         if (!this.isLoading) {
           a.dismiss();
@@ -61,8 +61,9 @@ export class RestClientService {
   }
 
   async dismissLoader() {
+    if (!this.isLoading) return;
     this.isLoading = false;
-    return await this.loadingController.dismiss();
+    return await this.loadingController.dismiss().catch(() => {});
   }
 
   checkServerConnection() {

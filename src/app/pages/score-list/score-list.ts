@@ -67,13 +67,13 @@ export class ScoreListPage {
   }
 
   loadScores(userId) {
-    this.restClient.presentLoader();
     // if not logged in go to login page
     if (!userId) {
       console.log('must log in');
       return this.router.navigateByUrl('/login');
     };
 
+    this.restClient.presentLoader();
     // get score master tables for user
     this.restClient.getScoresForUser(userId)
       .subscribe(
@@ -153,8 +153,8 @@ export class ScoreListPage {
                 },
                 () => {}
               );
-
           });
+          this.restClient.dismissLoader();
         },
         err => {
           this.restClient.dismissLoader();
