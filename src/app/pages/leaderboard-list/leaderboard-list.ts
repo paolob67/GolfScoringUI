@@ -40,7 +40,7 @@ export class LeaderboardListPage {
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter LeaderboardListPage', )
-
+    this.restClient.presentLoader();
     this.restClient.getEvents()
       .subscribe(
         (response: EventsResponse[]) => {
@@ -54,7 +54,9 @@ export class LeaderboardListPage {
         err => {
           console.error('Error getting events', err.error.error);
         },
-        () => {}
+        () => {
+          this.restClient.dismissLoader();
+        }
       );
     
   }

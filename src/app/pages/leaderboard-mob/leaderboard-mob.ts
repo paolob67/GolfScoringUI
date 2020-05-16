@@ -541,14 +541,18 @@ export class LeaderboardMobPage {
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter LeaderboardMobPage', )
-    this.restClient.getLastEvent()
-//    this.restClient.getEvent(this.eventId)
+//    this.restClient.getLastEvent()
+    this.restClient.getEvent(this.eventId)
       .subscribe(
-        (response: EventsResponse[]) => {
-          this.event = response[0];
-          this.eventId = response[0].id;
+//        (response: EventsResponse[]) => {
+          (response: EventsResponse) => {
+//          this.event = response[0];
+          this.event = response;
+//          this.eventId = response[0].id;
+          this.eventId = response.id;
           console.log("Event Id: " + this.eventId)
-          this.numberOfRounds = response[0].numberOfRounds;
+//          this.numberOfRounds = response[0].numberOfRounds;
+            this.numberOfRounds = response.numberOfRounds;
           this.restClient.getLeaderboardDetails(this.eventId)
           .subscribe(
             (responsesco: DetailedLeaderboardResponse[]) => {
