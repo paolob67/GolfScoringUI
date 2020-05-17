@@ -56,60 +56,48 @@
             <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
             <p>Course:</p>
             <h2>{{leaderboard.course.name}}</h2>
-            <ion-grid>
-              <ion-row>
-                <ion-col>
-                  <p>Hole</p>
-                  <p>Par</p>
-                </ion-col>
-                <ion-col *ngFor="let hole of leaderboard.course.holespar">
-                  <p>{{hole.holenum}}</p>
-                  <p>{{hole.par}}</p>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
           </ion-label>
         </ion-item>
       </ion-card-header>
       <ion-card-content>
         <ion-list>
-          <ion-item detail="true" *ngFor="let line of ldb_tot" routerLink="/app/tabs/leaderboard-list/leaderboard-mob/player-detail/{{eventId}}/{{line.userId}}">
+          <ion-item detail="true" *ngFor="let line of ldb_tot" routerLink="/app/tabs/leaderboard-list/leaderboard-mob/player-detail/{{eventId}}/{{line.userId}}" class="ion-no-padding">
             <ion-grid>
               <ion-row>
-                <ion-col>{{line.position}}</ion-col>
-                <ion-col size="3">
+                <ion-col class="ion-text-center" col-1>{{line.position}}</ion-col>
+                <ion-col col-4>
                   <p>{{line.player}}</p>
                   <p>{{line.clubName}}</p>
                 </ion-col>
-                <ion-col>
+                <ion-col class="ion-text-center" col-1>
                   <p>Total</p>
                   <p><strong>{{line.total}}</strong></p>
                 </ion-col>
-                <ion-col>
+                <ion-col class="ion-text-center" col-1>
                   <p>Thru</p>
                   <p><strong>{{line.thru}}</strong></p>
                 </ion-col>
-                <ion-col>
+                <ion-col class="ion-text-center" col-1>
                   <p>Today</p>
                   <p><strong>{{line.today}}</strong></p>
                 </ion-col>
-                <ion-col>
+                <ion-col class="ion-text-center" col-1>
                   <p>Stroke</p>
                   <p><strong>{{line.stroke}}</strong></p>
                 </ion-col>
-                <ion-col>
+                <ion-col class="ion-text-center" col-1>
                   <p>R1</p>
                   <p><strong>{{line.day1Stroke}}</strong></p>
                 </ion-col>
-                <ion-col *ngIf="numberOfRounds > 1">
+                <ion-col *ngIf="numberOfRounds > 1" class="ion-text-center" col-1>
                   <p>R2</p>
                   <p><strong>{{line.day2Stroke}}</strong></p>
                 </ion-col>
-                <ion-col *ngIf="numberOfRounds > 2">
+                <ion-col *ngIf="numberOfRounds > 2" class="ion-text-center" col-1>
                   <p>R3</p>
                   <p><strong>{{line.day3Stroke}}</strong></p>
                 </ion-col>
-                <ion-col *ngIf="numberOfRounds > 3">
+                <ion-col *ngIf="numberOfRounds > 3" class="ion-text-center" col-1>
                   <p>R4</p>
                   <p><strong>{{line.day4Stroke}}</strong></p>
                 </ion-col>
@@ -144,54 +132,54 @@
           <ion-card-content>
             <ion-grid class="leaderboard_nomobile">
               <ion-row>
-                <ion-col size="1">P</ion-col>
-                <ion-col size="10">Name</ion-col>
-                <ion-col size="1">H</ion-col>
-                <ion-col size="1">1</ion-col>
-                <ion-col size="1">2</ion-col>
-                <ion-col size="1">3</ion-col>
-                <ion-col size="1">4</ion-col>
-                <ion-col size="1">5</ion-col>
-                <ion-col size="1">6</ion-col>
-                <ion-col size="1">7</ion-col>
-                <ion-col size="1">8</ion-col>
-                <ion-col size="1">9</ion-col>
-                <ion-col size="3">Out</ion-col>
-                <ion-col size="1">10</ion-col>
-                <ion-col size="1">11</ion-col>
-                <ion-col size="1">12</ion-col>
-                <ion-col size="1">13</ion-col>
-                <ion-col size="1">14</ion-col>
-                <ion-col size="1">15</ion-col>
-                <ion-col size="1">16</ion-col>
-                <ion-col size="1">17</ion-col>
-                <ion-col size="1">18</ion-col>
-                <ion-col size="3">In</ion-col>
-                <ion-col size="3">Stroke</ion-col>
-                <ion-col size="2">Thru</ion-col>
-                <ion-col size="2">Total</ion-col>
-                <ion-col size="2">Net</ion-col>
-                <ion-col size="3">Stableford</ion-col>
+                <ion-col size="1" class="ion-text-center">P</ion-col>
+                <ion-col size="8">Name</ion-col>
+                <ion-col size="1" class="ion-text-center">H</ion-col>
+                <ion-col size="1" class="ion-text-center">1</ion-col>
+                <ion-col size="1" class="ion-text-center">2</ion-col>
+                <ion-col size="1" class="ion-text-center">3</ion-col>
+                <ion-col size="1" class="ion-text-center">4</ion-col>
+                <ion-col size="1" class="ion-text-center">5</ion-col>
+                <ion-col size="1" class="ion-text-center">6</ion-col>
+                <ion-col size="1" class="ion-text-center">7</ion-col>
+                <ion-col size="1" class="ion-text-center">8</ion-col>
+                <ion-col size="1" class="ion-text-center">9</ion-col>
+                <ion-col size="2" class="ion-text-center">Out</ion-col>
+                <ion-col size="1" class="ion-text-center">10</ion-col>
+                <ion-col size="1" class="ion-text-center">11</ion-col>
+                <ion-col size="1" class="ion-text-center">12</ion-col>
+                <ion-col size="1" class="ion-text-center">13</ion-col>
+                <ion-col size="1" class="ion-text-center">14</ion-col>
+                <ion-col size="1" class="ion-text-center">15</ion-col>
+                <ion-col size="1" class="ion-text-center">16</ion-col>
+                <ion-col size="1" class="ion-text-center">17</ion-col>
+                <ion-col size="1" class="ion-text-center">18</ion-col>
+                <ion-col size="2" class="ion-text-center">In</ion-col>
+                <ion-col size="3" class="ion-text-center">Stroke</ion-col>
+                <ion-col size="2" class="ion-text-center">Thru</ion-col>
+                <ion-col size="2" class="ion-text-center">Total</ion-col>
+                <ion-col size="2" class="ion-text-center">Net</ion-col>
+                <ion-col size="2" class="ion-text-center">Stblfr</ion-col>
               </ion-row>
               <ion-row>
-                <ion-col size="1"></ion-col>
-                <ion-col size="10"></ion-col>
-                <ion-col size="1"></ion-col>
-                <ion-col *ngFor="let hole of scores[round-1]?.course?.holes  | slice:0:9" size="1">{{ hole?.par }}</ion-col>
-                <ion-col size="3">{{ scores[round-1]?.course?.out }}</ion-col>
-                <ion-col *ngFor="let hole of scores[round-1]?.course?.holes  | slice:9:19" size="1">{{ hole?.par }}</ion-col>
+                <ion-col size="1" class="ion-text-center"></ion-col>
+                <ion-col size="8" class="ion-text-center"></ion-col>
+                <ion-col size="1" class="ion-text-center"></ion-col>
+                <ion-col *ngFor="let hole of scores[round-1]?.course?.holes  | slice:0:9" size="1" class="ion-text-center">{{ hole?.par }}</ion-col>
+                <ion-col size="2" class="ion-text-center">{{ scores[round-1]?.course?.out }}</ion-col>
+                <ion-col *ngFor="let hole of scores[round-1]?.course?.holes  | slice:9:19" size="1" class="ion-text-center">{{ hole?.par }}</ion-col>
 
-                <ion-col size="3">{{ scores[round-1]?.course?.in }}</ion-col>
-                <ion-col size="3">{{ scores[round-1]?.course?.stroke }}</ion-col>
-                <ion-col size="2"></ion-col>
-                <ion-col size="2"></ion-col>
-                <ion-col size="2"></ion-col>
-                <ion-col size="3"></ion-col>
+                <ion-col size="2" class="ion-text-center">{{ scores[round-1]?.course?.in }}</ion-col>
+                <ion-col size="3" class="ion-text-center">{{ scores[round-1]?.course?.stroke }}</ion-col>
+                <ion-col size="2" class="ion-text-center"></ion-col>
+                <ion-col size="2" class="ion-text-center"></ion-col>
+                <ion-col size="2" class="ion-text-center"></ion-col>
+                <ion-col size="2" class="ion-text-center"></ion-col>
               </ion-row>
-              <ion-row *ngFor="let score of scores[round-1]?.detailedScores">
-                <ion-col size="1">{{ score?.position }}</ion-col>
-                <ion-col size="10">{{ score?.player }}</ion-col>
-                <ion-col size="1">{{ score?.playingHandicap }}</ion-col>
+              <ion-row *ngFor="let score of scores[round-1]?.detailedScores" class="ion-align-items-center">
+                <ion-col size="1" class="ion-text-center">{{ score?.position }}</ion-col>
+                <ion-col size="8">{{ score?.player }}</ion-col>
+                <ion-col size="1" class="ion-text-center">{{ score?.playingHandicap }}</ion-col>
                 <ion-col size="1" class="{{score?.result1}}">{{ score?.hole1 }}</ion-col>
                 <ion-col size="1" class="{{score?.result2}}">{{ score?.hole2 }}</ion-col>
                 <ion-col size="1" class="{{score?.result3}}">{{ score?.hole3 }}</ion-col>
@@ -201,7 +189,7 @@
                 <ion-col size="1" class="{{score?.result7}}">{{ score?.hole7 }}</ion-col>
                 <ion-col size="1" class="{{score?.result8}}">{{ score?.hole8 }}</ion-col>
                 <ion-col size="1" class="{{score?.result9}}">{{ score?.hole9 }}</ion-col>
-                <ion-col size="3">{{ score?.outHoles }}</ion-col>
+                <ion-col size="2" class="ion-text-center">{{ score?.outHoles }}</ion-col>
                 <ion-col size="1" class="{{score?.result10}}">{{ score?.hole10 }}</ion-col>
                 <ion-col size="1" class="{{score?.result11}}">{{ score?.hole11 }}</ion-col>
                 <ion-col size="1" class="{{score?.result12}}">{{ score?.hole12 }}</ion-col>
@@ -211,12 +199,12 @@
                 <ion-col size="1" class="{{score?.result16}}">{{ score?.hole16 }}</ion-col>
                 <ion-col size="1" class="{{score?.result17}}">{{ score?.hole17 }}</ion-col>
                 <ion-col size="1" class="{{score?.result18}}">{{ score?.hole18 }}</ion-col>
-                <ion-col size="3">{{ score?.inHoles }}</ion-col>
-                <ion-col size="3">{{ score?.stroke }}</ion-col>
-                <ion-col size="2">{{ score?.thru }}</ion-col>
-                <ion-col size="2">{{ score?.total }}</ion-col>
-                <ion-col size="2">{{ score?.net }}</ion-col>
-                <ion-col size="3">{{ score?.stableford }}</ion-col>
+                <ion-col size="2" class="ion-text-center">{{ score?.inHoles }}</ion-col>
+                <ion-col size="3" class="ion-text-center">{{ score?.stroke }}</ion-col>
+                <ion-col size="2" class="ion-text-center">{{ score?.thru }}</ion-col>
+                <ion-col size="2" class="ion-text-center">{{ score?.total }}</ion-col>
+                <ion-col size="2" class="ion-text-center">{{ score?.net }}</ion-col>
+                <ion-col size="2" class="ion-text-center">{{ score?.stableford }}</ion-col>
               </ion-row>
             </ion-grid>
           </ion-card-content>

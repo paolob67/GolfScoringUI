@@ -33,6 +33,7 @@ export class PlayerDetailPage {
   
   eventId = '';
   playerId = '';
+  scores: RoundScoresResponse[] = [];
   
   event: EventsResponse;
   
@@ -50,6 +51,26 @@ export class PlayerDetailPage {
   }
 
   ionViewDidEnter() {
+
+    // get Detailed Scores
+    this.restClient.presentLoader();
+    this.restClient.getPlayerScoresDetails(this.eventId, this.playerId)
+      .subscribe(
+        (responsehl: RoundScoresResponse) => {
+          this.scores.push(responsehl);
+          console.log('scores', this.scores);
+        },
+        err => {
+          console.log('Error getting score of player', err.error.error);
+        },
+        () => {
+          this.restClient.dismissLoader();
+        }
+      );
+  }
+
+
+/*
     
     this.restClient.getEvent(this.eventId)
       .subscribe(
@@ -62,6 +83,5 @@ export class PlayerDetailPage {
         },
         () => {}
       );
-  }
-
+*/
 }

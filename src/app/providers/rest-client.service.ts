@@ -235,6 +235,10 @@ export class RestClientService {
     return this._http.get < RoundScoresResponse > (environment.apiEndPoint + '/events/' + eventId + '/roundscores/' + round);
   }
 
+  getPlayerScoresDetails(eventId: string, userId: string) {
+    return this._http.get < RoundScoresResponse > (environment.apiEndPoint + '/events/' + eventId + '/playerscores/' + userId);
+  }
+
   getLeaderboardDetails(eventId: string) {
     return this._http.get < DetailedLeaderboardResponse[] > (environment.apiEndPoint + '/events/' + eventId + '/detailedleaderboard');
   }

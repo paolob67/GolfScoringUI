@@ -46,16 +46,34 @@ ion-col:not(:last-of-type) .leaderboard {
 
 
 .leaderboard_nomobile ion-col {
-    --ion-grid-columns: 56;
+    --ion-grid-columns: 36;
     font-size: 12px;
     flex: 0 0 4;
     padding:0;
-    background: #cfe0f3;
+//    background: #cfe0f3;
     background-clip: padding-box;
     border: 1px solid transparent;
-    color: #454b50;
+//    color: #454b50;
 }
 
+
+.card-content-md {
+    padding-left: unset;
+    padding-right: unset;
+    -webkit-padding-start: 1px;
+    padding-inline-start: 1px;
+    -webkit-padding-end: 1px;
+    padding-inline-end: 1px;
+}
+
+.card-content-ios {
+    padding-left: unset;
+    padding-right: unset;
+    -webkit-padding-start: 1px;
+    padding-inline-start: 1px;
+    -webkit-padding-end: 1px;
+    padding-inline-end: 1px;
+}
 
 .par {
     border-radius: 100%;
@@ -83,7 +101,6 @@ ion-col:not(:last-of-type) .leaderboard {
 }
 
 .double {
-    border-radius: 100%;
     padding: 4px;
     width: 25px;
     height: 25px;
@@ -109,7 +126,6 @@ ion-col:not(:last-of-type) .leaderboard {
 }
 
 .bogey {
-    border-radius: 100%;
     padding: 4px;
     width: 25px;
     height: 25px;

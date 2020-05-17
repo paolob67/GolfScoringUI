@@ -91,7 +91,9 @@
               <ion-col>Hcp</ion-col>
               <ion-col>Self</ion-col>
               <ion-col>{{markedPlayer.firstName}}</ion-col>
+            <!--
               <ion-col></ion-col>
+            -->  
             </ion-item>
             <!--
             <ion-item *ngFor="let hole of todayScore?.holes" detail="false"
@@ -104,7 +106,9 @@
               <ion-col>{{hole?.holeHandicap}}</ion-col>
               <ion-col>{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
               <ion-col>{{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}</ion-col>
+            <!--
               <ion-col><ion-icon name="create-outline"></ion-icon></ion-col>
+            -->  
             </ion-item>
           </ion-list>
         </ion-card-content>
