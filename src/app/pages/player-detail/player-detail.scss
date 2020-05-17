@@ -44,10 +44,16 @@ ion-col:not(:last-of-type) .leaderboard {
   padding: 0;
 }
 
+ion-col {
+  padding: 2px;
+}
+
 
 .leaderboard_nomobile ion-col {
-    --ion-grid-columns: 36;
-    font-size: 12px;
+    --ion-grid-columns: 35;
+    min-width: 10px;
+    min-height: 10px;
+    font-size: 10px;
     flex: 0 0 4;
     padding:0;
 //    background: #cfe0f3;
@@ -78,8 +84,8 @@ ion-col:not(:last-of-type) .leaderboard {
 .par {
     border-radius: 100%;
     padding: 4px;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     font-size: 12px;
     display: inline-block;
     text-align: center;
@@ -90,8 +96,8 @@ ion-col:not(:last-of-type) .leaderboard {
 .birdie {
     border-radius: 100%;
     padding: 4px;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     font-size: 12px;
     display: inline-block;
     text-align: center;
@@ -102,8 +108,8 @@ ion-col:not(:last-of-type) .leaderboard {
 
 .double {
     padding: 4px;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     font-size: 12px;
     display: inline-block;
     text-align: center;
@@ -115,8 +121,8 @@ ion-col:not(:last-of-type) .leaderboard {
 .eagle {
     border-radius: 100%;
     padding: 4px;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     font-size: 12px;
     display: inline-block;
     text-align: center;
@@ -127,8 +133,8 @@ ion-col:not(:last-of-type) .leaderboard {
 
 .bogey {
     padding: 4px;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
     font-size: 12px;
     display: inline-block;
     text-align: center;
