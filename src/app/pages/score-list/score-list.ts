@@ -293,8 +293,8 @@ export class ScoreListPage {
       if (thehole) {
         return thehole;
       } else {
-        return newhs
-      }
+        return newhs;
+      };
     };
     return newhs;
   }
