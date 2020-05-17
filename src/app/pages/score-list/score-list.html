@@ -85,12 +85,12 @@
         <ion-card-content>
           <ion-list lines="none">
             <ion-item detail="false">
-              <ion-col>Hole</ion-col>
-              <ion-col>Length</ion-col>
-              <ion-col>Par</ion-col>
-              <ion-col>Hcp</ion-col>
-              <ion-col>Self</ion-col>
-              <ion-col>{{markedPlayer.firstName}}</ion-col>
+              <ion-col class="ion-text-center">Hole</ion-col>
+              <ion-col class="ion-text-center">Length</ion-col>
+              <ion-col class="ion-text-center">Par</ion-col>
+              <ion-col class="ion-text-center">Hcp</ion-col>
+              <ion-col class="ion-text-center">Self</ion-col>
+              <ion-col class="ion-text-center">{{markedPlayer.firstName}}</ion-col>
             <!--
               <ion-col></ion-col>
             -->  
@@ -100,12 +100,12 @@
               routerLink="/app/tabs/scores/score-details/{{todayScore.id}}/{{todayScore?.eventId}}/{{todayScore.round}}/{{hole?.number}}/Par: {{hole?.par}} - Hcp: {{hole?.holeHandicap}}">
             -->  
             <ion-item *ngFor="let hole of todayScore?.holes" detail="false" (click)="presentActionSheet(hole?.number)">             
-              <ion-col>{{hole?.number}}</ion-col>
-              <ion-col>{{hole?.length}}</ion-col>
-              <ion-col>{{hole?.par}}</ion-col>
-              <ion-col>{{hole?.holeHandicap}}</ion-col>
-              <ion-col>{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
-              <ion-col>{{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}</ion-col>
+              <ion-col class="ion-text-center">{{hole?.number}}</ion-col>
+              <ion-col class="ion-text-center">{{hole?.length}}</ion-col>
+              <ion-col class="ion-text-center">{{hole?.par}}</ion-col>
+              <ion-col class="ion-text-center">{{hole?.holeHandicap}}</ion-col>
+              <ion-col class="ion-text-center">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
+              <ion-col class="ion-text-center">{{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}</ion-col>
             <!--
               <ion-col><ion-icon name="create-outline"></ion-icon></ion-col>
             -->  
@@ -138,18 +138,18 @@
               <ion-card-content>
                 <ion-list lines="none">
                   <ion-item detail="false">
-                    <ion-col>Hole</ion-col>
-                    <ion-col>Length</ion-col>
-                    <ion-col>Par</ion-col>
-                    <ion-col>Handicap</ion-col>
-                    <ion-col>Score</ion-col>
+                    <ion-col class="ion-text-center">Hole</ion-col>
+                    <ion-col class="ion-text-center">Length</ion-col>
+                    <ion-col class="ion-text-center">Par</ion-col>
+                    <ion-col class="ion-text-center">Handicap</ion-col>
+                    <ion-col class="ion-text-center">Score</ion-col>
                   </ion-item>
                   <ion-item *ngFor="let hole of score.holes" detail="false">
-                    <ion-col>{{hole?.number}}</ion-col>
-                    <ion-col>{{hole?.length}}</ion-col>
-                    <ion-col>{{hole?.par}}</ion-col>
-                    <ion-col>{{hole?.holeHandicap}}</ion-col>
-                    <ion-col>{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
+                    <ion-col class="ion-text-center">{{hole?.number}}</ion-col>
+                    <ion-col class="ion-text-center">{{hole?.length}}</ion-col>
+                    <ion-col class="ion-text-center">{{hole?.par}}</ion-col>
+                    <ion-col class="ion-text-center">{{hole?.holeHandicap}}</ion-col>
+                    <ion-col class="ion-text-center">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
                   </ion-item>
                 </ion-list>
               </ion-card-content>
