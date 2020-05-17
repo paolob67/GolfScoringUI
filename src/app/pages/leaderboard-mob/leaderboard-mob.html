@@ -1,46 +1,39 @@
-<ion-header>
+<ion-header translucent="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/leaderboard-list"></ion-back-button>
     </ion-buttons>
-    <ion-title>Leaderboard</ion-title>
+    <ion-segment *ngIf="ios" [(ngModel)]="segment">
+      <ion-segment-button value="Totals">
+        <ion-label>Total</ion-label>
+      </ion-segment-button>
+      <ion-segment-button *ngFor="let round of [1,2,3,4] | slice:0:numberOfRounds" value="Round {{round}}">
+        <ion-label>Round {{round}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <ion-title *ngIf="!ios">Leaderboard</ion-title>
     <ion-buttons *ngIf="(segment != 'Totals')" slot="end">
       <ion-label>Mobile</ion-label>
       <ion-toggle [(ngModel)]="mobview"></ion-toggle>
     </ion-buttons>
   </ion-toolbar>
-  <ion-segment [(ngModel)]="segment">
-    <ion-segment-button value="Totals">
-      <ion-label>Total</ion-label>
-    </ion-segment-button>
-    <ion-segment-button *ngFor="let round of [1,2,3,4] | slice:0:numberOfRounds" value="Round {{round}}">
-      <ion-label>Round {{round}}</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+  <ion-toolbar *ngIf="!ios">
+    <ion-segment [(ngModel)]="segment">
+      <ion-segment-button value="Totals">
+        <ion-label>Total</ion-label>
+      </ion-segment-button>
+      <ion-segment-button *ngFor="let round of [1,2,3,4] | slice:0:numberOfRounds" value="Round {{round}}">
+        <ion-label>Round {{round}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content fullscreen="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/app/tabs/leaderboard-list"></ion-back-button>
-      </ion-buttons>
       <ion-title size="large">Leaderboard</ion-title>
-      <ion-buttons *ngIf="(segment != 'Totals')" slot="end">
-        <ion-label>Mobile</ion-label>
-        <ion-toggle [(ngModel)]="mobview"></ion-toggle>
-      </ion-buttons>
     </ion-toolbar>
-    <ion-segment [(ngModel)]="segment">
-      <ion-segment-button value="Totals">
-        <ion-label>Total</ion-label>
-      </ion-segment-button>
-      <span *ngIf="numberOfRounds > 1">
-        <ion-segment-button *ngFor="let round of [1,2,3,4] | slice:0:numberOfRounds" value="Round {{round}}">
-          <ion-label>Round {{round}}</ion-label>
-        </ion-segment-button>
-      </span>
-    </ion-segment>
   </ion-header>
 
   <div *ngIf="(segment == 'Totals')">
@@ -255,7 +248,7 @@
               <ion-item detail="false" *ngFor="let score of scores[round-1]?.detailedScores">
                 <ion-avatar>{{score?.position}}</ion-avatar>
                 <ion-label>
-                  
+
                   <ion-grid>
                     <ion-row>
                       <ion-col>
@@ -333,7 +326,7 @@
                     <ion-row>
                       <ion-col>
                         <p>10</p>
-                        <p  class="{{score?.result10}}"><strong>{{score?.hole10}}</strong></p>
+                        <p class="{{score?.result10}}"><strong>{{score?.hole10}}</strong></p>
                       </ion-col>
                       <ion-col>
                         <p>11</p>
