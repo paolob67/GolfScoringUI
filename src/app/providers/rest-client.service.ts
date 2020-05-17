@@ -187,8 +187,14 @@ export class RestClientService {
   }
 
   postHoleScore(holeScore: ScoreHoleScoresResponse) {
+    const body = {
+      holeNumber: holeScore.holeNumber, 
+      self: holeScore.self,
+      marker: holeScore.marker,
+      scoreId: holeScore.scoreId,
+    };
     // this should be protected... must include jwt token in call
-    return this._http.post < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', holeScore);
+    return this._http.post < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', body);
   }
 
   patchHoleScore(holeScore: ScoreHoleScoresResponse) {
@@ -198,7 +204,13 @@ export class RestClientService {
       marker: holeScore.marker,
       scoreId: holeScore.scoreId,
     };
-    return this._http.patch < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', holeScore);
+    const wherestr = '{ "id": "'+ holeScore.id + '"}';
+    const options = {
+      params: {
+        where: wherestr
+      }
+    };
+    return this._http.patch < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', body, options);
   }
 
   getEventRoundScores(eventId: string, round: number) {

@@ -360,6 +360,9 @@ export class ScoreListPage {
   async changeSelfScore(holenum: number) {
     const hsself: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.todayScore.holescores, holenum);
     //const hsmark: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.markedScore.holescores, holenum);
+    // we need this for the post to work
+    hsself.scoreId = this.todayScore.id;
+
 
     const alert = await this.alertCtrl.create({
       header: 'Change scores for hole: ' + holenum,
@@ -398,6 +401,9 @@ export class ScoreListPage {
   async changeMarkScore(holenum: number) {
     //const hsself: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.todayScore.holescores, holenum);
     const hsmark: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.markedScore.holescores, holenum);
+    // we need this for the post to work
+    hsmark.scoreId = this.markedScore.id;
+    hsmark.markerId = this.userId;
 
     const alert = await this.alertCtrl.create({
       header: 'Change scores for hole: ' + holenum,
@@ -434,6 +440,7 @@ export class ScoreListPage {
 
   updateScore(holescores: ScoreHoleScoresResponse[], thehs: ScoreHoleScoresResponse) {
     // is this a new hs?
+    this.restClient.presentLoader();
     if (thehs.id) {
       this.restClient.patchHoleScore(thehs)
         .subscribe(
@@ -443,7 +450,9 @@ export class ScoreListPage {
           err => {
             console.error('Error setting self score', err.error.error);
           },
-          () => {}
+          () => {
+            this.restClient.dismissLoader();
+          }
         );
     } else {
       this.restClient.postHoleScore(thehs)
@@ -454,7 +463,9 @@ export class ScoreListPage {
           err => {
             console.error('Error setting self score', err.error.error);
           },
-          () => {}
+          () => {
+            this.restClient.dismissLoader();
+          }
         );
     }
   }
