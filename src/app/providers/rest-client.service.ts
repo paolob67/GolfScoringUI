@@ -198,7 +198,13 @@ export class RestClientService {
       marker: holeScore.marker,
       scoreId: holeScore.scoreId,
     };
-    return this._http.patch < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', holeScore);
+    const wherestr = '{ "id": "'+ holeScore.id + '"}';
+    const options = {
+      params: {
+        where: wherestr
+      }
+    };
+    return this._http.patch < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', body, options);
   }
 
   getEventRoundScores(eventId: string, round: number) {

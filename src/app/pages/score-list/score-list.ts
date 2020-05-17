@@ -358,8 +358,11 @@ export class ScoreListPage {
 
 
   async changeSelfScore(holenum: number) {
+console.log("holenum " + holenum);
+console.log("holescores " + JSON.stringify(this.todayScore.holescores));
     const hsself: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.todayScore.holescores, holenum);
     //const hsmark: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.markedScore.holescores, holenum);
+console.log("hsself " + JSON.stringify(hsself));
 
     const alert = await this.alertCtrl.create({
       header: 'Change scores for hole: ' + holenum,
@@ -370,6 +373,7 @@ export class ScoreListPage {
           text: 'Ok',
           handler: (data: any) => {
             hsself.self = parseInt(data.self);
+console.log("hsself " + JSON.stringify(hsself));
             //hsmark.marker = parseInt(data.marker);
             this.updateScore(this.todayScore.holescores, hsself);
             //this.updateScore(this.markedScore.holescores, hsmark);
