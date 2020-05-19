@@ -5,7 +5,7 @@ import {
   Router
 } from '@angular/router';
 import {
-  AlertController
+  PickerController
 } from '@ionic/angular';
 import {
   ActionSheetController
@@ -47,10 +47,10 @@ export class ScoreListPage {
 
   constructor(
     public router: Router,
-    public alertCtrl: AlertController,
     public actionSheetController: ActionSheetController,
     public userData: UserData,
-    public restClient: RestClientService
+    public restClient: RestClientService,
+    public pickerCtrl: PickerController
   ) {}
 
   ionViewDidEnter() {
@@ -356,49 +356,51 @@ export class ScoreListPage {
     await actionSheet.present();
   }
 
+  getColumnOptions(){
+    let options = [];
+    for(let i =1 ;i < 21 ;i++){
+      options.push({text:i,value:i});
+    };
+    return options;
+  }
+
 
   async changeSelfScore(holenum: number) {
-console.log("holenum " + holenum);
-console.log("holescores " + JSON.stringify(this.todayScore.holescores));
     const hsself: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.todayScore.holescores, holenum);
     //const hsmark: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.markedScore.holescores, holenum);
     // we need this for the post to work
     hsself.scoreId = this.todayScore.id;
 
-
-    const alert = await this.alertCtrl.create({
-      header: 'Change scores for hole: ' + holenum,
-      message: 'Be sure to set your own score!',
+    const picker = await this.pickerCtrl.create({
+      mode: "ios",
       buttons: [
-        'Cancel',
         {
-          text: 'Ok',
-          handler: (data: any) => {
-            hsself.self = parseInt(data.self);
-console.log("hsself " + JSON.stringify(hsself));
-            //hsmark.marker = parseInt(data.marker);
+          text: "Cancel",
+          role: 'cancel'
+        },
+        {
+          text: "Set your own score for hole: " + holenum,
+        },
+        {
+          text:'Ok',
+          handler:(data: any) => {
+            console.log(data.Score.value);
+            hsself.self = parseInt(data.Score.value);
             this.updateScore(this.todayScore.holescores, hsself);
-            //this.updateScore(this.markedScore.holescores, hsmark);
           }
         }
       ],
-      inputs: [
+      columns: [
         {
-          type: 'number',
-          name: 'self',
-          value: hsself.self,
-          placeholder: '0'
+          name: 'Score',
+          options:this.getColumnOptions()
         }
-        /* ,
-               {
-                 type: 'number',
-                 name: 'marker',
-                 value: hsmark.marker,
-                 placeholder: '0'
-               }*/
       ]
     });
-    await alert.present();
+
+    picker.columns[0].selectedIndex = hsself.self - 1;
+    await picker.present();
+
   }
 
   async changeMarkScore(holenum: number) {
@@ -408,37 +410,36 @@ console.log("hsself " + JSON.stringify(hsself));
     hsmark.scoreId = this.markedScore.id;
     hsmark.markerId = this.userId;
 
-    const alert = await this.alertCtrl.create({
-      header: 'Change scores for hole: ' + holenum,
-      message: 'Enter here the score for the player you are marking.',
+    const picker = await this.pickerCtrl.create({
+      mode: "ios",
       buttons: [
-        'Cancel',
         {
-          text: 'Ok',
-          handler: (data: any) => {
-            // hsself.self = parseInt(data.self);
-            hsmark.marker = parseInt(data.marker);
-            // this.updateScore(this.todayScore.holescores, hsself);
+          text: "Cancel",
+          role: 'cancel'
+        },
+        {
+          text: "Marked player score for hole: " + holenum,
+        },
+        {
+          text:'Ok',
+          handler:(data: any) => {
+            console.log(data.Score.value);
+            hsmark.marker = parseInt(data.Score.value);
             this.updateScore(this.markedScore.holescores, hsmark);
           }
         }
       ],
-      inputs: [
-        /* {
-          type: 'number',
-          name: 'self',
-          value: hsself.self,
-          placeholder: '0'
-        },*/
+      columns: [
         {
-          type: 'number',
-          name: 'marker',
-          value: hsmark.marker,
-          placeholder: '0'
+          name: 'Score',
+          options:this.getColumnOptions()
         }
       ]
     });
-    await alert.present();
+
+    picker.columns[0].selectedIndex = hsmark.marker - 1;
+    await picker.present();
+
   }
 
   updateScore(holescores: ScoreHoleScoresResponse[], thehs: ScoreHoleScoresResponse) {
