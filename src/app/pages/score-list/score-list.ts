@@ -293,6 +293,8 @@ export class ScoreListPage {
       if (thehole) {
         return thehole;
       } else {
+        // push the new hole score in the array
+        holescores.push(newhs);
         return newhs;
       };
     };
@@ -462,6 +464,8 @@ export class ScoreListPage {
       this.restClient.postHoleScore(thehs)
         .subscribe(
           (response: ScoreHoleScoresResponse) => {
+            // TODO: should retrieve hole scores first... before resetting them for showing...
+            // or at change 
             this.setHoleScoreForHole(holescores, response);
           },
           err => {
