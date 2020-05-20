@@ -8,6 +8,7 @@ import {
   PickerController
 } from '@ionic/angular';
 import {
+  ToastController,
   ActionSheetController
 } from '@ionic/angular';
 import {
@@ -50,7 +51,8 @@ export class ScoreListPage {
     public actionSheetController: ActionSheetController,
     public userData: UserData,
     public restClient: RestClientService,
-    public pickerCtrl: PickerController
+    public pickerCtrl: PickerController,
+    public toastCtrl: ToastController
   ) {}
 
   ionViewDidEnter() {
@@ -331,31 +333,41 @@ export class ScoreListPage {
   };
 
   async presentActionSheet(holenum: number) {
-    const actionSheet = await this.actionSheetController.create({
-      header: 'Change score at Hole: ' + holenum,
-      buttons: [
-        {
-          text: 'Your score',
-          icon: 'golf-outline',
-          handler: () => {
-            this.changeSelfScore(holenum);
-          }
-      }, {
-          text: 'Marked score',
-          icon: 'people-outline',
-          handler: () => {
-            this.changeMarkScore(holenum);
-          }
-      }, {
-          text: 'Cancel',
-          icon: 'close',
-          role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-      }]
-    });
-    await actionSheet.present();
+    if (this.todayScore.selfCard && this.todayScore.markerCard) {
+      const toast = await this.toastCtrl.create({
+        message: 'The scored has been signed, you cannot change it.',
+        duration: 2000
+      });
+      await toast.present();
+   34        
+    } else {
+      const actionSheet = await this.actionSheetController.create({
+        header: 'Change score at Hole: ' + holenum,
+        buttons: [
+          {
+            text: 'Your score',
+            icon: 'golf-outline',
+            handler: () => {
+              this.changeSelfScore(holenum);
+            }
+        }, {
+            text: 'Marked score',
+            icon: 'people-outline',
+            handler: () => {
+              this.changeMarkScore(holenum);
+            }
+        }, {
+            text: 'Cancel',
+            icon: 'close',
+            role: 'cancel',
+            handler: () => {
+              console.log('Cancel clicked');
+            }
+        }]
+      });    
+     await actionSheet.present();
+    }
+
   }
 
   getColumnOptions(){
