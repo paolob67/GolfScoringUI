@@ -67,8 +67,7 @@
     <span *ngIf="foundTodayScore">
       <ion-card class="score-card">
         <ion-card-header>
-          <ion-item detail="false" lines="none" class="score-item"
-            routerLink="/app/tabs/leaderboard-list/leaderboard-mob/{{todayScore?.eventId}}/{{todayScore?.round}}">
+          <ion-item detail="false" lines="none" class="score-item" routerLink="/app/tabs/leaderboard-list/leaderboard-mob/{{todayScore?.eventId}}/{{todayScore?.round}}">
             <ion-avatar slot="start">
               <ion-icon name="golf-outline"></ion-icon>
             </ion-avatar>
@@ -91,28 +90,36 @@
               <ion-col class="ion-text-center">Hcp</ion-col>
               <ion-col class="ion-text-center">Self</ion-col>
               <ion-col class="ion-text-center">{{markedPlayer.firstName}}</ion-col>
-            <!--
+              <!--
               <ion-col></ion-col>
-            -->  
+            -->
             </ion-item>
             <!--
             <ion-item *ngFor="let hole of todayScore?.holes" detail="false"
               routerLink="/app/tabs/scores/score-details/{{todayScore.id}}/{{todayScore?.eventId}}/{{todayScore.round}}/{{hole?.number}}/Par: {{hole?.par}} - Hcp: {{hole?.holeHandicap}}">
-            -->  
-            <ion-item *ngFor="let hole of todayScore?.holes" detail="false" (click)="presentActionSheet(hole?.number)">             
+            -->
+            <ion-item *ngFor="let hole of todayScore?.holes" detail="false" (click)="presentActionSheet(hole?.number)">
               <ion-col class="ion-text-center">{{hole?.number}}</ion-col>
               <ion-col class="ion-text-center">{{hole?.length}}</ion-col>
               <ion-col class="ion-text-center">{{hole?.par}}</ion-col>
               <ion-col class="ion-text-center">{{hole?.holeHandicap}}</ion-col>
               <ion-col class="ion-text-center">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
               <ion-col class="ion-text-center">{{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}</ion-col>
-            <!--
+              <!--
               <ion-col><ion-icon name="create-outline"></ion-icon></ion-col>
-            -->  
+            -->
             </ion-item>
           </ion-list>
         </ion-card-content>
       </ion-card>
+      <ion-row>
+        <ion-col *ngIf="canSignSelf()">
+          <ion-button routerLink="/app/tabs/scores/sign/self/{{todayScore?.id}}" expand="block">Sign Self</ion-button>
+        </ion-col>
+        <ion-col *ngIf="canSignMarked()">
+          <ion-button routerLink="/app/tabs/scores/sign/marked/{{markedScore?.id}}" expand="block">Sign Marked</ion-button>
+        </ion-col>
+      </ion-row>
     </span>
   </div>
 

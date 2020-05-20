@@ -42,6 +42,10 @@ const routes: Routes = [
           {
             path: 'event/:eventId/:roundNum',
             loadChildren: () => import('../event/event.module').then(m => m.EventModule)
+          },
+          {
+            path: 'sign/:which/:scoreId',
+            loadChildren: () => import('../score-sign/score-sign.module').then(m => m.ScoreSignModule)
           }
         ]
       },

@@ -33,6 +33,9 @@ import {
 import {
   ScoreListModule
 } from '../score-list/score-list.module';
+import {
+  ScoreSignModule
+} from '../score-sign/score-sign.module';
 
 @NgModule({
   imports: [
@@ -43,6 +46,7 @@ import {
     LeaderboardMobModule,
     LeaderboardListModule,
     ScoreListModule,
+    ScoreSignModule,
     PlayerDetailModule,
     TabsPageRoutingModule
   ],

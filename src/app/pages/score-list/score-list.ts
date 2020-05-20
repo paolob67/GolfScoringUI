@@ -339,7 +339,7 @@ export class ScoreListPage {
         duration: 2000
       });
       await toast.present();
-   34        
+      34
     } else {
       const actionSheet = await this.actionSheetController.create({
         header: 'Change score at Hole: ' + holenum,
@@ -364,16 +364,19 @@ export class ScoreListPage {
               console.log('Cancel clicked');
             }
         }]
-      });    
-     await actionSheet.present();
+      });
+      await actionSheet.present();
     }
 
   }
 
-  getColumnOptions(){
+  getColumnOptions() {
     let options = [];
-    for(let i =1 ;i < 21 ;i++){
-      options.push({text:i,value:i});
+    for (let i = 1; i < 21; i++) {
+      options.push({
+        text: i,
+        value: i
+      });
     };
     return options;
   }
@@ -396,8 +399,8 @@ export class ScoreListPage {
           text: "Set your own score for hole: " + holenum,
         },
         {
-          text:'Ok',
-          handler:(data: any) => {
+          text: 'Ok',
+          handler: (data: any) => {
             console.log(data.Score.value);
             hsself.self = parseInt(data.Score.value);
             this.updateScore(this.todayScore.holescores, hsself);
@@ -407,7 +410,7 @@ export class ScoreListPage {
       columns: [
         {
           name: 'Score',
-          options:this.getColumnOptions()
+          options: this.getColumnOptions()
         }
       ]
     });
@@ -435,8 +438,8 @@ export class ScoreListPage {
           text: "Marked player score for hole: " + holenum,
         },
         {
-          text:'Ok',
-          handler:(data: any) => {
+          text: 'Ok',
+          handler: (data: any) => {
             console.log(data.Score.value);
             hsmark.marker = parseInt(data.Score.value);
             this.updateScore(this.markedScore.holescores, hsmark);
@@ -446,7 +449,7 @@ export class ScoreListPage {
       columns: [
         {
           name: 'Score',
-          options:this.getColumnOptions()
+          options: this.getColumnOptions()
         }
       ]
     });
@@ -488,6 +491,38 @@ export class ScoreListPage {
           }
         );
     }
+  }
+
+  canSignSelf(): boolean {
+    let canSign = true;
+    if (this.todayScore.holescores) {
+      this.todayScore.holescores.forEach(
+        (holescore) => {
+          if (holescore.self == 0) {
+            canSign = false;
+          }
+        }
+      );
+    } else {
+      canSign = false;
+    }
+    return canSign;
+  }
+
+  canSignMarked(): boolean {
+    let canSign = true;
+    if (this.markedScore.holescores) {
+      this.markedScore.holescores.forEach(
+        (holescore) => {
+          if (holescore.marker == 0) {
+            canSign = false;
+          }
+        }
+      );
+    } else {
+      canSign = false;
+    };
+    return canSign;
   }
 
 

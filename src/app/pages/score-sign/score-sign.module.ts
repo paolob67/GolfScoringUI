@@ -12,19 +12,21 @@ import {
 } from '@ionic/angular';
 
 import {
-  LeaderboardPage
-} from './leaderboard';
+  ScoreSignPage
+} from './score-sign';
 import {
-  LeaderboardPageRoutingModule
-} from './leaderboard-routing.module';
+  ScoreSignPageRoutingModule
+} from './score-sign-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LeaderboardPageRoutingModule
+    ScoreSignPageRoutingModule
   ],
-  declarations: [LeaderboardPage],
+  declarations: [
+    ScoreSignPage,
+  ]
 })
-export class LeaderboardModule {}
+export class ScoreSignModule {}
