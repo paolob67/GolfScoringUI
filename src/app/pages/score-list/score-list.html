@@ -103,9 +103,16 @@
               <ion-col class="ion-text-center">{{hole?.length}}</ion-col>
               <ion-col class="ion-text-center">{{hole?.par}}</ion-col>
               <ion-col class="ion-text-center">{{hole?.holeHandicap}}</ion-col>
-              <ion-col class="ion-text-center">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
-              <ion-col class="ion-text-center">{{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}</ion-col>
+              <ion-col *ngIf= "getHoleScoreForHole(todayScore.holescores, hole?.number).self != getHoleScoreForHole(todayScore.holescores, hole?.number).marker" class="ion-text-center">
+                <ion-item color="danger">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-item>
+              </ion-col>
+              <ion-col *ngIf= "getHoleScoreForHole(todayScore.holescores, hole?.number).self === getHoleScoreForHole(todayScore.holescores, hole?.number).marker" class="ion-text-center">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
+              <ion-col *ngIf= "getHoleScoreForHole(markedScore.holescores, hole?.number).self != getHoleScoreForHole(markedScore.holescores, hole?.number).marker" class="ion-text-center">
+                <ion-item color="danger">{{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}</ion-item>
+              </ion-col>
+              <ion-col *ngIf= "getHoleScoreForHole(markedScore.holescores, hole?.number).self === getHoleScoreForHole(markedScore.holescores, hole?.number).marker" class="ion-text-center">{{this.getHoleScoreForHole(markedScore.holescores, hole?.number).marker}}</ion-col>
               <!--
+            <ion-col *ngIf="which === 'player'" class="ion-text-center">Score I put</ion-col>
               <ion-col><ion-icon name="create-outline"></ion-icon></ion-col>
             -->
             </ion-item>
@@ -114,10 +121,10 @@
       </ion-card>
       <ion-row>
         <ion-col *ngIf="canSignSelf()">
-          <ion-button routerLink="/app/tabs/scores/sign/self/{{todayScore?.id}}" expand="block">Sign Self</ion-button>
+          <ion-button routerLink="/app/tabs/scores/sign/player/{{todayScore?.id}}" expand="block">Sign Player</ion-button>
         </ion-col>
         <ion-col *ngIf="canSignMarked()">
-          <ion-button routerLink="/app/tabs/scores/sign/marked/{{markedScore?.id}}" expand="block">Sign Marked</ion-button>
+          <ion-button routerLink="/app/tabs/scores/sign/marker/{{markedScore?.id}}" expand="block">Sign Marker</ion-button>
         </ion-col>
       </ion-row>
     </span>

@@ -6,7 +6,7 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/app/tabs/scores"></ion-back-button>
       </ion-buttons>
-      <ion-title *ngIf="!ios ">Sing {{which}} score</ion-title>
+      <ion-title *ngIf="!ios">Sign {{which}} score</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -22,8 +22,48 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list >
+    <ion-card class="score-check">
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item detail="false">
+            <ion-col class="ion-text-center">Hole</ion-col>
+            <ion-col class="ion-text-center">Par</ion-col>
+            <ion-col *ngIf="which === 'player'" class="ion-text-center">Score I put</ion-col>
+            <ion-col *ngIf="which === 'marker'" class="ion-text-center">Score I put</ion-col>
+            <ion-col *ngIf="which === 'player'" class="ion-text-center">Score Marker put</ion-col>
+            <ion-col *ngIf="which === 'marker'" class="ion-text-center">Score Player put</ion-col>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+    </ion-card>
+            <!--
+            <ion-col class="ion-text-center">{{markedPlayer.firstName}}</ion-col>
 
-  </ion-list>
+      <ion-card-header>
+        <ion-item detail="false" lines="none" class="score-item">
+          <ion-avatar slot="start">
+            <ion-icon name="golf-outline"></ion-icon>
+          </ion-avatar>
+          <ion-label>
+            <h2>{{todayScore?.event?.name}}</h2>
+            <h3>Round {{todayScore?.round}}</h3>
+            <p>{{todayScore?.event?.type}}</p>
+            <p>{{todayScore?.startTime}}</p>
+            <p>You are marking: <strong>{{markedPlayer.firstName}} {{markedPlayer.lastName}}</strong></p>
+          </ion-label>
+          <ion-icon slot="end" name="clipboard-outline"></ion-icon>
+        </ion-item>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-list lines="none">
+          <ion-item *ngFor="let hole of todayScore?.holes" detail="false" (click)="presentActionSheet(hole?.number)">
+            <ion-col class="ion-text-center">{{hole?.number}}</ion-col>
+            <ion-col class="ion-text-center">{{hole?.length}}</ion-col>
+            <ion-col class="ion-text-center">{{hole?.par}}</ion-col>
+            <ion-col class="ion-text-center">{{hole?.holeHandicap}}</ion-col>
+            <ion-col class="ion-text-center">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
+            <ion-col class="ion-text-center">{{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}</ion-col>
+          </ion-item>
+          -->
 
 </ion-content>

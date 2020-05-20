@@ -333,37 +333,49 @@ export class ScoreListPage {
   };
 
   async presentActionSheet(holenum: number) {
-    if (this.todayScore.selfCard && this.todayScore.markerCard) {
+    let buttonList: any[] = [];
+    if (this.todayScore.selfCard && this.todayScore.markerCard && this.markedScore.selfCard && this.markedScore.markerCard) {
       const toast = await this.toastCtrl.create({
-        message: 'The scored has been signed, you cannot change it.',
+        message: 'The scores has been signed, you cannot change it.',
         duration: 2000
       });
       await toast.present();
-      34
     } else {
-      const actionSheet = await this.actionSheetController.create({
-        header: 'Change score at Hole: ' + holenum,
-        buttons: [
+      if (!this.todayScore.selfCard || !this.todayScore.markerCard) {
+        buttonList.push(
           {
             text: 'Your score',
             icon: 'golf-outline',
             handler: () => {
               this.changeSelfScore(holenum);
             }
-        }, {
+          }
+        )
+      };
+      if (!this.markedScore.selfCard || !this.markedScore.markerCard) {
+        buttonList.push(
+          {
             text: 'Marked score',
             icon: 'people-outline',
             handler: () => {
               this.changeMarkScore(holenum);
             }
-        }, {
-            text: 'Cancel',
-            icon: 'close',
-            role: 'cancel',
-            handler: () => {
-              console.log('Cancel clicked');
-            }
-        }]
+          }
+        )
+      };
+      buttonList.push(
+        {
+          text: 'Cancel',
+          icon: 'close',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      )
+      const actionSheet = await this.actionSheetController.create({
+        header: 'Change score at Hole: ' + holenum, 
+        buttons: buttonList
       });
       await actionSheet.present();
     }
@@ -396,7 +408,7 @@ export class ScoreListPage {
           role: 'cancel'
         },
         {
-          text: "Set your own score for hole: " + holenum,
+          text: "Set your own score",
         },
         {
           text: 'Ok',
@@ -409,13 +421,16 @@ export class ScoreListPage {
       ],
       columns: [
         {
+          options: [{text:'Hole: ' + holenum, value:'1'}]
+        },
+        {
           name: 'Score',
           options: this.getColumnOptions()
         }
       ]
     });
 
-    picker.columns[0].selectedIndex = hsself.self - 1;
+    picker.columns[1].selectedIndex = hsself.self - 1;
     await picker.present();
 
   }
@@ -435,7 +450,7 @@ export class ScoreListPage {
           role: 'cancel'
         },
         {
-          text: "Marked player score for hole: " + holenum,
+          text: "Marked player score",
         },
         {
           text: 'Ok',
@@ -448,13 +463,16 @@ export class ScoreListPage {
       ],
       columns: [
         {
+          options: [{text:'Hole: ' + holenum, value:'1'}]
+        },
+        {
           name: 'Score',
           options: this.getColumnOptions()
         }
       ]
     });
 
-    picker.columns[0].selectedIndex = hsmark.marker - 1;
+    picker.columns[1].selectedIndex = hsmark.marker - 1;
     await picker.present();
 
   }
