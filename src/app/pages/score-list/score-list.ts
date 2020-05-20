@@ -341,7 +341,7 @@ export class ScoreListPage {
             this.changeSelfScore(holenum);
           }
       }, {
-          text: 'Opponent score',
+          text: 'Marked score',
           icon: 'people-outline',
           handler: () => {
             this.changeMarkScore(holenum);
