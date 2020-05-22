@@ -45,6 +45,8 @@ export class ScoreListPage {
   foundTodayScore = false;
   foundMarkedPlayer = false;
   selfMark = false;
+  canSignSelf = false;
+  canSignMarked = false;
 
   constructor(
     public router: Router,
@@ -124,6 +126,7 @@ export class ScoreListPage {
                               if (this.showScore('Today', score.startTime)) {
                                 this.todayScore = score;
                                 this.foundTodayScore = true;
+                                this.checkCanSignSelf();
                                 console.log('found todayscore', this.todayScore);
                                 // let's figure out the marked player
                                 this.userData.getMarkedPlayer().then((markedid) => {
@@ -208,6 +211,7 @@ export class ScoreListPage {
                   .subscribe(
                     (responseshs: ScoreHoleScoresResponse[]) => {
                       this.markedScore.holescores = responseshs;
+                      this.checkCanSignMarked();
                       console.log('markedScore', this.markedScore);
                     },
                     err => {
@@ -310,6 +314,8 @@ export class ScoreListPage {
         holescore = thehs;
       }
     });
+    this.checkCanSignSelf();
+    this.checkCanSignMarked();
   }
 
   showScore(segment: string, startTime: Date): boolean {
@@ -421,6 +427,7 @@ export class ScoreListPage {
       ],
       columns: [
         {
+          name: 'Hole',
           options: [{text:'Hole: ' + holenum, value:'1'}]
         },
         {
@@ -463,6 +470,7 @@ export class ScoreListPage {
       ],
       columns: [
         {
+          name: 'Hole',
           options: [{text:'Hole: ' + holenum, value:'1'}]
         },
         {
@@ -511,7 +519,7 @@ export class ScoreListPage {
     }
   }
 
-  canSignSelf(): boolean {
+  checkCanSignSelf() {
     let canSign = true;
     if (this.todayScore.holescores) {
       this.todayScore.holescores.forEach(
@@ -523,11 +531,11 @@ export class ScoreListPage {
       );
     } else {
       canSign = false;
-    }
-    return canSign;
+    };
+    this.canSignSelf = canSign;
   }
 
-  canSignMarked(): boolean {
+  checkCanSignMarked() {
     let canSign = true;
     if (this.markedScore.holescores) {
       this.markedScore.holescores.forEach(
@@ -540,7 +548,7 @@ export class ScoreListPage {
     } else {
       canSign = false;
     };
-    return canSign;
+    this.canSignMarked = canSign;
   }
 
 
