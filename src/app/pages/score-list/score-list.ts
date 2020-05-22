@@ -384,7 +384,7 @@ export class ScoreListPage {
 
   getColumnOptions() {
     let options = [];
-    for (let i = 1; i < 21; i++) {
+    for (let i = 0; i < 21; i++) {
       options.push({
         text: i,
         value: i
@@ -430,7 +430,7 @@ export class ScoreListPage {
       ]
     });
 
-    picker.columns[1].selectedIndex = hsself.self - 1;
+    picker.columns[1].selectedIndex = hsself.self;
     await picker.present();
 
   }
@@ -472,7 +472,7 @@ export class ScoreListPage {
       ]
     });
 
-    picker.columns[1].selectedIndex = hsmark.marker - 1;
+    picker.columns[1].selectedIndex = hsmark.marker;
     await picker.present();
 
   }

@@ -46,6 +46,7 @@ export class ScoreSignPage implements OnInit {
   ios: boolean;
   scoreId: string;
   which: string;
+  what: string;
   
   constructor(
     public alertCtrl: AlertController,
@@ -62,6 +63,7 @@ export class ScoreSignPage implements OnInit {
 
   ngOnInit() {
     this.which = this.route.snapshot.paramMap.get('which');
+    this.what = this.route.snapshot.paramMap.get('what');
     this.scoreId = this.route.snapshot.paramMap.get('scoreId');
 
     this.ios = this.config.get('mode') === 'ios';

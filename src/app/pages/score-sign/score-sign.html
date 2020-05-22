@@ -33,6 +33,27 @@
             <ion-col *ngIf="which === 'player'" class="ion-text-center">Score Marker put</ion-col>
             <ion-col *ngIf="which === 'marker'" class="ion-text-center">Score Player put</ion-col>
           </ion-item>
+
+          <ion-item *ngFor="let hole of todayScore?.holes" detail="false" (click)="presentActionSheet(hole?.number)">
+            <ion-col class="ion-text-center">{{hole?.number}}</ion-col>
+            <ion-col class="ion-text-center">{{hole?.length}}</ion-col>
+            <ion-col class="ion-text-center">{{hole?.par}}</ion-col>
+            <ion-col class="ion-text-center">{{hole?.holeHandicap}}</ion-col>
+            <ion-col *ngIf= "getHoleScoreForHole(todayScore.holescores, hole?.number).self != getHoleScoreForHole(todayScore.holescores, hole?.number).marker" class="ion-text-center">
+              <ion-item color="danger">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-item>
+            </ion-col>
+            <ion-col *ngIf= "getHoleScoreForHole(todayScore.holescores, hole?.number).self === getHoleScoreForHole(todayScore.holescores, hole?.number).marker" class="ion-text-center">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>
+            <ion-col *ngIf= "getHoleScoreForHole(markedScore.holescores, hole?.number).self != getHoleScoreForHole(markedScore.holescores, hole?.number).marker" class="ion-text-center">
+              <ion-item color="danger">{{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}</ion-item>
+            </ion-col>
+            <ion-col *ngIf= "getHoleScoreForHole(markedScore.holescores, hole?.number).self === getHoleScoreForHole(markedScore.holescores, hole?.number).marker" class="ion-text-center">{{this.getHoleScoreForHole(markedScore.holescores, hole?.number).marker}}</ion-col>
+            <!--
+          <ion-col *ngIf="which === 'player'" class="ion-text-center">Score I put</ion-col>
+            <ion-col><ion-icon name="create-outline"></ion-icon></ion-col>
+          -->
+          </ion-item>
+
+          
         </ion-list>
       </ion-card-content>
     </ion-card>
