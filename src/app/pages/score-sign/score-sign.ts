@@ -48,9 +48,9 @@ export class ScoreSignPage implements OnInit {
   scores: any[] = [];
   which: string;
   viewScore: any;
-  canSign: boolean = true;
+  canSign = true;
   card: string;
-  
+
   constructor(
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
@@ -75,9 +75,9 @@ export class ScoreSignPage implements OnInit {
 
     this.ios = this.config.get('mode') === 'ios';
     this.scoreId = this.viewScore.id;
-    for (let i = 1; i < this.viewScore.holes.length+1; i++) {
-      let score: any = {};
-      score.holeNumber = this.viewScore.holes[i-1].number;
+    for (let i = 1; i < this.viewScore.holes.length + 1; i++) {
+      const score: any = {};
+      score.holeNumber = this.viewScore.holes[i - 1].number;
 
       if (this.viewScore.holescores && (this.viewScore.holescores.length > 0)) {
         const thehole = this.viewScore.holescores.find(
@@ -90,8 +90,8 @@ export class ScoreSignPage implements OnInit {
           score.self = 0;
           score.marker = 0;
           this.canSign = false;
-        };
-      };
+        }
+      }
       if (score.self === score.marker) {
         score.ok = true;
       } else {
@@ -129,7 +129,7 @@ export class ScoreSignPage implements OnInit {
   }
 
   updateScore() {
-  let signType: string; 
+    let signType: string;
 
     if (this.which === 'Player') {
       signType = this.which;
@@ -146,7 +146,6 @@ export class ScoreSignPage implements OnInit {
       },
       () => console.log('UpdateScore success')
     );
-
   }
 
 }
