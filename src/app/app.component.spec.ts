@@ -4,7 +4,7 @@ import {
 import {
   Router
 } from '@angular/router';
-//import { SwUpdate } from '@angular/service-worker';
+// import { SwUpdate } from '@angular/service-worker';
 import {
   TestBed,
   async

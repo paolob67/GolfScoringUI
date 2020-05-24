@@ -6,7 +6,7 @@ import {
 import {
   Router
 } from '@angular/router';
-//PB67 import { SwUpdate } from '@angular/service-worker';
+// PB67 import { SwUpdate } from '@angular/service-worker';
 
 import {
   MenuController,

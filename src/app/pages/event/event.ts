@@ -59,15 +59,15 @@ export class EventPage implements OnInit {
     startTime: Date;
     startHole: number;
     scoreId: string;
-    //hide: boolean;
+    // hide: boolean;
   } [];
 
   markedPlayerId: string;
 
-  //dayIndex = 0;
+  // dayIndex = 0;
   queryText = '';
-  //segment = 'all';
-  //excludeTracks: any = [];
+  // segment = 'all';
+  // excludeTracks: any = [];
   shownPlayers: any = [];
   groups: any = [];
   confDate: string;
@@ -88,7 +88,7 @@ export class EventPage implements OnInit {
 
   ngOnInit() {
     this.eventId = this.route.snapshot.paramMap.get('eventId');
-    this.roundNum = parseInt(this.route.snapshot.paramMap.get('roundNum'));
+    this.roundNum = parseInt(this.route.snapshot.paramMap.get('roundNum'), 10);
 
     this.ios = this.config.get('mode') === 'ios';
 
@@ -105,7 +105,7 @@ export class EventPage implements OnInit {
   }
 
   // call server to get public profile
-  //initData(jwtToken: string) {
+  // initData(jwtToken: string) {
   initData() {
     this.players = [];
     this.restClient.presentLoader();
@@ -132,14 +132,14 @@ export class EventPage implements OnInit {
                   */
                   // should call unprotected api here...
 
-                  //this.restClient.getPublicUser(score.userId, jwtToken)
+                  // this.restClient.getPublicUser(score.userId, jwtToken)
                   this.restClient.getPublicUser(score.userId)
                     .subscribe(
-                      (responsesc: UsersResponse) => {
+                      (userResponse: UsersResponse) => {
                         const gotPlayer = {
-                          id: responsesc.id,
-                          firstName: responsesc.firstName,
-                          lastName: responsesc.lastName,
+                          id: userResponse.id,
+                          firstName: userResponse.firstName,
+                          lastName: userResponse.lastName,
                           startTime: score.startTime,
                           startHole: score.startHole,
                           scoreId: score.id,
@@ -180,15 +180,15 @@ export class EventPage implements OnInit {
     this.shownPlayers = this.players;
 
     let didfindgroup = false;
-    let thegroup: any;
+    // const thegroup: any;
     if (this.groups) {
       this.groups.forEach(group => {
-        if (group.time == player.startTime || group.hole == player.startHole) {
+        if (group.time === player.startTime || group.hole === player.startHole) {
           group.players.push(player);
           didfindgroup = true;
-        };
+        }
       });
-    };
+    }
     if (!didfindgroup) {
       this.groups.push({
         time: player.startTime,
@@ -198,7 +198,7 @@ export class EventPage implements OnInit {
             player
           ]
       });
-    };
+    }
   }
 
 

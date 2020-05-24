@@ -39,7 +39,7 @@ export class LeaderboardListPage {
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidEnter LeaderboardListPage', )
+    console.log('ionViewDidEnter LeaderboardListPage');
     this.restClient.presentLoader();
     this.restClient.getEvents()
       .subscribe(
@@ -58,8 +58,6 @@ export class LeaderboardListPage {
           this.restClient.dismissLoader();
         }
       );
-    
   }
-
 
 }
