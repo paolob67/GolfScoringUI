@@ -273,13 +273,15 @@ export class RestClientService {
   }
 
   signScore(scoreId: string, signType: string, signCard: string) {
-    let body: any = {};
+    const body: any = {};
     if (signType === 'Player') {
       body.selfCard = signCard;
     } else {
       body.markerCard = signCard;
     }
-    return this._http.patch < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + scoreId , body);
+    return this.httpClient.patch < ScoreHoleScoresResponse > (
+      environment.apiEndPoint + '/scores/' + scoreId ,
+      body);
   }
 
 }
