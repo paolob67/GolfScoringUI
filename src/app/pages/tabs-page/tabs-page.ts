@@ -12,30 +12,28 @@ import {
 export class TabsPage  implements OnInit {
   loggedIn = false;
 
-  constructor (
+  constructor(
     private userData: UserData
-  ) {  
-  
-  }
-  
+  ) { }
+
   async ngOnInit() {
     this.checkLoginStatus();
     this.listenForLoginEvents();
   }
-  
+
   checkLoginStatus() {
     return this.userData.isLoggedIn().then(loggedIn => {
       return this.updateLoggedInStatus(loggedIn);
     });
   }
-  
+
   updateLoggedInStatus(loggedIn: boolean) {
     setTimeout(() => {
-      console.log('tabs -->',loggedIn);
+      console.log('tabs -->', loggedIn);
       this.loggedIn = loggedIn;
     }, 300);
   }
-  
+
   listenForLoginEvents() {
     window.addEventListener('user:login', () => {
       this.updateLoggedInStatus(true);
@@ -49,5 +47,5 @@ export class TabsPage  implements OnInit {
       this.updateLoggedInStatus(false);
     });
   }
-  
+
 }
