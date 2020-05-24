@@ -2,7 +2,8 @@ import {
   Component
 } from '@angular/core';
 import {
-  Router
+  Router,
+  NavigationExtras
 } from '@angular/router';
 import {
   PickerController
@@ -552,4 +553,20 @@ export class ScoreListPage {
   }
 
 
+  async presentScore(scoreType: string) {
+    let viewScore: any = {};
+    let destinationPath: string = "";
+
+    if (scoreType === 'player') {
+      viewScore = this.todayScore;
+      destinationPath = "/app/tabs/scores/sign/Player";
+    } else {
+      viewScore = this.markedScore;
+      viewScore.holes = this.todayScore.holes;
+      destinationPath = "/app/tabs/scores/sign/" + this.markedPlayer.firstName;
+    }
+    let navigationExtras: NavigationExtras = { state: { viewScore: viewScore } };
+    this.router.navigate([destinationPath], navigationExtras);
+
+  }
 }
