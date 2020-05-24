@@ -30,13 +30,13 @@ import {
   styleUrls: ['./player-detail.scss'],
 })
 export class PlayerDetailPage {
-  
+
   eventId = '';
   playerId = '';
   scores: RoundScoresResponse[] = [];
-  
+
   event: EventsResponse;
-  
+
   mobview = false;
   segment = 'Totals';
 
@@ -69,19 +69,4 @@ export class PlayerDetailPage {
       );
   }
 
-
-/*
-    
-    this.restClient.getEvent(this.eventId)
-      .subscribe(
-        (response: EventsResponse) => {
-          this.event = response;
-          this.eventId = response.id;
-        },
-        err => {
-          console.error('Error getting events', err.error.error);
-        },
-        () => {}
-      );
-*/
 }
