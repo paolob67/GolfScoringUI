@@ -1,3 +1,12 @@
+/**
+ * App Module 
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ * @description Application module declares providers and bootstrap module
+ * @module app.module
+ * @class AppModule
+ */
+
 import {
   HttpClientModule
 } from '@angular/common/http';
