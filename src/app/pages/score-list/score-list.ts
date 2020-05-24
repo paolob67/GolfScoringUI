@@ -319,7 +319,6 @@ export class ScoreListPage {
   }
 
   showScore(segment: string, startTime: Date): boolean {
-    //return true;
     const today = new Date();
     const startDate = new Date(startTime);
     const todayYear = today.getFullYear();
@@ -328,10 +327,11 @@ export class ScoreListPage {
     const startMonth = startDate.getMonth();
     const todayDay = today.getDate();
     const startDay = startDate.getDate();
-    // if segment is "upcoming" return false on past startTime
     if (segment === 'Today') {
       // test for future
-      //if ( (startDay >= todayDay) || (startMonth >  todayMonth) || (startYear > todayYear) ) {     if ((startDay === todayDay) && (startMonth === todayMonth) && (startYear === todayYear)) {
+      // if ( (startDay >= todayDay) || (startMonth >  todayMonth) || (startYear > todayYear) ) {     
+      // test for today
+      // if ((startDay === todayDay) && (startMonth === todayMonth) && (startYear === todayYear)) {
       return true;
     } else {
       return false;
@@ -407,14 +407,14 @@ export class ScoreListPage {
     hsself.scoreId = this.todayScore.id;
 
     const picker = await this.pickerCtrl.create({
-      mode: "ios",
+      mode: 'ios',
       buttons: [
         {
-          text: "Cancel",
+          text: 'Cancel',
           role: 'cancel'
         },
         {
-          text: "Set your own score",
+          text: 'Set your own score',
         },
         {
           text: 'Ok',
@@ -450,14 +450,14 @@ export class ScoreListPage {
     hsmark.markerId = this.userId;
 
     const picker = await this.pickerCtrl.create({
-      mode: "ios",
+      mode: 'ios',
       buttons: [
         {
-          text: "Cancel",
+          text: 'Cancel',
           role: 'cancel'
         },
         {
-          text: "Marked player score",
+          text: 'Marked player score',
         },
         {
           text: 'Ok',

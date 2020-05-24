@@ -41,8 +41,6 @@ export class UserData {
   }
 
   logout(): Promise < any > {
-    
-  
     return this.storage.remove(this.HAS_LOGGED_IN).then(() => {
       return this.storage.remove(this.ID).then(() => {
         return this.storage.remove(this.JWT_TOKEN);
@@ -50,7 +48,6 @@ export class UserData {
     }).then(() => {
       window.dispatchEvent(new CustomEvent('user:logout'));
     });
-  
   }
 
   setId(id: string): Promise < any > {

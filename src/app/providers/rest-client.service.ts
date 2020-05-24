@@ -40,16 +40,20 @@ export class RestClientService {
   isLoading = false;
 
   constructor(
-    private _http: HttpClient,
+    private httpClient: HttpClient,
     private loadingController: LoadingController
   ) {
-    if (!environment.production) console.log("Rest api endpoint is", environment.apiEndPoint);
+    if (!environment.production) {
+      console.log('Rest api endpoint is', environment.apiEndPoint);
+    }
   }
 
 
   // provide methods for showing and hiding loader
   async presentLoader() {
-    if (this.isLoading) return;
+    if (this.isLoading) {
+      return;
+    }
     this.isLoading = true;
     return await this.loadingController.create({}).then(a => {
       a.present().then(() => {
@@ -61,21 +65,23 @@ export class RestClientService {
   }
 
   async dismissLoader() {
-    if (!this.isLoading) return;
+    if (!this.isLoading) {
+      return;
+    }
     this.isLoading = false;
     return await this.loadingController.dismiss().catch(() => {});
   }
 
   checkServerConnection() {
-    return this._http.get(environment.apiEndPoint + '/ping');
+    return this.httpClient.get(environment.apiEndPoint + '/ping');
   }
 
-  login(username: string, password: string) {
+  login(aUserName: string, aPassword: string) {
     const body = {
-      email: username,
-      password: password,
+      email: aUserName,
+      password: aPassword,
     };
-    return this._http.post < LoginResponse > (environment.apiEndPoint + '/users/login', < LoginRequest > body);
+    return this.httpClient.post < LoginResponse > (environment.apiEndPoint + '/users/login', body);
   }
 
   me(token: string) {
@@ -84,39 +90,39 @@ export class RestClientService {
         Authorization: 'Bearer ' + token
       }
     };
-    return this._http.get < UsersResponse > (environment.apiEndPoint + '/users/me', options);
+    return this.httpClient.get < UsersResponse > (environment.apiEndPoint + '/users/me', options);
   }
 
-  signup(firstname: string, lastname: string, username: string, password: string) {
+  signup(aFirstName: string, aLastName: string, aUserName: string, aPassword: string) {
     const body = {
-      firstName: firstname,
-      lastName: lastname,
-      email: username,
-      password: password
+      firstName: aFirstName,
+      lastName: aLastName,
+      email: aUserName,
+      password: aPassword
     };
-    return this._http.post < UsersResponse > (environment.apiEndPoint + '/users', < SignupRequest > body);
+    return this.httpClient.post < UsersResponse > (environment.apiEndPoint + '/users', body);
   }
 
-  updateUser(token: string, userdata: UsersResponse) {
+  updateUser(token: string, userData: UsersResponse) {
     const options = {
       headers: {
         Authorization: 'Bearer ' + token
       }
     };
     const body = {
-      firstName: userdata.firstName,
-      lastName: userdata.lastName,
-      email: userdata.email,
-      clubName: userdata.clubName,
-      card: userdata.card,
-      handicap: userdata.handicap,
-      gender: userdata.gender
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      email: userData.email,
+      clubName: userData.clubName,
+      card: userData.card,
+      handicap: userData.handicap,
+      gender: userData.gender
     };
-    return this._http.put < UsersResponse > (environment.apiEndPoint + '/users/' + userdata.id, body, options);
+    return this.httpClient.put < UsersResponse > (environment.apiEndPoint + '/users/' + userData.id, body, options);
   }
 
-  //getPublicUser(userId: string, token: string) {
-  getPublicUser(userId: string) {
+  // getPublicUser(userId: string, token: string) {
+  getPublicUser(aUserId: string) {
     /*
     const options = {
       headers: {
@@ -124,31 +130,30 @@ export class RestClientService {
       }
     };
     */
-    //return this._http.get<UsersResponse>(environment.apiEndPoint + '/users/' + userId, options);
-    return this._http.get < UsersResponse > (environment.apiEndPoint + '/users/public/' + userId);
-
+    // return this.httpClient.get<UsersResponse>(environment.apiEndPoint + '/users/' + userId, options);
+    return this.httpClient.get < UsersResponse > (environment.apiEndPoint + '/users/public/' + aUserId);
   }
 
   getCourses() {
-    return this._http.get < CoursesResponse[] > (environment.apiEndPoint + '/courses');
+    return this.httpClient.get < CoursesResponse[] > (environment.apiEndPoint + '/courses');
   }
 
   getCourseAddress(courseid: string) {
-    return this._http.get < CourseAddressResponse > (environment.apiEndPoint + '/courses/' + courseid + '/address');
+    return this.httpClient.get < CourseAddressResponse > (environment.apiEndPoint + '/courses/' + courseid + '/address');
   }
 
   getEvent(eventId: string) {
-    return this._http.get < EventsResponse > (environment.apiEndPoint + '/events/' + eventId);
+    return this.httpClient.get < EventsResponse > (environment.apiEndPoint + '/events/' + eventId);
   }
 
   getEvents() {
-    return this._http.get < EventsResponse[] > (environment.apiEndPoint + '/events');
+    return this.httpClient.get < EventsResponse[] > (environment.apiEndPoint + '/events');
   }
 
-  getScoresForUser(userId: string) {
+  getScoresForUser(aUserId: string) {
     const filter = {
-      "where": {
-        "userId": userId
+      where: {
+        userId: aUserId
       }
     };
     const filterStr = JSON.stringify(filter);
@@ -157,15 +162,15 @@ export class RestClientService {
         filter: filterStr
       }
     };
-    return this._http.get < ScoresResponse[] > (environment.apiEndPoint + '/scores', options);
+    return this.httpClient.get < ScoresResponse[] > (environment.apiEndPoint + '/scores', options);
   }
 
-  getScoreForMarking(userId: string, eventId: string, roundNum: number) {
+  getScoreForMarking(aUserId: string, anEventId: string, aRoundNum: number) {
     const filter = {
-      "where": {
-        "userId": userId,
-        "eventId": eventId,
-        "round": roundNum
+      where: {
+        userId: aUserId,
+        eventId: anEventId,
+        round: aRoundNum
       }
     };
     const filterStr = JSON.stringify(filter);
@@ -174,27 +179,30 @@ export class RestClientService {
         filter: filterStr
       }
     };
-    return this._http.get < ScoresResponse[] > (environment.apiEndPoint + '/scores', options);
+    return this.httpClient.get < ScoresResponse[] > (environment.apiEndPoint + '/scores', options);
   }
 
 
   getCourseHoles(courseId: string) {
-    return this._http.get < CourseHolesResponse[] > (environment.apiEndPoint + '/courses/' + courseId + '/holes');
+    return this.httpClient.get < CourseHolesResponse[] > (environment.apiEndPoint + '/courses/' + courseId + '/holes');
   }
 
   getScoreHoleScores(scoreId: string) {
-    return this._http.get < ScoreHoleScoresResponse[] > (environment.apiEndPoint + '/scores/' + scoreId + '/hole-scores');
+    return this.httpClient.get < ScoreHoleScoresResponse[] > (environment.apiEndPoint + '/scores/' + scoreId + '/hole-scores');
   }
 
   postHoleScore(holeScore: ScoreHoleScoresResponse) {
     const body = {
-      holeNumber: holeScore.holeNumber, 
+      holeNumber: holeScore.holeNumber,
       self: holeScore.self,
       marker: holeScore.marker,
       scoreId: holeScore.scoreId,
     };
     // this should be protected... must include jwt token in call
-    return this._http.post < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', body);
+    return this.httpClient.post < ScoreHoleScoresResponse > (
+      environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores',
+      body
+    );
   }
 
   patchHoleScore(holeScore: ScoreHoleScoresResponse) {
@@ -204,20 +212,27 @@ export class RestClientService {
       marker: holeScore.marker,
       scoreId: holeScore.scoreId,
     };
-    const wherestr = '{ "id": "'+ holeScore.id + '"}';
+    const where = {
+      id: holeScore.id
+    };
+    const whereStr = JSON.stringify(where);
     const options = {
       params: {
-        where: wherestr
+        where: whereStr
       }
     };
-    return this._http.patch < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores', body, options);
+    return this.httpClient.patch < ScoreHoleScoresResponse > (
+      environment.apiEndPoint + '/scores/' + holeScore.scoreId + '/hole-scores',
+      body,
+      options
+    );
   }
 
-  getEventRoundScores(eventId: string, round: number) {
+  getEventRoundScores(anEventId: string, aRound: number) {
     const filter = {
-      "where": {
-        "eventId": eventId,
-        "round": round
+      where: {
+        eventId: anEventId,
+        round: aRound
       }
     };
     const filterStr = JSON.stringify(filter);
@@ -226,13 +241,14 @@ export class RestClientService {
         filter: filterStr
       }
     };
-    return this._http.get < ScoresResponse[] > (environment.apiEndPoint + '/scores', options);
+    return this.httpClient.get < ScoresResponse[] > (environment.apiEndPoint + '/scores', options);
   }
 
+  /*
   getLastEvent() {
     const filter = {
-      "order": 'date DESC',
-      "limit": 1
+      order: 'date DESC',
+      limit: 1
     };
     const filterStr = JSON.stringify(filter);
     const options = {
@@ -240,19 +256,20 @@ export class RestClientService {
         filter: filterStr
       }
     };
-    return this._http.get < EventsResponse[] > (environment.apiEndPoint + '/events', options);
+    return this.httpClient.get < EventsResponse[] > (environment.apiEndPoint + '/events', options);
   }
+  */
 
   getRoundScoresDetails(eventId: string, round: number) {
-    return this._http.get < RoundScoresResponse > (environment.apiEndPoint + '/events/' + eventId + '/roundscores/' + round);
+    return this.httpClient.get < RoundScoresResponse > (environment.apiEndPoint + '/events/' + eventId + '/roundscores/' + round);
   }
 
   getPlayerScoresDetails(eventId: string, userId: string) {
-    return this._http.get < RoundScoresResponse > (environment.apiEndPoint + '/events/' + eventId + '/playerscores/' + userId);
+    return this.httpClient.get < RoundScoresResponse > (environment.apiEndPoint + '/events/' + eventId + '/playerscores/' + userId);
   }
 
   getLeaderboardDetails(eventId: string) {
-    return this._http.get < DetailedLeaderboardResponse[] > (environment.apiEndPoint + '/events/' + eventId + '/detailedleaderboard');
+    return this.httpClient.get < DetailedLeaderboardResponse[] > (environment.apiEndPoint + '/events/' + eventId + '/detailedleaderboard');
   }
 
 }
