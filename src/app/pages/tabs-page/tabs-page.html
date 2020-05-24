@@ -1,11 +1,16 @@
 <ion-tabs>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="scores">
+    <ion-tab-button *ngIf="loggedIn" tab="scores">
       <ion-icon name="golf"></ion-icon>
       <ion-label>Scores</ion-label>
     </ion-tab-button>
 
+    <ion-tab-button *ngIf="!loggedIn" tab="login">
+      <ion-icon name="log-in"></ion-icon>
+      <ion-label>Log In</ion-label>
+    </ion-tab-button>
+    
     <ion-tab-button tab="leaderboard-list">
       <ion-icon name="clipboard"></ion-icon>
       <ion-label>Leaderboards</ion-label>

@@ -143,7 +143,7 @@ export interface LeaderboardResponse {
   stroke: number;
 }
 
-//Detailed Score
+// Detailed Score
 export interface DetailedScoreResponse  {
   position: string;
   positionNum: number;
@@ -214,7 +214,7 @@ export interface RoundScoresResponse {
   detailedScores: DetailedScoreResponse[];
 }
 
-//Detailed Leaderboard
+// Detailed Leaderboard
 export interface DetailedLeaderboardResponse {
   position: string;
   positionNum: number;

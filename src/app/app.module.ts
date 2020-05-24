@@ -1,3 +1,12 @@
+/**
+ * App Module
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ * @description Application module declares providers and bootstrap module
+ * @module app.module
+ * @class AppModule
+ */
+
 import {
   HttpClientModule
 } from '@angular/common/http';
@@ -45,11 +54,11 @@ import {
     FormsModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
-    //PB67
-    //ServiceWorkerModule.register('ngsw-worker.js', {
+    // PB67
+    // ServiceWorkerModule.register('ngsw-worker.js', {
     //  enabled: environment.production
-    //}),
-    //ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    // }),
+    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [AppComponent],
   providers: [InAppBrowser, SplashScreen, StatusBar],

@@ -69,6 +69,11 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'login',
+        redirectTo: '/login',
+        pathMatch: 'full'
+      },
+      {
         path: '',
         redirectTo: '/app/tabs/leaderboard-list',
         pathMatch: 'full'

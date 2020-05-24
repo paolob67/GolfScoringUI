@@ -18,9 +18,6 @@ import {
 import {
   LeaderboardListPage
 } from './leaderboard-list';
-import {
-  ConferenceData
-} from '../../providers/conference-data';
 
 const confDataSub = {};
 
@@ -48,10 +45,6 @@ describe('LeaderboardListPage', () => {
         {
           provide: Router,
           useValue: routerSpy
-        },
-        {
-          provide: ConferenceData,
-          useValue: confDataSub
         }
       ]
     }).compileComponents();

@@ -1,3 +1,10 @@
+/**
+ * Main
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ * @description Enables production mode and bootstraps Application Moudule
+ */
+
 import {
   enableProdMode
 } from '@angular/core';

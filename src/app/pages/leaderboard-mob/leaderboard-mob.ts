@@ -32,7 +32,7 @@ import {
 })
 export class LeaderboardMobPage {
   leaderboard = {
-    "event": {
+    event: {
       "name": "Golden Cup Cake",
       "date": "01/01/1967",
       "round": 1

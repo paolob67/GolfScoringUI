@@ -6,7 +6,7 @@ import {
 import {
   Router
 } from '@angular/router';
-//PB67 import { SwUpdate } from '@angular/service-worker';
+// PB67 import { SwUpdate } from '@angular/service-worker';
 
 import {
   MenuController,
@@ -43,22 +43,26 @@ export class AppComponent implements OnInit {
     {
       title: 'Scores',
       url: '/app/tabs/scores',
-      icon: 'golf'
+      icon: 'golf',
+      public: false
     },
     {
       title: 'Leaderboards',
       url: '/app/tabs/leaderboard-list',
-      icon: 'clipboard'
+      icon: 'clipboard',
+      public: true
     },
     {
       title: 'Map',
       url: '/app/tabs/map',
-      icon: 'map'
+      icon: 'map',
+      public: true
     },
     {
       title: 'About',
       url: '/app/tabs/about',
-      icon: 'information-circle'
+      icon: 'information-circle',
+      public: true
     }
   ];
   loggedIn = false;

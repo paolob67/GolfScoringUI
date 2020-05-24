@@ -132,7 +132,7 @@ export class AccountPage implements AfterViewInit {
         {
           text: 'Ok',
           handler: (data: any) => {
-            this.profileData.handicap = parseInt(data.handicap);
+            this.profileData.handicap = parseInt(data.handicap, 10);
             this.updateProfile();
           }
         }
@@ -206,7 +206,7 @@ export class AccountPage implements AfterViewInit {
             if (err.error.error.statusCode === 401) {
               this.userData.logout();
               this.router.navigateByUrl('/login');
-            };
+            }
           },
           () => {
             console.log('Me success');
@@ -229,7 +229,7 @@ export class AccountPage implements AfterViewInit {
             if (err.error.error.statusCode === 401) {
               this.userData.logout();
               this.router.navigateByUrl('/login');
-            };
+            }
           },
           () => console.log('UpdateUser success')
         );

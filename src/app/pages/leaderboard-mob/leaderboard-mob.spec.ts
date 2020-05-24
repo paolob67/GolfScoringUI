@@ -17,10 +17,8 @@ import {
 } from '@ionic-native/in-app-browser/ngx';
 import {
   LeaderboardMobPage
-} from './leaderboard';
-import {
-  ConferenceData
-} from '../../providers/conference-data';
+} from './leaderboard-mob';
+
 
 const confDataSub = {};
 
@@ -48,10 +46,6 @@ describe('LeaderboardMobPage', () => {
         {
           provide: Router,
           useValue: routerSpy
-        },
-        {
-          provide: ConferenceData,
-          useValue: confDataSub
         }
       ]
     }).compileComponents();
