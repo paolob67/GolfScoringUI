@@ -67,7 +67,7 @@ export class ScoreListPage {
       } else {
         console.log('must log in');
         this.router.navigateByUrl('/login');
-      };
+      }
     });
   }
 
@@ -76,7 +76,7 @@ export class ScoreListPage {
     if (!userId) {
       console.log('must log in');
       return this.router.navigateByUrl('/login');
-    };
+    }
 
     this.restClient.presentLoader();
     // get score master tables for user
@@ -97,7 +97,7 @@ export class ScoreListPage {
                       (responsehl: CourseHolesResponse[]) => {
                         // sort response on hole number
                         // TODO: consider using a filter to sort response on server
-                        responsehl.sort(function (a, b) {
+                        responsehl.sort((a, b) => {
                           return a.number - b.number;
                         });
                         score.holes = responsehl;
@@ -134,9 +134,9 @@ export class ScoreListPage {
                                   // ok we have a marked id
                                   if (markedid) {
                                     this.loadMarkedScores(markedid);
-                                  };
+                                  }
                                 });
-                              };
+                              }
                             },
                             err => {
                               console.log('Error getting hole scores', err.error.error);
@@ -174,65 +174,61 @@ export class ScoreListPage {
 
   loadMarkedScores(markedid: string) {
     if (this.foundTodayScore) {
-      this.userData.getMarkedPlayer().then((markedid) => {
-        // ok we have a marked id
-        if (markedid) {
-          this.foundMarkedPlayer = true;
-          this.markedPlayerId = markedid;
-          this.selfMark = (markedid == this.userId);
-          // let's get the name of the marked player
-          this.restClient.presentLoader();
-          this.restClient.getPublicUser(markedid)
-            .subscribe(
-              (responsesc: UsersResponse) => {
-                this.markedPlayer = responsesc;
-              },
-              err => {
-                console.error('Error getting user info for', markedid);
-                // if we got here it means that markerID is not valid
-                // let's erase it from the data store and clean up
-                this.userData.removeMarkedPlayer().then(() => {
-                  this.foundMarkedPlayer = false;
-                  this.markedPlayer = null;
-                  this.markedPlayerId = '';
-                });
-              },
-              () => {
-                this.restClient.dismissLoader();
-              }
-            );
-          // let's get a reference to the score of the marked player
-          this.restClient.presentLoader();
-          this.restClient.getScoreForMarking(markedid, this.todayScore.eventId, this.todayScore.roundNum)
-            .subscribe(
-              (responsesc: ScoresResponse[]) => {
-                console.log('responsesc', responsesc);
-                this.markedScore = responsesc[0];
-                this.restClient.getScoreHoleScores(responsesc[0].id)
-                  .subscribe(
-                    (responseshs: ScoreHoleScoresResponse[]) => {
-                      this.markedScore.holescores = responseshs;
-                      this.checkCanSignMarked();
-                      console.log('markedScore', this.markedScore);
-                    },
-                    err => {
-                      console.error('Error getting hole scores', err.error.error);
-                    },
-                    () => {
-                      this.restClient.dismissLoader();
-                    }
-                  );
-              },
-              err => {
-                this.restClient.dismissLoader();
-                console.error('Error getting marked score', err.error.error);
-              },
-              () => {}
-            );
-        };
-      });
-    };
-
+      if (markedid) {
+        this.foundMarkedPlayer = true;
+        this.markedPlayerId = markedid;
+        this.selfMark = (markedid === this.userId);
+        // let's get the name of the marked player
+        this.restClient.presentLoader();
+        this.restClient.getPublicUser(markedid)
+          .subscribe(
+            (responsesc: UsersResponse) => {
+              this.markedPlayer = responsesc;
+            },
+            err => {
+              console.error('Error getting user info for', markedid);
+              // if we got here it means that markerID is not valid
+              // let's erase it from the data store and clean up
+              this.userData.removeMarkedPlayer().then(() => {
+                this.foundMarkedPlayer = false;
+                this.markedPlayer = null;
+                this.markedPlayerId = '';
+              });
+            },
+            () => {
+              this.restClient.dismissLoader();
+            }
+          );
+        // let's get a reference to the score of the marked player
+        this.restClient.presentLoader();
+        this.restClient.getScoreForMarking(markedid, this.todayScore.eventId, this.todayScore.roundNum)
+          .subscribe(
+            (responsesc: ScoresResponse[]) => {
+              console.log('responsesc', responsesc);
+              this.markedScore = responsesc[0];
+              this.restClient.getScoreHoleScores(responsesc[0].id)
+                .subscribe(
+                  (responseshs: ScoreHoleScoresResponse[]) => {
+                    this.markedScore.holescores = responseshs;
+                    this.checkCanSignMarked();
+                    console.log('markedScore', this.markedScore);
+                  },
+                  err => {
+                    console.error('Error getting hole scores', err.error.error);
+                  },
+                  () => {
+                    this.restClient.dismissLoader();
+                  }
+                );
+            },
+            err => {
+              this.restClient.dismissLoader();
+              console.error('Error getting marked score', err.error.error);
+            },
+            () => {}
+          );
+      }
+    }
   }
 
   // Find the marked score for the hole passed in the hole score table
@@ -246,7 +242,7 @@ export class ScoreListPage {
       } else {
         return 0;
       }
-    };
+    }
     return 0;
   }
 
@@ -261,7 +257,7 @@ export class ScoreListPage {
       } else {
         return 0;
       }
-    };
+    }
     return 0;
   }
 
@@ -276,7 +272,7 @@ export class ScoreListPage {
       } else {
         return '';
       }
-    };
+    }
     return '';
   }
 
@@ -303,8 +299,8 @@ export class ScoreListPage {
         // push the new hole score in the array
         holescores.push(newhs);
         return newhs;
-      };
-    };
+      }
+    }
     return newhs;
   }
 
@@ -330,18 +326,18 @@ export class ScoreListPage {
     const startDay = startDate.getDate();
     if (segment === 'Today') {
       // test for future
-      // if ( (startDay >= todayDay) || (startMonth >  todayMonth) || (startYear > todayYear) ) {     
+      // if ( (startDay >= todayDay) || (startMonth >  todayMonth) || (startYear > todayYear) ) {
       // test for today
       // if ((startDay === todayDay) && (startMonth === todayMonth) && (startYear === todayYear)) {
       return true;
     } else {
       return false;
     }
-  };
+  }
 
   async presentActionSheet(holenum: number) {
-    let buttonList: any[] = [];
-    if (this.todayScore.selfCard &&  this.markedScore.markerCard) {
+    const buttonList: any[] = [];
+    if (this.todayScore.selfCard && this.markedScore.markerCard) {
       const toast = await this.toastCtrl.create({
         message: 'The score has been signed, you cannot change it.',
         duration: 2000
@@ -349,39 +345,33 @@ export class ScoreListPage {
       await toast.present();
     } else {
       if (!this.todayScore.selfCard) {
-        buttonList.push(
-          {
-            text: 'Your score',
-            icon: 'golf-outline',
-            handler: () => {
-              this.changeSelfScore(holenum);
-            }
-          }
-        )
-      };
-      if (!this.markedScore.markerCard) {
-        buttonList.push(
-          {
-            text: 'Marked score',
-            icon: 'people-outline',
-            handler: () => {
-              this.changeMarkScore(holenum);
-            }
-          }
-        )
-      };
-      buttonList.push(
-        {
-          text: 'Cancel',
-          icon: 'close',
-          role: 'cancel',
+        buttonList.push({
+          text: 'Your score',
+          icon: 'golf-outline',
           handler: () => {
-            console.log('Cancel clicked');
+            this.changeSelfScore(holenum);
           }
+        });
+      }
+      if (!this.markedScore.markerCard) {
+        buttonList.push({
+          text: 'Marked score',
+          icon: 'people-outline',
+          handler: () => {
+            this.changeMarkScore(holenum);
+          }
+        });
+      }
+      buttonList.push({
+        text: 'Cancel',
+        icon: 'close',
+        role: 'cancel',
+        handler: () => {
+          console.log('Cancel clicked');
         }
-      )
+      });
       const actionSheet = await this.actionSheetController.create({
-        header: 'Change score at Hole: ' + holenum, 
+        header: 'Change score at Hole: ' + holenum,
         buttons: buttonList
       });
       await actionSheet.present();
@@ -390,20 +380,20 @@ export class ScoreListPage {
   }
 
   getColumnOptions() {
-    let options = [];
+    const options = [];
     for (let i = 0; i < 21; i++) {
       options.push({
         text: i,
         value: i
       });
-    };
+    }
     return options;
   }
 
 
   async changeSelfScore(holenum: number) {
     const hsself: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.todayScore.holescores, holenum);
-    //const hsmark: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.markedScore.holescores, holenum);
+    // const hsmark: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.markedScore.holescores, holenum);
     // we need this for the post to work
     hsself.scoreId = this.todayScore.id;
 
@@ -421,7 +411,7 @@ export class ScoreListPage {
           text: 'Ok',
           handler: (data: any) => {
             console.log(data.Score.value);
-            hsself.self = parseInt(data.Score.value);
+            hsself.self = parseInt(data.Score.value, 10);
             this.updateScore(this.todayScore.holescores, hsself);
           }
         }
@@ -429,7 +419,10 @@ export class ScoreListPage {
       columns: [
         {
           name: 'Hole',
-          options: [{text:'Hole: ' + holenum, value:'1'}]
+          options: [{
+            text: 'Hole: ' + holenum,
+            value: '1'
+          }]
         },
         {
           name: 'Score',
@@ -444,7 +437,7 @@ export class ScoreListPage {
   }
 
   async changeMarkScore(holenum: number) {
-    //const hsself: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.todayScore.holescores, holenum);
+    // const hsself: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.todayScore.holescores, holenum);
     const hsmark: ScoreHoleScoresResponse = this.getHoleScoreForHole(this.markedScore.holescores, holenum);
     // we need this for the post to work
     hsmark.scoreId = this.markedScore.id;
@@ -464,7 +457,7 @@ export class ScoreListPage {
           text: 'Ok',
           handler: (data: any) => {
             console.log(data.Score.value);
-            hsmark.marker = parseInt(data.Score.value);
+            hsmark.marker = parseInt(data.Score.value, 10);
             this.updateScore(this.markedScore.holescores, hsmark);
           }
         }
@@ -472,7 +465,10 @@ export class ScoreListPage {
       columns: [
         {
           name: 'Hole',
-          options: [{text:'Hole: ' + holenum, value:'1'}]
+          options: [{
+            text: 'Hole: ' + holenum,
+            value: '1'
+          }]
         },
         {
           name: 'Score',
@@ -507,7 +503,7 @@ export class ScoreListPage {
         .subscribe(
           (response: ScoreHoleScoresResponse) => {
             // TODO: should retrieve hole scores first... before resetting them for showing...
-            // or at change 
+            // or at change
             this.setHoleScoreForHole(holescores, response);
           },
           err => {
@@ -525,14 +521,14 @@ export class ScoreListPage {
     if (this.todayScore.holescores) {
       this.todayScore.holescores.forEach(
         (holescore) => {
-          if (holescore.self == 0) {
+          if (holescore.self === 0) {
             canSign = false;
           }
         }
       );
     } else {
       canSign = false;
-    };
+    }
     this.canSignSelf = canSign;
   }
 
@@ -541,31 +537,35 @@ export class ScoreListPage {
     if (this.markedScore.holescores) {
       this.markedScore.holescores.forEach(
         (holescore) => {
-          if (holescore.marker == 0) {
+          if (holescore.marker === 0) {
             canSign = false;
           }
         }
       );
     } else {
       canSign = false;
-    };
+    }
     this.canSignMarked = canSign;
   }
 
 
   async presentScore(scoreType: string) {
-    let viewScore: any = {};
-    let destinationPath: string = "";
+    let theViewScore: any = {};
+    let destinationPath = '';
 
     if (scoreType === 'player') {
-      viewScore = this.todayScore;
-      destinationPath = "/app/tabs/scores/sign/Player";
+      theViewScore = this.todayScore;
+      destinationPath = '/app/tabs/scores/sign/Player';
     } else {
-      viewScore = this.markedScore;
-      viewScore.holes = this.todayScore.holes;
-      destinationPath = "/app/tabs/scores/sign/" + this.markedPlayer.firstName;
+      theViewScore = this.markedScore;
+      theViewScore.holes = this.todayScore.holes;
+      destinationPath = '/app/tabs/scores/sign/' + this.markedPlayer.firstName;
     }
-    let navigationExtras: NavigationExtras = { state: { viewScore: viewScore } };
+    const navigationExtras: NavigationExtras = {
+      state: {
+        viewScore: theViewScore
+      }
+    };
     this.router.navigate([destinationPath], navigationExtras);
 
   }
