@@ -125,18 +125,12 @@
       </ion-card>
       <ion-row>
         <ion-col>
-          <ion-button *ngIf="canSignSelf" routerLink="/app/tabs/scores/sign/player/sign/{{todayScore?.id}}" expand="block">
-            Player Score
-          </ion-button>
-          <ion-button *ngIf="!canSignSelf" routerLink="/app/tabs/scores/sign/player/show/{{todayScore?.id}}" expand="block" fill="outline">
+          <ion-button (click)="presentScore('player')" expand="block">
             Player Score
           </ion-button>
         </ion-col>
         <ion-col>
-          <ion-button *ngIf="canSignMarked" routerLink="/app/tabs/scores/sign/marker/sign/{{markedScore?.id}}" expand="block">
-            Marker Score
-          </ion-button>
-          <ion-button *ngIf="!canSignMarked" routerLink="/app/tabs/scores/sign/marker/show/{{markedScore?.id}}" expand="block" fill="outline">
+          <ion-button (click)="presentScore('marker')" expand="block">
             Marker Score
           </ion-button>
         </ion-col>

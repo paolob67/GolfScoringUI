@@ -45,8 +45,10 @@ export class ScoreSignPage implements OnInit {
 
   ios: boolean;
   scoreId: string;
+  scores: any[] = [];
   which: string;
-  what: string;
+  viewScore: any;
+  canSign: boolean = true;
   
   constructor(
     public alertCtrl: AlertController,
@@ -63,14 +65,45 @@ export class ScoreSignPage implements OnInit {
 
   ngOnInit() {
     this.which = this.route.snapshot.paramMap.get('which');
-    this.what = this.route.snapshot.paramMap.get('what');
-    this.scoreId = this.route.snapshot.paramMap.get('scoreId');
+//    this.what = this.route.snapshot.paramMap.get('what');
+//    this.scoreId = this.route.snapshot.paramMap.get('scoreId');
+    if (this.router.getCurrentNavigation().extras.state) {
+      this.viewScore = this.router.getCurrentNavigation().extras.state.viewScore;
+    }
+    console.log('Id ' + JSON.stringify(this.viewScore));
 
     this.ios = this.config.get('mode') === 'ios';
+    this.scoreId = this.viewScore.id;
+    for (let i = 1; i < this.viewScore.holes.length+1; i++) {
+      let score: any = {};
+      score.holeNumber = this.viewScore.holes[i-1].number;
+
+      if (this.viewScore.holescores && (this.viewScore.holescores.length > 0)) {
+        const thehole = this.viewScore.holescores.find(
+          (hs: any) => hs.holeNumber === score.holeNumber
+        );
+        if (thehole) {
+          score.self = thehole.self;
+          score.marker = thehole.marker;
+        } else {
+          score.self = 0;
+          score.marker = 0;
+          this.canSign = false;
+        };
+      };
+      if (score.self === score.marker) {
+        score.ok = true;
+      } else {
+        score.ok = false;
+        this.canSign = false;
+      }
+      this.scores.push(score);
+    }
+//    console.log('Id ' + JSON.stringify(this.scoreId));
+//    console.log('Scores' + JSON.stringify(this.scores));
 
 
   }
 
- 
 
 }
