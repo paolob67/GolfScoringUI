@@ -341,14 +341,14 @@ export class ScoreListPage {
 
   async presentActionSheet(holenum: number) {
     let buttonList: any[] = [];
-    if (this.todayScore.selfCard && this.todayScore.markerCard && this.markedScore.selfCard && this.markedScore.markerCard) {
+    if (this.todayScore.selfCard &&  this.markedScore.markerCard) {
       const toast = await this.toastCtrl.create({
-        message: 'The scores has been signed, you cannot change it.',
+        message: 'The score has been signed, you cannot change it.',
         duration: 2000
       });
       await toast.present();
     } else {
-      if (!this.todayScore.selfCard || !this.todayScore.markerCard) {
+      if (!this.todayScore.selfCard) {
         buttonList.push(
           {
             text: 'Your score',
@@ -359,7 +359,7 @@ export class ScoreListPage {
           }
         )
       };
-      if (!this.markedScore.selfCard || !this.markedScore.markerCard) {
+      if (!this.markedScore.markerCard) {
         buttonList.push(
           {
             text: 'Marked score',
