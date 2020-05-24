@@ -272,4 +272,14 @@ export class RestClientService {
     return this.httpClient.get < DetailedLeaderboardResponse[] > (environment.apiEndPoint + '/events/' + eventId + '/detailedleaderboard');
   }
 
+  signScore(scoreId: string, signType: string, signCard: string) {
+    let body: any = {};
+    if (signType === 'Player') {
+      body.selfCard = signCard;
+    } else {
+      body.markerCard = signCard;
+    }
+    return this._http.patch < ScoreHoleScoresResponse > (environment.apiEndPoint + '/scores/' + scoreId , body);
+  }
+
 }

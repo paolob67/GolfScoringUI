@@ -49,6 +49,7 @@ export class ScoreSignPage implements OnInit {
   which: string;
   viewScore: any;
   canSign: boolean = true;
+  card: string;
   
   constructor(
     public alertCtrl: AlertController,
@@ -70,7 +71,7 @@ export class ScoreSignPage implements OnInit {
     if (this.router.getCurrentNavigation().extras.state) {
       this.viewScore = this.router.getCurrentNavigation().extras.state.viewScore;
     }
-    console.log('Id ' + JSON.stringify(this.viewScore));
+//    console.log('Id ' + JSON.stringify(this.viewScore));
 
     this.ios = this.config.get('mode') === 'ios';
     this.scoreId = this.viewScore.id;
@@ -101,9 +102,51 @@ export class ScoreSignPage implements OnInit {
     }
 //    console.log('Id ' + JSON.stringify(this.scoreId));
 //    console.log('Scores' + JSON.stringify(this.scores));
-
-
   }
 
+  async sign() {
+    const alert = await this.alertCtrl.create({
+      header: 'Sign the score',
+      buttons: [
+        'Cancel',
+        {
+          text: 'Ok',
+          handler: (data: any) => {
+            this.card = data.Card;
+            this.updateScore();
+          }
+        }
+      ],
+      inputs: [
+        {
+          type: 'text',
+          name: 'Card',
+          placeholder: 'Golf Card Id'
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  updateScore() {
+  let signType: string; 
+
+    if (this.which === 'Player') {
+      signType = this.which;
+    } else {
+      signType = 'Marker';
+    }
+    this.restClient.signScore(this.scoreId, signType, this.card)
+    .subscribe(
+      response => {
+        console.log('UpdateScore returned ', response);
+      },
+      err => {
+        console.error('UpdateScore error', err.error.error);
+      },
+      () => console.log('UpdateScore success')
+    );
+
+  }
 
 }
