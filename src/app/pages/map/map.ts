@@ -56,7 +56,6 @@ export class MapPage implements AfterViewInit {
     );
 
     let map;
-    //let mapData = [];
 
     this.restClient.getCourses()
       .subscribe(
@@ -98,11 +97,11 @@ export class MapPage implements AfterViewInit {
               .subscribe(
                 response => {
 
-                  const infoWindow = new googleMaps.InfoWindow({
+                  const courseInfoWindow = new googleMaps.InfoWindow({
                     content: `<h5>${course.name}</h5>`
                   });
 
-                  const marker = new googleMaps.Marker({
+                  const courseMarker = new googleMaps.Marker({
                     position: {
                       name: course.name,
                       lat: response.latitude,
@@ -113,14 +112,14 @@ export class MapPage implements AfterViewInit {
                   });
 
                   marker.addListener('click', () => {
-                    infoWindow.open(map, marker);
+                    courseInfoWindow.open(map, courseMarker);
                   });
                 },
                 err => {
 
                 },
                 () => {
-                  console.log('completed Address')
+                  console.log('completed Address');
                 }
               );
           });
@@ -139,50 +138,6 @@ export class MapPage implements AfterViewInit {
 
         });
 
-
-
-
-
-    /*
-
-
-        this.confData.getMap().subscribe((mapData: any) => {
-          const mapEle = this.mapElement.nativeElement;
-
-          console.log('mapData', mapData);
-
-          map = new googleMaps.Map(mapEle, {
-            center: mapData.find((d: any) => d.center),
-            zoom: 16,
-            styles: style
-          });
-
-          console.log('map', map);
-
-          mapData.forEach((markerData: any) => {
-
-            console.log('markerData', markerData);
-
-            const infoWindow = new googleMaps.InfoWindow({
-              content: `<h5>${markerData.name}</h5>`
-            });
-
-            const marker = new googleMaps.Marker({
-              position: markerData,
-              map,
-              title: markerData.name
-            });
-
-            marker.addListener('click', () => {
-              infoWindow.open(map, marker);
-            });
-          });
-
-          googleMaps.event.addListenerOnce(map, 'idle', () => {
-            mapEle.classList.add('show-map');
-          });
-        });
-    */
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.attributeName === 'class') {
