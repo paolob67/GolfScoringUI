@@ -1,7 +1,6 @@
 import {
   Component
 } from '@angular/core';
-//import { Location } from '@angular/common';
 import {
   NgForm
 } from '@angular/forms';
@@ -56,8 +55,8 @@ export class LoginPage {
             console.log('Login returned ', this.jwtToken);
             this.restClient.me(this.jwtToken)
               .subscribe(
-                response => {
-                  this.userData.login(response.id, this.jwtToken);
+                responseMe => {
+                  this.userData.login(responseMe.id, this.jwtToken);
                   this.router.navigateByUrl('/app/tabs/leaderboard-list');
                 },
                 err => {
