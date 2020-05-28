@@ -5,6 +5,9 @@
  * @author Lorenzo Monaco
  */
 
+/**
+ * Imports
+ */
 import {
   enableProdMode
 } from '@angular/core';

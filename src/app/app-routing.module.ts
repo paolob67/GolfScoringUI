@@ -1,3 +1,17 @@
+/**
+ * App Routing module 
+ * Application cromponent defines routes for 
+ * tutorial, acocunt, support, login, signup
+ * and app.
+ * App routes are ahndled by the tabs page routing module and 
+ * appear in the upper part of the menu
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ */
+
+/**
+ * Imports
+ */
 import {
   NgModule
 } from '@angular/core';
@@ -9,6 +23,9 @@ import {
   CheckTutorial
 } from './providers/check-tutorial.service';
 
+/** 
+ * JSON object defining routes 
+ */
 const routes: Routes = [
   {
     path: '',

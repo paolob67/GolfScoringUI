@@ -8,10 +8,8 @@
  */
 
 /**
- * This comment _supports_ [Markdown](https://marked.js.org/)
+ * Imports
  */
-
-
 import {
   Component,
   OnInit,
