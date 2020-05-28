@@ -1,8 +1,8 @@
 /**
  * Main
+ * Enables production mode and bootstraps Application Module
  * @author Paolo Bianchini
  * @author Lorenzo Monaco
- * @description Enables production mode and bootstraps Application Module
  */
 
 import {

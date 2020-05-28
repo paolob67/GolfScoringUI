@@ -2,14 +2,15 @@
  * App Component
  * Application component declares MenuController, Platform, 
  * Router, SplashScreen,StatusBar, Storage, UserData,RestClientService,
- * ToastController (might be move to a service)
+ * ToastController (might be moved to a service)
  * @author Paolo Bianchini
  * @author Lorenzo Monaco
- * @description Application component declares MenuController, Platform, 
- *  Router, SplashScreen,StatusBar, Storage, UserData,RestClientService,
- *  ToastController (might be move to a service)
- * @class AppComponent
  */
+
+/**
+ * This comment _supports_ [Markdown](https://marked.js.org/)
+ */
+
 
 import {
   Component,
@@ -52,7 +53,7 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  // JSON objet with the application menu
+  /** JSON objet with the application menu */
   appPages = [
     {
       title: 'Scores',
@@ -79,10 +80,11 @@ export class AppComponent implements OnInit {
       public: true
     }
   ];
+  /** Holds log in status */
   loggedIn = false;
+  /** Holds choice for darl mode theme */
   dark = false;
   /**
-   * Constructor
    * Calls initializeApp for startup settings
    */
   constructor(
