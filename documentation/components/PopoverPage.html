@@ -167,7 +167,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/pages/about-popover/about-popover.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/pages/about-popover/about-popover.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -236,14 +236,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">src/app/pages/about-popover/about-popover.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="43"
+                            class="link-to-prism">src/app/pages/about-popover/about-popover.ts:43</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Open a browser to the passed url and close the popover about menu</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -253,6 +255,7 @@
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -267,6 +270,10 @@
                                     </td>
 
 
+                                    <td>
+                                        <p>the url passed from the html choice menu</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -311,7 +318,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/pages/about-popover/about-popover.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/pages/about-popover/about-popover.ts:37</a></div>
                             </td>
                         </tr>
 
@@ -327,7 +334,6 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
   Component
 } from &#x27;@angular/core&#x27;;
-
 import {
   PopoverController
 } from &#x27;@ionic/angular&#x27;;
@@ -354,7 +360,11 @@ import {
 })
 export class PopoverPage {
   constructor(public popoverCtrl: PopoverController) {}
-
+  
+  /**
+   * Open a browser to the passed url and close the popover about menu
+   * @param url the url passed from the html choice menu
+   */
   close(url: string) {
     window.open(url, &#x27;_blank&#x27;);
     this.popoverCtrl.dismiss();

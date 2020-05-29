@@ -1,7 +1,14 @@
+/**
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ */
+
+/**
+ * Imports
+ */
 import {
   Component
 } from '@angular/core';
-
 import {
   PopoverController
 } from '@ionic/angular';
@@ -28,7 +35,11 @@ import {
 })
 export class PopoverPage {
   constructor(public popoverCtrl: PopoverController) {}
-
+  
+  /**
+   * Open a browser to the passed url and close the popover about menu
+   * @param url the url passed from the html choice menu
+   */
   close(url: string) {
     window.open(url, '_blank');
     this.popoverCtrl.dismiss();
