@@ -1,4 +1,11 @@
-// /users/login
+/**
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ */
+
+/**
+ * API /users/login
+ */
 export interface LoginRequest {
   email: string;
   password: string;
@@ -7,7 +14,9 @@ export interface LoginResponse {
   token: string;
 }
 
-// /users
+/**
+ * API /users
+ */
 export interface SignupRequest {
   firstName: string;
   lastName: string;
@@ -15,7 +24,9 @@ export interface SignupRequest {
   password: string;
 }
 
-// /users/me users/_id_
+/**
+ * API /users/me users/_id_
+ */
 export interface UsersResponse {
   id: string;
   email: string;
@@ -28,7 +39,9 @@ export interface UsersResponse {
   roles: string[];
 }
 
-// /Courses
+/**
+ * API /Courses
+ */
 export interface CoursesResponse {
   id: string;
   name: string;
@@ -37,7 +50,9 @@ export interface CoursesResponse {
   stroke: number;
 }
 
-// Address
+/**
+ * Address type
+ */
 export interface CourseAddressResponse {
   id: string;
   line1: string;
@@ -53,7 +68,9 @@ export interface CourseAddressResponse {
   courseId: string;
 }
 
-// Events
+/**
+ * API Events
+ */
 export interface EventsResponse {
   id: string;
   name: string;
@@ -63,7 +80,9 @@ export interface EventsResponse {
   courseId: string;
 }
 
-// Scores
+/**
+ * API Scores
+ */
 export interface ScoresResponse {
   id: string;
   startTime: Date;
@@ -84,7 +103,9 @@ export interface ScoresResponse {
   markerCard: string;
 }
 
-// Hole Data
+/**
+ * API Hole Data
+ */
 export interface CourseHolesResponse {
   id: string;
   number: number;
@@ -94,6 +115,9 @@ export interface CourseHolesResponse {
   courseId: string;
 }
 
+/**
+ * API HoleScores
+ */
 export interface ScoreHoleScoresResponse {
   id?: string;
   holeNumber: number;
@@ -105,7 +129,9 @@ export interface ScoreHoleScoresResponse {
   par?: number;
 }
 
-// Slope Data
+/**
+ * Slope Data
+ */
 export interface SlopeResponse {
   id: string;
   name: string;
@@ -128,7 +154,9 @@ export interface SlopeResponse {
   courseId: string;
 }
 
-// Leaderboard Data
+/**
+ * Leaderboard Data
+ */
 export interface LeaderboardResponse {
   id: string;
   rounds: number;
@@ -143,7 +171,9 @@ export interface LeaderboardResponse {
   stroke: number;
 }
 
-// Detailed Score
+/**
+ * Detailed Score
+ */
 export interface DetailedScoreResponse  {
   position: string;
   positionNum: number;
@@ -196,7 +226,9 @@ export interface DetailedScoreResponse  {
   stableford: string;
 }
 
-// /Courses
+/**
+ * API /Courses
+ */
 export interface CoursesDetailResponse {
   id: string;
   name: string;
@@ -207,14 +239,18 @@ export interface CoursesDetailResponse {
   holes: CourseHolesResponse;
 }
 
-// Scores
+/**
+ * Scores
+ */
 export interface RoundScoresResponse {
   event: EventsResponse;
   course: CoursesDetailResponse;
   detailedScores: DetailedScoreResponse[];
 }
 
-// Detailed Leaderboard
+/**
+ * Detailed Leaderboard
+ */
 export interface DetailedLeaderboardResponse {
   position: string;
   positionNum: number;

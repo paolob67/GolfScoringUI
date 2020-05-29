@@ -220,7 +220,7 @@ ToastController (might be moved to a service)</p>
 
                 <tr>
                     <td class="col-md-4">
-                            <div class="io-description"><p>Calls initializeApp for startup settings</p>
+                            <div class="io-description"><p>Calls <a href="../components/AppComponent.html#initializeApp">initializeApp</a> for startup settings</p>
 </div>
                             <div>
                                     <b>Parameters :</b>
@@ -463,8 +463,8 @@ ToastController (might be moved to a service)</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="195"
-                            class="link-to-prism">src/app/app.component.ts:195</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="196"
+                            class="link-to-prism">src/app/app.component.ts:196</a></div>
                 </td>
             </tr>
 
@@ -504,8 +504,8 @@ ToastController (might be moved to a service)</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="212"
-                            class="link-to-prism">src/app/app.component.ts:212</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="213"
+                            class="link-to-prism">src/app/app.component.ts:213</a></div>
                 </td>
             </tr>
 
@@ -589,8 +589,8 @@ prompts for retry, performs a logoff just in case. Registers event listeners</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="222"
-                            class="link-to-prism">src/app/app.component.ts:222</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="223"
+                            class="link-to-prism">src/app/app.component.ts:223</a></div>
                 </td>
             </tr>
 
@@ -631,8 +631,8 @@ and navigates to tutorial slideshow</p>
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="186"
-                            class="link-to-prism">src/app/app.component.ts:186</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="187"
+                            class="link-to-prism">src/app/app.component.ts:187</a></div>
                 </td>
             </tr>
 
@@ -650,6 +650,7 @@ and navigates to tutorial slideshow</p>
                                     <td>Name</td>
                                     <td>Type</td>
                                     <td>Optional</td>
+                                    <td>Description</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -664,6 +665,10 @@ and navigates to tutorial slideshow</p>
                                     </td>
 
 
+                                    <td>
+                                        <p>the status to set for logged in</p>
+
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
@@ -743,7 +748,7 @@ and navigates to tutorial slideshow</p>
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>JSON objet with the application menu </p>
+                        <div class="io-description"><p>JSON object with the application menu </p>
 </div>
                     </td>
                 </tr>
@@ -775,7 +780,7 @@ and navigates to tutorial slideshow</p>
 
                 <tr>
                     <td class="col-md-4">
-                        <div class="io-description"><p>Holds choice for darl mode theme </p>
+                        <div class="io-description"><p>Holds choice for dark mode theme </p>
 </div>
                     </td>
                 </tr>
@@ -866,7 +871,7 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  /** JSON objet with the application menu */
+  /** JSON object with the application menu */
   appPages &#x3D; [
     {
       title: &#x27;Scores&#x27;,
@@ -895,10 +900,10 @@ export class AppComponent implements OnInit {
   ];
   /** Holds log in status */
   loggedIn &#x3D; false;
-  /** Holds choice for darl mode theme */
+  /** Holds choice for dark mode theme */
   dark &#x3D; false;
   /**
-   * Calls initializeApp for startup settings
+   * Calls [initializeApp]{@link AppComponent#initializeApp} for startup settings
    */
   constructor(
     private menu: MenuController,
@@ -996,6 +1001,7 @@ export class AppComponent implements OnInit {
 
   /**
    * Update component member with login status, wait for 300 ms
+   * @param loggedIn the status to set for logged in
    */
   updateLoggedInStatus(loggedIn: boolean) {
     setTimeout(() &#x3D;&gt; {

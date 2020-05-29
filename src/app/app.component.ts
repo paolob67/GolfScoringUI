@@ -52,7 +52,7 @@ import {
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit {
-  /** JSON objet with the application menu */
+  /** JSON object with the application menu */
   appPages = [
     {
       title: 'Scores',
@@ -81,10 +81,10 @@ export class AppComponent implements OnInit {
   ];
   /** Holds log in status */
   loggedIn = false;
-  /** Holds choice for darl mode theme */
+  /** Holds choice for dark mode theme */
   dark = false;
   /**
-   * Calls initializeApp for startup settings
+   * Calls [initializeApp]{@link AppComponent#initializeApp} for startup settings
    */
   constructor(
     private menu: MenuController,
@@ -182,6 +182,7 @@ export class AppComponent implements OnInit {
 
   /**
    * Update component member with login status, wait for 300 ms
+   * @param loggedIn the status to set for logged in
    */
   updateLoggedInStatus(loggedIn: boolean) {
     setTimeout(() => {

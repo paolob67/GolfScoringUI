@@ -78,84 +78,11 @@ import {
   Routes
 } from &#x27;@angular/router&#x27;;
 import {
-  TabsPage
-} from &#x27;./tabs-page&#x27;;
-
-
-const routes: Routes &#x3D; [
-  {
-    path: &#x27;tabs&#x27;,
-    component: TabsPage,
-    children: [
-      {
-        path: &#x27;leaderboard-list&#x27;,
-        children: [
-          {
-            path: &#x27;&#x27;,
-            loadChildren: () &#x3D;&gt; &quot;import(&#x27;../leaderboard-list/leaderboard-list.module&#x27;).then(m &#x3D;&gt; m.LeaderboardListModule)&quot;
-          },
-          {
-            path: &#x27;leaderboard-mob/:eventId/:showRound&#x27;,
-            loadChildren: () &#x3D;&gt; &quot;import(&#x27;../leaderboard-mob/leaderboard-mob.module&#x27;).then(m &#x3D;&gt; m.LeaderboardMobModule)&quot;
-          },
-          {
-            path: &#x27;leaderboard-mob/player-detail/:eventId/:playerId&#x27;,
-            loadChildren: () &#x3D;&gt; &quot;import(&#x27;../player-detail/player-detail.module&#x27;).then(m &#x3D;&gt; m.PlayerDetailModule)&quot;
-          }
-        ]
-      },
-      {
-        path: &#x27;scores&#x27;,
-        children: [
-          {
-            path: &#x27;&#x27;,
-            loadChildren: () &#x3D;&gt; &quot;import(&#x27;../score-list/score-list.module&#x27;).then(m &#x3D;&gt; m.ScoreListModule)&quot;
-          },
-          {
-            path: &#x27;event/:eventId/:roundNum&#x27;,
-            loadChildren: () &#x3D;&gt; &quot;import(&#x27;../event/event.module&#x27;).then(m &#x3D;&gt; m.EventModule)&quot;
-          },
-          {
-            // path: &#x27;sign/:which/:what/:scoreId&#x27;,
-            path: &#x27;sign/:which&#x27;,
-            loadChildren: () &#x3D;&gt; &quot;import(&#x27;../score-sign/score-sign.module&#x27;).then(m &#x3D;&gt; m.ScoreSignModule)&quot;
-          }
-        ]
-      },
-      {
-        path: &#x27;map&#x27;,
-        children: [
-          {
-            path: &#x27;&#x27;,
-            loadChildren: () &#x3D;&gt; &quot;import(&#x27;../map/map.module&#x27;).then(m &#x3D;&gt; m.MapModule)&quot;
-          }
-        ]
-      },
-      {
-        path: &#x27;about&#x27;,
-        children: [
-          {
-            path: &#x27;&#x27;,
-            loadChildren: () &#x3D;&gt; &quot;import(&#x27;../about/about.module&#x27;).then(m &#x3D;&gt; m.AboutModule)&quot;
-          }
-        ]
-      },
-      {
-        path: &#x27;login&#x27;,
-        redirectTo: &#x27;/login&#x27;,
-        pathMatch: &#x27;full&#x27;
-      },
-      {
-        path: &#x27;&#x27;,
-        redirectTo: &#x27;/app/tabs/leaderboard-list&#x27;,
-        pathMatch: &#x27;full&#x27;
-      }
-    ]
-  }
-];
+  TABS_ROUTES
+} from &#x27;./tabs-page.routes&#x27;
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(TABS_ROUTES)],
   exports: [RouterModule]
 })
 export class TabsPageRoutingModule {}
