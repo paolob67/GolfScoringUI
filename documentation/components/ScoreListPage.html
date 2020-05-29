@@ -1,0 +1,2983 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>GolfScoringUI documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">GolfScoringUI documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ScoreListPage</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/pages/score-list/score-list.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>page-score-list</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./score-list.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>score-list.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#actionSheetController">actionSheetController</a>
+                            </li>
+                            <li>
+                                <a href="#canSignMarked">canSignMarked</a>
+                            </li>
+                            <li>
+                                <a href="#canSignSelf">canSignSelf</a>
+                            </li>
+                            <li>
+                                <a href="#foundMarkedPlayer">foundMarkedPlayer</a>
+                            </li>
+                            <li>
+                                <a href="#foundTodayScore">foundTodayScore</a>
+                            </li>
+                            <li>
+                                <a href="#markedPlayer">markedPlayer</a>
+                            </li>
+                            <li>
+                                <a href="#markedPlayerId">markedPlayerId</a>
+                            </li>
+                            <li>
+                                <a href="#markedScore">markedScore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#pickerCtrl">pickerCtrl</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#restClient">restClient</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#router">router</a>
+                            </li>
+                            <li>
+                                <a href="#scores">scores</a>
+                            </li>
+                            <li>
+                                <a href="#segment">segment</a>
+                            </li>
+                            <li>
+                                <a href="#selfMark">selfMark</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#toastCtrl">toastCtrl</a>
+                            </li>
+                            <li>
+                                <a href="#todayScore">todayScore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#userData">userData</a>
+                            </li>
+                            <li>
+                                <a href="#userId">userId</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#changeMarkScore">changeMarkScore</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#changeSelfScore">changeSelfScore</a>
+                            </li>
+                            <li>
+                                <a href="#checkCanSignMarked">checkCanSignMarked</a>
+                            </li>
+                            <li>
+                                <a href="#checkCanSignSelf">checkCanSignSelf</a>
+                            </li>
+                            <li>
+                                <a href="#findHoleScoreIdForHole">findHoleScoreIdForHole</a>
+                            </li>
+                            <li>
+                                <a href="#findMarkedScoreForHole">findMarkedScoreForHole</a>
+                            </li>
+                            <li>
+                                <a href="#findSelfScoreForHole">findSelfScoreForHole</a>
+                            </li>
+                            <li>
+                                <a href="#getColumnOptions">getColumnOptions</a>
+                            </li>
+                            <li>
+                                <a href="#getHoleScoreForHole">getHoleScoreForHole</a>
+                            </li>
+                            <li>
+                                <a href="#ionViewDidEnter">ionViewDidEnter</a>
+                            </li>
+                            <li>
+                                <a href="#loadMarkedScores">loadMarkedScores</a>
+                            </li>
+                            <li>
+                                <a href="#loadScores">loadScores</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#presentActionSheet">presentActionSheet</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#presentScore">presentScore</a>
+                            </li>
+                            <li>
+                                <a href="#setHoleScoreForHole">setHoleScoreForHole</a>
+                            </li>
+                            <li>
+                                <a href="#showScore">showScore</a>
+                            </li>
+                            <li>
+                                <a href="#updateScore">updateScore</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, actionSheetController: ActionSheetController, userData: <a href="../injectables/UserData.html">UserData</a>, restClient: <a href="../injectables/RestClientService.html">RestClientService</a>, pickerCtrl: PickerController, toastCtrl: ToastController)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/pages/score-list/score-list.ts:50</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>actionSheetController</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActionSheetController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>userData</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/UserData.html" target="_self" >UserData</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>restClient</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RestClientService.html" target="_self" >RestClientService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>pickerCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>PickerController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastCtrl</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastController</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeMarkScore"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            changeMarkScore
+                        </b>
+                        <a href="#changeMarkScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>changeMarkScore(holenum: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="439"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:439</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>holenum</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="changeSelfScore"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            changeSelfScore
+                        </b>
+                        <a href="#changeSelfScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>changeSelfScore(holenum: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="394"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:394</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>holenum</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkCanSignMarked"></a>
+                    <span class="name">
+                        <b>
+                            checkCanSignMarked
+                        </b>
+                        <a href="#checkCanSignMarked"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkCanSignMarked()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="535"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:535</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkCanSignSelf"></a>
+                    <span class="name">
+                        <b>
+                            checkCanSignSelf
+                        </b>
+                        <a href="#checkCanSignSelf"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkCanSignSelf()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="519"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:519</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findHoleScoreIdForHole"></a>
+                    <span class="name">
+                        <b>
+                            findHoleScoreIdForHole
+                        </b>
+                        <a href="#findHoleScoreIdForHole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>findHoleScoreIdForHole(holescores: any[], holenum: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="265"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:265</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>holescores</td>
+                                    <td>
+                                            <code>any[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>holenum</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findMarkedScoreForHole"></a>
+                    <span class="name">
+                        <b>
+                            findMarkedScoreForHole
+                        </b>
+                        <a href="#findMarkedScoreForHole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>findMarkedScoreForHole(holescores: any[], holenum: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="235"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:235</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>holescores</td>
+                                    <td>
+                                            <code>any[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>holenum</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="findSelfScoreForHole"></a>
+                    <span class="name">
+                        <b>
+                            findSelfScoreForHole
+                        </b>
+                        <a href="#findSelfScoreForHole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>findSelfScoreForHole(holescores: any[], holenum: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="250"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:250</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>holescores</td>
+                                    <td>
+                                            <code>any[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>holenum</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getColumnOptions"></a>
+                    <span class="name">
+                        <b>
+                            getColumnOptions
+                        </b>
+                        <a href="#getColumnOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getColumnOptions()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="382"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:382</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>    <code>{}</code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getHoleScoreForHole"></a>
+                    <span class="name">
+                        <b>
+                            getHoleScoreForHole
+                        </b>
+                        <a href="#getHoleScoreForHole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getHoleScoreForHole(holescores: ScoreHoleScoresResponse[], holenum: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="280"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:280</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>holescores</td>
+                                    <td>
+                                            <code>ScoreHoleScoresResponse[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>holenum</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="../interfaces/ScoreHoleScoresResponse.html" target="_self" >ScoreHoleScoresResponse</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ionViewDidEnter"></a>
+                    <span class="name">
+                        <b>
+                            ionViewDidEnter
+                        </b>
+                        <a href="#ionViewDidEnter"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ionViewDidEnter()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadMarkedScores"></a>
+                    <span class="name">
+                        <b>
+                            loadMarkedScores
+                        </b>
+                        <a href="#loadMarkedScores"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadMarkedScores(markedid: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="175"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:175</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>markedid</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadScores"></a>
+                    <span class="name">
+                        <b>
+                            loadScores
+                        </b>
+                        <a href="#loadScores"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadScores(userId)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="74"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:74</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>userId</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="presentActionSheet"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            presentActionSheet
+                        </b>
+                        <a href="#presentActionSheet"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>presentActionSheet(holenum: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="338"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:338</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>holenum</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="presentScore"></a>
+                    <span class="name">
+                        <b>
+                            <span class="modifier">Async</span>
+                            presentScore
+                        </b>
+                        <a href="#presentScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>presentScore(scoreType: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="552"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:552</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>scoreType</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setHoleScoreForHole"></a>
+                    <span class="name">
+                        <b>
+                            setHoleScoreForHole
+                        </b>
+                        <a href="#setHoleScoreForHole"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setHoleScoreForHole(holescores: ScoreHoleScoresResponse[], thehs: <a href="../interfaces/ScoreHoleScoresResponse.html">ScoreHoleScoresResponse</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="307"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:307</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>holescores</td>
+                                    <td>
+                                            <code>ScoreHoleScoresResponse[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>thehs</td>
+                                    <td>
+                                                <code><a href="../interfaces/ScoreHoleScoresResponse.html" target="_self" >ScoreHoleScoresResponse</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showScore"></a>
+                    <span class="name">
+                        <b>
+                            showScore
+                        </b>
+                        <a href="#showScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showScore(segment: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, startTime: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank">Date</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="318"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:318</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>segment</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>startTime</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date" target="_blank" >Date</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateScore"></a>
+                    <span class="name">
+                        <b>
+                            updateScore
+                        </b>
+                        <a href="#updateScore"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateScore(holescores: ScoreHoleScoresResponse[], thehs: <a href="../interfaces/ScoreHoleScoresResponse.html">ScoreHoleScoresResponse</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="485"
+                            class="link-to-prism">src/app/pages/score-list/score-list.ts:485</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>holescores</td>
+                                    <td>
+                                            <code>ScoreHoleScoresResponse[]</code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td>thehs</td>
+                                    <td>
+                                                <code><a href="../interfaces/ScoreHoleScoresResponse.html" target="_self" >ScoreHoleScoresResponse</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="actionSheetController"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            actionSheetController</b>
+                            <a href="#actionSheetController"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ActionSheetController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/pages/score-list/score-list.ts:54</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="canSignMarked"></a>
+                        <span class="name">
+                            <b>
+                            canSignMarked</b>
+                            <a href="#canSignMarked"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/pages/score-list/score-list.ts:50</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="canSignSelf"></a>
+                        <span class="name">
+                            <b>
+                            canSignSelf</b>
+                            <a href="#canSignSelf"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/pages/score-list/score-list.ts:49</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="foundMarkedPlayer"></a>
+                        <span class="name">
+                            <b>
+                            foundMarkedPlayer</b>
+                            <a href="#foundMarkedPlayer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/pages/score-list/score-list.ts:47</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="foundTodayScore"></a>
+                        <span class="name">
+                            <b>
+                            foundTodayScore</b>
+                            <a href="#foundTodayScore"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/pages/score-list/score-list.ts:46</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="markedPlayer"></a>
+                        <span class="name">
+                            <b>
+                            markedPlayer</b>
+                            <a href="#markedPlayer"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/pages/score-list/score-list.ts:43</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="markedPlayerId"></a>
+                        <span class="name">
+                            <b>
+                            markedPlayerId</b>
+                            <a href="#markedPlayerId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/pages/score-list/score-list.ts:44</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="markedScore"></a>
+                        <span class="name">
+                            <b>
+                            markedScore</b>
+                            <a href="#markedScore"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/pages/score-list/score-list.ts:42</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pickerCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            pickerCtrl</b>
+                            <a href="#pickerCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>PickerController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/pages/score-list/score-list.ts:57</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="restClient"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            restClient</b>
+                            <a href="#restClient"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/RestClientService.html" target="_self" >RestClientService</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="56" class="link-to-prism">src/app/pages/score-list/score-list.ts:56</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="router"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            router</b>
+                            <a href="#router"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/pages/score-list/score-list.ts:53</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="scores"></a>
+                        <span class="name">
+                            <b>
+                            scores</b>
+                            <a href="#scores"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>any[]</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/pages/score-list/score-list.ts:39</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="segment"></a>
+                        <span class="name">
+                            <b>
+                            segment</b>
+                            <a href="#segment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;Today&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/pages/score-list/score-list.ts:40</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selfMark"></a>
+                        <span class="name">
+                            <b>
+                            selfMark</b>
+                            <a href="#selfMark"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/pages/score-list/score-list.ts:48</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="toastCtrl"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            toastCtrl</b>
+                            <a href="#toastCtrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>ToastController</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="58" class="link-to-prism">src/app/pages/score-list/score-list.ts:58</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="todayScore"></a>
+                        <span class="name">
+                            <b>
+                            todayScore</b>
+                            <a href="#todayScore"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/pages/score-list/score-list.ts:41</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userData"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Public</span>
+                            userData</b>
+                            <a href="#userData"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../injectables/UserData.html" target="_self" >UserData</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/pages/score-list/score-list.ts:55</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="userId"></a>
+                        <span class="name">
+                            <b>
+                            userId</b>
+                            <a href="#userId"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/pages/score-list/score-list.ts:45</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Component
+} from &#x27;@angular/core&#x27;;
+import {
+  Router,
+  NavigationExtras
+} from &#x27;@angular/router&#x27;;
+import {
+  PickerController
+} from &#x27;@ionic/angular&#x27;;
+import {
+  ToastController,
+  ActionSheetController
+} from &#x27;@ionic/angular&#x27;;
+import {
+  UserData
+} from &#x27;../../providers/user-data&#x27;;
+import {
+  RestClientService
+} from &#x27;../../providers/rest-client.service&#x27;;
+
+import {
+  UsersResponse,
+  CoursesResponse,
+  EventsResponse,
+  ScoresResponse,
+  CourseHolesResponse,
+  ScoreHoleScoresResponse
+} from &#x27;../../interfaces/rest-datamodel&#x27;;
+
+
+
+@Component({
+  selector: &#x27;page-score-list&#x27;,
+  templateUrl: &#x27;score-list.html&#x27;,
+  styleUrls: [&#x27;./score-list.scss&#x27;],
+})
+export class ScoreListPage {
+  scores: any[] &#x3D; [];
+  segment &#x3D; &#x27;Today&#x27;;
+  todayScore: any &#x3D; {};
+  markedScore: any &#x3D; {};
+  markedPlayer: any &#x3D; {};
+  markedPlayerId &#x3D; &#x27;&#x27;;
+  userId &#x3D; &#x27;&#x27;;
+  foundTodayScore &#x3D; false;
+  foundMarkedPlayer &#x3D; false;
+  selfMark &#x3D; false;
+  canSignSelf &#x3D; false;
+  canSignMarked &#x3D; false;
+
+  constructor(
+    public router: Router,
+    public actionSheetController: ActionSheetController,
+    public userData: UserData,
+    public restClient: RestClientService,
+    public pickerCtrl: PickerController,
+    public toastCtrl: ToastController
+  ) {}
+
+  ionViewDidEnter() {
+    this.userData.getId().then((userid) &#x3D;&gt; {
+      if (userid) {
+        this.userId &#x3D; userid;
+        this.loadScores(userid);
+
+      } else {
+        console.log(&#x27;must log in&#x27;);
+        this.router.navigateByUrl(&#x27;/login&#x27;);
+      }
+    });
+  }
+
+  loadScores(userId) {
+    // if not logged in go to login page
+    if (!userId) {
+      console.log(&#x27;must log in&#x27;);
+      return this.router.navigateByUrl(&#x27;/login&#x27;);
+    }
+
+    this.restClient.presentLoader();
+    // get score master tables for user
+    this.restClient.getScoresForUser(userId)
+      .subscribe(
+        (responsesc: ScoresResponse[]) &#x3D;&gt; {
+          this.scores &#x3D; responsesc;
+          // loop thru the scores for that user
+          this.scores.forEach(score &#x3D;&gt; {
+            // get the event data
+            this.restClient.getEvent(score.eventId)
+              .subscribe(
+                (responseev: EventsResponse) &#x3D;&gt; {
+                  score.event &#x3D; responseev;
+                  // get hole data
+                  this.restClient.getCourseHoles(score.event.courseId)
+                    .subscribe(
+                      (responsehl: CourseHolesResponse[]) &#x3D;&gt; {
+                        // sort response on hole number
+                        // TODO: consider using a filter to sort response on server
+                        responsehl.sort((a, b) &#x3D;&gt; {
+                          return a.number - b.number;
+                        });
+                        score.holes &#x3D; responsehl;
+
+                        // get hole scores
+                        this.restClient.getScoreHoleScores(score.id)
+                          .subscribe(
+                            (responseshl: ScoreHoleScoresResponse[]) &#x3D;&gt; {
+                              score.holescores &#x3D; responseshl;
+                              //////////////////////////
+                              // populating for tests...
+                              /*
+                              if(score.round &#x3D;&#x3D; 1) {
+                                score.holescores.push(
+                                  {
+                                    id: &quot;theidfor1&quot;,
+                                    holeNumber: 1,
+                                    self: 4,
+                                    validated: 4
+                                  }
+                                );
+                              };
+                              */
+                              // end scaffold
+                              /////////////////////////
+                              // if we found a score for today save it in a variable
+                              if (this.showScore(&#x27;Today&#x27;, score.startTime)) {
+                                this.todayScore &#x3D; score;
+                                this.foundTodayScore &#x3D; true;
+                                this.checkCanSignSelf();
+                                console.log(&#x27;found todayscore&#x27;, this.todayScore);
+                                // let&#x27;s figure out the marked player
+                                this.userData.getMarkedPlayer().then((markedid) &#x3D;&gt; {
+                                  // ok we have a marked id
+                                  if (markedid) {
+                                    this.loadMarkedScores(markedid);
+                                  }
+                                });
+                              }
+                            },
+                            err &#x3D;&gt; {
+                              console.log(&#x27;Error getting hole scores&#x27;, err.error.error);
+                            },
+                            () &#x3D;&gt; {
+                              this.restClient.dismissLoader();
+                            }
+                          );
+                      },
+                      err &#x3D;&gt; {
+                        this.restClient.dismissLoader();
+                        console.log(&#x27;Error getting course holes&#x27;, err.error.error);
+                      },
+                      () &#x3D;&gt; {}
+                    );
+                },
+                err &#x3D;&gt; {
+                  this.restClient.dismissLoader();
+                  console.log(&#x27;Error getting events&#x27;, err.error.error);
+                },
+                () &#x3D;&gt; {}
+              );
+          });
+          this.restClient.dismissLoader();
+        },
+        err &#x3D;&gt; {
+          this.restClient.dismissLoader();
+          console.log(&#x27;Error getting scores for user&#x27;, err.error.error);
+        },
+        () &#x3D;&gt; {}
+      );
+  }
+
+
+
+  loadMarkedScores(markedid: string) {
+    if (this.foundTodayScore) {
+      if (markedid) {
+        this.foundMarkedPlayer &#x3D; true;
+        this.markedPlayerId &#x3D; markedid;
+        this.selfMark &#x3D; (markedid &#x3D;&#x3D;&#x3D; this.userId);
+        // let&#x27;s get the name of the marked player
+        this.restClient.presentLoader();
+        this.restClient.getPublicUser(markedid)
+          .subscribe(
+            (responsesc: UsersResponse) &#x3D;&gt; {
+              this.markedPlayer &#x3D; responsesc;
+            },
+            err &#x3D;&gt; {
+              console.error(&#x27;Error getting user info for&#x27;, markedid);
+              // if we got here it means that markerID is not valid
+              // let&#x27;s erase it from the data store and clean up
+              this.userData.removeMarkedPlayer().then(() &#x3D;&gt; {
+                this.foundMarkedPlayer &#x3D; false;
+                this.markedPlayer &#x3D; null;
+                this.markedPlayerId &#x3D; &#x27;&#x27;;
+              });
+            },
+            () &#x3D;&gt; {
+              this.restClient.dismissLoader();
+            }
+          );
+        // let&#x27;s get a reference to the score of the marked player
+        this.restClient.presentLoader();
+        this.restClient.getScoreForMarking(markedid, this.todayScore.eventId, this.todayScore.roundNum)
+          .subscribe(
+            (responsesc: ScoresResponse[]) &#x3D;&gt; {
+              console.log(&#x27;responsesc&#x27;, responsesc);
+              this.markedScore &#x3D; responsesc[0];
+              this.restClient.getScoreHoleScores(responsesc[0].id)
+                .subscribe(
+                  (responseshs: ScoreHoleScoresResponse[]) &#x3D;&gt; {
+                    this.markedScore.holescores &#x3D; responseshs;
+                    this.checkCanSignMarked();
+                    console.log(&#x27;markedScore&#x27;, this.markedScore);
+                  },
+                  err &#x3D;&gt; {
+                    console.error(&#x27;Error getting hole scores&#x27;, err.error.error);
+                  },
+                  () &#x3D;&gt; {
+                    this.restClient.dismissLoader();
+                  }
+                );
+            },
+            err &#x3D;&gt; {
+              this.restClient.dismissLoader();
+              console.error(&#x27;Error getting marked score&#x27;, err.error.error);
+            },
+            () &#x3D;&gt; {}
+          );
+      }
+    }
+  }
+
+  // Find the marked score for the hole passed in the hole score table
+  findMarkedScoreForHole(holescores: any[], holenum: number) {
+    if (holescores &amp;&amp; (holescores.length &gt; 0)) {
+      const thehole &#x3D; holescores.find(
+        (hs: any) &#x3D;&gt; hs.holeNumber &#x3D;&#x3D;&#x3D; holenum
+      );
+      if (thehole) {
+        return thehole.marker;
+      } else {
+        return 0;
+      }
+    }
+    return 0;
+  }
+
+  // Find the self score for the hole passed in the hole score table
+  findSelfScoreForHole(holescores: any[], holenum: number) {
+    if (holescores &amp;&amp; (holescores.length &gt; 0)) {
+      const thehole &#x3D; holescores.find(
+        (hs: any) &#x3D;&gt; hs.holeNumber &#x3D;&#x3D;&#x3D; holenum
+      );
+      if (thehole) {
+        return thehole.self;
+      } else {
+        return 0;
+      }
+    }
+    return 0;
+  }
+
+  // Find the self score for the hole passed in the hole score table
+  findHoleScoreIdForHole(holescores: any[], holenum: number) {
+    if (holescores &amp;&amp; (holescores.length &gt; 0)) {
+      const thehole &#x3D; holescores.find(
+        (hs: any) &#x3D;&gt; hs.holeNumber &#x3D;&#x3D;&#x3D; holenum
+      );
+      if (thehole) {
+        return thehole.id;
+      } else {
+        return &#x27;&#x27;;
+      }
+    }
+    return &#x27;&#x27;;
+  }
+
+  // Get the holescore for the hole passed in the hole score table
+  getHoleScoreForHole(holescores: ScoreHoleScoresResponse[], holenum: number): ScoreHoleScoresResponse {
+    const newhs &#x3D; {
+      id: &#x27;&#x27;,
+      holeNumber: holenum,
+      self: 0,
+      marker: 0,
+      markerId: &#x27;&#x27;,
+      validated: 0,
+      scoreId: &#x27;&#x27;,
+      par: 0,
+    };
+
+    if (holescores &amp;&amp; (holescores.length &gt; 0)) {
+      const thehole &#x3D; holescores.find(
+        (hs: any) &#x3D;&gt; hs.holeNumber &#x3D;&#x3D;&#x3D; holenum
+      );
+      if (thehole) {
+        return thehole;
+      } else {
+        // push the new hole score in the array
+        holescores.push(newhs);
+        return newhs;
+      }
+    }
+    return newhs;
+  }
+
+  setHoleScoreForHole(holescores: ScoreHoleScoresResponse[], thehs: ScoreHoleScoresResponse) {
+
+    holescores.forEach(holescore &#x3D;&gt; {
+      if (holescore.holeNumber &#x3D;&#x3D;&#x3D; thehs.holeNumber) {
+        holescore &#x3D; thehs;
+      }
+    });
+    this.checkCanSignSelf();
+    this.checkCanSignMarked();
+  }
+
+  showScore(segment: string, startTime: Date): boolean {
+    const today &#x3D; new Date();
+    const startDate &#x3D; new Date(startTime);
+    const todayYear &#x3D; today.getFullYear();
+    const startYear &#x3D; startDate.getFullYear();
+    const todayMonth &#x3D; today.getMonth();
+    const startMonth &#x3D; startDate.getMonth();
+    const todayDay &#x3D; today.getDate();
+    const startDay &#x3D; startDate.getDate();
+    if (segment &#x3D;&#x3D;&#x3D; &#x27;Today&#x27;) {
+      // test for future
+      // if ( (startDay &gt;&#x3D; todayDay) || (startMonth &gt;  todayMonth) || (startYear &gt; todayYear) ) {
+      // test for today
+      // if ((startDay &#x3D;&#x3D;&#x3D; todayDay) &amp;&amp; (startMonth &#x3D;&#x3D;&#x3D; todayMonth) &amp;&amp; (startYear &#x3D;&#x3D;&#x3D; todayYear)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  async presentActionSheet(holenum: number) {
+    const buttonList: any[] &#x3D; [];
+    if (this.todayScore.selfCard &amp;&amp; this.markedScore.markerCard) {
+      const toast &#x3D; await this.toastCtrl.create({
+        message: &#x27;The score has been signed, you cannot change it.&#x27;,
+        duration: 2000
+      });
+      await toast.present();
+    } else {
+      if (!this.todayScore.selfCard) {
+        buttonList.push({
+          text: &#x27;Your score&#x27;,
+          icon: &#x27;golf-outline&#x27;,
+          handler: () &#x3D;&gt; {
+            this.changeSelfScore(holenum);
+          }
+        });
+      }
+      if (!this.markedScore.markerCard) {
+        buttonList.push({
+          text: &#x27;Marked score&#x27;,
+          icon: &#x27;people-outline&#x27;,
+          handler: () &#x3D;&gt; {
+            this.changeMarkScore(holenum);
+          }
+        });
+      }
+      buttonList.push({
+        text: &#x27;Cancel&#x27;,
+        icon: &#x27;close&#x27;,
+        role: &#x27;cancel&#x27;,
+        handler: () &#x3D;&gt; {
+          console.log(&#x27;Cancel clicked&#x27;);
+        }
+      });
+      const actionSheet &#x3D; await this.actionSheetController.create({
+        header: &#x27;Change score at Hole: &#x27; + holenum,
+        buttons: buttonList
+      });
+      await actionSheet.present();
+    }
+
+  }
+
+  getColumnOptions() {
+    const options &#x3D; [];
+    for (let i &#x3D; 0; i &lt; 21; i++) {
+      options.push({
+        text: i,
+        value: i
+      });
+    }
+    return options;
+  }
+
+
+  async changeSelfScore(holenum: number) {
+    const hsself: ScoreHoleScoresResponse &#x3D; this.getHoleScoreForHole(this.todayScore.holescores, holenum);
+    // const hsmark: ScoreHoleScoresResponse &#x3D; this.getHoleScoreForHole(this.markedScore.holescores, holenum);
+    // we need this for the post to work
+    hsself.scoreId &#x3D; this.todayScore.id;
+
+    const picker &#x3D; await this.pickerCtrl.create({
+      mode: &#x27;ios&#x27;,
+      buttons: [
+        {
+          text: &#x27;Cancel&#x27;,
+          role: &#x27;cancel&#x27;
+        },
+        {
+          text: &#x27;Set your own score&#x27;,
+        },
+        {
+          text: &#x27;Ok&#x27;,
+          handler: (data: any) &#x3D;&gt; {
+            console.log(data.Score.value);
+            hsself.self &#x3D; parseInt(data.Score.value, 10);
+            this.updateScore(this.todayScore.holescores, hsself);
+          }
+        }
+      ],
+      columns: [
+        {
+          name: &#x27;Hole&#x27;,
+          options: [{
+            text: &#x27;Hole: &#x27; + holenum,
+            value: &#x27;1&#x27;
+          }]
+        },
+        {
+          name: &#x27;Score&#x27;,
+          options: this.getColumnOptions()
+        }
+      ]
+    });
+
+    picker.columns[1].selectedIndex &#x3D; hsself.self;
+    await picker.present();
+
+  }
+
+  async changeMarkScore(holenum: number) {
+    // const hsself: ScoreHoleScoresResponse &#x3D; this.getHoleScoreForHole(this.todayScore.holescores, holenum);
+    const hsmark: ScoreHoleScoresResponse &#x3D; this.getHoleScoreForHole(this.markedScore.holescores, holenum);
+    // we need this for the post to work
+    hsmark.scoreId &#x3D; this.markedScore.id;
+    hsmark.markerId &#x3D; this.userId;
+
+    const picker &#x3D; await this.pickerCtrl.create({
+      mode: &#x27;ios&#x27;,
+      buttons: [
+        {
+          text: &#x27;Cancel&#x27;,
+          role: &#x27;cancel&#x27;
+        },
+        {
+          text: &#x27;Marked player score&#x27;,
+        },
+        {
+          text: &#x27;Ok&#x27;,
+          handler: (data: any) &#x3D;&gt; {
+            console.log(data.Score.value);
+            hsmark.marker &#x3D; parseInt(data.Score.value, 10);
+            this.updateScore(this.markedScore.holescores, hsmark);
+          }
+        }
+      ],
+      columns: [
+        {
+          name: &#x27;Hole&#x27;,
+          options: [{
+            text: &#x27;Hole: &#x27; + holenum,
+            value: &#x27;1&#x27;
+          }]
+        },
+        {
+          name: &#x27;Score&#x27;,
+          options: this.getColumnOptions()
+        }
+      ]
+    });
+
+    picker.columns[1].selectedIndex &#x3D; hsmark.marker;
+    await picker.present();
+
+  }
+
+  updateScore(holescores: ScoreHoleScoresResponse[], thehs: ScoreHoleScoresResponse) {
+    // is this a new hs?
+    this.restClient.presentLoader();
+    if (thehs.id) {
+      this.restClient.patchHoleScore(thehs)
+        .subscribe(
+          (response: any) &#x3D;&gt; {
+            this.setHoleScoreForHole(holescores, thehs);
+          },
+          err &#x3D;&gt; {
+            console.error(&#x27;Error setting self score&#x27;, err.error.error);
+          },
+          () &#x3D;&gt; {
+            this.restClient.dismissLoader();
+          }
+        );
+    } else {
+      this.restClient.postHoleScore(thehs)
+        .subscribe(
+          (response: ScoreHoleScoresResponse) &#x3D;&gt; {
+            // TODO: should retrieve hole scores first... before resetting them for showing...
+            // or at change
+            this.setHoleScoreForHole(holescores, response);
+          },
+          err &#x3D;&gt; {
+            console.error(&#x27;Error setting self score&#x27;, err.error.error);
+          },
+          () &#x3D;&gt; {
+            this.restClient.dismissLoader();
+          }
+        );
+    }
+  }
+
+  checkCanSignSelf() {
+    let canSign &#x3D; true;
+    if (this.todayScore.holescores) {
+      this.todayScore.holescores.forEach(
+        (holescore) &#x3D;&gt; {
+          if (holescore.self &#x3D;&#x3D;&#x3D; 0) {
+            canSign &#x3D; false;
+          }
+        }
+      );
+    } else {
+      canSign &#x3D; false;
+    }
+    this.canSignSelf &#x3D; canSign;
+  }
+
+  checkCanSignMarked() {
+    let canSign &#x3D; true;
+    if (this.markedScore.holescores) {
+      this.markedScore.holescores.forEach(
+        (holescore) &#x3D;&gt; {
+          if (holescore.marker &#x3D;&#x3D;&#x3D; 0) {
+            canSign &#x3D; false;
+          }
+        }
+      );
+    } else {
+      canSign &#x3D; false;
+    }
+    this.canSignMarked &#x3D; canSign;
+  }
+
+
+  async presentScore(scoreType: string) {
+    let theViewScore: any &#x3D; {};
+    let destinationPath &#x3D; &#x27;&#x27;;
+
+    if (scoreType &#x3D;&#x3D;&#x3D; &#x27;player&#x27;) {
+      theViewScore &#x3D; this.todayScore;
+      destinationPath &#x3D; &#x27;/app/tabs/scores/sign/Player&#x27;;
+    } else {
+      theViewScore &#x3D; this.markedScore;
+      theViewScore.holes &#x3D; this.todayScore.holes;
+      destinationPath &#x3D; &#x27;/app/tabs/scores/sign/&#x27; + this.markedPlayer.firstName;
+    }
+    const navigationExtras: NavigationExtras &#x3D; {
+      state: {
+        viewScore: theViewScore
+      }
+    };
+    this.router.navigate([destinationPath], navigationExtras);
+
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;ion-header translucent&#x3D;&quot;true&quot;&gt;
+  &lt;ion-toolbar&gt;
+    &lt;ion-buttons slot&#x3D;&quot;start&quot;&gt;
+      &lt;ion-menu-button&gt;&lt;/ion-menu-button&gt;
+    &lt;/ion-buttons&gt;
+    &lt;ion-segment *ngIf&#x3D;&quot;ios&quot; [(ngModel)]&#x3D;&quot;segment&quot;&gt;
+      &lt;ion-segment-button value&#x3D;&quot;Today&quot;&gt;
+        Today
+      &lt;/ion-segment-button&gt;
+      &lt;ion-segment-button value&#x3D;&quot;All&quot;&gt;
+        All
+      &lt;/ion-segment-button&gt;
+    &lt;/ion-segment&gt;
+    &lt;ion-title *ngIf&#x3D;&quot;!ios&quot;&gt;Scores&lt;/ion-title&gt;
+    &lt;ion-buttons slot&#x3D;&quot;end&quot; *ngIf&#x3D;&quot;segment &#x3D;&#x3D;&#x3D; &#x27;Today&#x27; &amp;&amp; foundTodayScore&quot;&gt;
+      &lt;ion-button routerLink&#x3D;&quot;/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}&quot;&gt;
+        &lt;span *ngIf&#x3D;&quot;ios&quot;&gt;Marked&lt;/span&gt;
+        &lt;span *ngIf&#x3D;&quot;!ios&quot;&gt;
+          &lt;ion-icon slot&#x3D;&quot;icon-only&quot; name&#x3D;&quot;people-outline&quot;&gt;&lt;/ion-icon&gt;
+        &lt;/span&gt;
+      &lt;/ion-button&gt;
+    &lt;/ion-buttons&gt;
+  &lt;/ion-toolbar&gt;
+  &lt;ion-toolbar *ngIf&#x3D;&quot;!ios&quot;&gt;
+    &lt;ion-segment [(ngModel)]&#x3D;&quot;segment&quot;&gt;
+      &lt;ion-segment-button value&#x3D;&quot;Today&quot;&gt;
+        Today
+      &lt;/ion-segment-button&gt;
+      &lt;ion-segment-button value&#x3D;&quot;All&quot;&gt;
+        All
+      &lt;/ion-segment-button&gt;
+    &lt;/ion-segment&gt;
+  &lt;/ion-toolbar&gt;
+&lt;/ion-header&gt;
+
+&lt;ion-content fullscreen&#x3D;&quot;true&quot;&gt;
+  &lt;ion-header collapse&#x3D;&quot;condense&quot;&gt;
+    &lt;ion-toolbar&gt;
+      &lt;ion-title size&#x3D;&quot;large&quot;&gt;Scores&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+
+  &lt;div *ngIf&#x3D;&quot;segment &#x3D;&#x3D;&#x3D; &#x27;Today&#x27;&quot;&gt;
+    &lt;span *ngIf&#x3D;&quot;!foundTodayScore&quot;&gt;
+      &lt;ion-label&gt;
+        &lt;ion-item color&#x3D;&quot;tertiary&quot;&gt;
+          No events found for today!
+        &lt;/ion-item&gt;
+      &lt;/ion-label&gt;
+    &lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;foundTodayScore &amp;&amp; !foundMarkedPlayer&quot;&gt;
+      &lt;ion-label&gt;
+        &lt;ion-item color&#x3D;&quot;warning&quot; routerLink&#x3D;&quot;/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}&quot;&gt;
+          You did not select the player you are marking! Tap on this message to select
+          the player that you have been assigned for marking.
+        &lt;/ion-item&gt;
+      &lt;/ion-label&gt;
+    &lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;foundTodayScore &amp;&amp; foundMarkedPlayer &amp;&amp; selfMark&quot;&gt;
+      &lt;ion-label&gt;
+        &lt;ion-item color&#x3D;&quot;warning&quot; routerLink&#x3D;&quot;/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}&quot;&gt;
+          You cannot mark yourself! Click on this message to select
+          the player that you have been assigned for marking.
+        &lt;/ion-item&gt;
+      &lt;/ion-label&gt;
+    &lt;/span&gt;
+    &lt;span *ngIf&#x3D;&quot;foundTodayScore&quot;&gt;
+      &lt;ion-card class&#x3D;&quot;score-card&quot;&gt;
+        &lt;ion-card-header&gt;
+          &lt;ion-item detail&#x3D;&quot;false&quot; lines&#x3D;&quot;none&quot; class&#x3D;&quot;score-item&quot; routerLink&#x3D;&quot;/app/tabs/leaderboard-list/leaderboard-mob/{{todayScore?.eventId}}/{{todayScore?.round}}&quot;&gt;
+            &lt;ion-avatar slot&#x3D;&quot;start&quot;&gt;
+              &lt;ion-icon name&#x3D;&quot;golf-outline&quot;&gt;&lt;/ion-icon&gt;
+            &lt;/ion-avatar&gt;
+            &lt;ion-label&gt;
+              &lt;h2&gt;{{todayScore?.event?.name}}&lt;/h2&gt;
+              &lt;h3&gt;Round {{todayScore?.round}}&lt;/h3&gt;
+              &lt;p&gt;{{todayScore?.event?.type}}&lt;/p&gt;
+              &lt;p&gt;{{todayScore?.startTime}}&lt;/p&gt;
+              &lt;p&gt;You are marking: &lt;strong&gt;{{markedPlayer.firstName}} {{markedPlayer.lastName}}&lt;/strong&gt;&lt;/p&gt;
+            &lt;/ion-label&gt;
+            &lt;ion-icon slot&#x3D;&quot;end&quot; name&#x3D;&quot;clipboard-outline&quot;&gt;&lt;/ion-icon&gt;
+          &lt;/ion-item&gt;
+        &lt;/ion-card-header&gt;
+        &lt;ion-card-content&gt;
+          &lt;ion-list lines&#x3D;&quot;none&quot;&gt;
+            &lt;ion-item detail&#x3D;&quot;false&quot;&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Hole&lt;/ion-col&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Length&lt;/ion-col&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Par&lt;/ion-col&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Hcp&lt;/ion-col&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Self&lt;/ion-col&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{markedPlayer.firstName}}&lt;/ion-col&gt;
+              &lt;!--
+              &lt;ion-col&gt;&lt;/ion-col&gt;
+            --&gt;
+            &lt;/ion-item&gt;
+            &lt;!--
+            &lt;ion-item *ngFor&#x3D;&quot;let hole of todayScore?.holes&quot; detail&#x3D;&quot;false&quot;
+              routerLink&#x3D;&quot;/app/tabs/scores/score-details/{{todayScore.id}}/{{todayScore?.eventId}}/{{todayScore.round}}/{{hole?.number}}/Par: {{hole?.par}} - Hcp: {{hole?.holeHandicap}}&quot;&gt;
+            --&gt;
+            &lt;ion-item *ngFor&#x3D;&quot;let hole of todayScore?.holes&quot; detail&#x3D;&quot;false&quot; (click)&#x3D;&quot;presentActionSheet(hole?.number)&quot;&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{hole?.number}}&lt;/ion-col&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{hole?.length}}&lt;/ion-col&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{hole?.par}}&lt;/ion-col&gt;
+              &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{hole?.holeHandicap}}&lt;/ion-col&gt;
+              &lt;ion-col *ngIf&#x3D; &quot;getHoleScoreForHole(todayScore.holescores, hole?.number).self !&#x3D; getHoleScoreForHole(todayScore.holescores, hole?.number).marker&quot; class&#x3D;&quot;ion-text-center&quot; style&#x3D;&quot;background:var(--ion-color-danger);color:var(--ion-color-primary-contrast)&quot;&gt;
+                {{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}
+              &lt;/ion-col&gt;
+              &lt;ion-col *ngIf&#x3D; &quot;getHoleScoreForHole(todayScore.holescores, hole?.number).self &#x3D;&#x3D;&#x3D; getHoleScoreForHole(todayScore.holescores, hole?.number).marker&quot; class&#x3D;&quot;ion-text-center&quot;&gt;
+                {{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}
+              &lt;/ion-col&gt;
+              &lt;ion-col *ngIf&#x3D; &quot;getHoleScoreForHole(markedScore.holescores, hole?.number).self !&#x3D; getHoleScoreForHole(markedScore.holescores, hole?.number).marker&quot; class&#x3D;&quot;ion-text-center&quot; style&#x3D;&quot;background:var(--ion-color-danger);color:var(--ion-color-primary-contrast)&quot;&gt;
+                {{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}
+              &lt;/ion-col&gt;
+              &lt;ion-col *ngIf&#x3D; &quot;getHoleScoreForHole(markedScore.holescores, hole?.number).self &#x3D;&#x3D;&#x3D; getHoleScoreForHole(markedScore.holescores, hole?.number).marker&quot; class&#x3D;&quot;ion-text-center&quot;&gt;
+                {{this.getHoleScoreForHole(markedScore.holescores, hole?.number).marker}}
+              &lt;/ion-col&gt;
+              &lt;!--
+                &lt;ion-col *ngIf&#x3D;&quot;which &#x3D;&#x3D;&#x3D; &#x27;player&#x27;&quot; class&#x3D;&quot;ion-text-center&quot;&gt;Score I put&lt;/ion-col&gt;
+                &lt;ion-col&gt;&lt;ion-icon name&#x3D;&quot;create-outline&quot;&gt;&lt;/ion-icon&gt;&lt;/ion-col&gt;
+              --&gt;
+            &lt;/ion-item&gt;
+          &lt;/ion-list&gt;
+        &lt;/ion-card-content&gt;
+      &lt;/ion-card&gt;
+      &lt;ion-row&gt;
+        &lt;ion-col&gt;
+          &lt;ion-button (click)&#x3D;&quot;presentScore(&#x27;player&#x27;)&quot; expand&#x3D;&quot;block&quot;&gt;
+            Player Score
+          &lt;/ion-button&gt;
+        &lt;/ion-col&gt;
+        &lt;ion-col&gt;
+          &lt;ion-button (click)&#x3D;&quot;presentScore(&#x27;marker&#x27;)&quot; expand&#x3D;&quot;block&quot;&gt;
+            Marker Score
+          &lt;/ion-button&gt;
+        &lt;/ion-col&gt;
+      &lt;/ion-row&gt;
+    &lt;/span&gt;
+  &lt;/div&gt;
+
+  &lt;div *ngIf&#x3D;&quot;segment &#x3D;&#x3D;&#x3D; &#x27;All&#x27;&quot;&gt;
+    &lt;ion-grid fixed&gt;
+      &lt;ion-row&gt;
+        &lt;span *ngFor&#x3D;&quot;let score of scores&quot;&gt;
+          &lt;ion-col size&#x3D;&quot;12&quot; size-md&#x3D;&quot;6&quot;&gt;
+            &lt;ion-card class&#x3D;&quot;score-card&quot;&gt;
+              &lt;ion-card-header&gt;
+                &lt;ion-item detail&#x3D;&quot;false&quot; lines&#x3D;&quot;none&quot; class&#x3D;&quot;score-item&quot;&gt;
+                  &lt;ion-avatar slot&#x3D;&quot;start&quot;&gt;
+                    &lt;ion-icon name&#x3D;&quot;golf-outline&quot;&gt;&lt;/ion-icon&gt;
+                  &lt;/ion-avatar&gt;
+                  &lt;ion-label&gt;
+                    &lt;h2&gt;{{score?.event?.name}}&lt;/h2&gt;
+                    &lt;h3&gt;Round {{score?.round}}&lt;/h3&gt;
+                    &lt;p&gt;{{score?.event?.type}}&lt;/p&gt;
+                    &lt;p&gt;{{score?.startTime}}&lt;/p&gt;
+                  &lt;/ion-label&gt;
+                &lt;/ion-item&gt;
+              &lt;/ion-card-header&gt;
+              &lt;ion-card-content&gt;
+                &lt;ion-list lines&#x3D;&quot;none&quot;&gt;
+                  &lt;ion-item detail&#x3D;&quot;false&quot;&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Hole&lt;/ion-col&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Length&lt;/ion-col&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Par&lt;/ion-col&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Handicap&lt;/ion-col&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;Score&lt;/ion-col&gt;
+                  &lt;/ion-item&gt;
+                  &lt;ion-item *ngFor&#x3D;&quot;let hole of score.holes&quot; detail&#x3D;&quot;false&quot;&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{hole?.number}}&lt;/ion-col&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{hole?.length}}&lt;/ion-col&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{hole?.par}}&lt;/ion-col&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{hole?.holeHandicap}}&lt;/ion-col&gt;
+                    &lt;ion-col class&#x3D;&quot;ion-text-center&quot;&gt;{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}&lt;/ion-col&gt;
+                  &lt;/ion-item&gt;
+                &lt;/ion-list&gt;
+              &lt;/ion-card-content&gt;
+            &lt;/ion-card&gt;
+          &lt;/ion-col&gt;
+        &lt;/span&gt;
+      &lt;/ion-row&gt;
+    &lt;/ion-grid&gt;
+  &lt;/div&gt;
+
+&lt;/ion-content&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./score-list.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.score-card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Due to the fact the cards are inside of columns the margins don&#x27;t overlap
+ * properly so we want to remove the extra margin between cards
+ */
+ion-col:not(:last-of-type) .score-card {
+  margin-bottom: 0;
+}
+
+.score-card .score-item {
+  --min-height: 85px;
+}
+
+.score-card .score-item h2 {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.score-card .score-item p {
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+
+.score-card ion-card-header {
+  padding: 0;
+}
+
+.score-card ion-card-content {
+  flex: 1 1 auto;
+
+  padding: 0;
+}
+
+.ios ion-list {
+  margin-bottom: 10px;
+}
+
+.md ion-list {
+  border-top: 1px solid var(--ion-color-step-150, #d7d8da);
+
+  padding: 0;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><ion-header translucent="true">  <ion-toolbar>    <ion-buttons slot="start">      <ion-menu-button></ion-menu-button>    </ion-buttons>    <ion-segment *ngIf="ios" [(ngModel)]="segment">      <ion-segment-button value="Today">        Today      </ion-segment-button>      <ion-segment-button value="All">        All      </ion-segment-button>    </ion-segment>    <ion-title *ngIf="!ios">Scores</ion-title>    <ion-buttons slot="end" *ngIf="segment === \'Today\' && foundTodayScore">      <ion-button routerLink="/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}">        <span *ngIf="ios">Marked</span>        <span *ngIf="!ios">          <ion-icon slot="icon-only" name="people-outline"></ion-icon>        </span>      </ion-button>    </ion-buttons>  </ion-toolbar>  <ion-toolbar *ngIf="!ios">    <ion-segment [(ngModel)]="segment">      <ion-segment-button value="Today">        Today      </ion-segment-button>      <ion-segment-button value="All">        All      </ion-segment-button>    </ion-segment>  </ion-toolbar></ion-header><ion-content fullscreen="true">  <ion-header collapse="condense">    <ion-toolbar>      <ion-title size="large">Scores</ion-title>    </ion-toolbar>  </ion-header>  <div *ngIf="segment === \'Today\'">    <span *ngIf="!foundTodayScore">      <ion-label>        <ion-item color="tertiary">          No events found for today!        </ion-item>      </ion-label>    </span>    <span *ngIf="foundTodayScore && !foundMarkedPlayer">      <ion-label>        <ion-item color="warning" routerLink="/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}">          You did not select the player you are marking! Tap on this message to select          the player that you have been assigned for marking.        </ion-item>      </ion-label>    </span>    <span *ngIf="foundTodayScore && foundMarkedPlayer && selfMark">      <ion-label>        <ion-item color="warning" routerLink="/app/tabs/scores/event/{{todayScore?.eventId}}/{{todayScore?.round}}">          You cannot mark yourself! Click on this message to select          the player that you have been assigned for marking.        </ion-item>      </ion-label>    </span>    <span *ngIf="foundTodayScore">      <ion-card class="score-card">        <ion-card-header>          <ion-item detail="false" lines="none" class="score-item" routerLink="/app/tabs/leaderboard-list/leaderboard-mob/{{todayScore?.eventId}}/{{todayScore?.round}}">            <ion-avatar slot="start">              <ion-icon name="golf-outline"></ion-icon>            </ion-avatar>            <ion-label>              <h2>{{todayScore?.event?.name}}</h2>              <h3>Round {{todayScore?.round}}</h3>              <p>{{todayScore?.event?.type}}</p>              <p>{{todayScore?.startTime}}</p>              <p>You are marking: <strong>{{markedPlayer.firstName}} {{markedPlayer.lastName}}</strong></p>            </ion-label>            <ion-icon slot="end" name="clipboard-outline"></ion-icon>          </ion-item>        </ion-card-header>        <ion-card-content>          <ion-list lines="none">            <ion-item detail="false">              <ion-col class="ion-text-center">Hole</ion-col>              <ion-col class="ion-text-center">Length</ion-col>              <ion-col class="ion-text-center">Par</ion-col>              <ion-col class="ion-text-center">Hcp</ion-col>              <ion-col class="ion-text-center">Self</ion-col>              <ion-col class="ion-text-center">{{markedPlayer.firstName}}</ion-col>              <!--              <ion-col></ion-col>            -->            </ion-item>            <!--            <ion-item *ngFor="let hole of todayScore?.holes" detail="false"              routerLink="/app/tabs/scores/score-details/{{todayScore.id}}/{{todayScore?.eventId}}/{{todayScore.round}}/{{hole?.number}}/Par: {{hole?.par}} - Hcp: {{hole?.holeHandicap}}">            -->            <ion-item *ngFor="let hole of todayScore?.holes" detail="false" (click)="presentActionSheet(hole?.number)">              <ion-col class="ion-text-center">{{hole?.number}}</ion-col>              <ion-col class="ion-text-center">{{hole?.length}}</ion-col>              <ion-col class="ion-text-center">{{hole?.par}}</ion-col>              <ion-col class="ion-text-center">{{hole?.holeHandicap}}</ion-col>              <ion-col *ngIf= "getHoleScoreForHole(todayScore.holescores, hole?.number).self != getHoleScoreForHole(todayScore.holescores, hole?.number).marker" class="ion-text-center" style="background:var(--ion-color-danger);color:var(--ion-color-primary-contrast)">                {{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}              </ion-col>              <ion-col *ngIf= "getHoleScoreForHole(todayScore.holescores, hole?.number).self === getHoleScoreForHole(todayScore.holescores, hole?.number).marker" class="ion-text-center">                {{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}              </ion-col>              <ion-col *ngIf= "getHoleScoreForHole(markedScore.holescores, hole?.number).self != getHoleScoreForHole(markedScore.holescores, hole?.number).marker" class="ion-text-center" style="background:var(--ion-color-danger);color:var(--ion-color-primary-contrast)">                {{this.getHoleScoreForHole(markedScore?.holescores, hole?.number).marker}}              </ion-col>              <ion-col *ngIf= "getHoleScoreForHole(markedScore.holescores, hole?.number).self === getHoleScoreForHole(markedScore.holescores, hole?.number).marker" class="ion-text-center">                {{this.getHoleScoreForHole(markedScore.holescores, hole?.number).marker}}              </ion-col>              <!--                <ion-col *ngIf="which === \'player\'" class="ion-text-center">Score I put</ion-col>                <ion-col><ion-icon name="create-outline"></ion-icon></ion-col>              -->            </ion-item>          </ion-list>        </ion-card-content>      </ion-card>      <ion-row>        <ion-col>          <ion-button (click)="presentScore(\'player\')" expand="block">            Player Score          </ion-button>        </ion-col>        <ion-col>          <ion-button (click)="presentScore(\'marker\')" expand="block">            Marker Score          </ion-button>        </ion-col>      </ion-row>    </span>  </div>  <div *ngIf="segment === \'All\'">    <ion-grid fixed>      <ion-row>        <span *ngFor="let score of scores">          <ion-col size="12" size-md="6">            <ion-card class="score-card">              <ion-card-header>                <ion-item detail="false" lines="none" class="score-item">                  <ion-avatar slot="start">                    <ion-icon name="golf-outline"></ion-icon>                  </ion-avatar>                  <ion-label>                    <h2>{{score?.event?.name}}</h2>                    <h3>Round {{score?.round}}</h3>                    <p>{{score?.event?.type}}</p>                    <p>{{score?.startTime}}</p>                  </ion-label>                </ion-item>              </ion-card-header>              <ion-card-content>                <ion-list lines="none">                  <ion-item detail="false">                    <ion-col class="ion-text-center">Hole</ion-col>                    <ion-col class="ion-text-center">Length</ion-col>                    <ion-col class="ion-text-center">Par</ion-col>                    <ion-col class="ion-text-center">Handicap</ion-col>                    <ion-col class="ion-text-center">Score</ion-col>                  </ion-item>                  <ion-item *ngFor="let hole of score.holes" detail="false">                    <ion-col class="ion-text-center">{{hole?.number}}</ion-col>                    <ion-col class="ion-text-center">{{hole?.length}}</ion-col>                    <ion-col class="ion-text-center">{{hole?.par}}</ion-col>                    <ion-col class="ion-text-center">{{hole?.holeHandicap}}</ion-col>                    <ion-col class="ion-text-center">{{this.getHoleScoreForHole(todayScore.holescores, hole?.number).self}}</ion-col>                  </ion-item>                </ion-list>              </ion-card-content>            </ion-card>          </ion-col>        </span>      </ion-row>    </ion-grid>  </div></ion-content></div>'
+    var COMPONENTS = [{'name': 'AboutPage', 'selector': 'page-about'},{'name': 'AccountPage', 'selector': 'page-account'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'EventPage', 'selector': 'page-event'},{'name': 'LeaderboardListPage', 'selector': 'page-leaderboard-list'},{'name': 'LeaderboardMobPage', 'selector': 'page-leaderboard-mob'},{'name': 'LoginPage', 'selector': 'page-login'},{'name': 'MapPage', 'selector': 'page-map'},{'name': 'PlayerDetailPage', 'selector': 'page-player-detail'},{'name': 'PopoverPage', 'selector': ''},{'name': 'ScoreListPage', 'selector': 'page-score-list'},{'name': 'ScoreSignPage', 'selector': 'page-score-sign'},{'name': 'SignupPage', 'selector': 'page-signup'},{'name': 'SupportPage', 'selector': 'page-support'},{'name': 'TabsPage', 'selector': ''},{'name': 'TutorialPage', 'selector': 'page-tutorial'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ScoreListPage'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+                   
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ScoreListPage.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

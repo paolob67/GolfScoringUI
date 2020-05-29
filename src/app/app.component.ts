@@ -1,8 +1,4 @@
 /**
- * App Component
- * Application component declares MenuController, Platform, 
- * Router, SplashScreen,StatusBar, Storage, UserData,RestClientService,
- * ToastController (might be moved to a service)
  * @author Paolo Bianchini
  * @author Lorenzo Monaco
  */
@@ -19,20 +15,17 @@ import {
   Router
 } from '@angular/router';
 // PB67 import { SwUpdate } from '@angular/service-worker';
-
 import {
   MenuController,
   Platform,
   ToastController
 } from '@ionic/angular';
-
 import {
   SplashScreen
 } from '@ionic-native/splash-screen/ngx';
 import {
   StatusBar
 } from '@ionic-native/status-bar/ngx';
-
 import {
   Storage
 } from '@ionic/storage';
@@ -44,6 +37,14 @@ import {
   RestClientService
 } from './providers/rest-client.service';
 
+/**
+ * App Component
+ * Application component declares MenuController, Platform, 
+ * Router, SplashScreen,StatusBar, Storage, UserData,RestClientService,
+ * ToastController (might be moved to a service)
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ */
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

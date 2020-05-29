@@ -1,6 +1,4 @@
 /**
- * App Module
- * Application module declares providers and bootstrap module
  * @author Paolo Bianchini
  * @author Lorenzo Monaco
  */
@@ -32,7 +30,6 @@ import {
 import {
   IonicStorageModule
 } from '@ionic/storage';
-
 import {
   AppRoutingModule
 } from './app-routing.module';
@@ -46,6 +43,11 @@ import {
 import {
   FormsModule
 } from '@angular/forms';
+
+/**
+ * App Module
+ * Application module declares providers and bootstrap module
+ */
 
 @NgModule({
   imports: [
