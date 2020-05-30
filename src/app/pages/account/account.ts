@@ -1,3 +1,11 @@
+/**
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ */
+
+/**
+ * Imports
+ */
 import {
   AfterViewInit,
   Component
@@ -16,12 +24,14 @@ import {
 import {
   RestClientService
 } from '../../providers/rest-client.service';
-
 import {
   UsersResponse
 } from '../../interfaces/rest-datamodel';
 
-
+/**
+ * Displays information of the user profile and presents a form for
+ * updating it
+ */
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html',
@@ -37,11 +47,18 @@ export class AccountPage implements AfterViewInit {
     public userData: UserData,
     public restClient: RestClientService
   ) {}
-
+  
+  /**
+   * Calls [getProfile]{@link AccountPage#getProfile#getProfile}
+   * to load account data from the server
+   */
   ngAfterViewInit() {
     this.getProfile();
   }
 
+  /**
+   * Presents and alert with an input box for changing the name of the user
+   */
   async changeName() {
     const alert = await this.alertCtrl.create({
       header: 'Change Username',
@@ -73,7 +90,10 @@ export class AccountPage implements AfterViewInit {
     });
     await alert.present();
   }
-
+  
+  /**
+   * Presents and alert with an input box for changing the name of the club
+   */
   async changeClub() {
     const alert = await this.alertCtrl.create({
       header: 'Change Club Name',
@@ -98,7 +118,10 @@ export class AccountPage implements AfterViewInit {
     });
     await alert.present();
   }
-
+  
+  /**
+   * Presents and alert with an input box for changing the number of the card
+   */
   async changeCard() {
     const alert = await this.alertCtrl.create({
       header: 'Change Card Number',
@@ -124,6 +147,9 @@ export class AccountPage implements AfterViewInit {
     await alert.present();
   }
 
+  /**
+   * Presents and alert with an input box for changing the handicap of the user
+   */
   async changeHandicap() {
     const alert = await this.alertCtrl.create({
       header: 'Change Handicap',
@@ -148,7 +174,10 @@ export class AccountPage implements AfterViewInit {
     });
     await alert.present();
   }
-
+  
+  /**
+   * Presents and alert with an input box for changing the gender of the user
+   */
   async changeGender() {
     const alert = await this.alertCtrl.create({
       header: 'Change Gender',
@@ -183,14 +212,18 @@ export class AccountPage implements AfterViewInit {
     await alert.present();
   }
 
-
-
+  /**
+   * Retrieves the username from the local store
+   */
   getUsername() {
     this.userData.getId().then((id) => {
       this.username = id;
     });
   }
-
+  
+  /**
+   * Retrieves the user data by calling [me]{@link RestClientService#me}
+   */
   getProfile() {
     this.userData.getJwtToken().then((token) => {
       this.restClient.presentLoader();
@@ -203,9 +236,10 @@ export class AccountPage implements AfterViewInit {
           },
           err => {
             console.error('Me error', err.error.error);
+            // since we got here with a 401 it looks like we where not authorized so
+            // logoff and try again to login
             if (err.error.error.statusCode === 401) {
-              this.userData.logout();
-              this.router.navigateByUrl('/login');
+              this.logout();
             }
           },
           () => {
@@ -217,6 +251,9 @@ export class AccountPage implements AfterViewInit {
     });
   }
 
+  /**
+   * Updates the user data by calling [updateUser]{@link RestClientService#updateUser}
+   */
   updateProfile() {
     this.userData.getJwtToken().then((token) => {
       this.restClient.updateUser(token, this.profileData)
@@ -226,25 +263,35 @@ export class AccountPage implements AfterViewInit {
           },
           err => {
             console.error('UpdateUser error', err.error.error);
+            // since we got here with a 401 it looks like we where not authorized so
+            // logoff and try again to login
             if (err.error.error.statusCode === 401) {
-              this.userData.logout();
-              this.router.navigateByUrl('/login');
+              this.logout();
             }
           },
           () => console.log('UpdateUser success')
         );
     });
   }
-
+  
+  /**
+   * TODO: Implement change password
+   */
   changePassword() {
     console.log('Clicked to change password');
   }
 
+  /**
+   * Clears storage and goes to login RestClientService#updateUser}
+   */
   logout() {
     this.userData.logout();
     this.router.navigateByUrl('/login');
   }
 
+  /**
+   * Opens support page by navigating the route
+   */
   support() {
     this.router.navigateByUrl('/support');
   }
