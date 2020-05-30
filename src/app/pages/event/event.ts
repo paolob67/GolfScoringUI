@@ -1,3 +1,11 @@
+/**
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ */
+
+/**
+ * Imports
+ */
 import {
   Component,
   ViewChild,
@@ -20,11 +28,9 @@ import {
 import {
   RestClientService
 } from '../../providers/rest-client.service';
-
 import {
   UserData
 } from '../../providers/user-data';
-
 import {
   LoginResponse,
   UsersResponse,
@@ -36,6 +42,12 @@ import {
   ScoreHoleScoresResponse
 } from '../../interfaces/rest-datamodel';
 
+/**
+ * This component displays a page that lists the players
+ * taking part a given event and groups them by start time
+ * and by hole of start. It is presented to the user when he did not
+ * select a player to mark during the game.
+ */
 @Component({
   selector: 'page-event',
   templateUrl: 'event.html',
@@ -47,11 +59,15 @@ export class EventPage implements OnInit {
     static: true
   }) playerList: IonList;
 
+  /** are we on ios platform? */
   ios: boolean;
+  /** the id for the event read from url parameter */
   eventId: string;
+  /** which round of the event are we looking at? read from url parameter */
   roundNum: number;
+  /** holds list of events coming from API call */
   event: EventsResponse;
-
+  /** array of players for the given event */
   players: {
     id: string;
     firstName: string;
@@ -61,17 +77,10 @@ export class EventPage implements OnInit {
     scoreId: string;
     // hide: boolean;
   } [];
-
+  /** id of the player that has been chosen for marking */
   markedPlayerId: string;
-
-  // dayIndex = 0;
-  queryText = '';
-  // segment = 'all';
-  // excludeTracks: any = [];
-  shownPlayers: any = [];
+  /** arry holding the groups found for start hole and time */
   groups: any = [];
-  confDate: string;
-  showSearchbar: boolean;
 
   constructor(
     public alertCtrl: AlertController,
@@ -86,6 +95,10 @@ export class EventPage implements OnInit {
     public config: Config
   ) {}
 
+  /**
+   * Read params from URL, set if ios and populate the marked play property
+   * so that the html can check accordingly in the list
+   */
   ngOnInit() {
     this.eventId = this.route.snapshot.paramMap.get('eventId');
     this.roundNum = parseInt(this.route.snapshot.paramMap.get('roundNum'), 10);
@@ -96,6 +109,7 @@ export class EventPage implements OnInit {
     this.user.getMarkedPlayer().then((id) => {
       this.markedPlayerId = id;
     });
+    // if needed use the JWT token to call some protected API
     /*
     this.user.getJwtToken().then((token) => {
       this.initData(token);
@@ -103,36 +117,32 @@ export class EventPage implements OnInit {
     */
 
   }
-
+  
+  // could need to use the JWT token 
   // call server to get public profile
   // initData(jwtToken: string) {
+  /**
+   * Load players and group them for displaying in the list.
+   * IN order to get players name we call the public API that 
+   * returns only the name and the id [getPublicUser]{@link RestClientService#getPublicUser}
+   */
   initData() {
+    // clear the array
     this.players = [];
     this.restClient.presentLoader();
+    // get event data
     this.restClient.getEvent(this.eventId)
       .subscribe(
         (responseev: EventsResponse) => {
           this.event = responseev;
-          // populate players
+          // populate players by loading all the scores for the event
           this.restClient.getEventRoundScores(this.eventId, this.roundNum)
             .subscribe(
               (responsesc: ScoresResponse[]) => {
                 responsesc.forEach(score => {
-                  /*
-                  this.players.push(
-                    {
-                      id: score.userId,
-                      firstName: 'John',
-                      lastName: 'Doe',
-                      startTime: score.startTime,
-                      startHole: score.startHole,
-                      scoreId: score.id,
-                    }
-                  );
-                  */
-                  // should call unprotected api here...
-
+                  // not this one because we are calling the public one
                   // this.restClient.getPublicUser(score.userId, jwtToken)
+                  // get info for that user and populate the players array
                   this.restClient.getPublicUser(score.userId)
                     .subscribe(
                       (userResponse: UsersResponse) => {
@@ -144,22 +154,21 @@ export class EventPage implements OnInit {
                           startHole: score.startHole,
                           scoreId: score.id,
                         };
+                        // populate players
                         this.players.push(gotPlayer);
+                        // populate groups
                         this.groupPlayers(gotPlayer);
                       },
                       err => {
                         console.error('Error getting user for score', score.userId, score.id);
+                        this.restClient.dismissLoader();
                       },
                       () => {
                         // all good dismiss loader
                         this.restClient.dismissLoader();
                       }
                     );
-
                 });
-
-                // let's group players for diplay
-                // this.groupPlayers();
               },
               err => {
                 this.restClient.dismissLoader();
@@ -176,19 +185,27 @@ export class EventPage implements OnInit {
       );
   }
 
+  /**
+   * @param player player info holdin name and start hole and time for grouping
+   * This method looks for an existing group of players with the same starting 
+   * info as the one passed. If the group is found then the player is added to it
+   * otherwise the player forms a new group and waits for other with similar start
+   * info.
+   */
   groupPlayers(player: any) {
-    this.shownPlayers = this.players;
-
     let didfindgroup = false;
-    // const thegroup: any;
+    // let's look into the groups array if it has already been populated
     if (this.groups) {
+      // for each one of the already found groups
       this.groups.forEach(group => {
+        // if we have a match add the player to the goup
         if (group.time === player.startTime || group.hole === player.startHole) {
           group.players.push(player);
           didfindgroup = true;
         }
       });
     }
+    // if we ddid not find a suitable group create a new one
     if (!didfindgroup) {
       this.groups.push({
         time: player.startTime,
@@ -201,45 +218,13 @@ export class EventPage implements OnInit {
     }
   }
 
-
+  /**
+   * write marked player id into the local store
+   */
   setMarkedPlayer(id) {
-
     this.user.setMarkedPlayer(id)
       .then(() => {
         this.markedPlayerId = id;
       });
-
   }
-
-  /*
-    groupPlayers() {
-      this.shownPlayers = this.players;
-
-      this.players.forEach(player => {
-        let didfindgroup = false;
-        let thegroup: any;
-        if( this.groups ) {
-          this.groups.forEach(group => {
-            if (group.time == player.startTime || group.hole == player.startHole) {
-              group.players.push(player);
-              didfindgroup = true;
-            };
-          });
-        };
-        if (!didfindgroup) {
-          this.groups.push(
-            {
-              time: player.startTime,
-              hole: player.startHole,
-              players: [
-                player
-              ]
-            }
-          );
-        };
-      });
-    }
-  */
-
-
 }

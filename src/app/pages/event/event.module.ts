@@ -1,3 +1,11 @@
+/**
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ */
+
+/**
+ * Imports
+ */
 import {
   NgModule
 } from '@angular/core';
@@ -10,7 +18,6 @@ import {
 import {
   IonicModule
 } from '@ionic/angular';
-
 import {
   EventPage
 } from './event';

@@ -57,7 +57,7 @@ export class AccountPage implements AfterViewInit {
   }
 
   /**
-   * Presents and alert with an input box for changing the name of the user
+   * Presents an alert with an input box for changing the name of the user
    */
   async changeName() {
     const alert = await this.alertCtrl.create({
@@ -92,7 +92,7 @@ export class AccountPage implements AfterViewInit {
   }
   
   /**
-   * Presents and alert with an input box for changing the name of the club
+   * Presents an alert with an input box for changing the name of the club
    */
   async changeClub() {
     const alert = await this.alertCtrl.create({
@@ -120,7 +120,7 @@ export class AccountPage implements AfterViewInit {
   }
   
   /**
-   * Presents and alert with an input box for changing the number of the card
+   * Presents an alert with an input box for changing the number of the card
    */
   async changeCard() {
     const alert = await this.alertCtrl.create({
@@ -148,7 +148,7 @@ export class AccountPage implements AfterViewInit {
   }
 
   /**
-   * Presents and alert with an input box for changing the handicap of the user
+   * Presents an alert with an input box for changing the handicap of the user
    */
   async changeHandicap() {
     const alert = await this.alertCtrl.create({
@@ -176,7 +176,7 @@ export class AccountPage implements AfterViewInit {
   }
   
   /**
-   * Presents and alert with an input box for changing the gender of the user
+   * Presents an alert with an input box for changing the gender of the user
    */
   async changeGender() {
     const alert = await this.alertCtrl.create({

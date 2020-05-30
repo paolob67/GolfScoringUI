@@ -25,7 +25,7 @@ import {
  * Application cromponent defines routes for 
  * tutorial, acocunt, support, login, signup
  * and app.
- * App routes are ahndled by the tabs page routing module and 
+ * App routes are handled by the tabs page routing module and 
  * appear in the upper part of the menu
  */
 @NgModule({

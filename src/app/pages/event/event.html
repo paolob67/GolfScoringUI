@@ -24,7 +24,7 @@
     </ion-toolbar>
   </ion-header>
 
-  <ion-list #scheduleList [hidden]="shownPlayers === 0">
+  <ion-list #scheduleList [hidden]="players.length === 0">
     <ion-item-group *ngFor="let group of groups" [hidden]="group.hide">
       <ion-item-divider sticky>
         <ion-label>
@@ -50,7 +50,7 @@
     </ion-item-group>
   </ion-list>
 
-  <ion-list-header [hidden]="shownPlayers.length > 0">
+  <ion-list-header [hidden]="players.length > 0">
     No PLayers Found
   </ion-list-header>
 
