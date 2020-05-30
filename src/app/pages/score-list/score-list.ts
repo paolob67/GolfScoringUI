@@ -140,6 +140,7 @@ export class ScoreListPage {
                             },
                             err => {
                               console.log('Error getting hole scores', err.error.error);
+                              this.restClient.dismissLoader();
                             },
                             () => {
                               this.restClient.dismissLoader();
@@ -187,6 +188,7 @@ export class ScoreListPage {
             },
             err => {
               console.error('Error getting user info for', markedid);
+              this.restClient.dismissLoader();
               // if we got here it means that markerID is not valid
               // let's erase it from the data store and clean up
               this.userData.removeMarkedPlayer().then(() => {
