@@ -186,11 +186,11 @@ export class EventPage implements OnInit {
   }
 
   /**
-   * @param player player info holdin name and start hole and time for grouping
    * This method looks for an existing group of players with the same starting 
    * info as the one passed. If the group is found then the player is added to it
    * otherwise the player forms a new group and waits for other with similar start
    * info.
+   * @param player player info holdin name and start hole and time for grouping
    */
   groupPlayers(player: any) {
     let didfindgroup = false;
@@ -205,7 +205,7 @@ export class EventPage implements OnInit {
         }
       });
     }
-    // if we ddid not find a suitable group create a new one
+    // if we did not find a suitable group create a new one
     if (!didfindgroup) {
       this.groups.push({
         time: player.startTime,
@@ -219,7 +219,8 @@ export class EventPage implements OnInit {
   }
 
   /**
-   * write marked player id into the local store
+   * write marked player id into the local store and update the property
+   * @param id the marked player id selected from the player list
    */
   setMarkedPlayer(id) {
     this.user.setMarkedPlayer(id)
