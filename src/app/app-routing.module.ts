@@ -21,11 +21,10 @@ import {
 } from './app.routes';
 
 /**
- * App Routing module 
- * Application cromponent defines routes for 
+ * Application component, defines routes for
  * tutorial, acocunt, support, login, signup
  * and app.
- * App routes are handled by the tabs page routing module and 
+ * App routes are handled by the tabs page routing module and
  * appear in the upper part of the menu
  */
 @NgModule({

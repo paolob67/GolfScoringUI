@@ -12,17 +12,10 @@ import {
   OnInit
 } from '@angular/core';
 import {
-  Router,
   ActivatedRoute
 } from '@angular/router';
 import {
-  AlertController,
   IonList,
-  IonFab,
-  IonRouterOutlet,
-  LoadingController,
-  ModalController,
-  ToastController,
   Config
 } from '@ionic/angular';
 import {
@@ -59,15 +52,25 @@ export class EventPage implements OnInit {
     static: true
   }) playerList: IonList;
 
-  /** are we on ios platform? */
+  /**
+   * are we on ios platform?
+   */
   ios: boolean;
-  /** the id for the event read from url parameter */
+  /**
+   * the id for the event read from url parameter
+   */
   eventId: string;
-  /** which round of the event are we looking at? read from url parameter */
+  /**
+   * which round of the event are we looking at? read from url parameter
+   */
   roundNum: number;
-  /** holds list of events coming from API call */
+  /**
+   * holds list of events coming from API call
+   */
   event: EventsResponse;
-  /** array of players for the given event */
+  /**
+   * array of players for the given event
+   */
   players: {
     id: string;
     firstName: string;
@@ -77,19 +80,17 @@ export class EventPage implements OnInit {
     scoreId: string;
     // hide: boolean;
   } [];
-  /** id of the player that has been chosen for marking */
+  /**
+   * id of the player that has been chosen for marking
+   */
   markedPlayerId: string;
-  /** arry holding the groups found for start hole and time */
+  /**
+   * array holding the groups found for start hole and time
+   */
   groups: any = [];
 
   constructor(
-    public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController,
-    public modalCtrl: ModalController,
     public route: ActivatedRoute,
-    public router: Router,
-    public routerOutlet: IonRouterOutlet,
-    public toastCtrl: ToastController,
     public restClient: RestClientService,
     public user: UserData,
     public config: Config
@@ -100,6 +101,7 @@ export class EventPage implements OnInit {
    * so that the html can check accordingly in the list
    */
   ngOnInit() {
+    // load properties from url
     this.eventId = this.route.snapshot.paramMap.get('eventId');
     this.roundNum = parseInt(this.route.snapshot.paramMap.get('roundNum'), 10);
 
@@ -117,13 +119,13 @@ export class EventPage implements OnInit {
     */
 
   }
-  
-  // could need to use the JWT token 
+
+  // could need to use the JWT token
   // call server to get public profile
   // initData(jwtToken: string) {
   /**
    * Load players and group them for displaying in the list.
-   * IN order to get players name we call the public API that 
+   * IN order to get players name we call the public API that
    * returns only the name and the id [getPublicUser]{@link RestClientService#getPublicUser}
    */
   initData() {
@@ -186,7 +188,7 @@ export class EventPage implements OnInit {
   }
 
   /**
-   * This method looks for an existing group of players with the same starting 
+   * This method looks for an existing group of players with the same starting
    * info as the one passed. If the group is found then the player is added to it
    * otherwise the player forms a new group and waits for other with similar start
    * info.

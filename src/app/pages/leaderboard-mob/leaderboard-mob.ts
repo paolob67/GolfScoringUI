@@ -115,7 +115,7 @@ export class LeaderboardMobPage {
             .subscribe(
               (responsesco: DetailedLeaderboardResponse[]) => {
                 this.leaderboardTotal = responsesco;
-                //console.log('Scores L: ' + JSON.stringify(this.leaderboardTotal));
+                // console.log('Scores L: ' + JSON.stringify(this.leaderboardTotal));
                 // load data for each round of the event
                 for (let rnd = 1; rnd <= this.numberOfRounds; rnd++) {
                   this.loadLeaderboard(rnd);

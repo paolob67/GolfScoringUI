@@ -7,7 +7,7 @@ import {
 } from '@angular/router';
 import {
   TABS_ROUTES
-} from './tabs-page.routes'
+} from './tabs-page.routes';
 
 @NgModule({
   imports: [RouterModule.forChild(TABS_ROUTES)],
