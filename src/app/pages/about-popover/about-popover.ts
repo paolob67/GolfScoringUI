@@ -35,7 +35,7 @@ import {
 })
 export class PopoverPage {
   constructor(public popoverCtrl: PopoverController) {}
-  
+
   /**
    * Open a browser to the passed url and close the popover about menu
    * @param url the url passed from the html choice menu

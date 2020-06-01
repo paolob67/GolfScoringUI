@@ -48,10 +48,10 @@ export class LeaderboardListPage {
   ) {
 
   }
-  
+
   /**
    * ionViewDidEnter
-   * When entering this view refresh the events list by 
+   * When entering this view refresh the events list by
    * calling [getEvents]{@link RestClientService#getEvents}
    * TODO: verify if this should be moved to ionInit
    */

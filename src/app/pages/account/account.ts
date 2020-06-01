@@ -47,7 +47,7 @@ export class AccountPage implements AfterViewInit {
     public userData: UserData,
     public restClient: RestClientService
   ) {}
-  
+
   /**
    * Calls [getProfile]{@link AccountPage#getProfile#getProfile}
    * to load account data from the server
@@ -90,7 +90,7 @@ export class AccountPage implements AfterViewInit {
     });
     await alert.present();
   }
-  
+
   /**
    * Presents an alert with an input box for changing the name of the club
    */
@@ -118,7 +118,7 @@ export class AccountPage implements AfterViewInit {
     });
     await alert.present();
   }
-  
+
   /**
    * Presents an alert with an input box for changing the number of the card
    */
@@ -174,7 +174,7 @@ export class AccountPage implements AfterViewInit {
     });
     await alert.present();
   }
-  
+
   /**
    * Presents an alert with an input box for changing the gender of the user
    */
@@ -220,7 +220,7 @@ export class AccountPage implements AfterViewInit {
       this.username = id;
     });
   }
-  
+
   /**
    * Retrieves the user data by calling [me]{@link RestClientService#me}
    */
@@ -273,7 +273,7 @@ export class AccountPage implements AfterViewInit {
         );
     });
   }
-  
+
   /**
    * TODO: Implement change password
    */

@@ -39,7 +39,7 @@ import {
 
 /**
  * App Component
- * Application component declares MenuController, Platform, 
+ * Application component declares MenuController, Platform,
  * Router, SplashScreen,StatusBar, Storage, UserData,RestClientService,
  * ToastController (might be moved to a service)
  * @author Paolo Bianchini
@@ -100,7 +100,7 @@ export class AppComponent implements OnInit {
   ) {
     this.initializeApp();
   }
-  
+
   /**
    * Called upon component intialization, chesk if we have a server connection
    * prompts for retry, performs a logoff just in case. Registers event listeners
@@ -170,7 +170,7 @@ export class AppComponent implements OnInit {
       this.splashScreen.hide();
     });
   }
-  
+
   /**
    * Access local store and verify if we are logged in
    */
@@ -206,7 +206,7 @@ export class AppComponent implements OnInit {
       this.updateLoggedInStatus(false);
     });
   }
-  
+
   /**
    * Clear local store from user info and load events page (public)
    */
@@ -215,7 +215,7 @@ export class AppComponent implements OnInit {
       return this.router.navigateByUrl('/app/tabs/leaderboard-list');
     });
   }
-  
+
   /**
    * Disables showing of the menu, resets local store tuorial flag
    * and navigates to tutorial slideshow

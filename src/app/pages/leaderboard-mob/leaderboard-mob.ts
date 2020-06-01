@@ -31,12 +31,12 @@ import {
 } from '../../interfaces/rest-datamodel';
 
 /**
- * This component shows the leaderboard for the event that was selected 
+ * This component shows the leaderboard for the event that was selected
  * in the previuos page. The page is divided in several sections.
  * The totals and the rounds. On the totals section we display cumulative
  * scores for all the rounds. In the rounds sections we display detailed
  * leaderboard data for all the players competing. If the user clicks
- * on the player list in the totals section the app displays detailed 
+ * on the player list in the totals section the app displays detailed
  * score info for the selected player.
  */
 @Component({
@@ -61,7 +61,7 @@ export class LeaderboardMobPage {
    * Scores for event
    */
   scores: RoundScoresResponse[] = [];
-  /** 
+  /**
    * passed on the route if 0 go to totals tab
    */
   showRound = '0'; // passed on the route if 0 go to totals tab
