@@ -1,9 +1,9 @@
-<ion-header>
+  <ion-header translucent="true">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/app/tabs/leaderboard-list"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ scores[0]?.detailedScores[0]?.player }}</ion-title>
+    <ion-title *ngIf="!ios"size="large">{{ scores[0]?.detailedScores[0]?.player }}</ion-title>
     <ion-buttons slot="end">
       <ion-label>Mobile</ion-label>
       <ion-toggle [(ngModel)]="mobview"></ion-toggle>
@@ -14,14 +14,7 @@
 <ion-content fullscreen="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-back-button defaultHref="/app/tabs/leaderboard-list"></ion-back-button>
-      </ion-buttons>
       <ion-title size="large">{{ scores[0]?.detailedScores[0]?.player }}</ion-title>
-      <ion-buttons slot="end">
-        <ion-label>Mobile</ion-label>
-        <ion-toggle [(ngModel)]="mobview"></ion-toggle>
-      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 
