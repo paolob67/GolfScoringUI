@@ -144,7 +144,7 @@ export class LeaderboardMobPage {
    * @param round the round for the event
    */
   loadLeaderboard(round) {
-    // get detailed Scores
+    // get detailed scores
     this.restClient.presentLoader();
     this.restClient.getRoundScoresDetails(this.eventId, round)
       .subscribe(
