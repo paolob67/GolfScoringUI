@@ -1,3 +1,11 @@
+/**
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ */
+
+/**
+ * Imports
+ */
 import {
   Component,
   ElementRef,
@@ -5,21 +13,18 @@ import {
   ViewChild,
   AfterViewInit
 } from '@angular/core';
-
-import {
-  RestClientService
-} from '../../providers/rest-client.service';
-
 import {
   Platform
 } from '@ionic/angular';
 import {
   DOCUMENT
 } from '@angular/common';
-
 import {
   darkStyle
 } from './map-dark-style';
+import {
+  RestClientService
+} from '../../providers/rest-client.service';
 
 @Component({
   selector: 'page-map',

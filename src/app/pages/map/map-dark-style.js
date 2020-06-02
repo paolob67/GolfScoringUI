@@ -1,3 +1,8 @@
+/**
+ * @author Paolo Bianchini
+ * @author Lorenzo Monaco
+ */
+
 export const darkStyle = [
   {
     "elementType": "geometry",

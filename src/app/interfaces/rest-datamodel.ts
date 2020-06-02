@@ -1,7 +1,9 @@
 /**
+ * Data model for rest client service
  * @author Paolo Bianchini
  * @author Lorenzo Monaco
  */
+
 
 /**
  * API /users/login

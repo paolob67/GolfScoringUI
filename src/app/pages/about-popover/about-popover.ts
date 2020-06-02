@@ -13,6 +13,11 @@ import {
   PopoverController
 } from '@ionic/angular';
 
+/**
+ * this component dsplays a list of links as a popover from the
+ * ellipsis nav bar button of the about page. links are to web page
+ * documentation, contacts and privacy.
+ */
 @Component({
   template: `
     <ion-list>
