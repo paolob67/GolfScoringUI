@@ -7,5 +7,5 @@
 
 export const environment = {
   production: true,
-  apiEndPoint: 'http://localhost:3000'
+  apiEndPoint: 'http://golfscore.rackone.io:3000'
 };
