@@ -6,6 +6,9 @@ import {
   ActivatedRoute
 } from '@angular/router';
 import {
+  Config
+} from '@ionic/angular';
+import {
   UserData
 } from '../../providers/user-data';
 import {
@@ -40,14 +43,21 @@ export class PlayerDetailPage {
   mobview = false;
   segment = 'Totals';
 
+  /**
+   * are we on ios platform?
+   */
+  ios: boolean;
+
   constructor(
     public router: Router,
     public route: ActivatedRoute,
     public userData: UserData,
+    public config: Config,
     public restClient: RestClientService
   ) {
     this.eventId = this.route.snapshot.paramMap.get('eventId');
     this.playerId = this.route.snapshot.paramMap.get('playerId');
+    this.ios = this.config.get('mode') === 'ios';
   }
 
   ionViewDidEnter() {

@@ -110,6 +110,7 @@
   </div>
 
   <div *ngIf="(mobview)">
+    <!--
     <ion-card class="leaderboard-card">
       <ion-card-header>
         <ion-item detail="false" lines="none" class="leaderboard">
@@ -118,10 +119,8 @@
           </ion-avatar>
           <ion-label>
             <p>Event:</p>
-            <h2>{{leaderboard.event.name}}</h2>
-            <h3>Round {{leaderboard.event.round}} {{leaderboard.event.date}}</h3>
-            <p>Course:</p>
-            <h2>{{leaderboard.course.name}}</h2>
+            <h2>{{scores[0]?.event?.name}}</h2>
+            <h3>{{scores[0]?.event?.date}}</h3>
             <ion-grid>
               <ion-row>
                 <ion-col>
@@ -185,7 +184,7 @@
                   <ion-col *ngFor="let hole of player.holes | slice:0:9">
                     <p>{{hole.holenum}}</p>
                     <p *ngIf="hole.marked > 0">
-                      <ion-text color={{getColor(hole.marked)}}>
+                      <ion-text>
                         <strong>
                           {{hole.marked}}
                         </strong>
@@ -219,6 +218,7 @@
         </ion-list>
       </ion-card-content>
     </ion-card>
+  -->
   </div>
 
 </ion-content>

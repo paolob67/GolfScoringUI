@@ -6,6 +6,7 @@ import {
   NavigationExtras
 } from '@angular/router';
 import {
+  Config,
   PickerController
 } from '@ionic/angular';
 import {
@@ -48,6 +49,10 @@ export class ScoreListPage {
   selfMark = false;
   canSignSelf = false;
   canSignMarked = false;
+  /**
+   * are we on ios platform?
+   */
+  ios: boolean;
 
   constructor(
     public router: Router,
@@ -55,8 +60,11 @@ export class ScoreListPage {
     public userData: UserData,
     public restClient: RestClientService,
     public pickerCtrl: PickerController,
+    public config: Config,
     public toastCtrl: ToastController
-  ) {}
+  ) {
+    this.ios = this.config.get('mode') === 'ios';
+  }
 
   ionViewDidEnter() {
     this.userData.getId().then((userid) => {

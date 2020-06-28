@@ -10,6 +10,9 @@ import {
   Component
 } from '@angular/core';
 import {
+  Config
+} from '@ionic/angular';
+import {
   Router,
   ActivatedRoute
 } from '@angular/router';
@@ -77,13 +80,20 @@ export class LeaderboardMobPage {
    * segment to show. init to totals
    */
   segment = 'Totals';
+  /**
+   * are we on ios platform?
+   */
+  ios: boolean;
+
 
   constructor(
     public router: Router,
     public route: ActivatedRoute,
     public userData: UserData,
+    public config: Config,
     public restClient: RestClientService
   ) {
+    this.ios = this.config.get('mode') === 'ios';
     // load properties from url
     this.eventId = this.route.snapshot.paramMap.get('eventId');
     this.showRound = this.route.snapshot.paramMap.get('showRound');

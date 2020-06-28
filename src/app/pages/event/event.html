@@ -19,9 +19,6 @@
     <ion-toolbar>
       <ion-title size="large">{{event?.name}} &mdash; Round {{roundNum}}</ion-title>
     </ion-toolbar>
-    <ion-toolbar>
-      <ion-searchbar [(ngModel)]="queryText" (ionChange)="updateEvent()" placeholder="Search"></ion-searchbar>
-    </ion-toolbar>
   </ion-header>
 
   <ion-list #scheduleList [hidden]="players.length === 0">
@@ -32,7 +29,7 @@
         </ion-label>
       </ion-item-divider>
       <span *ngFor="let player of group.players">
-        <ion-item *ngIf="player.id === markedPlayerId" (click)="console.log('marking');">
+        <ion-item *ngIf="player.id === markedPlayerId">
           <ion-label>
             <h3>{{player.firstName}} {{player.lastName}} ({{player.id}})</h3>
             <p>{{player.startTime}} &mdash; hole {{player.startHole}}</p>
